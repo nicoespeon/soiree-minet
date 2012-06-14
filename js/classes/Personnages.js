@@ -21,7 +21,6 @@ var DIRECTION = {
 
 var DUREE_ANIMATION 	= 4; 				//On change de frame après X animations
 var DUREE_DEPLACEMENT 	= 16;				//Gère la fluidité de l'animation
-var MILIEU				= TAILLE_MAP/2;		//Milieu de la carte
 var ETAT_ANIMATION		= -1;				//Personnage initialement immobile
 
 /*
@@ -121,43 +120,43 @@ Personnage.prototype.deplacer = function (direction, map, context) {
 	var OFFSET_Y	= Math.floor(this.y-MILIEU);	//Offset d'affichage vertical
 	var OFFSET_X	= Math.floor(this.x-MILIEU);	//Offset d'affichage horizontal
 	
+	//$('#control').html('x:'+this.x+'/y:'+this.y);
 	return true;
 }
 
 Personnage.prototype.activer = function(map) {
 	//Récupère coordonnées de la cible
 	var cible = this.getNextCoord(this.direction);
+	var txt = "Il n'y a rien ici !";
 	
-	//COMMENT---------------Il faut variabiliser ça avec une BDD
-	switch(map.collision[cible.y-1][cible.x-1]) {
+	switch(map.collision[cible.y-1][cible.x-1]) {				// -1 car la map des collisions commence à 0 
 		case 2 :												//Panneau d'information
 			var txt = "Soirée MiNET... Coming Soon !";	
 			break;
 			
-		case 3 :
-			var txt = "<b>Nico</b> : Qu'est-ce-que tu me veux ?";
+		case 3 :												//PNJ
+			var pnj 	= map.getPNJ();
+			var name	= pnj[cible.y][cible.x]['name'];
+			var message	= pnj[cible.y][cible.x]['message'];
+			var txt 	= "<b>"+name+"</b> : "+message;
 			
 			switch(this.direction) {
 				case DIRECTION.HAUT :
-					png.direction = DIRECTION.BAS;
+					map.pnj[pnj[cible.y][cible.x]['id']].setDirection(DIRECTION.BAS);
 					break;
 				
 				case DIRECTION.DROITE :
-					png.direction = DIRECTION.GAUCHE;
+					map.pnj[pnj[cible.y][cible.x]['id']].setDirection(DIRECTION.GAUCHE);
 					break;
 					
 				case DIRECTION.GAUCHE :
-					png.direction = DIRECTION.DROITE;
+					map.pnj[pnj[cible.y][cible.x]['id']].setDirection(DIRECTION.DROITE);
 					break;
 					
 				case DIRECTION.BAS :
-					png.direction = DIRECTION.HAUT;
+					map.pnj[pnj[cible.y][cible.x]['id']].setDirection(DIRECTION.HAUT);
 					break;
 			}
-			break;
-		
-		default :
-			var txt = "Il n'y a rien ici !";
 			break;
 	}	
 	

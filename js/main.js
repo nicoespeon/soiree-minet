@@ -10,10 +10,17 @@
 //On active la map PKMN
 var map = new Map("pkmn");
 
-//On charge le premier personnage
-var pnj 	= new Personnage("sasha.png", 1, 5, DIRECTION.BAS);
-var joueur 	= new Personnage("sasha.png", 8, 7, DIRECTION.BAS);
-map.addPersonnage(joueur);
+//On charge les PNJ de la map à travers un tableau pnj[i] = Array(PNJ, ANIMATION=true\false)
+var pnj 	= Array();
+pnj.push(Array(new PNJ("may.png", 14, 6, DIRECTION.BAS, 'Stéphanie', 'Coucou !'), true));
+pnj.push(Array(new PNJ("sasha.png", 11, 13, DIRECTION.HAUT, 'Espeon', 'Cette map est très intéressante...'), false));
+
+for(var i=0; i<pnj.length; i++) {
+	map.addPNJ(pnj[i][0]);
+}
+
+//On crée le joueur
+var joueur 	= new Personnage("sasha.png", 13, 6, DIRECTION.DROITE);
 
 $(window).load(function () {
 	//Initialisation de l'animation
@@ -39,6 +46,15 @@ $(window).load(function () {
 	setInterval(function() {
 		map.dessinerMap(context, joueur);
 	}, 40);
+		
+	//Animation PNJ
+	setInterval(
+		function() {
+			for(var i=0; i<pnj.length; i++) {
+				if(pnj[i][1]) 	pnj[i][0].direction = Math.floor(Math.random()*3);		//On anime simplement les PNJ qui le peuvent
+			}
+		}, Math.floor(Math.random()*(10000) + 5000)
+	);
 	
 	//Gestion du clavier
 	window.onkeydown = function(event) {
@@ -83,11 +99,4 @@ $(window).load(function () {
 				return true;
 		}
 	}
-	
-	//Animation PNJ
-	setInterval(
-		function() {
-			pnj.direction = Math.floor(Math.random()*3);
-		}, Math.floor(Math.random()*(10000) + 5000)
-	);
 });

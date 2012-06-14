@@ -40,6 +40,7 @@
 	<script type="text/javascript" src="js/classes/Tilesets.js"></script>
 	<script type="text/javascript" src="js/classes/Map.js"></script>
 	<script type="text/javascript" src="js/classes/Personnages.js"></script>
+	<script type="text/javascript" src="js/classes/PNJ.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>

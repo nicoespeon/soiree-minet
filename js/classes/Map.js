@@ -14,6 +14,7 @@
 */
 var TAILLE_MAP 	= 11; 							//Taille de la carte (impair pour personnage centré)
 var TAILLE_TILE = 32;							//Taille d'un tile (pixels)
+var MILIEU		= TAILLE_MAP/2;					//Milieu de la carte
 
 /*
 |--------------------------------------------------------------------------
@@ -36,8 +37,8 @@ function Map(nom) {
 	this.collision 	= collision;
 	this.tileset 	= new Tileset(tileset);
 	
-	// Liste des personnages présents sur le terrain.
-	this.personnages = new Array();
+	// Liste des PNJ présents sur le terrain.
+	this.pnj = new Array();
 }
 
 /*
@@ -73,11 +74,30 @@ Map.prototype.dessinerMap = function(context, joueur) {
 	}
 	
 	//Dessin des personnages
-	for(var i=0; i<this.personnages.length; i++) {
-		this.personnages[i].dessinerPersonnage(context);
+	for(var i=0; i<this.pnj.length; i++) {
+		this.pnj[i].dessinerPNJ(context);
+		
+		//On bloque la case où est positionné le PNJ
+		this.collision[this.pnj[i].y-1][this.pnj[i].x-1]=3;
 	}
+	
+	joueur.dessinerPersonnage(context);
 }
 
-Map.prototype.addPersonnage = function(perso) {
-	this.personnages.push(perso);
+Map.prototype.addPNJ = function(perso) {
+	this.pnj.push(perso);
+}
+
+Map.prototype.getPNJ = function() {
+	var pnj = Array();
+	 
+	for(var i=0; i<this.pnj.length; i++) {
+		pnj[this.pnj[i].y] 								= Array();
+		pnj[this.pnj[i].y][this.pnj[i].x] 				= Array();
+		pnj[this.pnj[i].y][this.pnj[i].x]['id'] 		= this.pnj[i].id;
+		pnj[this.pnj[i].y][this.pnj[i].x]['name'] 		= this.pnj[i].name;
+		pnj[this.pnj[i].y][this.pnj[i].x]['message'] 	= this.pnj[i].message;
+	}
+
+	return pnj;
 }

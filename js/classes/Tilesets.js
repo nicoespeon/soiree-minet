@@ -34,7 +34,6 @@ function Tileset(url) {
 |--------------------------------------------------------------------------
 */
 Tileset.prototype.dessinerTile = function(num, context, xDestination, yDestination, direction) {
-	//Définit la frame (image) à afficher
 	var decalageX 	= 0; 
 	var decalageY	= 0;
 	
@@ -69,17 +68,6 @@ Tileset.prototype.dessinerTile = function(num, context, xDestination, yDestinati
 	//Calcul des coordonnées sur le tileset (on commence à 0, d'où le -1)
 	var xSource = (xSourceEnTiles - 1) * TAILLE_TILE;					
 	var ySource = (ySourceEnTiles - 1) * TAILLE_TILE;
-	
-/*
-	context.drawImage(
-		this.image, 
-		xSource, ySource, 				//Commence le tile sur ces coordonnées
-		32, 32, 						//Taille du tile
-		xDestination + decalageX,  		//Position du tile sur la map
-		yDestination + decalageY,
-		32, 32							//Taille du tile sur la map (grandissement)
-	);
-*/
 	
 	context.drawImage(
 		this.image, 
