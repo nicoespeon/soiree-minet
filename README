@@ -1,22 +1,20 @@
-COMING SOON - SOIREE MINET 09-10/11/12
-======================================
+# COMING SOON - SOIREE MINET 09-10/11/12
 
-PRINCIPE
---------
+
+1. PRINCIPE
 
 Il s'agit de faire un jeu en HTML5-Javascript. 
 Le visiteur se trouvera sur une carte 11x11 et pourra se deplacer pour interagir avec le decor rempli de goodies, d'infos cachees et autres trucs concernant la soiree.
 A terme, les sprites PKMN seront remplacees par des sprites personnalisees.
 
 
-COMMANDES
----------
+2. COMMANDES
 
 Deplacement : Fleches directionnelles
 Activer/Interagir : a,A
 
 
-REMARQUE
---------
+3. REMARQUES
 
 N'hesitez pas a tester et faire remonter par des report (issues) tout ce qui ne va pas pour que ce soit fonctionnel avant la rentree 2012 !!
+La soiree MiNET va (encore) etre la plus fat, for sure...
