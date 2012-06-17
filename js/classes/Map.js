@@ -14,7 +14,7 @@
 */
 var TAILLE_MAP 	= 11; 							//Taille de la carte (impair pour personnage centré)
 var TAILLE_TILE = 32;							//Taille d'un tile (pixels)
-var MILIEU		= TAILLE_MAP/2;					//Milieu de la carte
+var MILIEU		= TAILLE_MAP/2;					//Milieu de la carte affichée
 
 /*
 |--------------------------------------------------------------------------
@@ -43,21 +43,9 @@ function Map(nom) {
 
 /*
 |--------------------------------------------------------------------------
-| METHODES
+| ACTIONS
 |--------------------------------------------------------------------------
 */
-Map.prototype.getSize = function() {
-	return TAILLE_MAP;
-}
-
-Map.prototype.getMaxWidth = function() {
-	return this.terrain[0].length;
-}
-
-Map.prototype.getMaxHeight = function() {
-	return this.terrain.length;
-}
-
 Map.prototype.dessinerMap = function(context, joueur) {
 	var OFFSET_Y	= Math.floor(joueur.y-MILIEU);	//Offset d'affichage vertical
 	var OFFSET_X	= Math.floor(joueur.x-MILIEU);	//Offset d'affichage horizontal
@@ -82,10 +70,33 @@ Map.prototype.dessinerMap = function(context, joueur) {
 	}
 	
 	joueur.dessinerPersonnage(context);
+	
+	//Retour admin
+	var txtAdmin = '';
+	txtAdmin	 += 'Taille de la carte : '+(map.getMaxWidth()-10)+'x'+(map.getMaxHeight()-11)+'<br />';
+	txtAdmin	 += 'Position du joueur : '+joueur.x+'/'+joueur.y+'<br />';
+	$('#admin').html(txtAdmin);
 }
 
 Map.prototype.addPNJ = function(perso) {
 	this.pnj.push(perso);
+}
+
+/*
+|--------------------------------------------------------------------------
+| METHODES
+|--------------------------------------------------------------------------
+*/
+Map.prototype.getSize = function() {
+	return TAILLE_MAP;
+}
+
+Map.prototype.getMaxWidth = function() {
+	return this.terrain[0].length;
+}
+
+Map.prototype.getMaxHeight = function() {
+	return this.terrain.length;
 }
 
 Map.prototype.getPNJ = function() {

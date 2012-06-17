@@ -8,11 +8,13 @@
 	<meta charset="UTF-8" />
 	
 	<!-- Title -->
-	<title>Coming Soon...</title>
+	<title>MiNET [09-10/11/12] : ?</title>
 	
-	<!-- Icone 
-	<link rel="icon" type="image/png" href="%ICONE%" />-->
+	<!-- Icone --><!--
+
+	<link rel="icon" type="image/png" href="%ICONE%" />
 	
+-->
 	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="css/reset.css" />
 	<link rel="stylesheet" type="text/css" href="css/main.css" />
@@ -26,6 +28,8 @@
 	</canvas>
 
 	<div id="control"></div>
+	
+	<div id="admin"></div>
 	
 	<!--
 <audio autoplay controls loop>

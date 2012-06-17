@@ -30,7 +30,7 @@ function Tileset(url) {
 
 /*
 |--------------------------------------------------------------------------
-| METHODES
+| ACTIONS
 |--------------------------------------------------------------------------
 */
 Tileset.prototype.dessinerTile = function(num, context, xDestination, yDestination, direction) {

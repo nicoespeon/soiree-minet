@@ -20,7 +20,7 @@ for(var i=0; i<pnj.length; i++) {
 }
 
 //On crée le joueur
-var joueur 	= new Personnage("sasha.png", 13, 6, DIRECTION.DROITE);
+var joueur 	= new Personnage("sasha.png", 16, 24, DIRECTION.BAS);
 
 $(window).load(function () {
 	//Initialisation de l'animation
@@ -63,29 +63,29 @@ $(window).load(function () {
 
 		switch(key) {
 			case 38 : 													// Flèche haut (haut)
-				joueur.deplacer(DIRECTION.HAUT, map);
+				joueur.deplacer(DIRECTION.HAUT);
 				break;
 				
 			case 40 : 													// Flèche bas (bas)
-				joueur.deplacer(DIRECTION.BAS, map);
+				joueur.deplacer(DIRECTION.BAS);
 				break;
 				
 			case 37 : 													// Flèche gauche (gauche)
-				joueur.deplacer(DIRECTION.GAUCHE, map);
+				joueur.deplacer(DIRECTION.GAUCHE);
 				break;
 				
 			case 39 : 													// Flèche droite (droite)
-				joueur.deplacer(DIRECTION.DROITE, map);
+				joueur.deplacer(DIRECTION.DROITE);
+				break;
+				
+			case 97 : case 65 :											//a, A (A)
+				joueur.activer();
 				break;
 				
 			case 122 : case 90 :										//z, Z (B)
 			
 				break;
-				
-			case 97 : case 65 :											//a, A (A)
-				joueur.activer(map);
-				break;
-				
+			
 			case 32 :													//Espace (Start)
 				
 				break;

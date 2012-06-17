@@ -85,7 +85,7 @@ Personnage.prototype.dessinerPersonnage = function(context) {
 	);
 }
 
-Personnage.prototype.deplacer = function (direction, map, context) {
+Personnage.prototype.deplacer = function (direction) {
 	// On ne peut pas se déplacer si un mouvement est déjà en cours !
 	if(ETAT_ANIMATION >= 0) {
 		return false;
@@ -124,7 +124,7 @@ Personnage.prototype.deplacer = function (direction, map, context) {
 	return true;
 }
 
-Personnage.prototype.activer = function(map) {
+Personnage.prototype.activer = function() {
 	//Récupère coordonnées de la cible
 	var cible = this.getNextCoord(this.direction);
 	var txt = "Il n'y a rien ici !";
@@ -157,6 +157,10 @@ Personnage.prototype.activer = function(map) {
 					map.pnj[pnj[cible.y][cible.x]['id']].setDirection(DIRECTION.HAUT);
 					break;
 			}
+			break;
+			
+		case 4 :												//Maison
+			var txt = "C'est le local MiNET... Ca claque !!!";	
 			break;
 	}	
 	
