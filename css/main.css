@@ -3,10 +3,9 @@
 | MAIN DESIGN
 |--------------------------------------------------------------------------
 |
-| Main design for this project
+| Main design for the game
 |
 */
-
 
 /*
 |--------------------------------------------------------------------------
@@ -14,23 +13,123 @@
 |--------------------------------------------------------------------------
 */
 body {
-	background-color: black;
-	color: white;
+	overflow-x: hidden;
+	padding: 0;
+	margin: 0;
 }
 
-#animation {
-	display: block;
+.flower, .mountain, .road, .sand, .tree, .water {
+	position: absolute;
+}
+
+.mountain {
+	background: url('../img/bg/mountain.jpg') repeat;	
+}
+
+.sand {
+	background: url('../img/bg/sand.jpg') repeat;
+}
+
+.water {
+	background: url('../img/bg/water.jpg') repeat;
+}
+
+/*
+|--------------------------------------------------------------------------
+| WRAPPER
+|--------------------------------------------------------------------------
+*/
+#wrapper {
+	position: relative;
+	width: 100%;
+	height: 3200px;
+	overflow: hidden;
 	
-	background-color: white;
+	background: url('../img/bg/wrapper-bg.jpg') repeat;
+	border: 1px #CCC solid;
 }
 
-#control {
-	text-align: center;
-	line-height: 60px;
-	height: 60px;
+#northMountain {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 64px;	
 }
 
-#animation, #control {
-	margin: 10px auto 10px;
-	border: 3px ridge #9C9898;
+#northMountain::after {
+	position: absolute;
+	bottom: -32px;
+	left: 96px;
+	width: 100%;
+	height: 32px;
+	content: "";
+	background: url('../img/mountain/mountain-bottom.png') repeat;
 }
+
+#northMountain > .corner {
+	position: absolute;
+	bottom: -32px;
+	left: 64px;
+	width: 32px;
+	height: 32px;
+	content: "";
+	background: url('../img/mountain/mountain-int-top-left.png');
+}
+
+#westMountain {
+	position: absolute;
+	top: 64px;
+	left: 0;
+	width: 64px;
+	height: 1984px;
+}
+
+#westMountain::after {
+	position: absolute;
+	top: 32px;
+	right: -32px;
+	width: 32px;
+	height: 1952px;
+	content: "";
+	background: url('../img/mountain/mountain-right.png') repeat;
+}
+
+#westMountain::before {
+	position: absolute;
+	bottom: -32px;
+	left: 0;
+	width: 64px;
+	height: 32px;
+	content: "";
+	background: url('../img/mountain/mountain-bottom.png') repeat;
+}
+
+#westMountain > .corner {
+	position: absolute;
+	bottom: -32px;
+	left: 64px;
+	width: 32px;
+	height: 32px;
+	content: "";
+	background: url('../img/mountain/mountain-bottom-right.png');
+}
+
+#southSea {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 386px;	
+}
+
+#southSea::before {
+	position: absolute;
+	top: -32px;
+	left: 0;
+	width: 100%;
+	height: 32px;
+	content: "";
+	background: url('../img/water/water-top.png') repeat;
+}
+
