@@ -13,6 +13,7 @@
 	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="css/reset.css" />
 	<link rel="stylesheet" type="text/css" href="css/main.css" />
+	<link rel="stylesheet" type="text/css" href="css/map.css" />
 	
 	<!--[if lt IE 9]><![endif]-->
 </head>
@@ -28,26 +29,28 @@
 	
 	<!-- Contenu du jeu -->
 	<div id="wrapper">
-		<!-- Montagnes du Nord -->
+		<!-- Décor BG du jeu -->
+		<div class="flowers1 one" data-top="21" data-left="5"></div>
+		<div class="flowers1 two" data-top="26" data-left="15"></div>
+		<div class="flowers1 three" data-top="45" data-left="21"></div>
+		<div class="flowers1 four" data-top="49" data-left="38"></div>
+		<div class="flowers1 five" data-top="55" data-left="28"></div>
+		<div class="flowers1 six" data-top="57" data-left="6"></div>
+		<div class="flowers1 seven" data-top="65" data-left="23"></div>
+		
+		<div class="flowers2 one" data-top="4" data-left="19"></div>
+		<div class="flowers2 two" data-top="4" data-left="25"></div>
+		
+		<!-- Montagnes -->
 		<div id="northMountain" class="mountain">
 			<div class="corner"></div>
 		</div>
 		
-		<!-- Ouest-->
-		
-		
-		<!-- Montagnes de l'Ouest -->
-		<div id="westMountain" class="mountain">
-			<div class="corner"></div>
-		</div>
-		
-		<!-- Lac du Sud -->
-		<div id="southSea" class="water"></div>
 	</div>
 	
 	<!-- JS -->
-	<script type="text/javascript" src="js/jquery-1.7.js"></script>
-	<script type="text/javascript" src="js/main.js"></script>
-	<script type="text/javascript" src="js/data.js"></script>
+	<script src="js/jquery-1.7.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/data.js"></script>
 </body>
 </html>
