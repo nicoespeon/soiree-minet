@@ -16,8 +16,8 @@ $(function() {
 		var left = $(this).data('left');
 		
 		// Convertit tiles > px
-		top = top*32;
-		left = left*32;
+		top = (top-1)*32;
+		left = (left-1)*32;
 		
 		// Positionne les éléments sur la map
 		$(this).css('top', top+'px');
