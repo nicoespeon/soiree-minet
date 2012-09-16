@@ -46,6 +46,54 @@
 | MONTAGNES
 |--------------------------------------------------------------------------
 */
+#mountain {
+	width: 100%;
+	height: 100%;
+}
+
+#mountain .corner {
+	width: 32px;
+	height: 32px;
+	background: url('../img/map/mountain-corner.png');
+}
+
+#mountain .door {
+	width: 96px;
+	height: 64px;
+	background: url('../img/map/mountain-door.png');
+}
+
+#mountain .front {
+	width: 1184px;
+	height: 32px;
+	background: url('../img/map/mountain-front.png') repeat-x;
+}
+
+#mountain .right {
+	width: 32px;
+	height: 100%;
+	background: url('../img/map/mountain-right.png') repeat-y;
+}
+
+#mountain .runes {
+	width: 32px;
+	height: 32px;
+	background: url('../img/map/mountain-runes.png');
+}
+
+#mountain .upper {
+	background: url('../img/map/mountain-upper.png');
+}
+
+#mountain .upper.top {
+	width: 100%;
+	height: 64px;
+}
+
+#mountain .upper.left {
+	width: 64px;
+	height: 100%;
+}
 
 /*
 |--------------------------------------------------------------------------

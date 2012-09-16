@@ -42,8 +42,14 @@
 		<div class="flowers2 two" data-top="4" data-left="25"></div>
 		
 		<!-- Montagnes -->
-		<div id="northMountain" class="mountain">
-			<div class="corner"></div>
+		<div id="mountain">
+			<div class="upper top" data-top="1" data-left="1"></div>
+			<div class="upper left" data-top="1" data-left="1"></div>
+			<div class="corner" data-top="3" data-left="3"></div>
+			<div class="front" data-top="3" data-left="4"></div>
+			<div class="right" data-top="4" data-left="3"></div>
+			<div class="door" data-top="2" data-left="22"></div>
+			<div class="runes" data-top="3" data-left="5"></div>
 		</div>
 		
 	</div>
