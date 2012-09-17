@@ -154,6 +154,22 @@
 | BLUE CITY
 |--------------------------------------------------------------------------
 */
+#blue-city {
+	width: 100%;
+	height: 100%;
+}
+
+#blue-city .city{
+	width: 480px;
+	height: 1120px;
+	background: url('../img/map/blue-city.png');
+}
+
+#blue-city .road {
+	width: 416px;
+	height:	224px;
+	background: url('../img/map/road-bc-port.png');
+}
 
 /*
 |--------------------------------------------------------------------------
