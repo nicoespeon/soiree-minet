@@ -61,6 +61,10 @@
 			<div class="path" data-top="4" data-left="22"></div>
 			<div class="path end" data-top="34" data-left="22"></div>
 		</div>
+		
+		<!-- Forêt -->
+		<div id="forest" data-top="3" data-left="27">
+		</div>
 	</div>
 	
 	<!-- JS -->
