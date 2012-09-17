@@ -197,3 +197,25 @@
 | MER
 |--------------------------------------------------------------------------
 */
+#sea {
+	width: 100%;
+	height: 100%;
+}
+
+#sea .top {
+	width: 100%;
+	height: 32px;
+	background: url('../img/map/sea-top.png');
+}
+
+#sea .water {
+	width: 100%;
+	height:	100%;
+	background: url('../img/map/sea.png');
+}
+
+#sea .boat {
+	width: 256px;
+	height:	128px;
+	background: url('../img/map/jbh-boat.png');
+}

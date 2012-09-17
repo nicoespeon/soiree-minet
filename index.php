@@ -81,6 +81,13 @@
 		<!-- Port -->
 		<div id="port" data-top="75" data-left="4">
 		</div>
+		
+		<!-- Mer -->
+		<div id="sea">
+			<div class="top" data-top="91" data-left="4"></div>
+			<div class="water" data-top="92" data-left="4"></div>
+			<div class="boat" data-top="97" data-left="4"></div>
+		</div>
 	</div>
 	
 	<!-- JS -->
