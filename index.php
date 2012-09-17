@@ -72,8 +72,12 @@
 		
 		<!-- Blue City -->
 		<div id="blue-city">
-			<div class="city" data-top="56" data-left="25"></div>
+			<div class="city" data-top="56" data-left="26"></div>
 			<div class="road" data-top="68" data-left="13"></div>
+		</div>
+		
+		<!-- Port -->
+		<div id="port" data-top="75" data-left="4">
 		</div>
 	</div>
 	
