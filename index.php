@@ -65,6 +65,10 @@
 		<!-- Forêt -->
 		<div id="forest" data-top="3" data-left="27">
 		</div>
+		
+		<!-- Red City -->
+		<div id="red-city" data-top="28" data-left="4">
+		</div>
 	</div>
 	
 	<!-- JS -->
