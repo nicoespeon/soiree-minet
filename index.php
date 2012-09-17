@@ -52,6 +52,15 @@
 			<div class="runes" data-top="3" data-left="5"></div>
 		</div>
 		
+		<!-- Runes -->
+		<div id="runes" data-top="2" data-left="7">
+		</div>
+		
+		<!-- Prairie -->
+		<div id="prairie">
+			<div class="path" data-top="4" data-left="22"></div>
+			<div class="path end" data-top="34" data-left="22"></div>
+		</div>
 	</div>
 	
 	<!-- JS -->

@@ -100,12 +100,32 @@
 | PRAIRIE
 |--------------------------------------------------------------------------
 */
+#prairie {
+	width: 100%;
+	height: 100%;
+}
+
+#prairie .path {
+	width: 96px;
+	height: 960px;
+	background: url('../img/map/absurd-path.png') repeat-y;
+}
+
+#prairie .path.end {
+	height: 32px;
+	background: url('../img/map/absurd-path-end.png');
+}
 
 /*
 |--------------------------------------------------------------------------
 | RUNES
 |--------------------------------------------------------------------------
 */
+#runes {
+	width: 352px;
+	height: 480px;
+	background: url('../img/map/runes.png');
+}
 
 /*
 |--------------------------------------------------------------------------
