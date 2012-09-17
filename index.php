@@ -42,10 +42,52 @@
 		<div class="flowers2 two" data-top="4" data-left="25"></div>
 		
 		<!-- Montagnes -->
-		<div id="northMountain" class="mountain">
-			<div class="corner"></div>
+		<div id="mountain">
+			<div class="upper top" data-top="1" data-left="1"></div>
+			<div class="upper left" data-top="1" data-left="1"></div>
+			<div class="corner" data-top="3" data-left="3"></div>
+			<div class="front" data-top="3" data-left="4"></div>
+			<div class="right" data-top="4" data-left="3"></div>
+			<div class="door" data-top="2" data-left="22"></div>
+			<div class="runes" data-top="3" data-left="5"></div>
 		</div>
 		
+		<!-- Runes -->
+		<div id="runes" data-top="2" data-left="7">
+		</div>
+		
+		<!-- Prairie -->
+		<div id="prairie">
+			<div class="path" data-top="4" data-left="22"></div>
+			<div class="path end" data-top="34" data-left="22"></div>
+		</div>
+		
+		<!-- Forêt -->
+		<div id="forest" data-top="3" data-left="27">
+		</div>
+		
+		<!-- Red City -->
+		<div id="red-city">
+			<div class="city" data-top="28" data-left="4"></div>
+			<div class="road" data-top="57" data-left="10"></div>
+		</div>
+		
+		<!-- Blue City -->
+		<div id="blue-city">
+			<div class="city" data-top="56" data-left="26"></div>
+			<div class="road" data-top="68" data-left="13"></div>
+		</div>
+		
+		<!-- Port -->
+		<div id="port" data-top="75" data-left="4">
+		</div>
+		
+		<!-- Mer -->
+		<div id="sea">
+			<div class="top" data-top="91" data-left="4"></div>
+			<div class="water" data-top="92" data-left="4"></div>
+			<div class="boat" data-top="97" data-left="4"></div>
+		</div>
 	</div>
 	
 	<!-- JS -->
