@@ -19,7 +19,22 @@
 </head>
 <body>
 	<!-- Menu de navigation -->
-	<nav></nav>
+	<nav>
+		<ul class="clearfix">
+			<li>
+				<a class="active" href="#">Soirée MiNET</a>
+			</li>
+			<li>
+				<a href="#">Animations</a>
+			</li>
+			<li>
+				<a href="#">Tarifs</a>
+			</li>
+			<li class="last">
+				<a href="#howToPlay">?</a>
+			</li>
+		</ul>
+	</nav>
 	
 	<!-- Interactions -->
 	<div id="interaction"></div>

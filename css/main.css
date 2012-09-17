@@ -21,3 +21,69 @@ body {
 @media (min-width:1280px) {
 	/* Règles pour grandes résolutions */
 }
+
+.clearfix {
+	display: inline-block;
+}
+
+.clearfix::after {
+	content: "";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+
+/*
+|--------------------------------------------------------------------------
+| NAVIGATION
+|--------------------------------------------------------------------------
+*/
+nav {
+	position: fixed;
+	left: 50%;
+	bottom: 10px;
+	width: 800px;
+	height: 64px;
+	margin-left: -400px;
+	
+	text-align: center;
+	background-image: url('../img/nav.png'); 
+	
+	z-index: 100;
+}
+
+nav ul {
+	list-style-type: none;
+	width: 772px;
+	height: 36px;
+	margin: 14px;
+	
+	background-color: #f8f8f8;
+}
+
+nav a {
+	float: left;
+	padding: 0 20px;
+	margin-left: 30px;
+	
+	font-size: 16px;
+	line-height: 36px;
+	color: #687878;
+	text-decoration: none;
+}
+
+nav a::before {
+	content: url('../img/left-arrow.png');
+	vertical-align: middle;
+}
+
+nav li.last a {
+	float: right;
+	margin-right: 30px;
+}
+
+nav li.last a::before {
+	content: '';
+}
