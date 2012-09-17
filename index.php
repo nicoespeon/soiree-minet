@@ -67,7 +67,9 @@
 		</div>
 		
 		<!-- Red City -->
-		<div id="red-city" data-top="28" data-left="4">
+		<div id="red-city">
+			<div class="city" data-top="28" data-left="4"></div>
+			<div class="road" data-top="57" data-left="10"></div>
 		</div>
 		
 		<!-- Blue City -->
