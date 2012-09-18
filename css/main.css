@@ -65,18 +65,18 @@ nav ul {
 
 nav a {
 	float: left;
-	padding: 0 20px;
+	padding: 0 15px;
 	margin-left: 30px;
 	
-	font-size: 16px;
+	font-size: 12px;
+	font-family: 'Press Start 2P', cursive;
 	line-height: 36px;
-	color: #687878;
+	color: #606060;
 	text-decoration: none;
 }
 
 nav a::before {
 	content: url('../img/left-arrow.png');
-	vertical-align: middle;
 }
 
 nav li.last a {
