@@ -8,7 +8,7 @@
 	<meta name="description" content="Soirée MiNET 2012... Coming Soon !" />
 	<meta name="keywords" content="MiNET, soirée, hack, Télécom, Soirée MiNET 2012, TMSP, TEM, TSP, Télécom SudParis, Télécom École de Management" />
 	<meta name="author" content="Espeon" />
-	<meta charset="UTF-8" />
+	<meta charset="utf-8" />
 	
 	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="css/reset.css" />
