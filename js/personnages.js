@@ -101,14 +101,6 @@ var PNJView = Backbone.View.extend({
 |--------------------------------------------------------------------------
 */
 $(function() {	
-	// Test
-	// ----
-	/*
-	var pnjTest = new PNJ({orientation: DIRECTION.GAUCHE});
-	var myAttributes = pnjTest.toJSON();
-	console.log(JSON.stringify(myAttributes));
-	*/
-	
 	// Creating PNJs
 	// -------------
 	new PNJView;
@@ -118,5 +110,4 @@ $(function() {
 	var Stai = new Personnage({pseudo: 'Stai Fouillon', type: 'fille', position: [6,40]});
 	var Raguenar = new Personnage({pseudo: 'Raguenar', position: [17,23]});
 	PNJs.add([Aymi,Stai,Raguenar]);
-	
 });
