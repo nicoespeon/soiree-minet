@@ -92,11 +92,22 @@
 			<div class="water" data-top="92" data-left="4"></div>
 			<div class="boat" data-top="97" data-left="4"></div>
 		</div>
+		
+		<!-- PNJs -->
+		<div id="PNJ"></div>
 	</div>
 	
+	<!-- Templates -->
+	<script type="text/template" id="PNJ-template">
+		<div class="pnj <%= type %>" data-top="<%= position[0]-0.25 %>" data-left="<%= position[1] %>"></div>
+	</script>
+	
 	<!-- JS -->
-	<script src="js/jquery-1.7.js"></script>
-	<script src="js/main.js"></script>
+	<script src="js/jquery-1.7.2.min.js"></script>
+	<script src="js/underscore.min.js"></script>
+	<script src="js/backbone.min.js"></script>
+	<script src="js/personnages.js"></script>
 	<script src="js/data.js"></script>
+	<script src="js/main.js"></script>
 </body>
 </html>
