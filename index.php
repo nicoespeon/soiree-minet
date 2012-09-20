@@ -15,6 +15,7 @@
 	<link rel="stylesheet" type="text/css" href="css/reset.css" />
 	<link rel="stylesheet" type="text/css" href="css/main.css" />
 	<link rel="stylesheet" type="text/css" href="css/map.css" />
+	<link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
 </head>
 <body>
 	<!--[if lt IE 9]>
@@ -23,7 +24,22 @@
     <![endif]-->
     
 	<!-- Menu de navigation -->
-	<nav></nav>
+	<nav>
+		<ul class="clearfix">
+			<li>
+				<a class="active" href="#">Soirée MiNET</a>
+			</li>
+			<li>
+				<a href="#">Animations</a>
+			</li>
+			<li>
+				<a href="#">Tarifs</a>
+			</li>
+			<li class="last">
+				<a href="#howToPlay">?</a>
+			</li>
+		</ul>
+	</nav>
 	
 	<!-- Interactions -->
 	<div id="interaction"></div>
