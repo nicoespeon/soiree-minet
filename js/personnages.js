@@ -59,24 +59,46 @@ var PlayerView = Backbone.View.extend({
 
 // PNJ - View
 // ----------
-var PNJs = new PNJ();
 var PNJView = Backbone.View.extend({
 	el: $('#PNJ'),
 	
 	template: _.template($('#PNJ-template').html()),
 	
 	events: {
-		
+	
 	},
 	
 	initialize: function() {
-		PNJs.on('add', this.render, this);
+		this.collection.on('reset', this.render, this);
 	},
 	
-	render: function(pnj) {
-		this.$el.append(this.template(pnj.toJSON()));
-		console.log(pnj.get('pseudo')+' initialized !');
+	render: function() {
+		for(var i=0;i<this.collection.length;i++) {
+			//Affiche la collection d'un seul coup
+			this.$el.append(this.template(this.collection.at(i).toJSON()));
+			console.log(this.collection.at(i).get('pseudo')+' initialized !');
+		}
+		
+		//Place les PNJs
+		this.$el.children().each(function() {
+			// Récupère les data-positions des éléments en tiles
+			var top = $(this).data('top');
+			var left = $(this).data('left');
+			
+			// Convertit tiles > px
+			top = (top-1)*32;
+			left = (left-1)*32;
+			
+			// Positionne les éléments sur la map
+			$(this).css('top', top+'px');
+			$(this).css('left', left+'px');
+		});
+			
 		return this;
+	},
+	
+	rotate: function(direction) {
+		console.log('Rotated in '+direction+' direction !');
 	}
 });
 
@@ -88,11 +110,7 @@ var PNJView = Backbone.View.extend({
 $(function() {	
 	// Creating PNJs
 	// -------------
-	new PNJView;
-	
-	// FETCH des PNJs - Il faudra les fetch() dans la vue plus tard depuis un fichier data.js directement
-	var Aymi = new Personnage({pseudo: 'Aymi Li', type: 'fille', position: [15,12]});
-	var Stai = new Personnage({pseudo: 'Stai Fouillon', type: 'fille', position: [6,40]});
-	var Raguenar = new Personnage({pseudo: 'Raguenar', position: [17,23]});
-	PNJs.add([Aymi,Stai,Raguenar]);
+	var PNJs = new PNJList();
+	new PNJView({collection:PNJs});
+	PNJs.fetch();
 });
