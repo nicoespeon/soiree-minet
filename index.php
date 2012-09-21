@@ -118,11 +118,13 @@
 		<div class="pnj <%= type %>" data-x="<%= position[0] %>" data-y="<%= position[1]-0.3 %>"></div>
 	</script>
 	
-	<!-- JS -->
+	<!-- Librairies JS -->
 	<script src="js/jquery-1.7.2.min.js"></script>
 	<script src="js/underscore.min.js"></script>
 	<script src="js/backbone.min.js"></script>
-	<script src="js/personnages.js"></script>
+	
+	<!-- Scripts JS -->
 	<script src="js/main.js"></script>
+	<script src="js/personnages.js"></script>
 </body>
 </html>
