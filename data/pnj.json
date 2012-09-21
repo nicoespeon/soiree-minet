@@ -10,6 +10,36 @@
 		"position": [6,40]
 	},
 	{
+		"pseudo": "Wiki M.", 
+		"position": [33,40],
+		"orientation": 1
+	},
+	{
+		"pseudo": "Ka'as Tou", 
+		"position": [34,15]
+	},
+	{
+		"pseudo": "Be'er Nard", 
+		"position": [39,9]
+	},
+	{
+		"pseudo": "Nethan Tau", 
+		"position": [50,15]
+	},
+	{
+		"pseudo": "Ays Péon", 
+		"position": [73,30],
+		"orientation": 1
+	},
+	{
+		"pseudo": "Fönt Fayce", 
+		"position": [84,28]
+	},
+	{
+		"pseudo": "Effe Pégéa", 
+		"position": [90,24]
+	},
+	{
 		"pseudo": "Raguenar", 
 		"position": [17,23]
 	}
