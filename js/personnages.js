@@ -35,7 +35,7 @@ var Personnage = Backbone.Model.extend({
 	defaults: {
 		type: 'garcon',
 		pseudo: 'Sergio Flores',
-		orientation: 0,
+		orientation: DIRECTION.BAS,
 		position: [13,13]
 	}
 });
