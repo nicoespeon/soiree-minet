@@ -40,26 +40,11 @@ var Personnage = Backbone.Model.extend({
 	}
 });
 
-// Player - Collection
-// -------------------
-/*
-var Player = Backbone.Collection.extend({
-	model: Personnage,
-	
-	move: function(direction) {
-		console.log('Moved in '+direction+' direction !');
-	}
-});
-*/
-
 // PNJ - Collection
 // ----------------
-var PNJ = Backbone.Collection.extend({
-	model: Personnage,
-	
-	rotate: function(direction) {
-		console.log('Rotated in '+direction+' direction !');
-	}
+var PNJList = Backbone.Collection.extend({
+    model: Personnage,
+	url: 'data/pnj.json'
 });
   
 // Player - View
