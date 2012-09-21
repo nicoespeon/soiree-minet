@@ -123,7 +123,6 @@
 	<script src="js/underscore.min.js"></script>
 	<script src="js/backbone.min.js"></script>
 	<script src="js/personnages.js"></script>
-	<script src="js/data.js"></script>
 	<script src="js/main.js"></script>
 </body>
 </html>
