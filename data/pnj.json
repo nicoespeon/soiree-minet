@@ -2,45 +2,45 @@
 	{
 		"pseudo": "Aymi Li", 
 		"type": "fille", 
-		"position": [15,12]
+		"position": [12,15]
 	},
 	{
 		"pseudo": "Stai Fouillon", 
 		"type": "fille", 
-		"position": [6,40]
+		"position": [40,6]
 	},
 	{
 		"pseudo": "Wiki M.", 
-		"position": [33,40],
+		"position": [40,33],
 		"orientation": 1
 	},
 	{
 		"pseudo": "Ka'as Tou", 
-		"position": [34,15]
+		"position": [15,34]
 	},
 	{
 		"pseudo": "Be'er Nard", 
-		"position": [39,9]
+		"position": [9,39]
 	},
 	{
 		"pseudo": "Nethan Tau", 
-		"position": [50,15]
+		"position": [15,50]
 	},
 	{
 		"pseudo": "Ays Péon", 
-		"position": [73,30],
+		"position": [30,73],
 		"orientation": 1
 	},
 	{
 		"pseudo": "Fönt Fayce", 
-		"position": [84,28]
+		"position": [28,84]
 	},
 	{
 		"pseudo": "Effe Pégéa", 
-		"position": [90,24]
+		"position": [24,90]
 	},
 	{
 		"pseudo": "Raguenar", 
-		"position": [17,23]
+		"position": [23,17]
 	}
 ]

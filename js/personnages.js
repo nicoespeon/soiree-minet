@@ -82,8 +82,8 @@ var PNJView = Backbone.View.extend({
 		//Place les PNJs
 		this.$el.children().each(function() {
 			// Récupère les data-positions des éléments en tiles
-			var top = $(this).data('top');
-			var left = $(this).data('left');
+			var top = $(this).data('y');
+			var left = $(this).data('x');
 			
 			// Convertit tiles > px
 			top = (top-1)*32;

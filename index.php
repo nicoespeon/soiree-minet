@@ -50,63 +50,63 @@
 	<!-- Contenu du jeu -->
 	<div id="wrapper">
 		<!-- Décor BG du jeu -->
-		<div class="flowers1 one" data-top="21" data-left="5"></div>
-		<div class="flowers1 two" data-top="26" data-left="15"></div>
-		<div class="flowers1 three" data-top="45" data-left="21"></div>
-		<div class="flowers1 four" data-top="49" data-left="38"></div>
-		<div class="flowers1 five" data-top="55" data-left="28"></div>
-		<div class="flowers1 six" data-top="57" data-left="6"></div>
-		<div class="flowers1 seven" data-top="65" data-left="23"></div>
+		<div class="flowers1 one" data-x="5" data-y="21"></div>
+		<div class="flowers1 two" data-x="15" data-y="26"></div>
+		<div class="flowers1 three" data-x="21" data-y="45"></div>
+		<div class="flowers1 four" data-x="38" data-y="49"></div>
+		<div class="flowers1 five" data-x="28" data-y="55"></div>
+		<div class="flowers1 six" data-x="6" data-y="57"></div>
+		<div class="flowers1 seven" data-x="23" data-y="65"></div>
 		
-		<div class="flowers2 one" data-top="4" data-left="19"></div>
-		<div class="flowers2 two" data-top="4" data-left="25"></div>
+		<div class="flowers2 one" data-x="19" data-y="4"></div>
+		<div class="flowers2 two" data-x="25" data-y="4"></div>
 		
 		<!-- Montagnes -->
 		<div id="mountain">
-			<div class="upper top" data-top="1" data-left="1"></div>
-			<div class="upper left" data-top="1" data-left="1"></div>
-			<div class="corner" data-top="3" data-left="3"></div>
-			<div class="front" data-top="3" data-left="4"></div>
-			<div class="right" data-top="4" data-left="3"></div>
-			<div class="door" data-top="2" data-left="22"></div>
-			<div class="runes" data-top="3" data-left="5"></div>
+			<div class="upper top" data-x="1" data-y="1"></div>
+			<div class="upper left" data-x="1" data-y="1"></div>
+			<div class="corner" data-x="3" data-y="3"></div>
+			<div class="front" data-x="4" data-y="3"></div>
+			<div class="right" data-x="3" data-y="4"></div>
+			<div class="door" data-x="22" data-y="2"></div>
+			<div class="runes" data-x="5" data-y="3"></div>
 		</div>
 		
 		<!-- Runes -->
-		<div id="runes" data-top="2" data-left="7">
+		<div id="runes" data-x="7" data-y="2">
 		</div>
 		
 		<!-- Prairie -->
 		<div id="prairie">
-			<div class="path" data-top="4" data-left="22"></div>
-			<div class="path end" data-top="34" data-left="22"></div>
+			<div class="path" data-x="22" data-y="4"></div>
+			<div class="path end" data-x="22" data-y="34"></div>
 		</div>
 		
 		<!-- Forêt -->
-		<div id="forest" data-top="3" data-left="27">
+		<div id="forest" data-x="27" data-y="3">
 		</div>
 		
 		<!-- Red City -->
 		<div id="red-city">
-			<div class="city" data-top="28" data-left="4"></div>
-			<div class="road" data-top="57" data-left="10"></div>
+			<div class="city" data-x="4" data-y="28"></div>
+			<div class="road" data-x="10" data-y="57"></div>
 		</div>
 		
 		<!-- Blue City -->
 		<div id="blue-city">
-			<div class="city" data-top="56" data-left="26"></div>
-			<div class="road" data-top="68" data-left="13"></div>
+			<div class="city" data-x="26" data-y="56"></div>
+			<div class="road" data-x="13" data-y="68"></div>
 		</div>
 		
 		<!-- Port -->
-		<div id="port" data-top="75" data-left="4">
+		<div id="port" data-x="4" data-y="75">
 		</div>
 		
 		<!-- Mer -->
 		<div id="sea">
-			<div class="top" data-top="91" data-left="4"></div>
-			<div class="water" data-top="92" data-left="4"></div>
-			<div class="boat" data-top="97" data-left="4"></div>
+			<div class="top" data-x="4" data-y="91"></div>
+			<div class="water" data-x="4" data-y="92"></div>
+			<div class="boat" data-x="4" data-y="97"></div>
 		</div>
 		
 		<!-- PNJs -->
@@ -115,7 +115,7 @@
 	
 	<!-- Templates -->
 	<script type="text/template" id="PNJ-template">
-		<div class="pnj <%= type %>" data-top="<%= position[0]-0.3 %>" data-left="<%= position[1] %>"></div>
+		<div class="pnj <%= type %>" data-x="<%= position[0] %>" data-y="<%= position[1]-0.3 %>"></div>
 	</script>
 	
 	<!-- JS -->

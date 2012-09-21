@@ -12,8 +12,8 @@ $(function() {
 	/* Positionnement des éléments de la map avec data-top/data-left (navigateurs récents) */
 	$('#wrapper div').each(function() {
 		// Récupère les data-positions des éléments en tiles
-		var top = $(this).data('top');
-		var left = $(this).data('left');
+		var top = $(this).data('y');
+		var left = $(this).data('x');
 		
 		// Convertit tiles > px
 		top = (top-1)*32;
