@@ -115,7 +115,7 @@
 	
 	<!-- Templates -->
 	<script type="text/template" id="PNJ-template">
-		<div class="pnj <%= type %>" data-top="<%= position[0]-0.25 %>" data-left="<%= position[1] %>"></div>
+		<div class="pnj <%= type %>" data-top="<%= position[0]-0.3 %>" data-left="<%= position[1] %>"></div>
 	</script>
 	
 	<!-- JS -->
