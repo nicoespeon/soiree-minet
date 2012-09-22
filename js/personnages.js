@@ -32,9 +32,6 @@ var PNJList = Backbone.Collection.extend({
     model: Personnage,
 	url: 'data/pnj.json'
 });
-  
-// On crée notre collection de PNJs
-var PNJs = new PNJList();	
 
 /*
 |--------------------------------------------------------------------------
@@ -51,7 +48,14 @@ var PlayerView = Backbone.View.extend({
 	// Selon un template particulier
 	template: _.template($('#player-template').html()),
 	
+	events: {
+	
+	},
+	
 	initialize: function() {
+		_.bindAll(this);
+		$(document).bind('keydown', this.move);
+		
 		this.model.on('change', this.render, this);
 		this.render();	
 	},
@@ -67,6 +71,39 @@ var PlayerView = Backbone.View.extend({
 		positionne(elt,x,y);
 		
 		return this;
+	},
+	
+	move: function(e) {
+		var x = this.model.get('position')[0];
+		var y = this.model.get('position')[1];
+		
+		switch(e.keyCode) {
+			case 37:
+				e.preventDefault();
+				x--;
+				break;
+				
+			case 38:
+				e.preventDefault();
+				y--;
+				break;
+			
+			case 39:
+				e.preventDefault();
+				x++;
+				break;
+				
+			case 40:
+				e.preventDefault();
+				y++;
+				break;
+			
+			default:
+				console.log(e.keyCode);
+				break;
+		}
+		
+		this.model.set({'position':[x,y]});
 	}
 });
 
@@ -150,10 +187,3 @@ var PersonnagesView = Backbone.View.extend({
 		PNJs.each(this.addOne,this);
 	}
 });
-
-/*
-|--------------------------------------------------------------------------
-| CHARGEMENT DES PERSONNAGES
-|--------------------------------------------------------------------------
-*/
-var Personnages = new PersonnagesView;

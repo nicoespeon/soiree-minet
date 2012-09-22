@@ -3,7 +3,7 @@
 | MAIN SCRIPT
 |--------------------------------------------------------------------------
 |
-| Main script for the game
+| Variables et fonctions globales de l'application
 |
 */
 
@@ -41,17 +41,3 @@ function tileToPx(tile){
 function positionne(el,x,y) {
 	$(el).css({'left':tileToPx(x)+'px','top':tileToPx(y)+'px'});
 }
-
-/*
-|--------------------------------------------------------------------------
-| CHARGEMENT DU JEU
-|--------------------------------------------------------------------------
-*/
-$(function() {
-	/* Positionnement des éléments de la map avec data-x/data-y */
-	$('#wrapper div').each(function() {
-		var x = $(this).data('x');
-		var y = $(this).data('y');
-		positionne(this,x,y);
-	});
-});
