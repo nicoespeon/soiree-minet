@@ -44,13 +44,31 @@ var PNJs = new PNJList();
 // Vue - Player
 // ------------
 // Cette vue gère le rendu d'un joueur
-/*
 var PlayerView = Backbone.View.extend({
+	// Le joueur est rattaché à la zone de jeu
+	el: $('#wrapper'),
+	
+	// Selon un template particulier
+	template: _.template($('#player-template').html()),
+	
+	initialize: function() {
+		this.model.on('change', this.render, this);
+		this.render();	
+	},
+	
 	render: function() {
+		$('#player').remove();
+		this.$el.append(this.template(this.model.toJSON()));
+		
+		// Positionne l'élément sur la map
+		var elt = $('#player');
+		var x = elt.data('x');
+		var y = elt.data('y');
+		positionne(elt,x,y);
+		
 		return this;
 	}
 });
-*/
 
 // Vue - PNJ
 // ----------
