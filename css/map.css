@@ -43,20 +43,20 @@
 
 /*
 |--------------------------------------------------------------------------
-| PNJs
+| PNJs & Player
 |--------------------------------------------------------------------------
 */
-.pnj {
+.pnj, #player {
 	width: 32px;
 	height: 48px;
 }
 
-.pnj.garcon {
+.garcon {
 	background-image: url('../img/personnages/garcon.png');
 	background-position: 0 0;
 }
 
-.pnj.fille {
+.fille {
 	background-image: url('../img/personnages/fille.png');
 	background-position: 0 0;
 }

@@ -9,105 +9,151 @@
 
 /*
 |--------------------------------------------------------------------------
-| VARIABLES INITIALES
+| MODELE & COLLECTIONS
 |--------------------------------------------------------------------------
 */
-var DIRECTION = {
-	"BAS" 		: 0,
-	"GAUCHE" 	: 1,
-	"DROITE"	: 2,
-	"HAUT"		: 3
-}
-
-var DUREE_ANIMATION 	= 4; 				//On change de frame après X animations
-var DUREE_DEPLACEMENT 	= 16;				//Gère la fluidité de l'animation
-var ETAT_ANIMATION		= -1;				//Personnage initialement immobile
-
-/*
-|--------------------------------------------------------------------------
-| MODEL - COLLECTIONS - VIEWS
-|--------------------------------------------------------------------------
-*/
-// Personnage - Model
+// Model - Personnage
 // ------------------
+// Ce modèle définit la nature d'un personnage
 var Personnage = Backbone.Model.extend({
 	// Attributs par défaut d'un personnage
 	defaults: {
 		type: 'garcon',
 		pseudo: 'Sergio Flores',
-		orientation: 0,
-		position: [13,13]
+		orientation: DIRECTION.BAS,
+		position: [23,4]
 	}
 });
 
-// Player - Collection
-// -------------------
-/*
-var Player = Backbone.Collection.extend({
-	model: Personnage,
-	
-	move: function(direction) {
-		console.log('Moved in '+direction+' direction !');
-	}
-});
-*/
-
-// PNJ - Collection
+// Collection - PNJ
 // ----------------
-var PNJ = Backbone.Collection.extend({
-	model: Personnage,
-	
-	rotate: function(direction) {
-		console.log('Rotated in '+direction+' direction !');
-	}
+// Cette collection regroupe les PNJs
+var PNJList = Backbone.Collection.extend({
+    model: Personnage,
+	url: 'data/pnj.json'
 });
   
-// Player - View
-// -------------
+// On crée notre collection de PNJs
+var PNJs = new PNJList();	
+
 /*
+|--------------------------------------------------------------------------
+| VUES (Player, PNJ, Personnages)
+|--------------------------------------------------------------------------
+*/
+// Vue - Player
+// ------------
+// Cette vue gère le rendu d'un joueur
 var PlayerView = Backbone.View.extend({
+	// Le joueur est rattaché à la zone de jeu
+	el: $('#wrapper'),
+	
+	// Selon un template particulier
+	template: _.template($('#player-template').html()),
+	
+	initialize: function() {
+		this.model.on('change', this.render, this);
+		this.render();	
+	},
+	
 	render: function() {
+		$('#player').remove();
+		this.$el.append(this.template(this.model.toJSON()));
+		
+		// Positionne l'élément sur la map
+		var elt = $('#player');
+		var x = elt.data('x');
+		var y = elt.data('y');
+		positionne(elt,x,y);
+		
 		return this;
 	}
 });
-*/
 
-// PNJ - View
+// Vue - PNJ
 // ----------
-var PNJs = new PNJ();
+// Cette vue gère le rendu d'un PNJ
 var PNJView = Backbone.View.extend({
-	el: $('#PNJ'),
+	// Chaque PNJ est une nouvelle puce
+	tagName: 'li',
 	
-	template: _.template($('#PNJ-template').html()),
+	// A laquelle on applique un template particulier
+	template: _.template($('#pnj-template').html()),
 	
+	events: {
+	
+	},
+	
+	// La vue écoute les changements sur le modèle
+	// Lorsque le modèle change, la vue se rafraîchit
+	// Comme il y a une relation 1-1 entre le modèle et la vue, on y fait référence directement ici
+	initialize: function() {
+		this.model.on('change', this.render, this);
+	},
+	
+	// Re-render le PNJ sur la map
+	render: function() {
+		this.$el.append(this.template(this.model.toJSON()));
+		
+		// Positionne l'élément sur la map
+		var elt = this.$el.children();
+		var x = elt.data('x');
+		var y = elt.data('y');
+		positionne(elt,x,y);
+	
+		return this;
+	},
+	
+	rotate: function(direction) {
+	
+	}
+});
+
+// Vue - Personnages 
+// -----------------
+// Cette vue organise le rendu des personnages
+var PersonnagesView = Backbone.View.extend({
+	// On se fixe sur l'élément du DOM créé dans ce but
+	el: $('#wrapper'),
+	
+	// Gère les événements qui modifient les personnages (déplacement, rotation, ...)
 	events: {
 		
 	},
 	
+	// On écoute les différents changements sur nos collections pour leur affecter les effets voulus
+	// On récupère les données pour initialiser les PNJs
 	initialize: function() {
-		PNJs.on('add', this.render, this);
+		// PNJs
+		PNJs.on('add', this.addOne, this);
+		PNJs.on('reset', this.addAll, this);
+		PNJs.on('all', this.render, this);
+		
+		PNJs.fetch();
+		
+		// Player
+		var player = new Personnage();
+		new PlayerView({model: player});
 	},
 	
-	render: function(pnj) {
-		this.$el.append(this.template(pnj.toJSON()));
-		console.log(pnj.get('pseudo')+' initialized !');
-		return this;
+	// Ajoute un PNJ en créant une vue pour celui-ci
+	// Chaque nouveau PNJ est attaché au 'ul#pnjs'
+	addOne: function(personnage) {
+		var view = new PNJView({model: personnage});
+		this.$('#pnjs').append(view.render().el);	
+	},
+	
+	// Ajoute tous les PNJs de la collection en même temps
+	// Vide tous les PNJs présents sur la carte avant (recharge l'affichage)
+	addAll: function() {
+		this.$('#pnjs').html('');
+		PNJs.each(this.addOne,this);
 	}
 });
 
 /*
 |--------------------------------------------------------------------------
-| GESTION DES PERSONNAGES
+| CHARGEMENT DES PERSONNAGES
 |--------------------------------------------------------------------------
 */
-$(function() {	
-	// Creating PNJs
-	// -------------
-	new PNJView;
-	
-	// FETCH des PNJs - Il faudra les fetch() dans la vue plus tard depuis un fichier data.js directement
-	var Aymi = new Personnage({pseudo: 'Aymi Li', type: 'fille', position: [15,12]});
-	var Stai = new Personnage({pseudo: 'Stai Fouillon', type: 'fille', position: [6,40]});
-	var Raguenar = new Personnage({pseudo: 'Raguenar', position: [17,23]});
-	PNJs.add([Aymi,Stai,Raguenar]);
-});
+var Personnages = new PersonnagesView;
