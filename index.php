@@ -114,8 +114,13 @@
 	</div>
 	
 	<!-- Templates -->
-	<script type="text/template" id="PNJ-template">
+	<script type="text/template" id="pnj-template">
 		<div class="pnj <%= type %>" data-x="<%= position[0] %>" data-y="<%= position[1]-0.3 %>"></div>
+	</script>
+	<script type="text/template" id="player-template">
+		<div id="player" class="<%= type %>" data-x="<%= position[0] %>" data-y="<%= position[1]-0.3 %>">
+			<!-- Here is your player ! -->
+		</div>
 	</script>
 	
 	<!-- Librairies JS -->
