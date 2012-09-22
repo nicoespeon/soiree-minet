@@ -24,7 +24,7 @@
 	z-index: 1;
 }
 
-#wrapper > div {
+#wrapper div {
 	position: absolute;
 	z-index: 2;
 }
@@ -43,48 +43,199 @@
 
 /*
 |--------------------------------------------------------------------------
+| PNJs & Player
+|--------------------------------------------------------------------------
+*/
+.pnj, #player {
+	width: 32px;
+	height: 48px;
+}
+
+.garcon {
+	background-image: url('../img/personnages/garcon.png');
+	background-position: 0 0;
+}
+
+.fille {
+	background-image: url('../img/personnages/fille.png');
+	background-position: 0 0;
+}
+
+/*
+|--------------------------------------------------------------------------
 | MONTAGNES
 |--------------------------------------------------------------------------
 */
+#mountain {
+	width: 100%;
+	height: 100%;
+}
+
+#mountain .corner {
+	width: 32px;
+	height: 32px;
+	background: url('../img/map/mountain-corner.png');
+}
+
+#mountain .door {
+	width: 96px;
+	height: 64px;
+	background: url('../img/map/mountain-door.png');
+}
+
+#mountain .front {
+	width: 1184px;
+	height: 32px;
+	background: url('../img/map/mountain-front.png') repeat-x;
+}
+
+#mountain .right {
+	width: 32px;
+	height: 100%;
+	background: url('../img/map/mountain-right.png') repeat-y;
+}
+
+#mountain .runes {
+	width: 32px;
+	height: 32px;
+	background: url('../img/map/mountain-runes.png');
+}
+
+#mountain .upper {
+	background: url('../img/map/mountain-upper.png');
+}
+
+#mountain .upper.top {
+	width: 100%;
+	height: 64px;
+}
+
+#mountain .upper.left {
+	width: 64px;
+	height: 100%;
+}
 
 /*
 |--------------------------------------------------------------------------
 | PRAIRIE
 |--------------------------------------------------------------------------
 */
+#prairie {
+	width: 100%;
+	height: 100%;
+}
+
+#prairie .path {
+	width: 96px;
+	height: 960px;
+	background: url('../img/map/absurd-path.png') repeat-y;
+}
+
+#prairie .path.end {
+	height: 32px;
+	background: url('../img/map/absurd-path-end.png');
+}
 
 /*
 |--------------------------------------------------------------------------
 | RUNES
 |--------------------------------------------------------------------------
 */
+#runes {
+	width: 352px;
+	height: 480px;
+	background: url('../img/map/runes.png');
+}
 
 /*
 |--------------------------------------------------------------------------
 | FOREST
 |--------------------------------------------------------------------------
 */
+#forest {
+	width: 448px;
+	height: 928px;
+	background: url('../img/map/forest.png');
+}
 
 /*
 |--------------------------------------------------------------------------
 | RED CITY
 |--------------------------------------------------------------------------
 */
+#red-city {
+	width: 100%;
+	height: 100%;
+}
 
+#red-city .city{
+	width: 576px;
+	height: 928px;
+	background: url('../img/map/red-city.png');
+}
+
+#red-city .road {
+	width: 96px;
+	height:	576px;
+	background: url('../img/map/road-rc-port.png') repeat-y;
+}
 /*
 |--------------------------------------------------------------------------
 | BLUE CITY
 |--------------------------------------------------------------------------
 */
+#blue-city {
+	width: 100%;
+	height: 100%;
+}
+
+#blue-city .city {
+	width: 480px;
+	height: 1120px;
+	background: url('../img/map/blue-city.png');
+}
+
+#blue-city .road {
+	width: 416px;
+	height:	224px;
+	background: url('../img/map/road-bc-port.png');
+}
 
 /*
 |--------------------------------------------------------------------------
 | PORT
 |--------------------------------------------------------------------------
 */
+#port {
+	width: 704px;
+	height: 512px;
+	background: url('../img/map/port.png');
+}
 
 /*
 |--------------------------------------------------------------------------
 | MER
 |--------------------------------------------------------------------------
 */
+#sea {
+	width: 100%;
+	height: 100%;
+}
+
+#sea .top {
+	width: 100%;
+	height: 32px;
+	background: url('../img/map/sea-top.png');
+}
+
+#sea .water {
+	width: 100%;
+	height:	100%;
+	background: url('../img/map/sea.png');
+}
+
+#sea .boat {
+	width: 256px;
+	height:	128px;
+	background: url('../img/map/jbh-boat.png');
+}

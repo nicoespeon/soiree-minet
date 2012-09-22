@@ -3,24 +3,41 @@
 | MAIN SCRIPT
 |--------------------------------------------------------------------------
 |
-| Main script for the game
+| Variables et fonctions globales de l'application
 |
 */
 
+/*
+|--------------------------------------------------------------------------
+| VARIABLES GLOBALES
+|--------------------------------------------------------------------------
+*/
+var TAILLE_TILE 	= 32; 				//Taille du tile en pixels
 
-$(function() {
-	/* Positionnement des ÈlÈments de la map avec data-top/data-left (navigateurs rÈcents) */
-	$('#wrapper div').each(function() {
-		// RÈcupËre les data-positions des ÈlÈments en tiles
-		var top = $(this).data('top');
-		var left = $(this).data('left');
-		
-		// Convertit tiles > px
-		top = top*32;
-		left = left*32;
-		
-		// Positionne les ÈlÈments sur la map
-		$(this).css('top', top+'px');
-		$(this).css('left', left+'px');
-	});
-});
+var DIRECTION = {
+	"BAS" 		: 0,
+	"GAUCHE" 	: 1,
+	"DROITE"	: 2,
+	"HAUT"		: 3
+}
+
+var DUREE_ANIMATION 	= 4; 				//On change de frame apr√®s X animations
+var DUREE_DEPLACEMENT 	= 16;				//G√®re la fluidit√© de l'animation
+var ETAT_ANIMATION		= -1;				//Personnage initialement immobile
+
+/*
+|--------------------------------------------------------------------------
+| FONCTIONS GLOBALES
+|--------------------------------------------------------------------------
+*/
+// Convertit les coordonn√©es (tile) en pixels 
+// ------------------------------------------
+function tileToPx(tile){
+	return (tile-1)*TAILLE_TILE;
+}
+
+// Positionne un √©l√©ment sur la map
+// --------------------------------
+function positionne(el,x,y) {
+	$(el).css({'left':tileToPx(x)+'px','top':tileToPx(y)+'px'});
+}
