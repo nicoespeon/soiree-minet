@@ -124,11 +124,16 @@ var PersonnagesView = Backbone.View.extend({
 	// On écoute les différents changements sur nos collections pour leur affecter les effets voulus
 	// On récupère les données pour initialiser les PNJs
 	initialize: function() {
+		// PNJs
 		PNJs.on('add', this.addOne, this);
 		PNJs.on('reset', this.addAll, this);
 		PNJs.on('all', this.render, this);
 		
 		PNJs.fetch();
+		
+		// Player
+		var player = new Personnage();
+		new PlayerView({model: player});
 	},
 	
 	// Ajoute un PNJ en créant une vue pour celui-ci
