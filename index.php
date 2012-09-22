@@ -110,7 +110,7 @@
 		</div>
 		
 		<!-- PNJs -->
-		<div id="PNJ"></div>
+		<ul id="pnjs"></ul>
 	</div>
 	
 	<!-- Templates -->
