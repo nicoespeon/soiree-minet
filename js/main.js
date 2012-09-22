@@ -21,8 +21,8 @@ var DIRECTION = {
 	"HAUT"		: 3
 }
 
-var DUREE_ANIMATION 	= 4; 				//On change de frame après X animations
-var DUREE_DEPLACEMENT 	= 16;				//Gère la fluidité de l'animation
+var DUREE_ANIMATION 	= 4; 				//On change de frame aprÃ¨s X animations
+var DUREE_DEPLACEMENT 	= 16;				//GÃ¨re la fluiditÃ© de l'animation
 var ETAT_ANIMATION		= -1;				//Personnage initialement immobile
 
 /*
@@ -30,13 +30,13 @@ var ETAT_ANIMATION		= -1;				//Personnage initialement immobile
 | FONCTIONS GLOBALES
 |--------------------------------------------------------------------------
 */
-// Convertit les coordonnées (tile) en pixels 
+// Convertit les coordonnÃ©es (tile) en pixels 
 // ------------------------------------------
 function tileToPx(tile){
 	return (tile-1)*TAILLE_TILE;
 }
 
-// Positionne un élément sur la map
+// Positionne un Ã©lÃ©ment sur la map
 // --------------------------------
 function positionne(el,x,y) {
 	$(el).css({'left':tileToPx(x)+'px','top':tileToPx(y)+'px'});
@@ -48,7 +48,7 @@ function positionne(el,x,y) {
 |--------------------------------------------------------------------------
 */
 $(function() {
-	/* Positionnement des éléments de la map avec data-x/data-y */
+	/* Positionnement des Ã©lÃ©ments de la map avec data-x/data-y */
 	$('#wrapper div').each(function() {
 		var x = $(this).data('x');
 		var y = $(this).data('y');
