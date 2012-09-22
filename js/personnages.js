@@ -21,7 +21,7 @@ var Personnage = Backbone.Model.extend({
 		type: 'garcon',
 		pseudo: 'Sergio Flores',
 		orientation: DIRECTION.BAS,
-		position: [13,13]
+		position: [23,4]
 	}
 });
 
