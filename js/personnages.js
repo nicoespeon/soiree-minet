@@ -78,7 +78,7 @@ var PNJView = Backbone.View.extend({
 	tagName: 'li',
 	
 	// A laquelle on applique un template particulier
-	template: _.template($('#PNJ-template').html()),
+	template: _.template($('#pnj-template').html()),
 	
 	events: {
 	
