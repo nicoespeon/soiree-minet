@@ -3,7 +3,7 @@
 | MAIN DESIGN
 |--------------------------------------------------------------------------
 |
-| Main design for the game
+| Design global de l'application
 |
 */
 
@@ -12,14 +12,21 @@
 | GENERAL
 |--------------------------------------------------------------------------
 */
+@media (min-width:1280px) {
+	/* Règles pour grandes résolutions */
+}
+
+@font-face {
+  font-family: 'Press Start 2P';
+  font-style: normal;
+  font-weight: 400;
+  src: local('fonts/Press Start 2P'), local('fonts/PressStart2P-Regular'), url(http://themes.googleusercontent.com/static/fonts/pressstart2p/v1/8Lg6LX8-ntOHUQnvQ0E7o2jf3WypfQQP02nP_ZmoBRo.woff) format('woff');
+}
+
 body {
 	overflow-x: hidden;
 	padding: 0;
 	margin: 0;
-}
-
-@media (min-width:1280px) {
-	/* Règles pour grandes résolutions */
 }
 
 .clearfix {
