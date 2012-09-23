@@ -77,7 +77,6 @@ var PlayerView = Backbone.View.extend({
 		var x = this.model.get('position')[0];
 		var y = this.model.get('position')[1];
 		
-/*
 		switch(e.keyCode) {
 			case 37:
 				e.preventDefault();
@@ -103,7 +102,6 @@ var PlayerView = Backbone.View.extend({
 				console.log(e.keyCode);
 				break;
 		}
-*/
 		
 		this.model.set({'position':[x,y]});
 	}

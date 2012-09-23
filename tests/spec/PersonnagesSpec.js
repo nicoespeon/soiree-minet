@@ -44,11 +44,19 @@ describe("Personnages", function() {
 	    	expect(player.el.innerHTML).toContain('data-y');
 	    });
     	
-    	/* SPECS TO PLAN */
-    	it("Should move on keypress", function() {
+    	it("Should move on keydown {gauche:37, haut:38, droite:39, bas:40)", function() {
+    		var e = $.Event('keydown');
     		
+	    	for(var i=37;i<=40;i++) {
+	    		var spy = jasmine.createSpy('deplacement quand keydown vaut '+i);
+	    		perso.on('change', spy);
+		    	e.keyCode = i;
+		    	$('body').trigger(e);
+	    		expect(spy).toHaveBeenCalled();
+	    	}
     	});
     	
+    	/* SPECS TO PLAN */
     	it("Should not be able to move through objects", function() {
     	
     	});
