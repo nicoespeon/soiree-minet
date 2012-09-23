@@ -17,6 +17,7 @@
 	width: 1280px;
 	height: 3200px;
 	overflow: hidden;
+	margin: auto;
 	
 	background: url('../img/map/bg.png') repeat;
 	border: 1px #CCC solid;
