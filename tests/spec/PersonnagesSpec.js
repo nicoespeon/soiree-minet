@@ -56,14 +56,54 @@ describe("Personnages", function() {
 	    	}
     	});
     	
-    	/* SPECS TO PLAN */
     	it("Should not be able to move through objects", function() {
-    	
+    		var e = $.Event('keydown');
+    		perso.set({'position':[0,0]});
+    		
+    		//Placer un obstacle à {x,y}
+    		var collisions 		= [];
+    		collisions[0] 		= [];
+    		collisions[0][1] 	= 0;
+    		
+    		//Faire se déplacer le player sur {x,y}
+    		e.keyCode = 39;
+    		$('body').trigger(e);
+    		
+    		//Vérifier les coordonnées du personnage
+    		expect(perso.get('position')).toBe([0,0]);
     	});
     	
     	it("Should not be able to move above map boundaries", function() {
+    		var e = $.Event('keydown');
     		
+    		// Player en {0,0}
+    		// ---------------
+    		perso.set({'position':[0,0]});
+    		
+    		//Faire se déplacer le player sur {101,41}
+    		e.keyCode = 37;
+    		$('body').trigger(e);
+    		e.keyCode = 38;
+    		$('body').trigger(e);
+    		
+    		//Vérifier les coordonnées du personnage
+    		expect(perso.get('position')).toBe([0,0]);
+    		
+    		// Player en {100,40}
+    		// ------------------
+    		perso.set({'position':[100,40]});
+    		
+    		//Faire se déplacer le player sur {101,41}
+    		e.keyCode = 39;
+    		$('body').trigger(e);
+    		e.keyCode = 40;
+    		$('body').trigger(e);
+    		
+    		//Vérifier les coordonnées du personnage
+    		expect(perso.get('position')).toBe([100,40]);
     	});
+    	
+    	/* SPECS TO PLAN */
     });
     
     // Tests sur les PNJs 
@@ -97,7 +137,8 @@ describe("Personnages", function() {
     	})
     	
     	
-    	/* SPECS TO PLAN */
+    	/* SPECS TO PLAN 
+    	
     	it("Should rotate by itself", function() {
     	
     	});
@@ -113,5 +154,7 @@ describe("Personnages", function() {
     	it("Should be able to move horizontally", function() {
     	
     	});
+    	
+    	*/
     });
 });
