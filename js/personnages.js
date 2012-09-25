@@ -22,6 +22,24 @@ var Personnage = Backbone.Model.extend({
 		pseudo: 'Sergio Flores',
 		orientation: DIRECTION.BAS,
 		position: [23,4]
+	},
+	
+	// Getters
+	getX: function() {
+		return this.get('position')[0];
+	},
+	
+	getY: function() {
+		return this.get('position')[1];
+	},
+	
+	// Setters
+	setX: function(x) {
+		return this.set({'position':[x,this.getY()]});
+	},
+	
+	setY: function(y) {
+		return this.set({'position':[this.getX(),y]});
 	}
 });
 

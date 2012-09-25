@@ -7,6 +7,7 @@ describe("Personnages", function() {
     beforeEach(function() {
     	$('body').append('<div id="wrapper"></div>');
         perso = new Personnage();
+    	persoWithCoords = new Personnage({'position':[1,2]});
     });
     
     afterEach(function() {
@@ -19,12 +20,36 @@ describe("Personnages", function() {
     });
     
     it("Set passed attributes on the model instance when created", function() {
-        persoWithAttributes = new Personnage({'pseudo': 'Aymi Li'});
+        var persoWithAttributes = new Personnage({'pseudo': 'Aymi Li'});
         expect(persoWithAttributes.get('pseudo')).toBe('Aymi Li');
         expect(persoWithAttributes.get('type')).toBe('garcon');
     });
     
-    /* SPECS TO PLAN */
+    it("Should implement a function to get x-coord", function() {
+    	var x = persoWithCoords.getX();
+    	expect(x).toBe(1);
+    });
+    
+    it("Should implement a function to get y-coord", function() {
+    	var y = persoWithCoords.getY();
+    	expect(y).toBe(2);
+    });
+    
+    it("Should implement a function to set x-coord", function() {
+    	persoWithCoords.setX(3);
+    	var coords = persoWithCoords.get('position');
+    	expect(coords[0]).toBe(3);
+    });
+    
+    it("Should implement a function to set y-coord", function() {
+    	persoWithCoords.setY(4);
+    	var coords = persoWithCoords.get('position');
+    	expect(coords[1]).toBe(4);
+    });
+    
+    /* SPECS TO PLAN 
+    
+    */
     
     // Tests sur le joueur 
     // -------------------
@@ -60,16 +85,16 @@ describe("Personnages", function() {
     		var e = $.Event('keydown');
     		perso.set({'position':[0,0]});
     		
-    		//Placer un obstacle à {x,y}
+    		//Placer un obstacle Ã  {x,y}
     		var collisions 		= [];
     		collisions[0] 		= [];
     		collisions[0][1] 	= 0;
     		
-    		//Faire se déplacer le player sur {x,y}
+    		//Faire se dÃ©placer le player sur {x,y}
     		e.keyCode = 39;
     		$('body').trigger(e);
     		
-    		//Vérifier les coordonnées du personnage
+    		//VÃ©rifier les coordonnÃ©es du personnage
     		expect(perso.get('position')).toBe([0,0]);
     	});
     	
@@ -80,30 +105,36 @@ describe("Personnages", function() {
     		// ---------------
     		perso.set({'position':[0,0]});
     		
-    		//Faire se déplacer le player sur {101,41}
+    		//Faire se dÃ©placer le player sur {101,41}
     		e.keyCode = 37;
     		$('body').trigger(e);
     		e.keyCode = 38;
     		$('body').trigger(e);
     		
-    		//Vérifier les coordonnées du personnage
+    		//VÃ©rifier les coordonnÃ©es du personnage
     		expect(perso.get('position')).toBe([0,0]);
     		
     		// Player en {100,40}
     		// ------------------
     		perso.set({'position':[100,40]});
     		
-    		//Faire se déplacer le player sur {101,41}
+    		//Faire se dÃ©placer le player sur {101,41}
     		e.keyCode = 39;
     		$('body').trigger(e);
     		e.keyCode = 40;
     		$('body').trigger(e);
     		
-    		//Vérifier les coordonnées du personnage
+    		//VÃ©rifier les coordonnÃ©es du personnage
     		expect(perso.get('position')).toBe([100,40]);
     	});
     	
-    	/* SPECS TO PLAN */
+    	/* SPECS TO PLAN 
+    	it("Should rotate accordingly to the direction of its move", function() {
+    	
+    	});
+    	
+    	
+    	*/
     });
     
     // Tests sur les PNJs 
