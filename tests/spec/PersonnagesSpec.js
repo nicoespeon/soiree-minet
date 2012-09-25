@@ -86,6 +86,22 @@ describe("Personnages", function() {
     // -------------------
     describe("Tests for Player", function() {
     	beforeEach(function() {
+    		// On crée une map des collisions fictive
+    		COLLISIONS = [];
+    		for(var i=1;i<41;i++) {
+    			COLLISIONS[i] = [];
+    			
+    			// Libre sur la première moitié
+	    		for(var j=1;j<101;j++) {
+		    		COLLISIONS[i][j] = '1';
+	    		}
+	    		
+	    		// Bloquée sur la seconde moitié
+	    		for(var j=51;j<101;j++) {
+		    		COLLISIONS[i][j] = '0';
+	    		}
+    		}
+    		
     		player = new PlayerView({model: perso, el: $('#wrapper')});
     	});
     	
@@ -102,6 +118,7 @@ describe("Personnages", function() {
     	
     	it("Should move on keydown {gauche:37, haut:38, droite:39, bas:40)", function() {
     		var e = $.Event('keydown');
+    		perso.set({'position':[25,25]});					// Place le perso sur la section libre
     		
 	    	for(var i=37;i<=40;i++) {
 	    		var spy = jasmine.createSpy('deplacement quand keydown vaut '+i);
@@ -114,27 +131,26 @@ describe("Personnages", function() {
     	
     	it("Should not be able to move through objects", function() {
     		var e = $.Event('keydown');
-    		perso.set({'position':[0,0]});
+    		perso.set({'position':[25,75]});					// Place le perso sur la section bloquée
     		
-    		//Placer un obstacle à {x,y}
-    		var collisions 		= [];
-    		collisions[0] 		= [];
-    		collisions[0][1] 	= 0;
+    		var x = perso.get('position')[0];
+    		var y = perso.get('position')[1];
     		
-    		//Faire se déplacer le player sur {x,y}
-    		e.keyCode = 39;
+    		//Déplace le perso
+    		e.keyCode = 38;
     		$('body').trigger(e);
     		
     		//Vérifier les coordonnées du personnage
-    		expect(perso.get('position')).toBe([0,0]);
+    		expect(perso.get('position')[0]).toBe(x);
+    		expect(perso.get('position')[1]).toBe(y);
     	});
     	
     	it("Should not be able to move above map boundaries", function() {
     		var e = $.Event('keydown');
     		
-    		// Player en {0,0}
+    		// Player en {1,1}
     		// ---------------
-    		perso.set({'position':[0,0]});
+    		perso.set({'position':[1,1]});
     		
     		//Faire se déplacer le player sur {101,41}
     		e.keyCode = 37;
@@ -143,11 +159,12 @@ describe("Personnages", function() {
     		$('body').trigger(e);
     		
     		//Vérifier les coordonnées du personnage
-    		expect(perso.get('position')).toBe([0,0]);
+    		expect(perso.get('position')[0]).toBe(1);
+    		expect(perso.get('position')[1]).toBe(1);
     		
     		// Player en {100,40}
     		// ------------------
-    		perso.set({'position':[100,40]});
+    		perso.set({'position':[40,100]});
     		
     		//Faire se déplacer le player sur {101,41}
     		e.keyCode = 39;
@@ -156,7 +173,8 @@ describe("Personnages", function() {
     		$('body').trigger(e);
     		
     		//Vérifier les coordonnées du personnage
-    		expect(perso.get('position')).toBe([100,40]);
+    		expect(perso.get('position')[0]).toBe(40);
+    		expect(perso.get('position')[1]).toBe(100);
     	});
     	
     	/* SPECS TO PLAN 

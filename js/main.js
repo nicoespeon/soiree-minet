@@ -12,18 +12,21 @@
 | VARIABLES GLOBALES
 |--------------------------------------------------------------------------
 */
-var TAILLE_TILE 	= 32; 				//Taille du tile en pixels
+var TAILLE_TILE 	= 32; 				// Taille du tile en pixels
 
 var DIRECTION = {
-	"BAS" 		: 0,
-	"GAUCHE" 	: 1,
-	"DROITE"	: 2,
-	"HAUT"		: 3
+	"BAS" 		: 1,
+	"GAUCHE" 	: 2,
+	"DROITE"	: 3,
+	"HAUT"		: 4
 }
 
-var DUREE_ANIMATION 	= 4; 				//On change de frame après X animations
-var DUREE_DEPLACEMENT 	= 16;				//Gère la fluidité de l'animation
-var ETAT_ANIMATION		= -1;				//Personnage initialement immobile
+var DUREE_ANIMATION 	= 4; 			// On change de frame après X animations
+var DUREE_DEPLACEMENT 	= 16;			// Gère la fluidité de l'animation
+var ETAT_ANIMATION		= -1;			// Personnage initialement immobile
+
+var COLLISIONS = [];					// On définit la map des collisions	
+
 
 /*
 |--------------------------------------------------------------------------

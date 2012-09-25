@@ -119,8 +119,8 @@ var PlayerView = Backbone.View.extend({
 	},
 	
 	move: function(e) {
-		var x = this.model.get('position')[0];
-		var y = this.model.get('position')[1];
+		var x = this.model.getX();
+		var y = this.model.getY();
 		
 		switch(e.keyCode) {
 			case 37:
@@ -144,11 +144,37 @@ var PlayerView = Backbone.View.extend({
 				break;
 			
 			default:
-				console.log(e.keyCode);
 				break;
 		}
 		
-		this.model.set({'position':[x,y]});
+		var canMove = this.canMoveTo(x,y);
+		if(canMove) {
+			this.model.set({'position':[x,y]});
+		}
+	},
+	
+	canMoveTo: function(x,y) {
+		if(x>0 && x<41 && y>0 && y<101) {
+			if(COLLISIONS.length!=41 || COLLISIONS[x].length!=101) {
+				// Si la map des collisions n'est pas complète, il n'y a pas de collision
+				return true;	
+			} else {
+				// Sinon, on check la case ciblée
+				var col = COLLISIONS[x][y];
+			}
+			
+			switch(col) {
+				case '1':
+					return true;
+					break;
+				
+				default:
+					return false;
+					break;
+			}
+		}
+		
+		return false;
 	}
 });
 
