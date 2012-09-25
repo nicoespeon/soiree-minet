@@ -20,8 +20,53 @@ var Personnage = Backbone.Model.extend({
 	defaults: {
 		type: 'garcon',
 		pseudo: 'Sergio Flores',
-		orientation: DIRECTION.BAS,
+		orientation: 0,
 		position: [23,4]
+	},
+	
+	// Intégrité des attributs
+	validate: function(att) {
+		if(att.orientation) {
+			if(att.orientation<0 || att.orientation>3) {
+				return "L'orientation du personnage ne peut être comprise qu'entre 0 et 3 !";
+			}
+			
+			if(isNaN(att.orientation)) {
+				return "L'orientation du personnage est une valeur numérique !";
+			}
+		}	
+		
+		if(att.position) {
+			if(att.position[0]<1 || att.position[0]>40)	{
+				return "La coordonnée X est comprise entre 1 et 40 !";
+			}
+			
+			if(att.position[1]<1 || att.position[1]>100)	{
+				return "La coordonnée Y est comprise entre 1 et 100 !";
+			}
+			
+			if(isNaN(att.position[0]) || isNaN(att.position[1])) {
+				return "Les coordonnées du personnage sont des valeurs numériques !";
+			}
+		}
+	},
+	
+	// Getters
+	getX: function() {
+		return this.get('position')[0];
+	},
+	
+	getY: function() {
+		return this.get('position')[1];
+	},
+	
+	// Setters
+	setX: function(x) {
+		return this.set({'position':[x,this.getY()]});
+	},
+	
+	setY: function(y) {
+		return this.set({'position':[this.getX(),y]});
 	}
 });
 
@@ -74,10 +119,9 @@ var PlayerView = Backbone.View.extend({
 	},
 	
 	move: function(e) {
-		var x = this.model.get('position')[0];
-		var y = this.model.get('position')[1];
+		var x = this.model.getX();
+		var y = this.model.getY();
 		
-/*
 		switch(e.keyCode) {
 			case 37:
 				e.preventDefault();
@@ -100,12 +144,37 @@ var PlayerView = Backbone.View.extend({
 				break;
 			
 			default:
-				console.log(e.keyCode);
 				break;
 		}
-*/
 		
-		this.model.set({'position':[x,y]});
+		var canMove = this.canMoveTo(x,y);
+		if(canMove) {
+			this.model.set({'position':[x,y]});
+		}
+	},
+	
+	canMoveTo: function(x,y) {
+		if(x>0 && x<41 && y>0 && y<101) {
+			if(COLLISIONS.length!=41 || COLLISIONS[x].length!=101) {
+				// Si la map des collisions n'est pas complète, il n'y a pas de collision
+				return true;	
+			} else {
+				// Sinon, on check la case ciblée
+				var col = COLLISIONS[x][y];
+			}
+			
+			switch(col) {
+				case '1':
+					return true;
+					break;
+				
+				default:
+					return false;
+					break;
+			}
+		}
+		
+		return false;
 	}
 });
 
