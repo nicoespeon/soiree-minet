@@ -20,15 +20,15 @@ var Personnage = Backbone.Model.extend({
 	defaults: {
 		type: 'garcon',
 		pseudo: 'Sergio Flores',
-		orientation: DIRECTION.BAS,
+		orientation: 0,
 		position: [23,4]
 	},
 	
 	// Intégrité des attributs
 	validate: function(att) {
 		if(att.orientation) {
-			if(att.orientation<1 || att.orientation>4) {
-				return "L'orientation du personnage ne peut être comprise qu'entre 1 et 4 !";
+			if(att.orientation<0 || att.orientation>3) {
+				return "L'orientation du personnage ne peut être comprise qu'entre 0 et 3 !";
 			}
 			
 			if(isNaN(att.orientation)) {

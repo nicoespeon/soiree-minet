@@ -12,14 +12,13 @@
 | VARIABLES GLOBALES
 |--------------------------------------------------------------------------
 */
-var TAILLE_TILE 	= 32; 				// Taille du tile en pixels
+var TAILLE_TILE = 32; 					// Taille du tile en pixels
 
-var DIRECTION = {
-	"BAS" 		: 1,
-	"GAUCHE" 	: 2,
-	"DROITE"	: 3,
-	"HAUT"		: 4
-}
+var ORIENTATION = [];						// Orientation du personnage
+ORIENTATION.push('orientationBas');
+ORIENTATION.push('orientationGauche');
+ORIENTATION.push('orientationDroite');
+ORIENTATION.push('orientationHaut');
 
 var DUREE_ANIMATION 	= 4; 			// On change de frame après X animations
 var DUREE_DEPLACEMENT 	= 16;			// Gère la fluidité de l'animation
