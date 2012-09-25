@@ -17,6 +17,7 @@
 	width: 1280px;
 	height: 3200px;
 	overflow: hidden;
+	margin: auto;
 	
 	background: url('../img/map/bg.png') repeat;
 	border: 1px #CCC solid;
@@ -60,6 +61,23 @@
 	background-image: url('../img/personnages/fille.png');
 	background-position: 0 0;
 }
+
+.orientationBas {
+	background-position-y: 0;
+}
+
+.orientationGauche {
+	background-position-y: -64px;
+}
+
+.orientationDroite {
+	background-position-y: -128px;
+}
+
+.orientationHaut {
+	background-position-y: -192px;
+}
+
 
 /*
 |--------------------------------------------------------------------------

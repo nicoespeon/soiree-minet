@@ -12,8 +12,11 @@
 | GENERAL
 |--------------------------------------------------------------------------
 */
-@media (min-width:1280px) {
-	/* Règles pour grandes résolutions */
+@media (max-width:1280px) {
+	/* Règles pour petites résolutions */
+	nav {
+		left: 640px !important;
+	}
 }
 
 @font-face {
@@ -27,6 +30,8 @@ body {
 	overflow-x: hidden;
 	padding: 0;
 	margin: 0;
+	
+	background: black;
 }
 
 .clearfix {
