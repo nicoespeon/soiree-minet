@@ -37,15 +37,46 @@ describe("Personnages", function() {
     
     it("Should implement a function to set x-coord", function() {
     	persoWithCoords.setX(3);
-    	var coords = persoWithCoords.get('position');
-    	expect(coords[0]).toBe(3);
+    	var x = persoWithCoords.get('position')[0];
+    	expect(x).toBe(3);
     });
     
     it("Should implement a function to set y-coord", function() {
     	persoWithCoords.setY(4);
-    	var coords = persoWithCoords.get('position');
-    	expect(coords[1]).toBe(4);
+    	var y = persoWithCoords.get('position')[1];
+    	expect(y).toBe(4);
     });
+    
+    it("Should keep its attributes integrity", function() {
+    	var orientation = perso.get('orientation');
+    	var x = perso.get('position')[0];
+    	var y = perso.get('position')[1];
+    
+       	perso.set({'orientation':-1});
+    	expect(perso.get('orientation')).toBe(orientation);
+    	
+       	perso.set({'orientation':5});
+    	expect(perso.get('orientation')).toBe(orientation);
+    	
+       	perso.set({'orientation':'char'});
+    	expect(perso.get('orientation')).toBe(orientation);
+    	
+       	perso.set({'position':[0,0]});
+    	expect(perso.get('position')[0]).toBe(x);
+    	expect(perso.get('position')[1]).toBe(y);
+    	
+       	perso.set({'position':[-1,-1]});
+    	expect(perso.get('position')[0]).toBe(x);
+    	expect(perso.get('position')[1]).toBe(y);
+    	
+       	perso.set({'position':[41,101]});
+    	expect(perso.get('position')[0]).toBe(x);
+    	expect(perso.get('position')[1]).toBe(y);
+    	
+       	perso.set({'position':['charX','charY']});
+    	expect(perso.get('position')[0]).toBe(x);
+    	expect(perso.get('position')[1]).toBe(y);
+    })
     
     /* SPECS TO PLAN 
     

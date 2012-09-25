@@ -24,6 +24,33 @@ var Personnage = Backbone.Model.extend({
 		position: [23,4]
 	},
 	
+	// Intégrité des attributs
+	validate: function(att) {
+		if(att.orientation) {
+			if(att.orientation<1 || att.orientation>4) {
+				return "L'orientation du personnage ne peut être comprise qu'entre 1 et 4 !";
+			}
+			
+			if(isNaN(att.orientation)) {
+				return "L'orientation du personnage est une valeur numérique !";
+			}
+		}	
+		
+		if(att.position) {
+			if(att.position[0]<1 || att.position[0]>40)	{
+				return "La coordonnée X est comprise entre 1 et 40 !";
+			}
+			
+			if(att.position[1]<1 || att.position[1]>100)	{
+				return "La coordonnée Y est comprise entre 1 et 100 !";
+			}
+			
+			if(isNaN(att.position[0]) || isNaN(att.position[1])) {
+				return "Les coordonnées du personnage sont des valeurs numériques !";
+			}
+		}
+	},
+	
 	// Getters
 	getX: function() {
 		return this.get('position')[0];
