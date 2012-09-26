@@ -33,7 +33,8 @@
 	},
 	{
 		"pseudo": "Fönt Fayce", 
-		"position": [28,84]
+		"position": [28,84],
+		"type": "font-fayce"
 	},
 	{
 		"pseudo": "Effe Pégéa", 

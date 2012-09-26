@@ -72,6 +72,11 @@
 	background-position: 0 0;
 }
 
+.font-fayce {
+	background-image: url('../img/personnages/font-fayce.png');
+	background-position: 0 0;
+}
+
 .orientationBas {
 	background-position-y: 0;
 }
