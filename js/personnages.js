@@ -206,11 +206,18 @@ var PNJView = Backbone.View.extend({
 	initialize: function() {
 		this.model.on('change', this.render, this);
 		COLLISIONS[this.model.getX()][this.model.getY()] = '0';
+		var inst = this;
+		setInterval(
+			function() {
+				var orientation = Math.floor(Math.random()*4);
+				inst.rotate(orientation);
+			}, Math.floor(Math.random()*(10000) + 5000)
+		);
 	},
 	
 	// Re-render le PNJ sur la map
 	render: function() {
-		this.$el.append(this.template(this.model.toJSON()));
+		this.$el.html(this.template(this.model.toJSON()));
 		
 		// Positionne l'élément sur la map
 		var elt = this.$el.children();
@@ -221,7 +228,7 @@ var PNJView = Backbone.View.extend({
 		return this;
 	},
 	
-	rotate: function(direction) {
-	
+	rotate: function(orientation) {
+		this.model.set({'orientation':orientation});
 	}
 });
