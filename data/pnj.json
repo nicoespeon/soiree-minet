@@ -37,7 +37,8 @@
 	},
 	{
 		"pseudo": "Effe Pégéa", 
-		"position": [24,90]
+		"position": [24,90],
+		"type": "effe-pegea"
 	},
 	{
 		"pseudo": "Raguenar", 

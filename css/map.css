@@ -67,6 +67,11 @@
 	background-position: 0 0;
 }
 
+.effe-pegea {
+	background-image: url('../img/personnages/effe-pegea.png');
+	background-position: 0 0;
+}
+
 .orientationBas {
 	background-position-y: 0;
 }
