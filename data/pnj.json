@@ -12,11 +12,13 @@
 	{
 		"pseudo": "Wiki M.", 
 		"position": [40,33],
-		"orientation": 1
+		"orientation": 1,
+		"type": "wiki-m"
 	},
 	{
 		"pseudo": "Ka'as Tou", 
-		"position": [15,34]
+		"position": [15,34],
+		"type": "kaas-tou"
 	},
 	{
 		"pseudo": "Be'er Nard", 

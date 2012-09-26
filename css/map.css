@@ -93,6 +93,16 @@
 	background-position: 0 0;
 }
 
+.kaas-tou {
+	background-image: url('../img/personnages/kaas-tou.png');
+	background-position: 0 0;
+}
+
+.wiki-m {
+	background-image: url('../img/personnages/wiki-m.png');
+	background-position: 0 0;
+}
+
 .orientationBas {
 	background-position-y: 0;
 }
