@@ -124,23 +124,31 @@ var PlayerView = Backbone.View.extend({
 		
 		switch(e.keyCode) {
 			case 37:
+				//Gauche
 				e.preventDefault();
 				x--;
+				this.model.set({'orientation':1});
 				break;
 				
 			case 38:
+				//Haut
 				e.preventDefault();
 				y--;
+				this.model.set({'orientation':3});
 				break;
 			
 			case 39:
+				//Droite
 				e.preventDefault();
 				x++;
+				this.model.set({'orientation':2});
 				break;
 				
 			case 40:
+				//Bas
 				e.preventDefault();
 				y++;
+				this.model.set({'orientation':0});
 				break;
 			
 			default:

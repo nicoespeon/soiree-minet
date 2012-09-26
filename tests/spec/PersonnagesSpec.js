@@ -103,6 +103,7 @@ describe("Personnages", function() {
     		}
     		
     		player = new PlayerView({model: perso, el: $('#wrapper')});
+    		e = $.Event('keydown');
     	});
     	
     	afterEach(function() {
@@ -117,7 +118,6 @@ describe("Personnages", function() {
 	    });
     	
     	it("Should move on keydown {gauche:37, haut:38, droite:39, bas:40)", function() {
-    		var e = $.Event('keydown');
     		perso.set({'position':[25,25]});					// Place le perso sur la section libre
     		
 	    	for(var i=37;i<=40;i++) {
@@ -130,7 +130,6 @@ describe("Personnages", function() {
     	});
     	
     	it("Should not be able to move through objects", function() {
-    		var e = $.Event('keydown');
     		perso.set({'position':[25,75]});					// Place le perso sur la section bloquée
     		
     		var x = perso.get('position')[0];
@@ -146,8 +145,6 @@ describe("Personnages", function() {
     	});
     	
     	it("Should not be able to move above map boundaries", function() {
-    		var e = $.Event('keydown');
-    		
     		// Player en {1,1}
     		// ---------------
     		perso.set({'position':[1,1]});
@@ -177,10 +174,28 @@ describe("Personnages", function() {
     		expect(perso.get('position')[1]).toBe(100);
     	});
     	
-    	/* SPECS TO PLAN 
     	it("Should rotate accordingly to the direction of its move", function() {
-    	
+    		//Gauche
+    		e.keyCode = 37;
+    		$('body').trigger(e);
+    		expect(perso.get('orientation')).toBe(1);
+    		
+    		//Haut
+    		e.keyCode = 38;
+    		$('body').trigger(e);
+    		expect(perso.get('orientation')).toBe(3);
+    		
+    		//Droite
+    		e.keyCode = 39;
+    		$('body').trigger(e);
+    		expect(perso.get('orientation')).toBe(2);
+    		
+    		//Bas
+    		e.keyCode = 40;
+    		$('body').trigger(e);
+    		expect(perso.get('orientation')).toBe(0);
     	});
+    	/* SPECS TO PLAN 
     	
     	
     	*/
