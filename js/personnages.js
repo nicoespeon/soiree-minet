@@ -164,8 +164,8 @@ var PlayerView = Backbone.View.extend({
 	canMoveTo: function(x,y) {
 		if(x>0 && x<41 && y>0 && y<101) {
 			if(COLLISIONS.length!=41 || COLLISIONS[x].length!=101) {
-				// Si la map des collisions n'est pas complète, il n'y a pas de collision
-				return true;	
+				// Si la map des collisions n'est pas complète, on ne se déplace pas
+				return false;	
 			} else {
 				// Sinon, on check la case ciblée
 				var col = COLLISIONS[x][y];
