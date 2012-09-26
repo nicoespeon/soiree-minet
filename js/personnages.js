@@ -21,7 +21,8 @@ var Personnage = Backbone.Model.extend({
 		type: 'garcon',
 		pseudo: 'Sergio Flores',
 		orientation: 0,
-		position: [23,4]
+		position: [23,4],
+		limits: [0,1,2,3]
 	},
 	
 	// Intégrité des attributs
@@ -204,15 +205,10 @@ var PNJView = Backbone.View.extend({
 	// Lorsque le modèle change, la vue se rafraîchit
 	// Comme il y a une relation 1-1 entre le modèle et la vue, on y fait référence directement ici
 	initialize: function() {
-		this.model.on('change', this.render, this);
 		COLLISIONS[this.model.getX()][this.model.getY()] = '0';
-		var inst = this;
-		setInterval(
-			function() {
-				var orientation = Math.floor(Math.random()*4);
-				inst.rotate(orientation);
-			}, Math.floor(Math.random()*(10000) + 5000)
-		);
+		this.autoRotate();
+		
+		this.model.on('change', this.render, this);
 	},
 	
 	// Re-render le PNJ sur la map
@@ -230,5 +226,26 @@ var PNJView = Backbone.View.extend({
 	
 	rotate: function(orientation) {
 		this.model.set({'orientation':orientation});
+	},
+
+	// Rotation spontannée aléatoire des PNJs
+	autoRotate: function() {	
+		// Pour le scope de this dans setInterval	
+		var thisPNJ = this;
+		
+		// Définit les orientations possibles
+		var limits = [];
+		for(var i=0;i<4;i++) {
+			if($.inArray(i,this.model.get('limits'))!=-1) {
+				limits.push(i);
+			}
+		}
+		
+		setInterval(
+			function() {
+				var orientation = limits[Math.floor(Math.random()*limits.length)];
+				thisPNJ.rotate(orientation);
+			}, Math.floor(Math.random()*(10000) + 5000)
+		);
 	}
 });
