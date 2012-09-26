@@ -24,7 +24,8 @@
 	},
 	{
 		"pseudo": "Nethan Tau", 
-		"position": [15,50]
+		"position": [15,50],
+		"type": "nethan-thau"
 	},
 	{
 		"pseudo": "Ays Péon", 

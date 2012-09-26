@@ -83,6 +83,11 @@
 	background-position: 0 0;
 }
 
+.nethan-thau {
+	background-image: url('../img/personnages/nethan-thau.png');
+	background-position: 0 0;
+}
+
 .orientationBas {
 	background-position-y: 0;
 }
