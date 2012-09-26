@@ -93,19 +93,19 @@
 		
 		<!-- Blue City -->
 		<div id="blue-city">
-			<div class="city" data-x="26" data-y="56"></div>
-			<div class="road" data-x="13" data-y="68"></div>
+			<div class="city" data-x="26" data-y="55"></div>
+			<div class="road" data-x="13" data-y="67"></div>
 		</div>
 		
 		<!-- Port -->
-		<div id="port" data-x="4" data-y="75">
+		<div id="port" data-x="4" data-y="74">
 		</div>
 		
 		<!-- Mer -->
 		<div id="sea">
-			<div class="top" data-x="4" data-y="91"></div>
-			<div class="water" data-x="4" data-y="92"></div>
-			<div class="boat" data-x="4" data-y="97"></div>
+			<div class="top" data-x="4" data-y="90"></div>
+			<div class="water" data-x="4" data-y="91"></div>
+			<div class="boat" data-x="4" data-y="96"></div>
 		</div>
 		
 		<!-- PNJs -->
@@ -114,10 +114,10 @@
 	
 	<!-- Templates -->
 	<script type="text/template" id="pnj-template">
-		<div class="pnj <%= type %> <%= ORIENTATION[orientation] %>" data-x="<%= position[0] %>" data-y="<%= position[1]-1 %>"></div>
+		<div class="pnj <%= type %> <%= ORIENTATION[orientation] %>" data-x="<%= position[0] %>" data-y="<%= position[1] %>"></div>
 	</script>
 	<script type="text/template" id="player-template">
-		<div id="player" class="<%= type %> <%= ORIENTATION[orientation] %>" data-x="<%= position[0] %>" data-y="<%= position[1]-1 %>">
+		<div id="player" class="<%= type %> <%= ORIENTATION[orientation] %>" data-x="<%= position[0] %>" data-y="<%= position[1] %>">
 			<!-- Here is your player ! -->
 		</div>
 	</script>

@@ -50,6 +50,7 @@
 .pnj, #player {
 	width: 32px;
 	height: 64px;
+	margin-top: -32px;
 }
 
 .garcon {
