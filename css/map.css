@@ -62,6 +62,11 @@
 	background-position: 0 0;
 }
 
+.raguenar {
+	background-image: url('../img/personnages/raguenar.png');
+	background-position: 0 0;
+}
+
 .orientationBas {
 	background-position-y: 0;
 }

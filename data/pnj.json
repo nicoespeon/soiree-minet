@@ -41,6 +41,7 @@
 	},
 	{
 		"pseudo": "Raguenar", 
-		"position": [23,17]
+		"position": [23,17],
+		"type": "raguenar"
 	}
 ]
