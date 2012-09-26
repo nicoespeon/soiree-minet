@@ -205,6 +205,7 @@ var PNJView = Backbone.View.extend({
 	// Comme il y a une relation 1-1 entre le modèle et la vue, on y fait référence directement ici
 	initialize: function() {
 		this.model.on('change', this.render, this);
+		COLLISIONS[this.model.getX()][this.model.getY()] = '0';
 	},
 	
 	// Re-render le PNJ sur la map

@@ -92,7 +92,7 @@ describe("Personnages", function() {
     			COLLISIONS[i] = [];
     			
     			// Libre sur la première moitié
-	    		for(var j=1;j<101;j++) {
+	    		for(var j=1;j<51;j++) {
 		    		COLLISIONS[i][j] = '1';
 	    		}
 	    		
@@ -231,6 +231,22 @@ describe("Personnages", function() {
     		expect(pnj.$el.children()).toHaveClass(pnj.model.get('type'));
     	})
     	
+    	it("Should create an obstacle on its position", function() {
+    		// On crée une map des collisions fictive
+    		COLLISIONS = [];
+    		for(var i=1;i<41;i++) {
+    			COLLISIONS[i] = [];
+    		
+	    		for(var j=1;j<101;j++) {
+		    		COLLISIONS[i][j] = '1';
+	    		}
+    		}
+    		
+    		pnj = new PNJView({model: perso});
+    		var x = pnj.model.get('position')[0];
+    		var y = pnj.model.get('position')[1];
+    		expect(COLLISIONS[x][y]).toBe('0');
+    	});
     	
     	/* SPECS TO PLAN 
     	
@@ -239,14 +255,6 @@ describe("Personnages", function() {
     	});
     	
     	it("Should rotate when interact with the player", function() {
-    	
-    	});
-    	
-    	it("Should be able to move vertically", function() {
-    	
-    	});
-    	
-    	it("Should be able to move horizontally", function() {
     	
     	});
     	
