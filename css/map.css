@@ -88,6 +88,11 @@
 	background-position: 0 0;
 }
 
+.beer-nard {
+	background-image: url('../img/personnages/beer-nard.png');
+	background-position: 0 0;
+}
+
 .orientationBas {
 	background-position-y: 0;
 }

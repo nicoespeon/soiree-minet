@@ -20,7 +20,8 @@
 	},
 	{
 		"pseudo": "Be'er Nard", 
-		"position": [9,39]
+		"position": [9,39],
+		"type": "beer-nard"
 	},
 	{
 		"pseudo": "Nethan Tau", 
