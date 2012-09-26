@@ -78,6 +78,11 @@
 	background-position: 0 0;
 }
 
+.ays-peon {
+	background-image: url('../img/personnages/ays-peon.png');
+	background-position: 0 0;
+}
+
 .orientationBas {
 	background-position-y: 0;
 }

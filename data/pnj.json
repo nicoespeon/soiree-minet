@@ -29,7 +29,8 @@
 	{
 		"pseudo": "Ays Péon", 
 		"position": [30,72],
-		"orientation": 1
+		"orientation": 1,
+		"type": "ays-peon"
 	},
 	{
 		"pseudo": "Fönt Fayce", 
