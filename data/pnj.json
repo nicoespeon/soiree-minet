@@ -1,56 +1,63 @@
 [
 	{
 		"pseudo": "Aymi Li", 
-		"type": "fille", 
+		"type": "aymi-li",
 		"position": [12,15],
-		"type": "aymi-li"
+		"limits": [0]
 	},
 	{
 		"pseudo": "Stai Fouyon", 
-		"type": "fille", 
+		"type": "stai-fouyon",
 		"position": [40,6],
-		"type": "stai-fouyon"
+		"limits": [0,1]
 	},
 	{
-		"pseudo": "Wiki M.", 
+		"pseudo": "Wiki M.",
+		"type": "wiki-m", 
 		"position": [40,33],
 		"orientation": 1,
-		"type": "wiki-m"
+		"limits": [1]
 	},
 	{
 		"pseudo": "Ka'as Tou", 
-		"position": [15,34],
-		"type": "kaas-tou"
+		"type": "kaas-tou",	
+		"position": [15,34],	
+		"limits": [0,2]
 	},
 	{
-		"pseudo": "Be'er Nard", 
+		"pseudo": "Be'er Nard",
+		"type": "beer-nard", 
 		"position": [9,39],
-		"type": "beer-nard"
+		"limits": [0,2,3]
 	},
 	{
 		"pseudo": "Nethan Tau", 
+		"type": "nethan-thau",
 		"position": [15,50],
-		"type": "nethan-thau"
+		"limits": [0,1,2]
 	},
 	{
-		"pseudo": "Ays Péon", 
+		"pseudo": "Ays Péon",
+		"type": "ays-peon", 
 		"position": [30,72],
 		"orientation": 1,
-		"type": "ays-peon"
+		"limits": [0,1,3]
 	},
 	{
-		"pseudo": "Fönt Fayce", 
+		"pseudo": "Fönt Fayce",
+		"type": "font-fayce", 
 		"position": [28,83],
-		"type": "font-fayce"
+		"limits": [0,1,2]
 	},
 	{
 		"pseudo": "Effe Pégéa", 
+		"type": "effe-pegea",
 		"position": [24,89],
-		"type": "effe-pegea"
+		"limits": [0]
 	},
 	{
 		"pseudo": "Raguenar", 
-		"position": [23,17],
-		"type": "raguenar"
+		"type": "raguenar",
+		"position": [23,17]
 	}
 ]

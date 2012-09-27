@@ -21,7 +21,8 @@ var Personnage = Backbone.Model.extend({
 		type: 'garcon',
 		pseudo: 'Sergio Flores',
 		orientation: 0,
-		position: [23,4]
+		position: [23,4],
+		limits: [0,1,2,3]
 	},
 	
 	// Intégrité des attributs
@@ -124,23 +125,31 @@ var PlayerView = Backbone.View.extend({
 		
 		switch(e.keyCode) {
 			case 37:
+				//Gauche
 				e.preventDefault();
 				x--;
+				this.model.set({'orientation':1});
 				break;
 				
 			case 38:
+				//Haut
 				e.preventDefault();
 				y--;
+				this.model.set({'orientation':3});
 				break;
 			
 			case 39:
+				//Droite
 				e.preventDefault();
 				x++;
+				this.model.set({'orientation':2});
 				break;
 				
 			case 40:
+				//Bas
 				e.preventDefault();
 				y++;
+				this.model.set({'orientation':0});
 				break;
 			
 			default:
@@ -156,8 +165,8 @@ var PlayerView = Backbone.View.extend({
 	canMoveTo: function(x,y) {
 		if(x>0 && x<41 && y>0 && y<101) {
 			if(COLLISIONS.length!=41 || COLLISIONS[x].length!=101) {
-				// Si la map des collisions n'est pas complète, il n'y a pas de collision
-				return true;	
+				// Si la map des collisions n'est pas complète, on ne se déplace pas
+				return false;	
 			} else {
 				// Sinon, on check la case ciblée
 				var col = COLLISIONS[x][y];
@@ -196,12 +205,15 @@ var PNJView = Backbone.View.extend({
 	// Lorsque le modèle change, la vue se rafraîchit
 	// Comme il y a une relation 1-1 entre le modèle et la vue, on y fait référence directement ici
 	initialize: function() {
+		COLLISIONS[this.model.getX()][this.model.getY()] = '0';
+		this.autoRotate();
+		
 		this.model.on('change', this.render, this);
 	},
 	
 	// Re-render le PNJ sur la map
 	render: function() {
-		this.$el.append(this.template(this.model.toJSON()));
+		this.$el.html(this.template(this.model.toJSON()));
 		
 		// Positionne l'élément sur la map
 		var elt = this.$el.children();
@@ -212,7 +224,28 @@ var PNJView = Backbone.View.extend({
 		return this;
 	},
 	
-	rotate: function(direction) {
-	
+	rotate: function(orientation) {
+		this.model.set({'orientation':orientation});
+	},
+
+	// Rotation spontannée aléatoire des PNJs
+	autoRotate: function() {	
+		// Pour le scope de this dans setInterval	
+		var thisPNJ = this;
+		
+		// Définit les orientations possibles
+		var limits = [];
+		for(var i=0;i<4;i++) {
+			if($.inArray(i,this.model.get('limits'))!=-1) {
+				limits.push(i);
+			}
+		}
+		
+		setInterval(
+			function() {
+				var orientation = limits[Math.floor(Math.random()*limits.length)];
+				thisPNJ.rotate(orientation);
+			}, Math.floor(Math.random()*(10000) + 5000)
+		);
 	}
 });
