@@ -2,45 +2,55 @@
 	{
 		"pseudo": "Aymi Li", 
 		"type": "fille", 
-		"position": [12,15]
+		"position": [12,15],
+		"type": "aymi-li"
 	},
 	{
-		"pseudo": "Stai Fouillon", 
+		"pseudo": "Stai Fouyon", 
 		"type": "fille", 
-		"position": [40,6]
+		"position": [40,6],
+		"type": "stai-fouyon"
 	},
 	{
 		"pseudo": "Wiki M.", 
 		"position": [40,33],
-		"orientation": 1
+		"orientation": 1,
+		"type": "wiki-m"
 	},
 	{
 		"pseudo": "Ka'as Tou", 
-		"position": [15,34]
+		"position": [15,34],
+		"type": "kaas-tou"
 	},
 	{
 		"pseudo": "Be'er Nard", 
-		"position": [9,39]
+		"position": [9,39],
+		"type": "beer-nard"
 	},
 	{
 		"pseudo": "Nethan Tau", 
-		"position": [15,50]
+		"position": [15,50],
+		"type": "nethan-thau"
 	},
 	{
 		"pseudo": "Ays Péon", 
-		"position": [30,73],
-		"orientation": 1
+		"position": [30,72],
+		"orientation": 1,
+		"type": "ays-peon"
 	},
 	{
 		"pseudo": "Fönt Fayce", 
-		"position": [28,84]
+		"position": [28,83],
+		"type": "font-fayce"
 	},
 	{
 		"pseudo": "Effe Pégéa", 
-		"position": [24,90]
+		"position": [24,89],
+		"type": "effe-pegea"
 	},
 	{
 		"pseudo": "Raguenar", 
-		"position": [23,17]
+		"position": [23,17],
+		"type": "raguenar"
 	}
 ]

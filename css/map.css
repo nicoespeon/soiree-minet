@@ -49,17 +49,56 @@
 */
 .pnj, #player {
 	width: 32px;
-	height: 48px;
+	height: 64px;
+	margin-top: -32px;
 }
 
 .garcon {
 	background-image: url('../img/personnages/garcon.png');
-	background-position: 0 0;
 }
 
 .fille {
 	background-image: url('../img/personnages/fille.png');
-	background-position: 0 0;
+}
+
+.raguenar {
+	background-image: url('../img/personnages/raguenar.png');
+}
+
+.effe-pegea {
+	background-image: url('../img/personnages/effe-pegea.png');
+}
+
+.font-fayce {
+	background-image: url('../img/personnages/font-fayce.png');
+}
+
+.ays-peon {
+	background-image: url('../img/personnages/ays-peon.png');
+}
+
+.nethan-thau {
+	background-image: url('../img/personnages/nethan-thau.png');
+}
+
+.beer-nard {
+	background-image: url('../img/personnages/beer-nard.png');
+}
+
+.kaas-tou {
+	background-image: url('../img/personnages/kaas-tou.png');
+}
+
+.wiki-m {
+	background-image: url('../img/personnages/wiki-m.png');
+}
+
+.stai-fouyon {
+	background-image: url('../img/personnages/stai-fouyon.png');
+}
+
+.aymi-li {
+	background-image: url('../img/personnages/aymi-li.png');
 }
 
 .orientationBas {
