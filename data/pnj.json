@@ -2,12 +2,14 @@
 	{
 		"pseudo": "Aymi Li", 
 		"type": "fille", 
-		"position": [12,15]
+		"position": [12,15],
+		"type": "aymi-li"
 	},
 	{
-		"pseudo": "Stai Fouillon", 
+		"pseudo": "Stai Fouyon", 
 		"type": "fille", 
-		"position": [40,6]
+		"position": [40,6],
+		"type": "stai-fouyon"
 	},
 	{
 		"pseudo": "Wiki M.", 

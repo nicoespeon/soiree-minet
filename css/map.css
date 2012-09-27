@@ -103,6 +103,16 @@
 	background-position: 0 0;
 }
 
+.stai-fouyon {
+	background-image: url('../img/personnages/stai-fouyon.png');
+	background-position: 0 0;
+}
+
+.aymi-li {
+	background-image: url('../img/personnages/aymi-li.png');
+	background-position: 0 0;
+}
+
 .orientationBas {
 	background-position-y: 0;
 }
