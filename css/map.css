@@ -117,6 +117,21 @@
 	background-position-y: -192px;
 }
 
+.frame0 {
+	background-position-x: 0;
+}
+
+.frame1 {
+	background-position-x: 32px;
+}
+
+.frame2 {
+	background-position-x: 64px;
+}
+
+.frame3 {
+	background-position-x: 96px;
+}
 
 /*
 |--------------------------------------------------------------------------

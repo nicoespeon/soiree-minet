@@ -22,7 +22,8 @@ var Personnage = Backbone.Model.extend({
 		pseudo: 'Sergio Flores',
 		orientation: 0,
 		position: [23,4],
-		limits: [0,1,2,3]
+		limits: [0,1,2,3],
+		frame: 0
 	},
 	
 	// Intégrité des attributs
