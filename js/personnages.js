@@ -121,45 +121,63 @@ var PlayerView = Backbone.View.extend({
 	},
 	
 	move: function(e) {
-		var x = this.model.getX();
-		var y = this.model.getY();
+		// Variables initiales
+		var xCible = this.model.getX();
+		var yCible = this.model.getY();
+		var canMove = false;
 		
+		// Annule le déplacement si un est déjà en cours
+		if(ETAT_ANIMATION > 0) {
+			return false;
+		} else {				
+			ETAT_ANIMATION = 1;
+		}
+		
+		// ETAPE 1 - On repère la touche enfoncée et on prépare les nouvelles coordonnées
 		switch(e.keyCode) {
 			case 37:
 				//Gauche
 				e.preventDefault();
-				x--;
+				xCible--;
 				this.model.set({'orientation':1});
 				break;
 				
 			case 38:
 				//Haut
 				e.preventDefault();
-				y--;
+				yCible--;
 				this.model.set({'orientation':3});
 				break;
 			
 			case 39:
 				//Droite
 				e.preventDefault();
-				x++;
+				xCible++;
 				this.model.set({'orientation':2});
 				break;
 				
 			case 40:
 				//Bas
 				e.preventDefault();
-				y++;
+				yCible++;
 				this.model.set({'orientation':0});
 				break;
 			
 			default:
+				//Pas une touche de déplacement
+				ETAT_ANIMATION = -1;
 				break;
 		}
 		
-		var canMove = this.canMoveTo(x,y);
-		if(canMove) {
-			this.model.set({'position':[x,y]});
+		if(ETAT_ANIMATION > 0) {
+			canMove = this.canMoveTo(xCible,yCible);
+		}
+		
+		// ETAPE 2 - On déplace le personnage si c'est possible
+		if(canMove==true) {
+			this.moveAnimation();
+		} else {
+			ETAT_ANIMATION = -1;
 		}
 	},
 	
@@ -185,6 +203,55 @@ var PlayerView = Backbone.View.extend({
 		}
 		
 		return false;
+	},
+	
+	moveAnimation: function() {
+		var inst = this;
+		
+		var bouge = setInterval(function() {
+			var temps_ecoule = (ETAT_ANIMATION-1)*DUREE_DEPLACEMENT/NB_IMAGES;
+			var decalage = temps_ecoule/DUREE_DEPLACEMENT; 
+			
+			if(temps_ecoule>DUREE_DEPLACEMENT) {
+				// Si le déplacement a atteint ou dépassé le temps nécessaire pour s'effectuer, on le termine
+				ETAT_ANIMATION = -1;
+				clearInterval(bouge);
+			} else if(ETAT_ANIMATION>0) {
+					// Sinon, on définit la frame en fonction de l'état de l'animation
+					var frame = 0;
+					if(temps_ecoule!=0) {
+						frame = Math.ceil(NB_FRAME*decalage);
+					}
+
+					// On définit les nouvelles coordonnées 
+					var direction = inst.model.get('orientation');
+					var x = inst.model.getX();
+					var y = inst.model.getY();
+					
+					switch(direction) {
+						case 0:
+							y = Math.floor(y)+decalage;
+							break;
+						
+						case 1:
+							x = Math.ceil(x)-decalage;
+							break;
+							
+						case 2:
+							x = Math.floor(x)+decalage;
+							break;
+							
+						case 3:
+							y = Math.ceil(y)-decalage;
+							break;
+					}
+					
+					inst.model.set({'position':[x,y],'frame':frame});
+					
+					// On passe à l'état suivant
+					ETAT_ANIMATION++;
+				}
+		}, DUREE_DEPLACEMENT/NB_IMAGES);	
 	}
 });
 

@@ -125,7 +125,9 @@ describe("Personnages", function() {
 	    		perso.on('change', spy);
 		    	e.keyCode = i;
 		    	$('body').trigger(e);
-	    		expect(spy).toHaveBeenCalled();
+		    	setTimeout(function() {
+			    	expect(spy).toHaveBeenCalled();
+		    	}, DUREE_DEPLACEMENT);
 	    	}
     	});
     	
@@ -178,22 +180,30 @@ describe("Personnages", function() {
     		//Gauche
     		e.keyCode = 37;
     		$('body').trigger(e);
-    		expect(perso.get('orientation')).toBe(1);
+	    	setTimeout(function() {
+    			expect(perso.get('orientation')).toBe(1);
+	    	}, DUREE_DEPLACEMENT);
     		
     		//Haut
     		e.keyCode = 38;
     		$('body').trigger(e);
-    		expect(perso.get('orientation')).toBe(3);
+	    	setTimeout(function() {
+    			expect(perso.get('orientation')).toBe(3);
+	    	}, DUREE_DEPLACEMENT);
     		
     		//Droite
     		e.keyCode = 39;
     		$('body').trigger(e);
-    		expect(perso.get('orientation')).toBe(2);
+	    	setTimeout(function() {
+    			expect(perso.get('orientation')).toBe(2);
+	    	}, DUREE_DEPLACEMENT);
     		
     		//Bas
     		e.keyCode = 40;
     		$('body').trigger(e);
-    		expect(perso.get('orientation')).toBe(0);
+	    	setTimeout(function() {
+    			expect(perso.get('orientation')).toBe(0);
+	    	}, DUREE_DEPLACEMENT);
     	});
     	/* SPECS TO PLAN 
     	

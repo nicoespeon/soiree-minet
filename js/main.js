@@ -20,8 +20,9 @@ ORIENTATION.push('orientationGauche');
 ORIENTATION.push('orientationDroite');
 ORIENTATION.push('orientationHaut');
 
-var DUREE_ANIMATION 	= 4; 			// On change de frame après X animations
-var DUREE_DEPLACEMENT 	= 16;			// Gère la fluidité de l'animation
+var NB_FRAME		 	= 4; 			// Nombre de frames
+var NB_IMAGES 			= 100;			// Nombre d'images par déplacement
+var DUREE_DEPLACEMENT 	= 200;			// Durée du déplacement (en ms)
 var ETAT_ANIMATION		= -1;			// Personnage initialement immobile
 
 var COLLISIONS = [];					// On définit la map des collisions	
