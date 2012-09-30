@@ -104,6 +104,9 @@ var PlayerView = Backbone.View.extend({
 		$(document).bind('keydown', this.move);
 		
 		this.model.on('change', this.render, this);
+		this.model.on('change:position', this.scroll, this);
+		
+		this.scroll();
 		this.render();	
 	},
 	
@@ -252,6 +255,24 @@ var PlayerView = Backbone.View.extend({
 					ETAT_ANIMATION++;
 				}
 		}, DUREE_DEPLACEMENT/NB_IMAGES);	
+	},
+	
+	scroll: function() {
+		var x = this.model.getX()*32;
+		var y = this.model.getY()*32;
+		var height = $(window).height();
+		var width = $(window).width();
+		
+		var decalX = x-(width/2);
+		var decalY = y-(height/2);
+		
+		if(decalX>0) {
+			$('body').scrollLeft(decalX);
+		}
+		
+		if(decalY>0) {
+			$('body').scrollTop(decalY);
+		}
 	}
 });
 
