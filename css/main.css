@@ -12,21 +12,26 @@
 | GENERAL
 |--------------------------------------------------------------------------
 */
-@media (min-width:1280px) {
-	/* Règles pour grandes résolutions */
+@media (max-width:1280px) {
+	/* Règles pour petites résolutions */
+	nav {
+		left: 640px !important;
+	}
 }
 
 @font-face {
   font-family: 'Press Start 2P';
   font-style: normal;
   font-weight: 400;
-  src: local('fonts/Press Start 2P'), local('fonts/PressStart2P-Regular'), url(http://themes.googleusercontent.com/static/fonts/pressstart2p/v1/8Lg6LX8-ntOHUQnvQ0E7o2jf3WypfQQP02nP_ZmoBRo.woff) format('woff');
+  src: local('fonts/PressStart2P-Regular.ttf'), local('fonts/PressStart2P-Regular.ttf'), url('fonts/PressStart2P-Regular.ttf') format('woff');
 }
 
 body {
 	overflow-x: hidden;
 	padding: 0;
 	margin: 0;
+	
+	background: black;
 }
 
 .clearfix {

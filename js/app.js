@@ -60,6 +60,24 @@ $(function() {
 	player = new Personnage();			// Crée le modèle de personnage par défaut (player)
 	PNJs = new PNJList();				// Crée la collection de PNJs
 	
-	/* Charge l'application */
-	new AppView;
+		
+	/* Charge la map des collisions */
+	$.getJSON('data/collision.json', function(data) {
+		var datas = [];
+		$.each(data, function(key, val) {
+			datas[key] = val;
+		});
+		
+		for(var i=1;i<41;i++) {
+			COLLISIONS[i] = [];
+			for(var j=1;j<101;j++) {
+				var x = j-1;
+				var y = i-1;
+				COLLISIONS[i][j] = datas[x][y];
+			}
+		}
+	}).complete(function() { 
+		/* Charge l'application une fois la map chargée */
+		new AppView;
+	});
 });
