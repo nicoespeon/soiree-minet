@@ -268,10 +268,14 @@ var PlayerView = Backbone.View.extend({
 		
 		if(decalX>0) {
 			$('body').scrollLeft(decalX);
+		} else {
+			$('body').scrollLeft(0);
 		}
 		
 		if(decalY>0) {
 			$('body').scrollTop(decalY);
+		} else {
+			$('body').scrollTop(0);
 		}
 	}
 });
