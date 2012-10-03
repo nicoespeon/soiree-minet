@@ -55,7 +55,7 @@ body {
 nav {
 	position: fixed;
 	left: 50%;
-	bottom: 10px;
+	top: 10px;
 	width: 800px;
 	height: 64px;
 	margin-left: -400px;
