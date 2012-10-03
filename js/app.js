@@ -26,10 +26,8 @@ var AppView = Backbone.View.extend({
 		PNJs.on('add', this.addOne, this);
 		PNJs.on('reset', this.addAll, this);
 		PNJs.on('all', this.render, this);
-		
 		PNJs.fetch();
 		
-		// Player
 		new PlayerView({model: player});	// Charge le joueur dans l'application
 	},
 	
@@ -48,6 +46,18 @@ var AppView = Backbone.View.extend({
 	}
 });
 
+// Configuration des notifications 
+// -------------------------------
+$().toastmessage({
+    text     : 'H**k me I\'m famous !',
+    sticky   : false,
+    position : 'bottom-center',
+    type     : 'success',
+    stayTime : 10000
+});
+
+// Appel des fonctions de l'application après chargement du DOM
+// ------------------------------------------------------------
 $(function() {
 	/* Positionnement des éléments de la map avec data-x/data-y */
 	$('#wrapper div').each(function() {
