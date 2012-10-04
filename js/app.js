@@ -14,11 +14,6 @@ var AppView = Backbone.View.extend({
 	// On se fixe sur l'élément du DOM créé dans ce but
 	el: $('#wrapper'),
 	
-	// Gère les événements qui modifient les personnages (déplacement, rotation, ...)
-	events: {
-		
-	},
-	
 	// On écoute les différents changements sur nos collections pour leur affecter les effets voulus
 	// On récupère les données pour initialiser les PNJs
 	initialize: function() {
@@ -46,16 +41,6 @@ var AppView = Backbone.View.extend({
 	}
 });
 
-// Configuration des notifications 
-// -------------------------------
-$().toastmessage({
-    text     : 'H**k me I\'m famous !',
-    sticky   : false,
-    position : 'bottom-center',
-    type     : 'success',
-    stayTime : 10000
-});
-
 // Appel des fonctions de l'application après chargement du DOM
 // ------------------------------------------------------------
 $(function() {
@@ -63,6 +48,7 @@ $(function() {
 	$('nav#control li').click(function() {
 		var control = $(this).data('control');
 		var icon	= $(this).html();
+		
 		switch(control) {
 			case 'menu':
 				$('#menu').fadeToggle(500);

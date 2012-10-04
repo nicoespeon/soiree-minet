@@ -95,10 +95,6 @@ var PlayerView = Backbone.View.extend({
 	// Selon un template particulier
 	template: _.template($('#player-template').html()),
 	
-	events: {
-	
-	},
-	
 	initialize: function() {
 		_.bindAll(this);
 		$(document).bind('keydown', this.move);
@@ -106,7 +102,6 @@ var PlayerView = Backbone.View.extend({
 		this.model.on('change', this.render, this);
 		this.model.on('change:position', this.scroll, this);
 		
-		this.scroll();
 		this.render();	
 	},
 	
@@ -304,10 +299,6 @@ var PNJView = Backbone.View.extend({
 	
 	// A laquelle on applique un template particulier
 	template: _.template($('#pnj-template').html()),
-	
-	events: {
-	
-	},
 	
 	// La vue écoute les changements sur le modèle
 	// Lorsque le modèle change, la vue se rafraîchit
