@@ -59,6 +59,30 @@ $().toastmessage({
 // Appel des fonctions de l'application après chargement du DOM
 // ------------------------------------------------------------
 $(function() {
+	/* Active le menu de controle */
+	$('nav#control li').click(function() {
+		var control = $(this).data('control');
+		var icon	= $(this).html();
+		switch(control) {
+			case 'menu':
+				$('#menu').fadeToggle(500);
+				if(icon=='i') {
+					$(this).html('j');
+				} else {
+					$(this).html('i');
+				}
+				break;
+			
+			case 'audio':
+				if(icon=='r') {
+					$(this).html('p');
+				} else {
+					$(this).html('r');
+				}
+				break;
+		}
+	});
+
 	/* Positionnement des éléments de la map avec data-x/data-y */
 	$('#wrapper div').each(function() {
 		var x = $(this).data('x');
@@ -70,7 +94,6 @@ $(function() {
 	player = new Personnage();			// Crée le modèle de personnage par défaut (player)
 	PNJs = new PNJList();				// Crée la collection de PNJs
 	
-		
 	/* Charge la map des collisions */
 	$.getJSON('data/collision.json', function(data) {
 		var datas = [];
