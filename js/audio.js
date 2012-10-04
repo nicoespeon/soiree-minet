@@ -3,65 +3,63 @@
 | AUDIO SCRIPT
 |--------------------------------------------------------------------------
 |
-| Gère l'audio du coming soon
+| Script de gestion du son
 |
 */
 
-/*
-|--------------------------------------------------------------------------
-| VARIABLES
-|--------------------------------------------------------------------------
-*/
-var DUREE_AUDIO = 0;
+// Model - Audio
+// -------------
+// Ce mod√®le d√©finit la nature d'un player audio
+var Audio = Backbone.Model.extend({
+	defaults: {
+		piste: 'partyrock',
+		ext: ['mp3']
+	}
+});
 
-/*
-|--------------------------------------------------------------------------
-| FONCTIONS
-|--------------------------------------------------------------------------
-*/
-//On cree l'element audio
-var audioElement = new Audio();
-
-//Lance la musique
-function playAudio(piste, loop) {
-	//Défini l'extension
-	var ext = '.ogg';
-	if(audioElement.canPlayType("audio/mpeg"))	ext = '.mp3';
+// Vue - Audio
+// -------------
+// Cette vue g√®re le player audio de l'app
+var AudioView = Backbone.View.extend({
+	events: {
+		"click .play": "play",
+		"click .pause": "pause"
+	},
 	
-	//Charge le fichier de son
-	audioElement.src = 'sounds/'+piste+ext;
-	audioElement.load;
+	initialize: function() {
+		// On initialise le player pour y acc√©der
+		this.sound = new buzz.sound('sounds/'+this.model.get('piste'), {
+		    formats: this.model.get('ext')
+		});
+		
+		// On bind la lecture sur les changements du mod√®le
+		this.model.on('change', this.chgTrack, this);
+	},
 	
-	//Boucle la musique selon le paramètre
-	if(loop)	audioElement.setAttribute('loop');
+	play: function() {
+		this.sound.play()
+		    .fadeIn(3000)
+		    .loop()
+		    .bind('timeupdate', function() {
+		        //var timer = buzz.toTimer(this.getTime());
+	    });
+	},
 	
-	//Lance la musique puis récupère sa duree totale
-	audioElement.play();
-	setTimeout(
-		function() {
-			DUREE_AUDIO = audioElement.duration;
-		},
-		1000
-	);
-}
-
-//Pause la musique
-function pauseAudio() {
-	audioElement.pause();
-}
-
-
-//Récupère le temps de lecture
-function getAudioDuration() {
-	return audioElement.duration;
-}
-
-/*
-|--------------------------------------------------------------------------
-| ONLOAD
-|--------------------------------------------------------------------------
-*/
-
-$(window).load(function () {
-	//playAudio('city', false);
+	pause: function() {
+		this.sound.fadeOut(2000, function() { 
+			this.sound.pause(); 
+		});
+	},
+	
+	stop: function() {
+		//this.sound.stop();
+	},
+	
+	chgTrack: function() {
+		this.sound = new buzz.sound('sounds/'+this.model.get('piste'), {
+		    formats: this.model.get('ext')
+		}); 
+		 
+		this.play();
+	}
 });

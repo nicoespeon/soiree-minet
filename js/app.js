@@ -91,8 +91,9 @@ $(function() {
 	});
 	
 	/* Prépare les éléments de l'application */
-	player = new Personnage();			// Crée le modèle de personnage par défaut (player)
-	PNJs = new PNJList();				// Crée la collection de PNJs
+	player 	= new Personnage();			// Crée le modèle de personnage par défaut (player)
+	PNJs 	= new PNJList();			// Crée la collection de PNJs
+	audio	= new Audio();				// Crée le modèle du player audio	
 	
 	/* Charge la map des collisions */
 	$.getJSON('data/collision.json', function(data) {
@@ -112,5 +113,8 @@ $(function() {
 	}).complete(function() { 
 		/* Charge l'application une fois la map chargée */
 		new AppView;
-	});
+		
+		/* Charge le son de l'application */
+		new AudioView({ el:$('body'), model: audio});
+	});	
 });
