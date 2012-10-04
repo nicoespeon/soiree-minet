@@ -76,8 +76,10 @@ $(function() {
 			case 'audio':
 				if(icon=='r') {
 					$(this).html('p');
+					$(this).removeClass('play').addClass('pause');
 				} else {
 					$(this).html('r');
+					$(this).removeClass('pause').addClass('play');
 				}
 				break;
 		}
