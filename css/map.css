@@ -27,7 +27,6 @@
 
 #wrapper div {
 	position: absolute;
-	z-index: 2;
 }
 
 .flowers1 {
@@ -51,6 +50,8 @@
 	width: 32px;
 	height: 64px;
 	margin-top: -32px;
+	
+	z-index: 100;
 }
 
 .garcon {

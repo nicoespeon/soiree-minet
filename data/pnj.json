@@ -39,7 +39,7 @@
 	{
 		"pseudo": "Ays Péon",
 		"type": "ays-peon", 
-		"position": [30,72],
+		"position": [30,71],
 		"orientation": 1,
 		"limits": [0,1,3]
 	},

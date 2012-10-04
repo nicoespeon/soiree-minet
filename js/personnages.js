@@ -125,8 +125,9 @@ var PlayerView = Backbone.View.extend({
 	
 	move: function(e) {
 		// Variables initiales
-		var xCible = this.model.getX();
-		var yCible = this.model.getY();
+		var zIndex 	= $('#player').css('z-index');
+		var xCible 	= this.model.getX();
+		var yCible 	= this.model.getY();
 		var canMove = false;
 		
 		// Annule le déplacement si un est déjà en cours
@@ -172,13 +173,16 @@ var PlayerView = Backbone.View.extend({
 				break;
 		}
 		
+		$('#player').css('z-index', zIndex);	//Maintient l'état du z-index après changement d'orientation
+		
 		if(ETAT_ANIMATION > 0) {
 			canMove = this.canMoveTo(xCible,yCible);
+			isUpper = this.canMoveTo(xCible, yCible+1);
 		}
 		
 		// ETAPE 2 - On déplace le personnage si c'est possible
 		if(canMove==true) {
-			this.moveAnimation();
+			this.moveAnimation(isUpper);
 		} else {
 			ETAT_ANIMATION = -1;
 		}
@@ -208,8 +212,9 @@ var PlayerView = Backbone.View.extend({
 		return false;
 	},
 	
-	moveAnimation: function() {
+	moveAnimation: function(isUpper) {
 		var inst = this;
+		var zIndex = $('#player').css('z-index');
 		
 		var bouge = setInterval(function() {
 			var temps_ecoule = (ETAT_ANIMATION-1)*DUREE_DEPLACEMENT/NB_IMAGES;
@@ -253,8 +258,18 @@ var PlayerView = Backbone.View.extend({
 					
 					// On passe à l'état suivant
 					ETAT_ANIMATION++;
+					
+					// Gère la superposition avec un obstacle (PNJs)
+					if(!isUpper) {
+						$('#player').css('z-index', '10');
+					}
+					
+					if(zIndex=='10' && temps_ecoule<(DUREE_DEPLACEMENT/2)) {
+						// Laisse le temps au personnage de se "dégager" de l'obstacle avant de le repasser par-dessus
+						$('#player').css('z-index', '10');					
+					}	
 				}
-		}, DUREE_DEPLACEMENT/NB_IMAGES);	
+		}, DUREE_DEPLACEMENT/NB_IMAGES);
 	},
 	
 	scroll: function() {
