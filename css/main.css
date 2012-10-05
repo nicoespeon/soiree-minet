@@ -12,13 +12,6 @@
 | GENERAL
 |--------------------------------------------------------------------------
 */
-@media (max-width:1280px) {
-	/* Règles pour petites résolutions */
-	nav#menu {
-		left: 640px !important;
-	}
-}
-
 body {
 	overflow-x: hidden;
 	padding: 0;
@@ -105,31 +98,43 @@ nav#control li:hover {
 
 nav#menu {
 	position: fixed;
-	top: 10px;
-	left: 50%;
-	width: 800px;
-	height: 64px;
-	margin-left: -400px;
+	top: 50%;
+	right: 10px;
+	width: 200px;
+	height: 250px;
+	margin-top: -125px;
 	
-	text-align: center;
-	background-image: url('../img/nav.png'); 
+	text-align: left;
+	
+	border-width: 16px;
+	-moz-border-image: url('../img/nav.png') repeat;
+	-webkit-border-image: url('../img/nav.png') repeat;
+	border-image: url('../img/nav.png') 16 repeat;
 	
 	z-index: 100;
 }
 
 nav#menu ul {
 	list-style-type: none;
-	width: 772px;
-	height: 36px;
-	margin: 14px;
+	width: 100%;
+	height: 100%;
 	
 	background-color: #f8f8f8;
 }
 
-nav#menu a {
-	float: left;
-	padding: 0 15px;
-	margin-left: 30px;
+nav#menu li {
+	margin: 10px 20px;
+}
+
+nav#menu li:last-of-type {
+	position: absolute;
+	bottom: 0;	
+}
+
+nav#menu li a {
+	display: inline-block;
+	height: 100%;
+	width: 100%;
 	
 	font-size: 12px;
 	font-family: 'Press Start 2P', cursive;
@@ -138,17 +143,13 @@ nav#menu a {
 	text-decoration: none;
 }
 
-nav#menu a::before {
+nav#menu li a:hover {
+	cursor: default;
+}
+
+nav#menu a:hover::before {
 	content: url('../img/left-arrow.png');
-}
-
-nav#menu li.last a {
-	float: right;
-	margin-right: 30px;
-}
-
-nav#menu li.last a::before {
-	content: '';
+	margin-left: -12px;
 }
 
 /*
