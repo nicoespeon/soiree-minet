@@ -102,36 +102,72 @@
 	background-image: url('../img/personnages/aymi-li.png');
 }
 
-.orientationBas {
-	background-position-y: 0;
+.orientationBas, 
+.orientationBas.frame0 {
+	background-position: 0 0;
 }
 
-.orientationGauche {
-	background-position-y: -64px;
+.orientationBas.frame1 {
+	background-position: 32px 0;
 }
 
-.orientationDroite {
-	background-position-y: -128px;
+.orientationBas.frame2 {
+	background-position: 64px 0;
 }
 
-.orientationHaut {
-	background-position-y: -192px;
+.orientationBas.frame3 {
+	background-position: 96px 0;
 }
 
-.frame0 {
-	background-position-x: 0;
+.orientationGauche, 
+.orientationGauche.frame0 {
+	background-position: 0 -64px;
 }
 
-.frame1 {
-	background-position-x: 32px;
+.orientationGauche.frame1 {
+	background-position: 32px -64px;
 }
 
-.frame2 {
-	background-position-x: 64px;
+.orientationGauche.frame2 {
+	background-position: 64px -64px;
 }
 
-.frame3 {
-	background-position-x: 96px;
+.orientationGauche.frame3 {
+	background-position: 96px -64px;
+}
+
+.orientationDroite,
+.orientationDroite.frame0 {
+	background-position: 0 -128px;
+}
+
+.orientationDroite.frame1 {
+	background-position: 32px -128px;
+}
+
+.orientationDroite.frame2 {
+	background-position: 64px -128px;
+}
+
+.orientationDroite.frame3 {
+	background-position: 96px -128px;
+}
+
+.orientationHaut,
+.orientationHaut.frame0 {
+	background-position: 0 -192px;
+}
+
+.orientationHaut.frame1 {
+	background-position: 32px -192px;
+}
+
+.orientationHaut.frame2 {
+	background-position: 64px -192px;
+}
+
+.orientationHaut.frame3 {
+	background-position: 96px -192px;
 }
 
 /*

@@ -226,6 +226,7 @@ var PlayerView = Backbone.View.extend({
 					var frame = 0;
 					if(temps_ecoule!=0) {
 						frame = Math.ceil(NB_FRAME*decalage);
+						if(frame>3)	frame=0;
 					}
 
 					// On définit les nouvelles coordonnées 
