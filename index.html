@@ -2,7 +2,8 @@
 <html lang="fr">
 <head>
 	<!-- Title -->
-	<title>MiNET [07/12/12] : J-XX</title>
+	<title>Soirée MiNET [07/12/12]</title>
+	<link rel="icon" type="image/png" href="img/icone.png">
 	
 	<!-- Meta -->
 	<meta name="description" content="Soirée MiNET 2012... Coming Soon !" />
@@ -23,7 +24,14 @@
     <![endif]-->
     
 	<!-- Menu de navigation -->
-	<nav>
+	<nav id="control">
+		<ul>
+			<li class="font-icon" data-control="menu">j</li>
+			<li class="font-icon" data-control="audio" class="pause">p</li>
+		</ul>
+	</nav>
+	
+	<nav id="menu" style="display:none;">
 		<ul class="clearfix">
 			<li>
 				<a class="active" href="#">Soirée MiNET</a>
@@ -34,8 +42,8 @@
 			<li>
 				<a href="#">Tarifs</a>
 			</li>
-			<li class="last">
-				<a href="#howToPlay">?</a>
+			<li>
+				<a href="#howToPlay">How to Play ?</a>
 			</li>
 		</ul>
 	</nav>
@@ -126,10 +134,13 @@
 	<script src="js/lib/jquery-1.7.2.min.js"></script>
 	<script src="js/lib/underscore.min.js"></script>
 	<script src="js/lib/backbone.min.js"></script>
+	<script src="js/lib/jquery.toastmessage.js"></script>
+	<script src="js/lib/buzz.js"></script>
 	
 	<!-- Scripts JS -->
 	<script src="js/main.js"></script>
-	<script src="js/Personnages.js"></script>
+	<script src="js/personnages.js"></script>
+	<script src="js/audio.js"></script>
 	<script src="js/app.js"></script>
 </body>
 </html>

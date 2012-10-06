@@ -14,11 +14,6 @@ var AppView = Backbone.View.extend({
 	// On se fixe sur l'élément du DOM créé dans ce but
 	el: $('#wrapper'),
 	
-	// Gère les événements qui modifient les personnages (déplacement, rotation, ...)
-	events: {
-		
-	},
-	
 	// On écoute les différents changements sur nos collections pour leur affecter les effets voulus
 	// On récupère les données pour initialiser les PNJs
 	initialize: function() {
@@ -26,10 +21,8 @@ var AppView = Backbone.View.extend({
 		PNJs.on('add', this.addOne, this);
 		PNJs.on('reset', this.addAll, this);
 		PNJs.on('all', this.render, this);
-		
 		PNJs.fetch();
 		
-		// Player
 		new PlayerView({model: player});	// Charge le joueur dans l'application
 	},
 	
@@ -48,7 +41,36 @@ var AppView = Backbone.View.extend({
 	}
 });
 
+// Appel des fonctions de l'application après chargement du DOM
+// ------------------------------------------------------------
 $(function() {
+	/* Active le menu de controle */
+	$('nav#control li').click(function() {
+		var control = $(this).data('control');
+		var icon	= $(this).html();
+		
+		switch(control) {
+			case 'menu':
+				$('#menu').fadeToggle(500);
+				if(icon=='i') {
+					$(this).html('j');
+				} else {
+					$(this).html('i');
+				}
+				break;
+			
+			case 'audio':
+				if(icon=='r') {
+					$(this).html('p');
+					$(this).removeClass('play').addClass('pause');
+				} else {
+					$(this).html('r');
+					$(this).removeClass('pause').addClass('play');
+				}
+				break;
+		}
+	});
+
 	/* Positionnement des éléments de la map avec data-x/data-y */
 	$('#wrapper div').each(function() {
 		var x = $(this).data('x');
@@ -57,10 +79,10 @@ $(function() {
 	});
 	
 	/* Prépare les éléments de l'application */
-	player = new Personnage();			// Crée le modèle de personnage par défaut (player)
-	PNJs = new PNJList();				// Crée la collection de PNJs
+	player 	= new Personnage();			// Crée le modèle de personnage par défaut (player)
+	PNJs 	= new PNJList();			// Crée la collection de PNJs
+	audio	= new Audio();				// Crée le modèle du player audio	
 	
-		
 	/* Charge la map des collisions */
 	$.getJSON('data/collision.json', function(data) {
 		var datas = [];
@@ -79,5 +101,8 @@ $(function() {
 	}).complete(function() { 
 		/* Charge l'application une fois la map chargée */
 		new AppView;
-	});
+		
+		/* Charge le son de l'application */
+		new AudioView({ el:$('body'), model: audio});
+	});	
 });

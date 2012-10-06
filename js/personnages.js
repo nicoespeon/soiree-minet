@@ -23,7 +23,8 @@ var Personnage = Backbone.Model.extend({
 		orientation: 0,
 		position: [23,4],
 		limits: [0,1,2,3],
-		frame: 0
+		frame: 0,
+		texte: ["La soirée MiNET arrive... J'ai hâte !"]
 	},
 	
 	// Intégrité des attributs
@@ -95,15 +96,14 @@ var PlayerView = Backbone.View.extend({
 	// Selon un template particulier
 	template: _.template($('#player-template').html()),
 	
-	events: {
-	
-	},
-	
 	initialize: function() {
 		_.bindAll(this);
 		$(document).bind('keydown', this.move);
+		$(document).bind('keydown', this.action);
 		
 		this.model.on('change', this.render, this);
+		this.model.on('change:position', this.scroll, this);
+		
 		this.render();	
 	},
 	
@@ -122,8 +122,9 @@ var PlayerView = Backbone.View.extend({
 	
 	move: function(e) {
 		// Variables initiales
-		var xCible = this.model.getX();
-		var yCible = this.model.getY();
+		var zIndex 	= $('#player').css('z-index');
+		var xCible 	= this.model.getX();
+		var yCible 	= this.model.getY();
 		var canMove = false;
 		
 		// Annule le déplacement si un est déjà en cours
@@ -169,13 +170,16 @@ var PlayerView = Backbone.View.extend({
 				break;
 		}
 		
+		$('#player').css('z-index', zIndex);	//Maintient l'état du z-index après changement d'orientation
+		
 		if(ETAT_ANIMATION > 0) {
 			canMove = this.canMoveTo(xCible,yCible);
+			isUpper = this.canMoveTo(xCible, yCible+1);
 		}
 		
 		// ETAPE 2 - On déplace le personnage si c'est possible
 		if(canMove==true) {
-			this.moveAnimation();
+			this.moveAnimation(isUpper);
 		} else {
 			ETAT_ANIMATION = -1;
 		}
@@ -205,8 +209,9 @@ var PlayerView = Backbone.View.extend({
 		return false;
 	},
 	
-	moveAnimation: function() {
+	moveAnimation: function(isUpper) {
 		var inst = this;
+		var zIndex = $('#player').css('z-index');
 		
 		var bouge = setInterval(function() {
 			var temps_ecoule = (ETAT_ANIMATION-1)*DUREE_DEPLACEMENT/NB_IMAGES;
@@ -221,6 +226,7 @@ var PlayerView = Backbone.View.extend({
 					var frame = 0;
 					if(temps_ecoule!=0) {
 						frame = Math.ceil(NB_FRAME*decalage);
+						if(frame>3)	frame=0;
 					}
 
 					// On définit les nouvelles coordonnées 
@@ -250,8 +256,46 @@ var PlayerView = Backbone.View.extend({
 					
 					// On passe à l'état suivant
 					ETAT_ANIMATION++;
+					
+					// Gère la superposition avec un obstacle (PNJs)
+					if(!isUpper) {
+						$('#player').css('z-index', '10');
+					}
+					
+					if(zIndex=='10' && temps_ecoule<(DUREE_DEPLACEMENT/2)) {
+						// Laisse le temps au personnage de se "dégager" de l'obstacle avant de le repasser par-dessus
+						$('#player').css('z-index', '10');					
+					}	
 				}
-		}, DUREE_DEPLACEMENT/NB_IMAGES);	
+		}, DUREE_DEPLACEMENT/NB_IMAGES);
+	},
+	
+	scroll: function() {
+		var x = this.model.getX()*32;
+		var y = this.model.getY()*32;
+		var height = $(window).height();
+		var width = $(window).width();
+		
+		var decalX = x-(width/2);
+		var decalY = y-(height/2);
+		
+		if(decalX>0) {
+			$('body').scrollLeft(decalX);
+		} else {
+			$('body').scrollLeft(0);
+		}
+		
+		if(decalY>0) {
+			$('body').scrollTop(decalY);
+		} else {
+			$('body').scrollTop(0);
+		}
+	},
+	
+	action: function(e) {
+		if(e.keyCode=='65' || e.keyCode=='13') {
+			$().toastmessage('showNoticeToast');
+		}
 	}
 });
 
@@ -264,10 +308,6 @@ var PNJView = Backbone.View.extend({
 	
 	// A laquelle on applique un template particulier
 	template: _.template($('#pnj-template').html()),
-	
-	events: {
-	
-	},
 	
 	// La vue écoute les changements sur le modèle
 	// Lorsque le modèle change, la vue se rafraîchit

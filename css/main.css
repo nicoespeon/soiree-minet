@@ -12,20 +12,6 @@
 | GENERAL
 |--------------------------------------------------------------------------
 */
-@media (max-width:1280px) {
-	/* Règles pour petites résolutions */
-	nav {
-		left: 640px !important;
-	}
-}
-
-@font-face {
-  font-family: 'Press Start 2P';
-  font-style: normal;
-  font-weight: 400;
-  src: local('fonts/PressStart2P-Regular.ttf'), local('fonts/PressStart2P-Regular.ttf'), url('fonts/PressStart2P-Regular.ttf') format('woff');
-}
-
 body {
 	overflow-x: hidden;
 	padding: 0;
@@ -52,33 +38,102 @@ body {
 | NAVIGATION
 |--------------------------------------------------------------------------
 */
-nav {
+nav#control {
 	position: fixed;
-	left: 50%;
-	bottom: 10px;
-	width: 800px;
-	height: 64px;
-	margin-left: -400px;
+	top: 20px;
+	left: 10px;
+	height: 40px;
 	
-	text-align: center;
-	background-image: url('../img/nav.png'); 
+	background: #333;
+	opacity: 0.9;
+	
+	border: 2px solid #999;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
 	
 	z-index: 100;
 }
 
-nav ul {
+nav#control ul {
 	list-style-type: none;
-	width: 772px;
-	height: 36px;
-	margin: 14px;
+	padding: 0;
+}
+
+nav#control li {
+	position: relative;
+	top: 0;
+	float: left;
+	width: 50px;
+	
+	color: white;
+	font-size: 2em;
+	line-height: 40px;
+	text-align: center;
+}
+
+nav#control li:first-of-type {
+	-moz-border-radius-topleft: 7px;
+	-moz-border-radius-bottomleft: 7px;
+	-webkit-border-top-left-radius: 7px;
+	-webkit-border-bottom-left-radius: 7px;
+	border-top-left-radius: 7px;
+	border-bottom-left-radius: 7px;
+}
+
+nav#control li:last-of-type {
+	-moz-border-radius-topright: 7px;
+	-moz-border-radius-bottomright: 7px;
+	-webkit-border-top-right-radius: 7px;
+	-webkit-border-bottom-right-radius: 7px;
+	border-top-right-radius: 7px;
+	border-bottom-right-radius: 7px;
+}
+
+nav#control li:hover {
+	cursor: pointer;
+	background: #555;
+}
+
+nav#menu {
+	position: fixed;
+	top: 50%;
+	right: 10px;
+	width: 200px;
+	height: 250px;
+	margin-top: -125px;
+	
+	text-align: left;
+	
+	border-width: 16px;
+	-moz-border-image: url('../img/nav.png') repeat;
+	-webkit-border-image: url('../img/nav.png') repeat;
+	border-image: url('../img/nav.png') 16 repeat;
+	
+	z-index: 100;
+}
+
+nav#menu ul {
+	list-style-type: none;
+	width: 100%;
+	height: 100%;
 	
 	background-color: #f8f8f8;
 }
 
-nav a {
-	float: left;
-	padding: 0 15px;
-	margin-left: 30px;
+nav#menu li {
+	margin: 10px 20px;
+}
+
+nav#menu li:last-of-type {
+	position: absolute;
+	bottom: 0;	
+}
+
+nav#menu li a {
+	display: inline-block;
+	height: 100%;
+	width: 100%;
 	
 	font-size: 12px;
 	font-family: 'Press Start 2P', cursive;
@@ -87,15 +142,203 @@ nav a {
 	text-decoration: none;
 }
 
-nav a::before {
+nav#menu li a:hover {
+	cursor: default;
+}
+
+nav#menu a:hover::before {
 	content: url('../img/left-arrow.png');
+	margin-left: -12px;
 }
 
-nav li.last a {
-	float: right;
-	margin-right: 30px;
+/*
+|--------------------------------------------------------------------------
+| FONTS
+|--------------------------------------------------------------------------
+*/
+@font-face {
+  font-family: 'Press Start 2P';
+  src: 	local('fonts/PressStart2P-Regular.ttf'), 
+  		local('fonts/PressStart2P-Regular.ttf'), 
+  		url('fonts/PressStart2P-Regular.ttf') format('woff');
+  font-style: normal;
+  font-weight: 400;
 }
 
-nav li.last a::before {
-	content: '';
+@font-face {
+	font-family: 'RaphaelIcons';
+    src: 	url('../fonts/raphaelicons-webfont.eot');
+    src: 	local('☺'), 
+    		url('../fonts/raphaelicons-webfont.woff') format('woff'), 
+    		url('../fonts/raphaelicons-webfont.ttf') format('truetype'), 
+    		url('../fonts/raphaelicons-webfont.svgwebfontKOf9F4sx') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.font-icon {
+    font-family: 'RaphaelIcons';
+}
+
+/*
+|--------------------------------------------------------------------------
+| NOTIFICATIONS
+|--------------------------------------------------------------------------
+*/
+.toast-container {
+	width: 800px;
+	z-index: 9999;
+}
+
+* html .toast-container {
+	position: absolute;
+}
+
+.toast-item {
+	position: relative;
+	display: block;
+	height: auto;
+    opacity: 0.9;
+	margin: 0 0 12px 0;
+	padding: 20px 6px 20px 6px;
+	
+	background: #333;
+	color: #eee;
+	font-size: 14px;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+	
+	border: 2px solid #999;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+
+.toast-item p {
+    text-align: left;
+    margin-left: 50px;
+}
+
+.toast-item-close {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    width: 22px;
+    height: 22px;
+    background: url('../img/notifications/close.gif');
+}
+
+.toast-item-image {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    width: 32px;
+    height: 32px;
+    margin-top: -16px;
+}
+
+.toast-item-image-notice {
+    background:url('../img/notifications/notice.png');
+}
+
+.toast-item-image-success {
+    background:url('../img/notifications/success.png');
+}
+
+.toast-item-image-warning {
+    background:url('../img/notifications/warning.png');
+}
+
+.toast-item-image-error {
+    background:url('../img/notifications/error.png');
+}
+
+
+/**
+ * Type of notification
+ *
+ * Pattern: toast-type-[value]
+ * where 'value' is the real value of the plugin option 'type'
+ *
+ */
+.toast-type-notice {
+    border-color: #5096d3;
+}
+
+.toast-type-success {
+    border-color: #94C22B;
+}
+
+.toast-type-warning {
+    border-color: #FCBD57;
+}
+
+.toast-type-error {
+    border-color: #B32B2B;
+}
+
+/**
+ * Position of notification
+ *
+ * Pattern: toast-position-[value]
+ * where 'value' is the real value of the plugin option 'position'
+ *
+ */
+.toast-position-top-left {
+    position: fixed;
+    left: 20px;
+    top: 20px;
+}
+
+.toast-position-top-center {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    margin-left: -400px;
+}
+
+.toast-position-top-right {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+
+.toast-position-middle-left {
+    position: fixed;
+    top: 50%;
+    left: 20px;
+    margin-top: -40px;
+}
+
+.toast-position-middle-center {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -400px;
+    margin-top: -40px;
+}
+
+.toast-position-middle-right {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    margin-top: -40px;
+}
+
+.toast-position-bottom-left {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+}
+
+.toast-position-bottom-center {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    margin-left: -400px;
+}
+
+.toast-position-bottom-right {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
 }
