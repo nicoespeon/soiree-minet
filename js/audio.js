@@ -33,16 +33,13 @@ var AudioView = Backbone.View.extend({
 		});
 		
 		// On bind la lecture sur les changements du modèle
-		this.model.on('change', this.chgTrack, this);
+		this.model.on('change:piste', this.chgTrack, this);
 	},
 	
 	play: function() {
 		this.sound.play()
 		    .fadeIn(3000)
-		    .loop()
-		    .bind('timeupdate', function() {
-		        //var timer = buzz.toTimer(this.getTime());
-	    });
+		    .loop();
 	},
 	
 	pause: function() {
@@ -52,14 +49,16 @@ var AudioView = Backbone.View.extend({
 	},
 	
 	stop: function() {
-		//this.sound.stop();
+		this.sound.stop();
 	},
 	
 	chgTrack: function() {
-		this.sound = new buzz.sound('sounds/'+this.model.get('piste'), {
+		var nextSound = new buzz.sound('sounds/'+this.model.get('piste'), {
 		    formats: this.model.get('ext')
 		}); 
 		 
-		this.play();
+		this.sound.fadeWith(nextSound,2000);
+		this.sound = nextSound;
+		this.sound.loop();
 	}
 });
