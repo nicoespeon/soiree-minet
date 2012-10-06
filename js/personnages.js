@@ -99,6 +99,7 @@ var PlayerView = Backbone.View.extend({
 	initialize: function() {
 		_.bindAll(this);
 		$(document).bind('keydown', this.move);
+		$(document).bind('keydown', this.action);
 		
 		this.model.on('change', this.render, this);
 		this.model.on('change:position', this.scroll, this);
@@ -287,6 +288,12 @@ var PlayerView = Backbone.View.extend({
 			$('body').scrollTop(decalY);
 		} else {
 			$('body').scrollTop(0);
+		}
+	},
+	
+	action: function(e) {
+		if(e.keyCode=='65' || e.keyCode=='13') {
+			$().toastmessage('showNoticeToast');
 		}
 	}
 });
