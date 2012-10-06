@@ -23,7 +23,8 @@ var Personnage = Backbone.Model.extend({
 		orientation: 0,
 		position: [23,4],
 		limits: [0,1,2,3],
-		frame: 0
+		frame: 0,
+		texte: ["La soirée MiNET arrive... J'ai hâte !"]
 	},
 	
 	// Intégrité des attributs
