@@ -27,14 +27,42 @@ var EventView = Backbone.View.extend({
 	initialize: function() {
 		_.bindAll(this);
 		$(document).bind('keydown', this.konami);
+		
+		KEYS = [];
 	},
 	
 	konami: function(e) {
-		var keys = [];
-		keys.push(e.keyCode);
+		KEYS.push(e.keyCode);
 		
-		if(keys.toString().indexOf(CALLME)>=0) {
+		console.log((KEYS.toString()));
+		
+		if(KEYS.toString().indexOf(CALLME)>=0) {
 			audio.set('piste', 'call-me-maybe');
+			$().toastmessage('showSuccessToast', '<strong>Event débloqué</strong> - Bien joué, vous avez trouvé le konami code de <strong>Call me maybe</strong> !');
+			KEYS = [];
+		}
+		
+		else if(KEYS.toString().indexOf(GANGNAM)>=0) {
+			audio.set('piste', 'gangnam-style');
+			$().toastmessage('showSuccessToast', '<strong>Event débloqué</strong> - Bien joué, vous avez trouvé le konami code de <strong>Gangnam Style</strong> !');
+			KEYS = [];
+		}
+		
+		else if(KEYS.toString().indexOf(NYAN)>=0) {
+			audio.set('piste', 'nyan-cat');
+			$().toastmessage('showSuccessToast', '<strong>Event débloqué</strong> - Bien joué, vous avez trouvé le konami code de <strong>Nyan Cat</strong> !');
+			KEYS = [];
+		}
+		
+		else if(KEYS.toString().indexOf(SPECIAL)>=0) {
+			audio.set('piste', 'rickroll');
+			$().toastmessage('showSuccessToast', '<strong>Event débloqué</strong> - Bien joué, vous avez trouvé le konami code de <strong>Rick Roll</strong> !');
+			
+			setTimeout(function() {
+				$().toastmessage('showWarningToast', '<strong>One more thing</strong> - Vous venez de vous faire Rick Rolled...');
+			}, 5000);
+			
+			KEYS = [];
 		}
 	}
 });
