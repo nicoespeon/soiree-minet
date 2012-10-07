@@ -9,14 +9,20 @@
 		"pseudo": "Stai Fouyon", 
 		"type": "stai-fouyon",
 		"position": [40,6],
-		"limits": [0,1]
+		"limits": [0,1],
+		"texte": [
+			"Tu connais le code spécial ?"
+		]
 	},
 	{
 		"pseudo": "Wiki M.",
 		"type": "wiki-m", 
 		"position": [40,33],
 		"orientation": 1,
-		"limits": [1]
+		"limits": [1],
+		"texte": [
+			"Le savais-tu ?"
+		]
 	},
 	{
 		"pseudo": "Ka'as Tou", 
@@ -28,7 +34,10 @@
 		"pseudo": "Be'er Nard",
 		"type": "beer-nard", 
 		"position": [9,39],
-		"limits": [0,2,3]
+		"limits": [0,2,3],
+		"texte": [
+			"Ici c'est Bricol'INT ! Cercueils, tapis de billard, décor pour Emoty:S, ... on est partout !"
+		]
 	},
 	{
 		"pseudo": "Nethan Tau", 
@@ -47,7 +56,10 @@
 		"pseudo": "Fönt Fayce",
 		"type": "font-fayce", 
 		"position": [28,83],
-		"limits": [0,1,2]
+		"limits": [0,1,2],
+		"texte": [
+			"Quel temps pourri... *râle*"
+		]
 	},
 	{
 		"pseudo": "Effe Pégéa", 
@@ -58,6 +70,9 @@
 	{
 		"pseudo": "Raguenar", 
 		"type": "raguenar",
-		"position": [23,17]
+		"position": [23,17],
+		"texte": [
+			"Malgré la complexité actuelle, il ne faut pas négliger d'appréhender la plus grande partie des problématiques éventuelles, et déjà en notre possession."	
+		]
 	}
 ]

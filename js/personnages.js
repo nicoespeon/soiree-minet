@@ -99,7 +99,6 @@ var PlayerView = Backbone.View.extend({
 	initialize: function() {
 		_.bindAll(this);
 		$(document).bind('keydown', this.move);
-		$(document).bind('keydown', this.action);
 		
 		this.model.on('change', this.render, this);
 		this.model.on('change:position', this.scroll, this);
@@ -290,12 +289,6 @@ var PlayerView = Backbone.View.extend({
 		} else {
 			$('body').scrollTop(0);
 		}
-	},
-	
-	action: function(e) {
-		if(e.keyCode=='65' || e.keyCode=='13') {
-			$().toastmessage('showNoticeToast');
-		}
 	}
 });
 
@@ -310,9 +303,11 @@ var PNJView = Backbone.View.extend({
 	template: _.template($('#pnj-template').html()),
 	
 	// La vue écoute les changements sur le modèle
-	// Lorsque le modèle change, la vue se rafraîchit
 	// Comme il y a une relation 1-1 entre le modèle et la vue, on y fait référence directement ici
 	initialize: function() {
+		_.bindAll(this);
+		$(document).bind('keydown', this.parle);
+		
 		COLLISIONS[this.model.getX()][this.model.getY()] = '0';
 		this.autoRotate();
 		
@@ -355,5 +350,53 @@ var PNJView = Backbone.View.extend({
 				thisPNJ.rotate(orientation);
 			}, Math.floor(Math.random()*(10000) + 5000)
 		);
+	},
+	
+	parle: function(e) {
+		if(e.keyCode=='65' || e.keyCode=='13') {
+			var direction 	= player.get('orientation');
+			var xCible 		= player.getX();
+			var yCible 		= player.getY();
+			
+			switch(direction) {
+				case 0:
+					yCible++;
+					break;
+					
+				case 1:
+					xCible--;
+					break;
+					
+				case 2:
+					xCible++;
+					break;
+					
+				case 3:
+					yCible--;
+					break;
+			}
+			
+			if(this.model.getX()==xCible && this.model.getY()==yCible) {
+				switch(direction) {
+					case 0:
+						this.model.set('orientation', 3);
+						break;
+						
+					case 1:
+						this.model.set('orientation', 2);
+						break;
+						
+					case 2:
+						this.model.set('orientation', 1);
+						break;
+						
+					case 3:
+						this.model.set('orientation', 0);
+						break;
+				}
+				
+				$().toastmessage('showNoticeToast', '<strong>'+this.model.get('pseudo')+'</strong> - '+this.model.get('texte')[0]);		
+			}
+		}
 	}
 });
