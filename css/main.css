@@ -222,6 +222,10 @@ nav#menu a:hover::before {
 	font-weight: bold;
 }
 
+.toast-item em {
+	font-style: italic;
+}
+
 .toast-item-close {
     position: absolute;
     top: 7px;
