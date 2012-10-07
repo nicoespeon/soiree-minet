@@ -24,7 +24,9 @@ var NB_FRAME		 	= 4; 			// Nombre de frames
 var NB_IMAGES 			= 50;			// Nombre d'images par déplacement
 var DUREE_DEPLACEMENT 	= 600;			// Durée du déplacement (en ms)
 var ETAT_ANIMATION		= -1;			// Personnage initialement immobile
-var COLLISIONS = [];					// On définit la map des collisions
+var COLLISIONS 			= [];			// On définit la map des collisions
+
+var ISPLAYING 			= false;		// Etat du lecteur audio
 
 // Configuration des notifications 
 // -------------------------------
