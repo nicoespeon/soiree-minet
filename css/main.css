@@ -218,6 +218,10 @@ nav#menu a:hover::before {
     margin-left: 50px;
 }
 
+.toast-item strong {
+	font-weight: bold;
+}
+
 .toast-item-close {
     position: absolute;
     top: 7px;
