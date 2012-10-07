@@ -64,5 +64,23 @@ var EventView = Backbone.View.extend({
 			
 			KEYS = [];
 		}
+		
+		else if(KEYS.toString().indexOf(EPIC)>=0) {
+			audio.set('piste', 'epic-sax');
+			$().toastmessage('showSuccessToast', '<strong>Event débloqué</strong> - Bien joué, vous avez trouvé le konami code de <strong>Epic Sax</strong> !');
+			
+			setTimeout(function() {
+				$().toastmessage('showWarningToast', "<strong>One more thing</strong> - J'ai développé le site, vous pensiez vraiment que vous alliez y échapper ?");
+			}, 5000);
+			
+			KEYS = [];
+		}
+		
+		else if(KEYS.toString().indexOf(GBAR)>=0) {
+			audio.set('piste', 'gay-bar');
+			$().toastmessage('showSuccessToast', '<strong>Event débloqué</strong> - Bien joué, vous avez trouvé le konami code de <strong>Gay Bar</strong> !');
+			
+			KEYS = [];
+		}
 	}
 });
