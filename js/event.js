@@ -34,9 +34,26 @@ var EventView = Backbone.View.extend({
 	konami: function(e) {
 		KEYS.push(e.keyCode);
 		
-		console.log((KEYS.toString()));
+		console.log(KEYS.toString());
 		
-		if(KEYS.toString().indexOf(CALLME)>=0) {
+		if(KEYS.toString().indexOf(KONAMI)>=0) {
+			var genre = player.get('type');
+			if(genre=="garcon") {
+				player.set('type', 'fille');
+			} else {
+				player.set('type', 'garcon');
+			}
+			
+			$().toastmessage('showSuccessToast', "<strong>Event débloqué</strong> - Bien joué, vous avez trouvé le <strong>KONAMI CODE</strong> !");
+			
+			setTimeout(function() {
+				$().toastmessage('showWarningToast', "<strong>One more thing</strong> - Au cas où vous vous poseriez la question... c'est réversible !");
+			}, 5000);
+			
+			KEYS = [];
+		}
+		
+		else if(KEYS.toString().indexOf(CALLME)>=0) {
 			audio.set('piste', 'call-me-maybe');
 			$().toastmessage('showSuccessToast', '<strong>Event débloqué</strong> - Bien joué, vous avez trouvé le konami code de <strong>Call me maybe</strong> !');
 			KEYS = [];
