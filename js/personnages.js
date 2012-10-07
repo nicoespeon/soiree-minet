@@ -395,7 +395,8 @@ var PNJView = Backbone.View.extend({
 						break;
 				}
 				
-				$().toastmessage('showNoticeToast', '<strong>'+this.model.get('pseudo')+'</strong> - '+this.model.get('texte')[0]);		
+				var texte = this.model.get('texte')[Math.floor(Math.random()*this.model.get('texte').length)];
+				$().toastmessage('showNoticeToast', '<strong>'+this.model.get('pseudo')+'</strong> - '+texte);		
 			}
 		}
 	}
