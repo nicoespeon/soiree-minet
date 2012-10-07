@@ -23,7 +23,9 @@ var AppView = Backbone.View.extend({
 		PNJs.on('all', this.render, this);
 		PNJs.fetch();
 		
-		new PlayerView({model: player});	// Charge le joueur dans l'application
+		new PlayerView({model: player});				// Charge le joueur dans l'application
+		new AudioView({ el:$('body'), model: audio});	// Charge l'audio de l'application
+		new EventView({ el:$('body'), model: event});	// Charge les events de l'application
 	},
 	
 	// Ajoute un PNJ en créant une vue pour celui-ci
@@ -82,6 +84,7 @@ $(function() {
 	player 	= new Personnage();			// Crée le modèle de personnage par défaut (player)
 	PNJs 	= new PNJList();			// Crée la collection de PNJs
 	audio	= new Audio();				// Crée le modèle du player audio	
+	event 	= new Event();
 	
 	/* Charge la map des collisions */
 	$.getJSON('data/collision.json', function(data) {
@@ -101,8 +104,5 @@ $(function() {
 	}).complete(function() { 
 		/* Charge l'application une fois la map chargée */
 		new AppView;
-		
-		/* Charge le son de l'application */
-		new AudioView({ el:$('body'), model: audio});
 	});	
 });
