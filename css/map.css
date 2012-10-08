@@ -321,6 +321,12 @@
 	background: url('../img/map/port.png');
 }
 
+#port .pc.on {
+	width: 32px;
+	height: 64px;
+	background: url('../img/map/pc-on.png');
+}
+
 /*
 |--------------------------------------------------------------------------
 | MER
