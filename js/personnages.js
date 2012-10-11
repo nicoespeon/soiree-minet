@@ -353,7 +353,7 @@ var PNJView = Backbone.View.extend({
 	},
 	
 	parle: function(e) {
-		if(e.keyCode=='65' || e.keyCode=='13') {
+		if(e.keyCode=='13') {
 			var direction 	= player.get('orientation');
 			var xCible 		= player.getX();
 			var yCible 		= player.getY();
