@@ -1,18 +1,21 @@
-# COMING SOON - SOIREE MINET 07/12/12
+## SOIREE MINET [07/12/12]
+--------------------------
 
-## 1. PRINCIPE
+### 1. PRINCIPE
 
-Il s'agit de faire un jeu en HTML5-Javascript. 
-Le visiteur se trouvera sur une carte et pourra se déplacer pour interagir avec le décor rempli de goodies, d'infos cachées et autres trucs concernant la soirée.
-
-
-## 2. COMMANDES
-
-Déplacement : Fleches directionnelles
-Activer/Interagir : a,A ou Enter
+Il s'agit d'un jeu en HTML5-Javascript. 
+Le visiteur se trouve sur une carte 1280x3200.
+Il se déplace pour interagir avec le décor rempli de PNJs, goodies, d'infos cachées et autres trucs concernant la soirée.
 
 
-## 3. REMARQUES
+### 2. COMMANDES
 
-N'hésitez pas à tester et faire remonter (par des issues) tout ce qui ne va pas pour que ce soit fonctionnel !!
-La soirée MiNET va (encore) être la plus fat, for sure...
+- Déplacement 		: Flèches directionnelles
+- Activer/Interagir : Enter
+- Konami Code		: Autres touches du clavier
+
+
+### 3. REMARQUES
+
+N'hésitez pas à tester et faire remonter (par des issues) tout ce qui ne va pas pour que ce soit fonctionnel !
+Les fichiers de sons ne sont pas versionnés mais sont disponibles dans un fichier zip de la Dropbox MiNET (Projets/Soirées/2012-2013).
