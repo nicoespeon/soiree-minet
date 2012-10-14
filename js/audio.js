@@ -13,7 +13,7 @@
 var Audio = Backbone.Model.extend({
 	defaults: {
 		piste: 'partyrock',
-		ext: ['mp3']
+		ext: ['mp3','ogg']
 	}
 });
 
