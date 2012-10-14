@@ -34,8 +34,6 @@ var EventView = Backbone.View.extend({
 	konami: function(e) {
 		KEYS.push(e.keyCode);
 		
-		console.log(KEYS.toString());
-		
 		if(KEYS.toString().indexOf(KONAMI)>=0) {
 			var genre = player.get('type');
 			if(genre=="garcon") {
