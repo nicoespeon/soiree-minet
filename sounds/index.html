@@ -1,10 +1,146 @@
-<html>
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-	<title>403 Forbidden</title>
+	<!-- Title -->
+	<title>Soirée MiNET [07/12/12]</title>
+	<link rel="icon" type="image/png" href="img/icone.png">
+	
+	<!-- Meta -->
+	<meta name="description" content="Soirée MiNET 2012... Coming Soon !" />
+	<meta name="keywords" content="MiNET, soirée, hack, Télécom, Soirée MiNET 2012, TMSP, TEM, TSP, Télécom SudParis, Télécom École de Management" />
+	<meta name="author" content="Espeon" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1">
+	<meta charset="utf-8" />
+	
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/reset.css" />
+	<link rel="stylesheet" href="css/main.css" />
+	<link rel="stylesheet" href="css/map.css" />
 </head>
 <body>
-
-<p>Directory access is forbidden.</p>
-
+	<!--[if lt IE 9]>
+	    <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+	    <script>CFInstall.check({ mode: "overlay" });</script>
+    <![endif]-->
+    
+	<!-- Menu de navigation -->
+	<nav id="control">
+		<ul>
+			<li class="font-icon" data-control="menu">j</li>
+			<li class="font-icon" data-control="audio" class="pause">p</li>
+		</ul>
+	</nav>
+	
+	<nav id="menu" style="display:none;">
+		<ul class="clearfix">
+			<li>
+				<a class="active" href="#">Soirée MiNET</a>
+			</li>
+			<li>
+				<a href="#">Animations</a>
+			</li>
+			<li>
+				<a href="#">Tarifs</a>
+			</li>
+			<li>
+				<a href="#howToPlay">How to Play ?</a>
+			</li>
+		</ul>
+	</nav>
+	
+	<!-- Interactions -->
+	<div id="interaction"></div>
+	
+	<!-- Notifications -->
+	<div id="notification"></div>
+	
+	<!-- Contenu du jeu -->
+	<div id="wrapper">
+		<!-- Décor BG du jeu -->
+		<div class="flowers1" data-top="21" data-left="5"></div>
+		<div class="flowers1" data-top="26" data-left="15"></div>
+		<div class="flowers1" data-top="45" data-left="21"></div>
+		<div class="flowers1" data-top="49" data-left="38"></div>
+		<div class="flowers1" data-top="55" data-left="28"></div>
+		<div class="flowers1" data-top="57" data-left="6"></div>
+		<div class="flowers1" data-top="65" data-left="23"></div>
+		
+		<div class="flowers2" data-top="4" data-left="19"></div>
+		<div class="flowers2" data-top="4" data-left="25"></div>
+		
+		<!-- Montagnes -->
+		<div id="mountain">
+			<div class="upper top" data-x="1" data-y="1"></div>
+			<div class="upper left" data-x="1" data-y="1"></div>
+			<div class="corner" data-x="3" data-y="3"></div>
+			<div class="front" data-x="4" data-y="3"></div>
+			<div class="right" data-x="3" data-y="4"></div>
+			<div class="door" data-x="22" data-y="2"></div>
+			<div class="runes" data-x="5" data-y="3"></div>
+		</div>
+		
+		<!-- Runes -->
+		<div id="runes" data-x="7" data-y="2">
+		</div>
+		
+		<!-- Prairie -->
+		<div id="prairie">
+			<div class="path" data-x="22" data-y="4"></div>
+			<div class="path end" data-x="22" data-y="34"></div>
+		</div>
+		
+		<!-- Forêt -->
+		<div id="forest" data-x="27" data-y="3">
+		</div>
+		
+		<!-- Red City -->
+		<div id="red-city">
+			<div class="city" data-x="4" data-y="28"></div>
+			<div class="road" data-x="10" data-y="57"></div>
+		</div>
+		
+		<!-- Blue City -->
+		<div id="blue-city">
+			<div class="city" data-x="26" data-y="55"></div>
+			<div class="road" data-x="13" data-y="67"></div>
+		</div>
+		
+		<!-- Port -->
+		<div id="port" data-x="4" data-y="74">
+		</div>
+		
+		<!-- Mer -->
+		<div id="sea">
+			<div class="top" data-x="4" data-y="90"></div>
+			<div class="water" data-x="4" data-y="91"></div>
+			<div class="boat" data-x="4" data-y="96"></div>
+		</div>
+		
+		<!-- PNJs -->
+		<ul id="pnjs"></ul>
+	</div>
+	
+	<!-- Templates -->
+	<script type="text/template" id="pnj-template">
+		<div class="pnj <%= type %> <%= ORIENTATION[orientation] %>" data-x="<%= position[0] %>" data-y="<%= position[1] %>"></div>
+	</script>
+	<script type="text/template" id="player-template">
+		<div id="player" class="<%= type %> <%= ORIENTATION[orientation] %> frame<%= frame %>" data-x="<%= position[0] %>" data-y="<%= position[1] %>">
+			<!-- Here is your player ! -->
+		</div>
+	</script>
+	
+	<!-- Librairies JS -->
+	<script src="js/lib/jquery-1.7.2.min.js"></script>
+	<script src="js/lib/underscore.min.js"></script>
+	<script src="js/lib/backbone.min.js"></script>
+	<script src="js/lib/jquery.toastmessage.js"></script>
+	<script src="js/lib/buzz.js"></script>
+	
+	<!-- Scripts JS -->
+	<script src="js/main.js"></script>
+	<script src="js/personnages.js"></script>
+	<script src="js/audio.js"></script>
+	<script src="js/app.js"></script>
 </body>
 </html>

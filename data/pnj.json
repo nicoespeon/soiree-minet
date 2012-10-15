@@ -3,61 +3,121 @@
 		"pseudo": "Aymi Li", 
 		"type": "aymi-li",
 		"position": [12,15],
-		"limits": [0]
+		"limits": [0],
+		"texte": [
+			"J'écoute une musique super swag ! Tu veux écouter ? Tape <em>CALLME</em> et tu verras...",
+			"Je préfère la version avec des cookies..."
+		]
 	},
 	{
 		"pseudo": "Stai Fouyon", 
 		"type": "stai-fouyon",
 		"position": [40,6],
-		"limits": [0,1]
+		"limits": [0,1],
+		"texte": [
+			"Tu connais le code spécial ? Tape <em>SPECIAL</em> et tu verras..."
+		]
 	},
 	{
 		"pseudo": "Wiki M.",
 		"type": "wiki-m", 
 		"position": [40,33],
 		"orientation": 1,
-		"limits": [1]
+		"limits": [1],
+		"texte": [
+			"Le savais-tu ? L'orgasme du cochon dure 30 minutes. Ca doit expliquer le <em>laaaaaa</em> de l'ASINT, dingue !",
+			"Le savais-tu ? Il est impossible d'éternuer les yeux ouverts, dingue !",
+			"Le savais-tu ? L'urine du chat luit sous la lumière noire. Ca donne des idées pour la soirée, dingue !",
+			"Le savais-tu ? En 1970 le docteur T. Carletti modélise un produit adhésif qui se colle et se décolle de nombreuses fois sans laisser de trace, dingue !",
+			"Le savais-tu ? Le lait est une suspension colloïdale de globules gras dans une suspension à base d'eau, dingue !",
+			"Le savais-tu ? Gerhard Fisher est l'inventeur et le constructeur d'un des tout premiers détecteurs de métaux à large diffusion: le <em>Metallascope</em>, dingue !"
+		]
 	},
 	{
 		"pseudo": "Ka'as Tou", 
 		"type": "kaas-tou",	
 		"position": [15,34],	
-		"limits": [0,2]
+		"limits": [0,2],
+		"texte": [
+			"Derrière moi, <em>INTech</em>, fleuron de la robotique INTienne, oui môsieur !",
+			"Tu connais le code Gangnam ? Tape <em>GANGNAM</em> et tu auras le Gangnam Style...",
+			"Moi j'ai déjà tenté <em>rm -rf *</em> sur le serveur des mails, oui môsieur !",
+			"Les vieux préparent un truc pour la soirée, oui môsieur !"
+		]
 	},
 	{
 		"pseudo": "Be'er Nard",
 		"type": "beer-nard", 
 		"position": [9,39],
-		"limits": [0,2,3]
+		"limits": [0,2,3],
+		"texte": [
+			"Ici c'est <em>Bricol'INT</em> ! Cercueils, tapis de billard, décor pour Emoty:S, ... on est partout !",
+			"Tu connais le konami code ? Tape... Oh non puis cherche un peu ! <em>*sifflote</em>",
+			"Le Konami Code ? Ahah, <strong>Gou Gueule</strong> le connait lui !",
+			"Oui, <em>Bricol'INT</em> travaille sur un projet pour la soirée..."
+		]
 	},
 	{
 		"pseudo": "Nethan Tau", 
 		"type": "nethan-thau",
 		"position": [15,50],
-		"limits": [0,1,2]
+		"limits": [0,1,2],
+		"texte": [
+			"Tu viens pour la <strong>soirée MiNET</strong> ? Ca va être quelque chose...",
+			"Derrière moi c'est <em>MiNET</em>. On fournit le réseau aux adhérents, permanences du lundi au jeudi de 18h à 19h30 !",
+			"La soirée c'est <strong>vendredi 7 décembre</strong> ! Tu as toutes les informations dans le menu du site",
+			"C'est <strong>Ays Péon</strong> qui a développé le site. Si tu es perdu, lis le <em>How To Play</em> !"
+		]
 	},
 	{
 		"pseudo": "Ays Péon",
 		"type": "ays-peon", 
 		"position": [30,71],
 		"orientation": 1,
-		"limits": [0,1,3]
+		"limits": [0,1,3],
+		"texte": [
+			"Salut, j'suis l'architecte ! Le site te plaît ?",
+			"Désolé s'il y a des bugs, je travaille encore dessus...",
+			"Du HTML5 et une bonne dose de Javascript (<em>jQuery</em>, <em>Backbone.js</em>): c'est du site grokiki !",
+			"Si t'as des questions, hésites pas à m'envoyer un mail : <em>espeon@minet.net</em>",
+			"Tu connais l'epic code ? Tape <em>EPIC</em> et tu verras..."
+		]
 	},
 	{
 		"pseudo": "Fönt Fayce",
 		"type": "font-fayce", 
 		"position": [28,83],
-		"limits": [0,1,2]
+		"limits": [0,1,2],
+		"texte": [
+			"Quel temps pourri... <em>*râle*</em>",
+			"La musique est naze, elle tourne en boucle en plus ! <em>*rale*</em>",
+			"Les graphismes sont tout pourris, regarde ta tête ! Le 8-bit c'est vraiment un truc de glandeur ! <em>*rale*</em>"
+		]
 	},
 	{
 		"pseudo": "Effe Pégéa", 
 		"type": "effe-pegea",
 		"position": [24,89],
-		"limits": [0]
+		"limits": [0],
+		"texte": [
+			"Le problème avec la bande passante, c'est qu'il faut la partager... <em>*soupir*</em>",
+			"Yep ! Tu vois le bateau là-bas ? C'est celui de <strong>Jibé Ache</strong>, le <em>mac</em> de MiNET.",
+			"T'aurais pas vu mon perroquet ? Je le cherche partout... <em>*soupir*</em>",
+			"Je veux t'emmener dans un bar g... Ahem ! Tape <em>GBAR</em> et ça ira moussaillon !"
+		]
 	},
 	{
 		"pseudo": "Raguenar", 
 		"type": "raguenar",
-		"position": [23,17]
+		"position": [23,17],
+		"texte": [
+			"Malgré la complexité actuelle, il ne faut pas négliger d'appréhender la plus grande partie des problématiques éventuelles, et déjà en notre koleka.",
+			"Quoi qu'on dise concernant l'ambiance de l'époque actuelle, il convient d'essayer la plus grande partie des stratégies éventuelles, avec beaucoup de ran ran ruuuuu.",
+			"Malgré la morosité de ces derniers temps, je vous demande de prendre en considération certaines modalités possibles, depuis longtemps koleka.",
+			"Afin de circonvenir à la crise contextuelle, il est nécessaire d'arrêter de stigmatiser la totalité des ronalds réalisables, parce qu'il est temps d'agir.",
+			"Compte tenu de la complexité actuelle, il faut revoir la somme des solutions envisageables, parce qu'il s'agit de notre dernière koleka.",
+			"Koleka ! Koleka ! Koleka ! Ran Ran Ruuuuuuu !!!",
+			"Ce chemin est absurde... Vous ne trouvez pas ?"
+		]
 	}
 ]

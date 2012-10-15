@@ -14,9 +14,10 @@
 */
 body {
 	overflow-x: hidden;
-	padding: 0;
+
 	margin: 0;
-	
+	padding: 0;
+
 	background: black;
 }
 
@@ -25,12 +26,15 @@ body {
 }
 
 .clearfix::after {
-	content: "";
 	display: block;
-	clear: both;
 	visibility: hidden;
-	line-height: 0;
+	clear: both;
+
 	height: 0;
+
+	content: "";
+
+	line-height: 0;
 }
 
 /*
@@ -40,84 +44,92 @@ body {
 */
 nav#control {
 	position: fixed;
+	z-index: 100;
 	top: 20px;
 	left: 10px;
+
 	height: 40px;
-	
-	background: #333;
+
 	opacity: 0.9;
-	
 	border: 2px solid #999;
-	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
 	border-radius: 10px;
-	
-	z-index: 100;
+	background: #333;
 }
 
 nav#control ul {
-	list-style-type: none;
 	padding: 0;
+
+	list-style-type: none;
 }
 
 nav#control li {
 	position: relative;
 	top: 0;
+
 	float: left;
+
 	width: 50px;
-	
+
+	text-align: center;
+
 	color: white;
+
 	font-size: 2em;
 	line-height: 40px;
-	text-align: center;
 }
 
 nav#control li:first-of-type {
+	-webkit-border-bottom-left-radius: 7px;
+	border-bottom-left-radius: 7px;
+	-webkit-border-top-left-radius: 7px;
+	border-top-left-radius: 7px;
+
 	-moz-border-radius-topleft: 7px;
 	-moz-border-radius-bottomleft: 7px;
-	-webkit-border-top-left-radius: 7px;
-	-webkit-border-bottom-left-radius: 7px;
-	border-top-left-radius: 7px;
-	border-bottom-left-radius: 7px;
 }
 
 nav#control li:last-of-type {
+	-webkit-border-top-right-radius: 7px;
+	border-top-right-radius: 7px;
+	-webkit-border-bottom-right-radius: 7px;
+	border-bottom-right-radius: 7px;
+
 	-moz-border-radius-topright: 7px;
 	-moz-border-radius-bottomright: 7px;
-	-webkit-border-top-right-radius: 7px;
-	-webkit-border-bottom-right-radius: 7px;
-	border-top-right-radius: 7px;
-	border-bottom-right-radius: 7px;
 }
 
 nav#control li:hover {
 	cursor: pointer;
+
 	background: #555;
 }
 
 nav#menu {
 	position: fixed;
+	z-index: 100;
 	top: 50%;
 	right: 10px;
+
 	width: 200px;
 	height: 250px;
 	margin-top: -125px;
-	
+
 	text-align: left;
-	
+
 	border-width: 16px;
-	-moz-border-image: url('../img/nav.png') repeat;
 	-webkit-border-image: url('../img/nav.png') repeat;
+	-moz-border-image: url('../img/nav.png') repeat;
 	border-image: url('../img/nav.png') 16 repeat;
-	
-	z-index: 100;
 }
 
 nav#menu ul {
-	list-style-type: none;
 	width: 100%;
 	height: 100%;
-	
+
+	list-style-type: none;
+
 	background-color: #f8f8f8;
 }
 
@@ -132,14 +144,17 @@ nav#menu li:last-of-type {
 
 nav#menu li a {
 	display: inline-block;
-	height: 100%;
+
 	width: 100%;
-	
-	font-size: 12px;
-	font-family: 'Press Start 2P', cursive;
-	line-height: 36px;
-	color: #606060;
+	height: 100%;
+
 	text-decoration: none;
+
+	color: #606060;
+
+	font-family: 'Press Start 2P', cursive;
+	font-size: 12px;
+	line-height: 36px;
 }
 
 nav#menu li a:hover {
@@ -147,8 +162,9 @@ nav#menu li a:hover {
 }
 
 nav#menu a:hover::before {
-	content: url('../img/left-arrow.png');
 	margin-left: -12px;
+
+	content: url('../img/left-arrow.png');
 }
 
 /*
@@ -158,22 +174,24 @@ nav#menu a:hover::before {
 */
 @font-face {
   font-family: 'Press Start 2P';
+  font-weight: 400;
+  font-style: normal;
+
   src: 	local('fonts/PressStart2P-Regular.ttf'), 
   		local('fonts/PressStart2P-Regular.ttf'), 
   		url('fonts/PressStart2P-Regular.ttf') format('woff');
-  font-style: normal;
-  font-weight: 400;
 }
 
 @font-face {
 	font-family: 'RaphaelIcons';
+    font-weight: normal;
+    font-style: normal;
+
     src: 	url('../fonts/raphaelicons-webfont.eot');
     src: 	local('☺'), 
     		url('../fonts/raphaelicons-webfont.woff') format('woff'), 
     		url('../fonts/raphaelicons-webfont.ttf') format('truetype'), 
     		url('../fonts/raphaelicons-webfont.svgwebfontKOf9F4sx') format('svg');
-    font-weight: normal;
-    font-style: normal;
 }
 
 .font-icon {
@@ -186,8 +204,9 @@ nav#menu a:hover::before {
 |--------------------------------------------------------------------------
 */
 .toast-container {
-	width: 800px;
 	z-index: 9999;
+
+	width: 800px;
 }
 
 * html .toast-container {
@@ -196,34 +215,47 @@ nav#menu a:hover::before {
 
 .toast-item {
 	position: relative;
+
 	display: block;
+
 	height: auto;
-    opacity: 0.9;
 	margin: 0 0 12px 0;
 	padding: 20px 6px 20px 6px;
-	
-	background: #333;
+
+    opacity: 0.9;
 	color: #eee;
-	font-size: 14px;
-	font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
-	
 	border: 2px solid #999;
-	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
 	border-radius: 10px;
+	background: #333;
+
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+	font-size: 14px;
 }
 
 .toast-item p {
-    text-align: left;
     margin-left: 50px;
+
+    text-align: left;
+}
+
+.toast-item strong {
+	font-weight: bold;
+}
+
+.toast-item em {
+	font-style: italic;
 }
 
 .toast-item-close {
     position: absolute;
     top: 7px;
     right: 7px;
+
     width: 22px;
     height: 22px;
+
     background: url('../img/notifications/close.gif');
 }
 
@@ -231,25 +263,26 @@ nav#menu a:hover::before {
     position: absolute;
     top: 50%;
     left: 10px;
+
     width: 32px;
     height: 32px;
     margin-top: -16px;
 }
 
 .toast-item-image-notice {
-    background:url('../img/notifications/notice.png');
+    background: url('../img/notifications/notice.png');
 }
 
 .toast-item-image-success {
-    background:url('../img/notifications/success.png');
+    background: url('../img/notifications/success.png');
 }
 
 .toast-item-image-warning {
-    background:url('../img/notifications/warning.png');
+    background: url('../img/notifications/warning.png');
 }
 
 .toast-item-image-error {
-    background:url('../img/notifications/error.png');
+    background: url('../img/notifications/error.png');
 }
 
 
@@ -285,14 +318,15 @@ nav#menu a:hover::before {
  */
 .toast-position-top-left {
     position: fixed;
-    left: 20px;
     top: 20px;
+    left: 20px;
 }
 
 .toast-position-top-center {
     position: fixed;
     top: 20px;
     left: 50%;
+
     margin-left: -400px;
 }
 
@@ -306,6 +340,7 @@ nav#menu a:hover::before {
     position: fixed;
     top: 50%;
     left: 20px;
+
     margin-top: -40px;
 }
 
@@ -313,14 +348,16 @@ nav#menu a:hover::before {
     position: fixed;
     top: 50%;
     left: 50%;
-    margin-left: -400px;
+
     margin-top: -40px;
+    margin-left: -400px;
 }
 
 .toast-position-middle-right {
     position: fixed;
     top: 50%;
     right: 20px;
+
     margin-top: -40px;
 }
 
@@ -334,11 +371,12 @@ nav#menu a:hover::before {
     position: fixed;
     bottom: 20px;
     left: 50%;
+
     margin-left: -400px;
 }
 
 .toast-position-bottom-right {
     position: fixed;
-    bottom: 20px;
     right: 20px;
+    bottom: 20px;
 }

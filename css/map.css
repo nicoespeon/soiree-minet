@@ -14,15 +14,16 @@
 */
 #wrapper {
 	position: relative;
+	z-index: 1;
+
+	overflow: hidden;
+
 	width: 1280px;
 	height: 3200px;
-	overflow: hidden;
 	margin: auto;
-	
-	background: url('../img/map/bg.png') repeat;
+
 	border: 1px #CCC solid;
-	
-	z-index: 1;
+	background: url('../img/map/bg.png') repeat;
 }
 
 #wrapper div {
@@ -32,12 +33,14 @@
 .flowers1 {
 	width: 64px;
 	height: 64px;
+
 	background: url('../img/map/bg-flowers-1.png');
 }
 
 .flowers2 {
 	width: 64px;
 	height: 32px;
+
 	background: url('../img/map/bg-flowers-2.png');
 }
 
@@ -47,11 +50,11 @@
 |--------------------------------------------------------------------------
 */
 .pnj, #player {
+	z-index: 100;
+
 	width: 32px;
 	height: 64px;
 	margin-top: -32px;
-	
-	z-index: 100;
 }
 
 .garcon {
@@ -183,30 +186,35 @@
 #mountain .corner {
 	width: 32px;
 	height: 32px;
+
 	background: url('../img/map/mountain-corner.png');
 }
 
 #mountain .door {
 	width: 96px;
 	height: 64px;
+
 	background: url('../img/map/mountain-door.png');
 }
 
 #mountain .front {
 	width: 1184px;
 	height: 32px;
+
 	background: url('../img/map/mountain-front.png') repeat-x;
 }
 
 #mountain .right {
 	width: 32px;
 	height: 100%;
+
 	background: url('../img/map/mountain-right.png') repeat-y;
 }
 
 #mountain .runes {
 	width: 32px;
 	height: 32px;
+
 	background: url('../img/map/mountain-runes.png');
 }
 
@@ -237,11 +245,13 @@
 #prairie .path {
 	width: 96px;
 	height: 960px;
+
 	background: url('../img/map/absurd-path.png') repeat-y;
 }
 
 #prairie .path.end {
 	height: 32px;
+
 	background: url('../img/map/absurd-path-end.png');
 }
 
@@ -253,6 +263,7 @@
 #runes {
 	width: 352px;
 	height: 480px;
+
 	background: url('../img/map/runes.png');
 }
 
@@ -264,6 +275,7 @@
 #forest {
 	width: 448px;
 	height: 928px;
+
 	background: url('../img/map/forest.png');
 }
 
@@ -280,12 +292,14 @@
 #red-city .city{
 	width: 576px;
 	height: 928px;
+
 	background: url('../img/map/red-city.png');
 }
 
 #red-city .road {
 	width: 96px;
 	height:	576px;
+
 	background: url('../img/map/road-rc-port.png') repeat-y;
 }
 /*
@@ -301,12 +315,14 @@
 #blue-city .city {
 	width: 480px;
 	height: 1120px;
+
 	background: url('../img/map/blue-city.png');
 }
 
 #blue-city .road {
 	width: 416px;
 	height:	224px;
+
 	background: url('../img/map/road-bc-port.png');
 }
 
@@ -318,7 +334,15 @@
 #port {
 	width: 704px;
 	height: 512px;
+
 	background: url('../img/map/port.png');
+}
+
+#port .pc.on {
+	width: 32px;
+	height: 64px;
+
+	background: url('../img/map/pc-on.png');
 }
 
 /*
@@ -334,17 +358,20 @@
 #sea .top {
 	width: 100%;
 	height: 32px;
+
 	background: url('../img/map/sea-top.png');
 }
 
 #sea .water {
 	width: 100%;
 	height:	100%;
+
 	background: url('../img/map/sea.png');
 }
 
 #sea .boat {
 	width: 256px;
 	height:	128px;
+
 	background: url('../img/map/jbh-boat.png');
 }

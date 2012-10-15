@@ -13,7 +13,7 @@
 var Audio = Backbone.Model.extend({
 	defaults: {
 		piste: 'partyrock',
-		ext: ['mp3']
+		ext: ['mp3','ogg']
 	}
 });
 
@@ -40,16 +40,18 @@ var AudioView = Backbone.View.extend({
 		this.sound.play()
 		    .fadeIn(3000)
 		    .loop();
+		    
+		ISPLAYING = true;
 	},
 	
 	pause: function() {
-		this.sound.fadeOut(2000, function() { 
-			this.sound.pause(); 
-		});
+		this.sound.pause();
+		ISPLAYING = false; 
 	},
 	
 	stop: function() {
 		this.sound.stop();
+		ISPLAYING = true;
 	},
 	
 	chgTrack: function() {
@@ -57,7 +59,8 @@ var AudioView = Backbone.View.extend({
 		    formats: this.model.get('ext')
 		}); 
 		 
-		this.sound.fadeWith(nextSound,2000);
+		if(ISPLAYING)	this.sound.fadeWith(nextSound,3000);
+		
 		this.sound = nextSound;
 		this.sound.loop();
 	}

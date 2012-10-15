@@ -22,9 +22,20 @@ ORIENTATION.push('orientationHaut');
 
 var NB_FRAME		 	= 4; 			// Nombre de frames
 var NB_IMAGES 			= 50;			// Nombre d'images par déplacement
-var DUREE_DEPLACEMENT 	= 600;			// Durée du déplacement (en ms)
+var DUREE_DEPLACEMENT 	= 400;			// Durée du déplacement (en ms)
 var ETAT_ANIMATION		= -1;			// Personnage initialement immobile
-var COLLISIONS = [];					// On définit la map des collisions
+var COLLISIONS 			= [];			// On définit la map des collisions
+
+var ISPLAYING 			= false;		// Etat du lecteur audio
+
+// Konami Codes
+var KONAMI 	= "38,38,40,40,37,39,37,39,66,65";
+var CALLME 	= "67,65,76,76,77,69";
+var GANGNAM = "71,65,78,71,78,65,77";
+var NYAN	= "78,89,65,78";
+var SPECIAL = "83,80,69,67,73,65,76";
+var EPIC	= "69,80,73,67";
+var GBAR	= "71,66,65,82"
 
 // Configuration des notifications 
 // -------------------------------
