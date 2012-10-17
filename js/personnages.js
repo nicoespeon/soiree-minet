@@ -121,8 +121,6 @@ var PlayerView = Backbone.View.extend({
 	move: function(e) {
 		// Variables initiales
 		var zIndex 	= $('#player').css('z-index');
-		var xCible 	= this.model.getX();
-		var yCible 	= this.model.getY();
 		var canMove = false;
 		
 		// Annule le déplacement si un est déjà en cours
@@ -137,28 +135,24 @@ var PlayerView = Backbone.View.extend({
 			case 37:
 				//Gauche
 				e.preventDefault();
-				xCible--;
 				this.model.set({'orientation':1});
 				break;
 				
 			case 38:
 				//Haut
 				e.preventDefault();
-				yCible--;
 				this.model.set({'orientation':3});
 				break;
 			
 			case 39:
 				//Droite
 				e.preventDefault();
-				xCible++;
 				this.model.set({'orientation':2});
 				break;
 				
 			case 40:
 				//Bas
 				e.preventDefault();
-				yCible++;
 				this.model.set({'orientation':0});
 				break;
 			
@@ -171,6 +165,9 @@ var PlayerView = Backbone.View.extend({
 		$('#player').css('z-index', zIndex);	//Maintient l'état du z-index après changement d'orientation
 		
 		if(ETAT_ANIMATION > 0) {
+			var cible 		= getCoordsCible(player.getX(), player.getY(), player.get('orientation'));
+			var xCible 		= cible['x'];
+			var yCible 		= cible['y'];
 			canMove = this.canMoveTo(xCible,yCible);
 			isUpper = this.canMoveTo(xCible, yCible+1);
 		}
@@ -348,26 +345,9 @@ var PNJView = Backbone.View.extend({
 	parle: function(e) {
 		if(e.keyCode=='13') {
 			var direction 	= player.get('orientation');
-			var xCible 		= player.getX();
-			var yCible 		= player.getY();
-			
-			switch(direction) {
-				case 0:
-					yCible++;
-					break;
-					
-				case 1:
-					xCible--;
-					break;
-					
-				case 2:
-					xCible++;
-					break;
-					
-				case 3:
-					yCible--;
-					break;
-			}
+			var cible 		= getCoordsCible(player.getX(), player.getY(), direction);
+			var xCible 		= cible['x'];
+			var yCible 		= cible['y'];
 			
 			if(this.model.getX()==xCible && this.model.getY()==yCible) {
 				switch(direction) {

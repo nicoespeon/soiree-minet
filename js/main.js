@@ -58,3 +58,27 @@ function tileToPx(tile){
 function positionne(el,x,y) {
 	$(el).css({'left':tileToPx(x)+'px','top':tileToPx(y)+'px'});
 }
+
+// Donne les coordonnées de la case ciblée
+// ---------------------------------------
+function getCoordsCible(x,y,orientation) {
+	switch(orientation) {
+		case 0:
+			y++;
+			break;
+			
+		case 1:
+			x--;
+			break;
+			
+		case 2:
+			x++;
+			break;
+			
+		case 3:
+			y--;
+			break;
+	}
+	
+	return { 'x':x, 'y':y };
+}
