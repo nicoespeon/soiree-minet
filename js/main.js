@@ -12,9 +12,11 @@
 | VARIABLES GLOBALES
 |--------------------------------------------------------------------------
 */
+// Map
 var TAILLE_TILE = 32; 					// Taille du tile en pixels
 
-var ORIENTATION = [];						// Orientation du personnage
+// Personnages
+var ORIENTATION = [];					// Orientation du personnage
 ORIENTATION.push('orientationBas');
 ORIENTATION.push('orientationGauche');
 ORIENTATION.push('orientationDroite');
@@ -26,6 +28,7 @@ var DUREE_DEPLACEMENT 	= 400;			// Durée du déplacement (en ms)
 var ETAT_ANIMATION		= -1;			// Personnage initialement immobile
 var COLLISIONS 			= [];			// On définit la map des collisions
 
+// Audio
 var ISPLAYING 			= false;		// Etat du lecteur audio
 
 // Konami Codes
@@ -36,9 +39,7 @@ var NYAN	= "78,89,65,78";
 var SPECIAL = "83,80,69,67,73,65,76";
 var EPIC	= "69,80,73,67";
 var GBAR	= "71,66,65,82"
-
-// Configuration des notifications 
-// -------------------------------
+// Notifications
 $().toastmessage({
     text     : 'H**k me I\'m famous !',
     sticky   : false,
@@ -47,11 +48,13 @@ $().toastmessage({
     stayTime : 10000
 });
 
+
 /*
 |--------------------------------------------------------------------------
 | FONCTIONS GLOBALES
 |--------------------------------------------------------------------------
 */
+
 // Convertit les coordonnées (tile) en pixels 
 // ------------------------------------------
 function tileToPx(tile){

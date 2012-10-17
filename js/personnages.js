@@ -12,11 +12,10 @@
 | MODELE & COLLECTIONS
 |--------------------------------------------------------------------------
 */
+
 // Model - Personnage
 // ------------------
-// Ce modèle définit la nature d'un personnage
 var Personnage = Backbone.Model.extend({
-	// Attributs par défaut d'un personnage
 	defaults: {
 		type: 'garcon',
 		pseudo: 'Sergio Flores',
@@ -75,20 +74,20 @@ var Personnage = Backbone.Model.extend({
 
 // Collection - PNJ
 // ----------------
-// Cette collection regroupe les PNJs
 var PNJList = Backbone.Collection.extend({
     model: Personnage,
 	url: 'data/pnj.json'
 });
+
 
 /*
 |--------------------------------------------------------------------------
 | VUES (Player, PNJ, Personnages)
 |--------------------------------------------------------------------------
 */
+
 // Vue - Player
 // ------------
-// Cette vue gère le rendu d'un joueur
 var PlayerView = Backbone.View.extend({
 	// Le joueur est rattaché à la zone de jeu
 	el: $('#wrapper'),
@@ -294,16 +293,11 @@ var PlayerView = Backbone.View.extend({
 
 // Vue - PNJ
 // ----------
-// Cette vue gère le rendu d'un PNJ
 var PNJView = Backbone.View.extend({
-	// Chaque PNJ est une nouvelle puce
 	tagName: 'li',
 	
-	// A laquelle on applique un template particulier
 	template: _.template($('#pnj-template').html()),
 	
-	// La vue écoute les changements sur le modèle
-	// Comme il y a une relation 1-1 entre le modèle et la vue, on y fait référence directement ici
 	initialize: function() {
 		_.bindAll(this);
 		$(document).bind('keydown', this.parle);
@@ -314,7 +308,6 @@ var PNJView = Backbone.View.extend({
 		this.model.on('change', this.render, this);
 	},
 	
-	// Re-render le PNJ sur la map
 	render: function() {
 		this.$el.html(this.template(this.model.toJSON()));
 		

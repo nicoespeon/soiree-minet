@@ -9,7 +9,6 @@
 
 // Model - Event
 // -------------
-// Ce modèle définit la nature d'un player audio
 var Event = Backbone.Model.extend({
 	defaults: {
 		type: 'notice'
@@ -18,7 +17,6 @@ var Event = Backbone.Model.extend({
 
 // Vue - Event
 // -----------
-// Cette vue gère les événements de l'app
 var EventView = Backbone.View.extend({
 	events: {
 	
