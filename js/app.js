@@ -16,7 +16,6 @@ var AppView = Backbone.View.extend({
 		// PNJs
 		PNJs.on('add', this.addOne, this);
 		PNJs.on('reset', this.addAll, this);
-		PNJs.on('all', this.render, this);
 		PNJs.fetch();
 		
 		// Player
