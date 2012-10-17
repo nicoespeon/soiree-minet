@@ -11,7 +11,27 @@
 // -------------
 var Event = Backbone.Model.extend({
 	defaults: {
-		type: 'notice'
+		type: '',
+		notification : {
+			delai : '',
+			type : [],
+			message : []
+		},
+		video : {
+			titre : '',
+			src : ''
+		},
+		musique : {
+			titre : '',
+			src : '',
+			warning : '',
+			delai : 0
+		},
+		position : {
+			x : '0',
+			y : 'y'
+		},
+		konami : ''
 	}
 });
 
@@ -25,10 +45,6 @@ var EventList = Backbone.Collection.extend({
 // Vue - Event
 // -----------
 var EventView = Backbone.View.extend({
-	events: {
-	
-	},
-	
 	initialize: function() {
 		Events	= new EventList();
 		Events.fetch();	
