@@ -368,8 +368,16 @@ var PNJView = Backbone.View.extend({
 						break;
 				}
 				
-				var texte = this.model.get('texte')[Math.floor(Math.random()*this.model.get('texte').length)];
-				$().toastmessage('showNoticeToast', '<strong>'+this.model.get('pseudo')+'</strong> - '+texte);		
+				var texte = this.model.get('texte')[0];
+				$().toastmessage('showNoticeToast', '<strong>'+this.model.get('pseudo')+'</strong> - '+texte);	
+				
+				var nouveauTexte = [];
+				for(var i=1; i<this.model.get('texte').length; i++) {
+					nouveauTexte.push(this.model.get('texte')[i]);
+				}
+				nouveauTexte.push(texte);
+				
+				this.model.set('texte', nouveauTexte); 	
 			}
 		}
 	}
