@@ -57,8 +57,40 @@ var EventView = Backbone.View.extend({
 	},
 	
 	eventDispatcher: function(e) {
+		// Check Interaction (panneau, objet, ...)
+		if(e.keyCode==13) {
+			var cible 	= getCoordsCible(player.getX(), player.getY(), player.get('orientation'));
+			var x		= cible['x'];
+			var y		= cible['y'];
+			this.interaction(x,y);
+			
+			return true;
+		}
+		
 		// Check Konami Code
 		this.konami(e);
+	},
+	
+	interaction: function(x,y) {
+		Events.forEach(function(el) {
+			var event 	= el.attributes;
+			var type 	= event.type;
+			var eventX 	= event.position.x;
+			var eventY	= event.position.y;
+			
+			if(type=='notification') {	
+				if(x==eventX && y==eventY) {
+					var notif 			= event.notification;
+					var notifType 		= notif.type;
+					var notifMessage	= notif.message;
+					
+					$().toastmessage( 'showToast', {
+						type: notifType,
+						text: notifMessage
+					});
+				} 
+			}
+		});	
 	},
 	
 	konami: function(e) {
