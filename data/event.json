@@ -54,5 +54,302 @@
 	{
 		"type" : "konami",
 		"konami" : "38,38,40,40,37,39,37,39,66,65"
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "warning",
+			"message" : "Il n'y a rien ici... pour le moment !"
+		},
+		"position" : {
+			"x" : "5",
+			"y" : "3"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "notice",
+			"message" : "Ceci est une rune incompréhensible... pour le moment !"
+		},
+		"position" : {
+			"x" : "11",
+			"y" : "10"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "notice",
+			"message" : "Ceci est une rune incompréhensible... pour le moment !"
+		},
+		"position" : {
+			"x" : "13",
+			"y" : "10"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "notice",
+			"message" : "<strong>Aymi Li</strong> joue à un jeu étrange... le... <em>cHTeMeLe</em> ?"
+		},
+		"position" : {
+			"x" : "12",
+			"y" : "16"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "error",
+			"message" : "Vous ne pouvez pas entrer... pour le moment !"
+		},
+		"position" : {
+			"x" : "38",
+			"y" : "18"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "notice",
+			"message" : "<strong>INTech</strong> - Club de robotique | Des robots et des hommes"
+		},
+		"position" : {
+			"x" : "9",
+			"y" : "34"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "notice",
+			"message" : "<strong>INTech</strong> - Club de robotique | Des robots et des hommes"
+		},
+		"position" : {
+			"x" : "10",
+			"y" : "34"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "error",
+			"message" : "Vous ne pouvez pas entrer... pour le moment !"
+		},
+		"position" : {
+			"x" : "11",
+			"y" : "34"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "error",
+			"message" : "Vous ne pouvez pas entrer... pour le moment !"
+		},
+		"position" : {
+			"x" : "12",
+			"y" : "34"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "notice",
+			"message" : "<strong>Bricol'INT</strong> - Club de bricolage | Décorations et constructions en tout genre"
+		},
+		"position" : {
+			"x" : "6",
+			"y" : "39"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "error",
+			"message" : "Vous ne pouvez pas entrer... pour le moment !"
+		},
+		"position" : {
+			"x" : "7",
+			"y" : "39"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "notice",
+			"message" : "<strong>MiNET</strong> - Association | Epic gestion du réseau informatique de la MAISEL"
+		},
+		"position" : {
+			"x" : "12",
+			"y" : "49"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "notice",
+			"message" : "<strong>MiNET</strong> - Association | Epic gestion du réseau informatique de la MAISEL"
+		},
+		"position" : {
+			"x" : "13",
+			"y" : "49"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "error",
+			"message" : "Vous ne pouvez pas entrer... pour le moment !"
+		},
+		"position" : {
+			"x" : "14",
+			"y" : "49"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "notice",
+			"message" : "<strong>SadINT</strong> - Club de LAN | Jeux communautaires et logo GIMP"
+		},
+		"position" : {
+			"x" : "31",
+			"y" : "62"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "notice",
+			"message" : "<strong>SadINT</strong> - Club de LAN | Jeux communautaires et logo GIMP"
+		},
+		"position" : {
+			"x" : "32",
+			"y" : "62"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "error",
+			"message" : "Vous ne pouvez pas entrer... pour le moment !"
+		},
+		"position" : {
+			"x" : "33",
+			"y" : "62"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "warning",
+			"message" : "Il n'y a rien ici... pour le moment !"
+		},
+		"position" : {
+			"x" : "34",
+			"y" : "71"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "error",
+			"message" : "Vous ne pouvez pas entrer... pour le moment !"
+		},
+		"position" : {
+			"x" : "21",
+			"y" : "77"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "error",
+			"message" : "Vous ne pouvez pas entrer... pour le moment !"
+		},
+		"position" : {
+			"x" : "34",
+			"y" : "77"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "error",
+			"message" : "Vous ne pouvez pas entrer... pour le moment !"
+		},
+		"position" : {
+			"x" : "31",
+			"y" : "83"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "notice",
+			"message" : "<strong>T'Space</strong> - Club aérospatial | Vers l'infini et au delà"
+		},
+		"position" : {
+			"x" : "33",
+			"y" : "83"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "notice",
+			"message" : "<strong>T'Space</strong> - Club aérospatial | Vers l'infini et au delà"
+		},
+		"position" : {
+			"x" : "34",
+			"y" : "62"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "error",
+			"message" : "Vous ne pouvez pas entrer... pour le moment !"
+		},
+		"position" : {
+			"x" : "6",
+			"y" : "86"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "notice",
+			"message" : "<strong>Soirée MiNET</strong> - 07/12/12 | H**ck Me I'm Famous"
+		},
+		"position" : {
+			"x" : "9",
+			"y" : "86"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "error",
+			"message" : "Vous ne pouvez pas entrer... pour le moment !"
+		},
+		"position" : {
+			"x" : "14",
+			"y" : "86"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "error",
+			"message" : "Vous ne pouvez pas entrer... pour le moment !"
+		},
+		"position" : {
+			"x" : "20",
+			"y" : "86"
+		}
 	}
 ]
