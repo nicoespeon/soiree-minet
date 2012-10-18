@@ -35,13 +35,13 @@
 	<nav id="menu" class="hidden">
 		<ul class="clearfix">
 			<li>
-				<a class="active" href="#">Soirée MiNET</a>
+				<a href="#description">Soirée MiNET</a>
 			</li>
 			<li>
-				<a href="#">Animations</a>
+				<a href="#animations">Animations</a>
 			</li>
 			<li>
-				<a href="#">Tarifs</a>
+				<a href="#tarifs">Tarifs</a>
 			</li>
 			<li>
 				<a href="#howToPlay">How to Play ?</a>
@@ -126,11 +126,62 @@
 	<script type="text/template" id="pnj-template">
 		<div class="pnj <%= type %> <%= ORIENTATION[orientation] %>" data-x="<%= position[0] %>" data-y="<%= position[1] %>"></div>
 	</script>
+	
 	<script type="text/template" id="player-template">
 		<div id="player" class="<%= type %> <%= ORIENTATION[orientation] %> frame<%= frame %>" data-x="<%= position[0] %>" data-y="<%= position[1] %>">
 			<!-- Here is your player ! -->
 		</div>
 	</script>
+	
+	<div id="description" class="hidden">
+		<h1>Soirée MiNET</h1>		
+		<h2>Le 7 Décembre 2012, MiNET Hack le foyer !</h2>
+		<p>
+			Trois ans après avoir enflammé la banquise, la soirée MiNET revient en force.<br />
+			Alors accroche-toi bien à ton clavier car cette année encore, MiNET va te faire vivre une nuit légendaire !
+		</p>
+	</div>
+		
+	<div id="animations" class="hidden">
+		<h1>Les animations</h1>		
+		<ul>
+			<li>Show Pomp'INT</li>
+			<li>Show Mov'INT</li>
+			<li>Projet X by <em>les Vieux</em></li>
+			<li>Projet Y by <em>Bricol'INT</em</li>
+		</ul>
+	</div>
+	
+	<div id="tarifs" class="hidden">
+		<h1>Les tarifs</h1>		
+		<dl>
+			<dt>Entrée</dt>
+				<dd>3€</dd>
+			<dt>Extés</dt>
+				<dd>+5€</dd>
+			<dt>Consos</dt>
+				<dd>+2€</dd>
+		</dl>
+	</div>
+	
+	<div id="howToPlay" class="hidden">
+		<h1>How to play ?</h1>		
+		<h2>Le principe</h2>
+		<p>
+			Trois ans après avoir enflammé la banquise, la soirée MiNET revient en force.<br />
+			Alors accroche-toi bien à ton clavier car cette année encore, MiNET va te faire vivre une nuit légendaire !
+		</p>	
+		<h2>Les commandes</h2>
+		<p>
+			Trois ans après avoir enflammé la banquise, la soirée MiNET revient en force.<br />
+			Alors accroche-toi bien à ton clavier car cette année encore, MiNET va te faire vivre une nuit légendaire !
+		</p>	
+		<h2>One more thing...</h2>
+		<p>
+			Trois ans après avoir enflammé la banquise, la soirée MiNET revient en force.<br />
+			Alors accroche-toi bien à ton clavier car cette année encore, MiNET va te faire vivre une nuit légendaire !
+		</p>
+	</div>
 	
 	<!-- Librairies JS -->
 	<script src="js/lib/jquery-1.7.2.min.js"></script>
