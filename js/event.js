@@ -80,17 +80,42 @@ var EventView = Backbone.View.extend({
 			var eventX 	= event.position.x;
 			var eventY	= event.position.y;
 			
-			if(type=='notification') {	
-				if(x==eventX && y==eventY) {
-					var notif 			= event.notification;
-					var notifType 		= notif.type;
-					var notifMessage	= notif.message;
+			if(x==eventX && y==eventY) {
+				switch(type) {
+					case 'notification':
+							var notif 			= event.notification;
+							var notifType 		= notif.type;
+							var notifMessage	= notif.message;
+							
+							$().toastmessage( 'showToast', {
+								type: notifType,
+								text: notifMessage
+							});
+						break;
 					
-					$().toastmessage( 'showToast', {
-						type: notifType,
-						text: notifMessage
-					});
-				} 
+					case 'social':
+						var pc = $('#pc');
+						pc.addClass('on');
+						
+						if(pc.hasClass('on')) {
+							var texte = $('#social').html();
+							setTimeout(function() {
+								$.colorbox({
+									html: texte,
+									innerWidth: '600px',
+									innerHeight: '400px'
+								});
+							}, 500); 
+						}
+						
+						$(document).bind('cbox_closed', function() {
+							setTimeout(function() {
+								pc.removeClass('on');
+							}, 500);	
+						});
+						
+						break;
+				}
 			}
 		});	
 	},
