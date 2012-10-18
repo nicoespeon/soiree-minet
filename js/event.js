@@ -67,6 +67,8 @@ var EventView = Backbone.View.extend({
 			return true;
 		}
 		
+		// Déplacement (Move)
+		
 		// Check Konami Code
 		this.konami(e);
 	},
