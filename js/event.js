@@ -29,7 +29,7 @@ var Event = Backbone.Model.extend({
 		},
 		position : {
 			x : '0',
-			y : 'y'
+			y : '0'
 		},
 		konami : ''
 	}

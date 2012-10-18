@@ -165,7 +165,7 @@ var PlayerView = Backbone.View.extend({
 		$('#player').css('z-index', zIndex);	//Maintient l'état du z-index après changement d'orientation
 		
 		if(ETAT_ANIMATION > 0) {
-			var cible 		= getCoordsCible(player.getX(), player.getY(), player.get('orientation'));
+			var cible 		= getCoordsCible(this.model.getX(), this.model.getY(), this.model.get('orientation'));
 			var xCible 		= cible['x'];
 			var yCible 		= cible['y'];
 			canMove = this.canMoveTo(xCible,yCible);
