@@ -104,7 +104,7 @@ var EventView = Backbone.View.extend({
 			var konami 	= event.konami;
 			
 			// Un Konami Code correspond, on déclenche l'event
-			if(KEYS.toString().indexOf(konami)>=0) {
+			if(konami.length>0 && KEYS.toString().indexOf(konami)>=0) {
 				// Définit l'event en fonction de son type
 				switch(type) {
 					case 'musique':
