@@ -77,8 +77,8 @@ $(function() {
 		var texte = $(rel).html();
 		$.colorbox({
 			html: texte,
-			width: '600px',
-			height: '400px'
+			innerWidth: '600px',
+			innerHeight: '400px'
 		});
 	});
 				
