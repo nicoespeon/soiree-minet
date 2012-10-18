@@ -70,7 +70,18 @@ $(function() {
 				break;
 		}
 	});
-
+	
+	// Active le menu de navigation
+	$('nav#menu a').click(function() {
+		var rel = $(this).attr('href');
+		var texte = $(rel).html();
+		$.colorbox({
+			html: texte,
+			width: '600px',
+			height: '400px'
+		});
+	});
+				
 	// Positionne les éléments de la map
 	$('#wrapper div').each(function() {
 		var x = $(this).data('x');
