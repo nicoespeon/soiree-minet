@@ -90,8 +90,6 @@ nav#control li:first-of-type {
 	-webkit-border-top-left-radius: 7px;
 	border-top-left-radius: 7px;
 
-
-
 	-moz-border-radius-topleft: 7px;
 	-moz-border-radius-bottomleft: 7px;
 }
@@ -101,8 +99,6 @@ nav#control li:last-of-type {
 	border-top-right-radius: 7px;
 	-webkit-border-bottom-right-radius: 7px;
 	border-bottom-right-radius: 7px;
-
-
 
 	-moz-border-radius-topright: 7px;
 	-moz-border-radius-bottomright: 7px;
