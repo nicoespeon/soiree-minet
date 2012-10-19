@@ -127,8 +127,8 @@ nav#menu {
 	text-align: left;
 
 	border-width: 16px;
-	-webkit-border-image: url('../img/nav.png') repeat;
-	-moz-border-image: url('../img/nav.png') repeat;
+	-webkit-border-image: url('../img/nav.png') 16 repeat;
+	-moz-border-image: url('../img/nav.png') 16 repeat;
 	border-image: url('../img/nav.png') 16 repeat;
 }
 
