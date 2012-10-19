@@ -141,7 +141,7 @@ var EventView = Backbone.View.extend({
 						audio.set('piste', musique.src);
 						$().toastmessage(
 							'showSuccessToast', 
-							'<strong>Event débloqué</strong> - Bien joué, vous avez trouvé le konami code de <strong>'+musique.titre+'</strong>'+complement+' !'
+							'<strong>Event débloqué</strong> - Bien joué, tu as trouvé le konami code de <strong>'+musique.titre+'</strong>'+complement+' !'
 						);
 						if(musique.warning!=undefined) {
 							setTimeout(function() {
@@ -157,12 +157,12 @@ var EventView = Backbone.View.extend({
 						player.get('type')=='garcon' ? player.set('type', 'fille') : player.set('type', 'garcon');
 						$().toastmessage(
 							'showSuccessToast', 
-							"<strong>Event débloqué</strong> - Bien joué, vous avez trouvé le <strong>KONAMI CODE</strong> !"
+							"<strong>Event débloqué</strong> - Bien joué, tu as trouvé le <strong>KONAMI CODE</strong> !"
 						);
 						setTimeout(function() {
 							$().toastmessage(
 								'showWarningToast', 
-								"<strong>One more thing</strong> - Au cas où vous vous poseriez la question... c'est réversible !"
+								"<strong>One more thing</strong> - Au cas où tu te poserais la question... c'est réversible !"
 							);
 						}, 5000);
 						break;

@@ -190,7 +190,7 @@
 			"message" : "<strong>MiNET</strong> - Association | Epic gestion du réseau informatique de la MAISEL"
 		},
 		"position" : {
-			"x" : "12",
+			"x" : "11",
 			"y" : "49"
 		}
 	},
@@ -201,7 +201,7 @@
 			"message" : "<strong>MiNET</strong> - Association | Epic gestion du réseau informatique de la MAISEL"
 		},
 		"position" : {
-			"x" : "13",
+			"x" : "12",
 			"y" : "49"
 		}
 	},
@@ -219,12 +219,12 @@
 	{
 		"type" : "notification",
 		"notification" : {
-			"type" : "notice",
-			"message" : "<strong>SadINT</strong> - Club de LAN | Jeux communautaires et logo GIMP"
+			"type" : "error",
+			"message" : "Vous ne pouvez pas entrer... pour le moment !"
 		},
 		"position" : {
-			"x" : "31",
-			"y" : "62"
+			"x" : "15",
+			"y" : "49"
 		}
 	},
 	{
@@ -234,8 +234,19 @@
 			"message" : "<strong>SadINT</strong> - Club de LAN | Jeux communautaires et logo GIMP"
 		},
 		"position" : {
-			"x" : "32",
-			"y" : "62"
+			"x" : "30",
+			"y" : "61"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "notice",
+			"message" : "<strong>SadINT</strong> - Club de LAN | Jeux communautaires et logo GIMP"
+		},
+		"position" : {
+			"x" : "31",
+			"y" : "61"
 		}
 	},
 	{
@@ -246,7 +257,7 @@
 		},
 		"position" : {
 			"x" : "33",
-			"y" : "62"
+			"y" : "61"
 		}
 	},
 	{
