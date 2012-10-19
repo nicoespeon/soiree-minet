@@ -181,8 +181,6 @@ nav#menu a:hover::before {
   font-weight: 400;
   font-style: normal;
 
-
-
   src: 	local('fonts/PressStart2P-Regular.ttf'), 
   		local('fonts/PressStart2P-Regular.ttf'), 
   		url('fonts/PressStart2P-Regular.ttf') format('woff');
@@ -192,8 +190,6 @@ nav#menu a:hover::before {
 	font-family: 'RaphaelIcons';
     font-weight: normal;
     font-style: normal;
-
-
 
     src: 	url('../fonts/raphaelicons-webfont.eot');
     src: 	local('☺'), 
