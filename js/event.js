@@ -133,11 +133,15 @@ var EventView = Backbone.View.extend({
 				// Définit l'event en fonction de son type
 				switch(type) {
 					case 'musique':
-						var musique = event.musique;
+						var musique 	= event.musique;
+						var complement	= ', monte le son';
+						
+						if(ISPLAYING)	complement = '';
+						
 						audio.set('piste', musique.src);
 						$().toastmessage(
 							'showSuccessToast', 
-							'<strong>Event débloqué</strong> - Bien joué, vous avez trouvé le konami code de <strong>'+musique.titre+'</strong> !'
+							'<strong>Event débloqué</strong> - Bien joué, vous avez trouvé le konami code de <strong>'+musique.titre+'</strong>'+complement+' !'
 						);
 						if(musique.warning!=undefined) {
 							setTimeout(function() {
