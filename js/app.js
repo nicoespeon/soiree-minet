@@ -73,13 +73,15 @@ $(function() {
 	
 	// Active le menu de navigation
 	$('nav#menu a').click(function() {
-		var rel = $(this).attr('href');
-		var texte = $(rel).html();
-		$.colorbox({
-			html: texte,
-			innerWidth: '600px',
-			innerHeight: '400px'
-		});
+	    var rel = $(this).attr('href');
+	    var texte = $(rel).html();
+	    var titre = $(this).data('title');
+	    $.colorbox({
+	        html: texte,
+	        title: titre,
+	        innerWidth: '600px',
+	        maxHeight: '90%'
+	    });
 	});
 				
 	// Positionne les éléments de la map

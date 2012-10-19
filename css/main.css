@@ -645,3 +645,64 @@ nav#menu a:hover::before {
 .cboxSlideshow_off #cboxSlideshow:hover {
 	background-position: -125px 0px;
 }
+
+#cboxLoadedContent > * {
+	margin: 10px 10px 10px 30px;
+	
+	color: #7C7C7C;
+	
+	font-family: 'Press Start 2P', cursive;
+	font-size: 0.7em;
+	line-height: 2em;
+}
+
+#cboxLoadedContent em {
+	color: #FF7C7C;
+	
+	font-style: italic;
+}
+
+#cboxLoadedContent strong {
+	color: #7C7CFF;
+	
+	font-size: 1.2em;
+}
+
+#cboxLoadedContent p {
+	margin-bottom: 10px;
+}
+
+#cboxLoadedContent h1 {
+	margin-top: 20px;
+	margin-left: 10px;
+	
+	color: #5C5C5C;
+	
+	font-size: 0.8em;
+}
+
+#cboxLoadedContent h1:first-of-type {
+	margin-top: 10px;
+}
+
+#cboxLoadedContent ul,
+#cboxLoadedContent dl {
+	list-style-type: square;
+}
+
+#cboxLoadedContent dt {
+	float:left;
+	
+	width: 100px;
+	margin-right: 20px;
+	
+	text-align: right;
+}
+
+#cboxLoadedContent dd {
+	color: #BC5C5C;
+}
+
+#cboxLoadedContent dd:after {
+	clear: both;
+}
