@@ -102,8 +102,9 @@ var EventView = Backbone.View.extend({
 							setTimeout(function() {
 								$.colorbox({
 									html: texte,
+									title : 'Facebook & Twitter',
 									innerWidth: '600px',
-									innerHeight: '400px'
+									maxHeight: '90%'
 								});
 							}, 500); 
 						}
