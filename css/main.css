@@ -37,6 +37,14 @@ body {
 	line-height: 0;
 }
 
+.hidden {
+	display: none;
+}
+
+.center {
+	text-align: center;
+}
+
 /*
 |--------------------------------------------------------------------------
 | NAVIGATION
@@ -119,8 +127,8 @@ nav#menu {
 	text-align: left;
 
 	border-width: 16px;
-	-webkit-border-image: url('../img/nav.png') repeat;
-	-moz-border-image: url('../img/nav.png') repeat;
+	-webkit-border-image: url('../img/nav.png') 16 repeat;
+	-moz-border-image: url('../img/nav.png') 16 repeat;
 	border-image: url('../img/nav.png') 16 repeat;
 }
 
@@ -285,7 +293,6 @@ nav#menu a:hover::before {
     background: url('../img/notifications/error.png');
 }
 
-
 /**
  * Type of notification
  *
@@ -379,4 +386,323 @@ nav#menu a:hover::before {
     position: fixed;
     right: 20px;
     bottom: 20px;
+}
+
+
+
+/*
+|--------------------------------------------------------------------------
+| LIGHTBOX
+|--------------------------------------------------------------------------
+*/
+
+/**
+ * ColorBox Style
+ *
+ * CSS de base des composants de la librairie colorbox.js
+ *
+ */
+#colorbox, #cboxOverlay, #cboxWrapper {
+	position: absolute;
+	z-index: 9999;
+	top: 0;
+	left: 0;
+
+	overflow: hidden;
+}
+
+#cboxOverlay {
+	position: fixed;
+
+	width: 100%;
+	height: 100%;
+}
+
+#cboxMiddleLeft, #cboxBottomLeft {
+	clear: left;
+}
+
+#cboxContent {
+	position: relative;
+}
+
+#cboxLoadedContent {
+	overflow: auto;
+}
+
+#cboxTitle {
+	margin: 0;
+}
+
+#cboxLoadingOverlay, #cboxLoadingGraphic {
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	width: 100%;
+	height: 100%;
+}
+
+#cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow {
+	cursor: pointer;
+}
+
+.cboxPhoto {
+	display: block;
+	float: left;
+
+	max-width: none;
+	margin: auto;
+
+	border: 0;
+}
+
+.cboxIframe {
+	display: block;
+
+	width: 100%;
+	height: 100%;
+
+	border: 0;
+}
+
+#colorbox, #cboxContent, #cboxLoadedContent {
+	box-sizing: content-box;
+}
+
+/**
+ * MiNET lightbox Style
+ *
+ * Personnalisation des composants pour les lightbox du jeu
+ *
+ */
+#cboxOverlay {
+	background: #000;
+}
+
+#cboxTopLeft {
+	width: 14px;
+	height: 14px;
+
+	background: url('../img/lightbox/controls.png') no-repeat 0 0;
+}
+
+#cboxTopCenter {
+	height: 14px;
+
+	background: url('../img/lightbox/border.png') repeat-x top left;
+}
+
+#cboxTopRight {
+	width: 14px;
+	height: 14px;
+
+	background: url('../img/lightbox/controls.png') no-repeat -36px 0;
+}
+
+#cboxBottomLeft {
+	width: 14px;
+	height: 43px;
+
+	background: url('../img/lightbox/controls.png') no-repeat 0 -32px;
+}
+
+#cboxBottomCenter {
+	height: 43px;
+
+	background: url('../img/lightbox/border.png') repeat-x bottom left;
+}
+
+#cboxBottomRight {
+	width: 14px;
+	height: 43px;
+
+	background: url('../img/lightbox/controls.png') no-repeat -36px -32px;
+}
+
+#cboxMiddleLeft {
+	width: 14px;
+
+	background: url('../img/lightbox/controls.png') repeat-y -175px 0;
+}
+
+#cboxMiddleRight {
+	width: 14px;
+
+	background: url('../img/lightbox/controls.png') repeat-y -211px 0;
+}
+
+#cboxContent {
+	overflow: visible;
+
+	background: #fff;
+}
+
+.cboxIframe {
+	background: #fff;
+}
+
+#cboxError {
+	padding: 50px;
+
+	border: 1px solid #ccc;
+}
+
+#cboxLoadedContent {
+	margin-bottom: 5px;
+}
+
+#cboxLoadingOverlay {
+	background: url('../img/lightbox/loading_background.png') no-repeat center center;
+}
+
+#cboxLoadingGraphic {
+	background: url('../img/lightbox/loading.gif') no-repeat center center;
+}
+
+#cboxTitle {
+	position: absolute;
+	bottom: -25px;
+	left: 0;
+
+	width: 100%;
+
+	text-align: center;
+
+	color: #7C7C7C;
+
+	font-weight: bold;
+}
+
+#cboxCurrent {
+	position: absolute;
+	bottom: -25px;
+	left: 58px;
+
+	color: #7C7C7C;
+
+	font-weight: bold;
+}
+
+#cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow {
+	position: absolute;
+	bottom: -29px;
+
+	width: 23px;
+	height: 23px;
+
+	text-indent: -9999px;
+
+	background: url('../img/lightbox/controls.png') no-repeat 0px 0px;
+}
+
+#cboxPrevious {
+	left: 0px;
+
+	background-position: -51px -25px;
+}
+
+#cboxPrevious:hover {
+	background-position: -51px 0px;
+}
+
+#cboxNext {
+	left: 27px;
+
+	background-position: -75px -25px;
+}
+
+#cboxNext:hover {
+	background-position: -75px 0px;
+}
+
+#cboxClose {
+	right: 0;
+
+	background-position: -100px -25px;
+}
+
+#cboxClose:hover {
+	background-position: -100px 0px;
+}
+
+.cboxSlideshow_on #cboxSlideshow {
+	right: 27px;
+
+	background-position: -125px 0px;
+}
+
+.cboxSlideshow_on #cboxSlideshow:hover {
+	background-position: -150px 0px;
+}
+
+.cboxSlideshow_off #cboxSlideshow {
+	right: 27px;
+
+	background-position: -150px -25px;
+}
+
+.cboxSlideshow_off #cboxSlideshow:hover {
+	background-position: -125px 0px;
+}
+
+#cboxLoadedContent > * {
+	margin: 10px 10px 10px 30px;
+	
+	color: #7C7C7C;
+	
+	font-family: 'Press Start 2P', cursive;
+	font-size: 0.7em;
+	line-height: 2em;
+}
+
+#cboxLoadedContent em {
+	color: #FF7C7C;
+	
+	font-style: italic;
+}
+
+#cboxLoadedContent strong {
+	color: #7C7CFF;
+	
+	font-size: 1.2em;
+}
+
+#cboxLoadedContent p {
+	margin-bottom: 10px;
+}
+
+#cboxLoadedContent h1 {
+	margin-top: 20px;
+	margin-left: 10px;
+	
+	color: #5C5C5C;
+	
+	font-size: 0.8em;
+}
+
+#cboxLoadedContent h1:first-of-type {
+	margin-top: 10px;
+}
+
+#cboxLoadedContent ul,
+#cboxLoadedContent dl {
+	list-style-type: square;
+}
+
+#cboxLoadedContent dt {
+	float:left;
+	
+	width: 100px;
+	margin-right: 20px;
+	
+	text-align: right;
+}
+
+#cboxLoadedContent dd {
+	color: #BC5C5C;
+}
+
+#cboxLoadedContent dd:after {
+	clear: both;
 }

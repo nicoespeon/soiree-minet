@@ -9,93 +9,170 @@
 
 // Model - Event
 // -------------
-// Ce modèle définit la nature d'un player audio
 var Event = Backbone.Model.extend({
 	defaults: {
-		type: 'notice'
+		type: '',
+		notification : {
+			delai : '',
+			type : [],
+			message : []
+		},
+		video : {
+			titre : '',
+			src : ''
+		},
+		musique : {
+			titre : '',
+			src : '',
+			warning : '',
+			delai : 0
+		},
+		position : {
+			x : '0',
+			y : '0'
+		},
+		konami : ''
 	}
+});
+
+// Collection - Events
+// -------------------
+var EventList = Backbone.Collection.extend({
+    model: Event,
+	url: 'data/event.json'
 });
 
 // Vue - Event
 // -----------
-// Cette vue gère les événements de l'app
 var EventView = Backbone.View.extend({
-	events: {
-	
+	initialize: function() {
+		Events	= new EventList();
+		Events.fetch();	
+		
+		_.bindAll(this);
+		$(document).bind('keydown', this.eventDispatcher);
+		
+		// Keylogger pour Konami Events
+		KEYS = [];
 	},
 	
-	initialize: function() {
-		_.bindAll(this);
-		$(document).bind('keydown', this.konami);
+	eventDispatcher: function(e) {
+		// Check Interaction (panneau, objet, ...)
+		if(e.keyCode==13) {
+			var cible 	= getCoordsCible(player.getX(), player.getY(), player.get('orientation'));
+			var x		= cible['x'];
+			var y		= cible['y'];
+			this.interaction(x,y);
+			
+			return true;
+		}
 		
-		KEYS = [];
+		// Déplacement (Move)
+		
+		// Check Konami Code
+		this.konami(e);
+	},
+	
+	interaction: function(x,y) {
+		Events.forEach(function(el) {
+			var event 	= el.attributes;
+			var type 	= event.type;
+			var eventX 	= event.position.x;
+			var eventY	= event.position.y;
+			
+			if(x==eventX && y==eventY) {
+				switch(type) {
+					case 'notification':
+							var notif 			= event.notification;
+							var notifType 		= notif.type;
+							var notifMessage	= notif.message;
+							
+							$().toastmessage( 'showToast', {
+								type: notifType,
+								text: notifMessage
+							});
+						break;
+					
+					case 'social':
+						var pc = $('#pc');
+						pc.addClass('on');
+						
+						if(pc.hasClass('on')) {
+							var texte = $('#social').html();
+							setTimeout(function() {
+								$.colorbox({
+									html: texte,
+									title : 'Facebook & Twitter',
+									innerWidth: '600px',
+									maxHeight: '90%'
+								});
+							}, 500); 
+						}
+						
+						$(document).bind('cbox_closed', function() {
+							setTimeout(function() {
+								pc.removeClass('on');
+							}, 500);	
+						});
+						
+						break;
+				}
+			}
+		});	
 	},
 	
 	konami: function(e) {
 		KEYS.push(e.keyCode);
 		
-		if(KEYS.toString().indexOf(KONAMI)>=0) {
-			var genre = player.get('type');
-			if(genre=="garcon") {
-				player.set('type', 'fille');
-			} else {
-				player.set('type', 'garcon');
+		Events.forEach(function(el) {
+			var event 	= el.attributes;
+			var type 	= event.type;
+			var konami 	= event.konami;
+			
+			// Un Konami Code correspond, on déclenche l'event
+			if(konami.length>0 && KEYS.toString().indexOf(konami)>=0) {
+				// Définit l'event en fonction de son type
+				switch(type) {
+					case 'musique':
+						var musique 	= event.musique;
+						var complement	= ', monte le son';
+						
+						if(ISPLAYING)	complement = '';
+						
+						audio.set('piste', musique.src);
+						$().toastmessage(
+							'showSuccessToast', 
+							'<strong>Event débloqué</strong> - Bien joué, tu as trouvé le konami code de <strong>'+musique.titre+'</strong>'+complement+' !'
+						);
+						if(musique.warning!=undefined) {
+							setTimeout(function() {
+								$().toastmessage(
+									'showWarningToast', 
+									'<strong>One more thing</strong> - '+musique.warning
+								);
+							}, musique.delai);
+						}
+						break;
+					
+					case 'konami':
+						player.get('type')=='garcon' ? player.set('type', 'fille') : player.set('type', 'garcon');
+						$().toastmessage(
+							'showSuccessToast', 
+							"<strong>Event débloqué</strong> - Bien joué, tu as trouvé le <strong>KONAMI CODE</strong> !"
+						);
+						setTimeout(function() {
+							$().toastmessage(
+								'showWarningToast', 
+								"<strong>One more thing</strong> - Au cas où tu te poserais la question... c'est réversible !"
+							);
+						}, 5000);
+						break;
+				}
+				
+				// Réinitialise le keylogger
+				KEYS = [];
 			}
-			
-			$().toastmessage('showSuccessToast', "<strong>Event débloqué</strong> - Bien joué, vous avez trouvé le <strong>KONAMI CODE</strong> !");
-			
-			setTimeout(function() {
-				$().toastmessage('showWarningToast', "<strong>One more thing</strong> - Au cas où vous vous poseriez la question... c'est réversible !");
-			}, 5000);
-			
-			KEYS = [];
-		}
 		
-		else if(KEYS.toString().indexOf(CALLME)>=0) {
-			audio.set('piste', 'call-me-maybe');
-			$().toastmessage('showSuccessToast', '<strong>Event débloqué</strong> - Bien joué, vous avez trouvé le konami code de <strong>Call me maybe</strong> !');
-			KEYS = [];
-		}
-		
-		else if(KEYS.toString().indexOf(GANGNAM)>=0) {
-			audio.set('piste', 'gangnam-style');
-			$().toastmessage('showSuccessToast', '<strong>Event débloqué</strong> - Bien joué, vous avez trouvé le konami code de <strong>Gangnam Style</strong> !');
-			KEYS = [];
-		}
-		
-		else if(KEYS.toString().indexOf(NYAN)>=0) {
-			audio.set('piste', 'nyan-cat');
-			$().toastmessage('showSuccessToast', '<strong>Event débloqué</strong> - Bien joué, vous avez trouvé le konami code de <strong>Nyan Cat</strong> !');
-			KEYS = [];
-		}
-		
-		else if(KEYS.toString().indexOf(SPECIAL)>=0) {
-			audio.set('piste', 'rickroll');
-			$().toastmessage('showSuccessToast', '<strong>Event débloqué</strong> - Bien joué, vous avez trouvé le konami code de <strong>Rick Roll</strong> !');
-			
-			setTimeout(function() {
-				$().toastmessage('showWarningToast', '<strong>One more thing</strong> - Vous venez de vous faire Rick Rolled...');
-			}, 5000);
-			
-			KEYS = [];
-		}
-		
-		else if(KEYS.toString().indexOf(EPIC)>=0) {
-			audio.set('piste', 'epic-sax');
-			$().toastmessage('showSuccessToast', '<strong>Event débloqué</strong> - Bien joué, vous avez trouvé le konami code de <strong>Epic Sax</strong> !');
-			
-			setTimeout(function() {
-				$().toastmessage('showWarningToast', "<strong>One more thing</strong> - J'ai développé le site, vous pensiez vraiment que vous alliez y échapper ?");
-			}, 5000);
-			
-			KEYS = [];
-		}
-		
-		else if(KEYS.toString().indexOf(GBAR)>=0) {
-			audio.set('piste', 'gay-bar');
-			$().toastmessage('showSuccessToast', '<strong>Event débloqué</strong> - Bien joué, vous avez trouvé le konami code de <strong>Gay Bar</strong> !');
-			
-			KEYS = [];
-		}
+		});
 	}
 });

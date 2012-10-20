@@ -12,11 +12,10 @@
 | MODELE & COLLECTIONS
 |--------------------------------------------------------------------------
 */
+
 // Model - Personnage
 // ------------------
-// Ce modèle définit la nature d'un personnage
 var Personnage = Backbone.Model.extend({
-	// Attributs par défaut d'un personnage
 	defaults: {
 		type: 'garcon',
 		pseudo: 'Sergio Flores',
@@ -75,20 +74,20 @@ var Personnage = Backbone.Model.extend({
 
 // Collection - PNJ
 // ----------------
-// Cette collection regroupe les PNJs
 var PNJList = Backbone.Collection.extend({
     model: Personnage,
 	url: 'data/pnj.json'
 });
+
 
 /*
 |--------------------------------------------------------------------------
 | VUES (Player, PNJ, Personnages)
 |--------------------------------------------------------------------------
 */
+
 // Vue - Player
 // ------------
-// Cette vue gère le rendu d'un joueur
 var PlayerView = Backbone.View.extend({
 	// Le joueur est rattaché à la zone de jeu
 	el: $('#wrapper'),
@@ -122,8 +121,6 @@ var PlayerView = Backbone.View.extend({
 	move: function(e) {
 		// Variables initiales
 		var zIndex 	= $('#player').css('z-index');
-		var xCible 	= this.model.getX();
-		var yCible 	= this.model.getY();
 		var canMove = false;
 		
 		// Annule le déplacement si un est déjà en cours
@@ -138,28 +135,24 @@ var PlayerView = Backbone.View.extend({
 			case 37:
 				//Gauche
 				e.preventDefault();
-				xCible--;
 				this.model.set({'orientation':1});
 				break;
 				
 			case 38:
 				//Haut
 				e.preventDefault();
-				yCible--;
 				this.model.set({'orientation':3});
 				break;
 			
 			case 39:
 				//Droite
 				e.preventDefault();
-				xCible++;
 				this.model.set({'orientation':2});
 				break;
 				
 			case 40:
 				//Bas
 				e.preventDefault();
-				yCible++;
 				this.model.set({'orientation':0});
 				break;
 			
@@ -172,6 +165,9 @@ var PlayerView = Backbone.View.extend({
 		$('#player').css('z-index', zIndex);	//Maintient l'état du z-index après changement d'orientation
 		
 		if(ETAT_ANIMATION > 0) {
+			var cible 		= getCoordsCible(this.model.getX(), this.model.getY(), this.model.get('orientation'));
+			var xCible 		= cible['x'];
+			var yCible 		= cible['y'];
 			canMove = this.canMoveTo(xCible,yCible);
 			isUpper = this.canMoveTo(xCible, yCible+1);
 		}
@@ -294,16 +290,11 @@ var PlayerView = Backbone.View.extend({
 
 // Vue - PNJ
 // ----------
-// Cette vue gère le rendu d'un PNJ
 var PNJView = Backbone.View.extend({
-	// Chaque PNJ est une nouvelle puce
 	tagName: 'li',
 	
-	// A laquelle on applique un template particulier
 	template: _.template($('#pnj-template').html()),
 	
-	// La vue écoute les changements sur le modèle
-	// Comme il y a une relation 1-1 entre le modèle et la vue, on y fait référence directement ici
 	initialize: function() {
 		_.bindAll(this);
 		$(document).bind('keydown', this.parle);
@@ -314,7 +305,6 @@ var PNJView = Backbone.View.extend({
 		this.model.on('change', this.render, this);
 	},
 	
-	// Re-render le PNJ sur la map
 	render: function() {
 		this.$el.html(this.template(this.model.toJSON()));
 		
@@ -355,26 +345,9 @@ var PNJView = Backbone.View.extend({
 	parle: function(e) {
 		if(e.keyCode=='13') {
 			var direction 	= player.get('orientation');
-			var xCible 		= player.getX();
-			var yCible 		= player.getY();
-			
-			switch(direction) {
-				case 0:
-					yCible++;
-					break;
-					
-				case 1:
-					xCible--;
-					break;
-					
-				case 2:
-					xCible++;
-					break;
-					
-				case 3:
-					yCible--;
-					break;
-			}
+			var cible 		= getCoordsCible(player.getX(), player.getY(), direction);
+			var xCible 		= cible['x'];
+			var yCible 		= cible['y'];
 			
 			if(this.model.getX()==xCible && this.model.getY()==yCible) {
 				switch(direction) {
@@ -395,8 +368,16 @@ var PNJView = Backbone.View.extend({
 						break;
 				}
 				
-				var texte = this.model.get('texte')[Math.floor(Math.random()*this.model.get('texte').length)];
-				$().toastmessage('showNoticeToast', '<strong>'+this.model.get('pseudo')+'</strong> - '+texte);		
+				var texte = this.model.get('texte')[0];
+				$().toastmessage('showNoticeToast', '<strong>'+this.model.get('pseudo')+'</strong> - '+texte);	
+				
+				var nouveauTexte = [];
+				for(var i=1; i<this.model.get('texte').length; i++) {
+					nouveauTexte.push(this.model.get('texte')[i]);
+				}
+				nouveauTexte.push(texte);
+				
+				this.model.set('texte', nouveauTexte); 	
 			}
 		}
 	}

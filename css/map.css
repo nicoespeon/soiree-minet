@@ -22,7 +22,6 @@
 	height: 3200px;
 	margin: auto;
 
-	border: 1px #CCC solid;
 	background: url('../img/map/bg.png') repeat;
 }
 
@@ -338,7 +337,7 @@
 	background: url('../img/map/port.png');
 }
 
-#port .pc.on {
+#pc.on {
 	width: 32px;
 	height: 64px;
 

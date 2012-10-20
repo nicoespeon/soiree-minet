@@ -1,0 +1,373 @@
+[
+	{
+		"type" : "musique", 
+		"musique" : {
+			"titre" : "Call me maybe",
+			"src": "call-me-maybe"
+		},
+		"konami" : "67,65,76,76,77,69"
+	},
+	{
+		"type" : "musique", 
+		"musique" : {
+			"titre" : "Gangnam Style",
+			"src": "gangnam-style"
+		},
+		"konami" : "71,65,78,71,78,65,77"
+	},
+	{
+		"type" : "musique", 
+		"musique" : {
+			"titre" : "Nyan Cat",
+			"src": "nyan-cat"
+		},
+		"konami" : "78,89,65,78"
+	},
+	{
+		"type" : "musique", 
+		"musique" : {
+			"titre" : "Rick Roll",
+			"src": "rickroll",
+			"warning" : "Vous venez de vous faire Rick Rolled...",
+			"delai" : "5000"
+		},
+		"konami" : "83,80,69,67,73,65,76"
+	},
+	{
+		"type" : "musique", 
+		"musique" : {
+			"titre" : "Epic Sax",
+			"src": "epic-sax",
+			"warning" : "J'ai développé le site, vous pensiez vraiment que vous alliez y échapper ?",
+			"delai" : "5000"
+		},
+		"konami" : "69,80,73,67"
+	},
+	{
+		"type" : "musique", 
+		"musique" : {
+			"titre" : "Gay Bar",
+			"src": "gay-bar"
+		},
+		"konami" : "71,66,65,82"
+	},
+	{
+		"type" : "konami",
+		"konami" : "38,38,40,40,37,39,37,39,66,65"
+	},
+	{
+		"type" : "social",
+		"position" : {
+			"x" : "17",
+			"y" : "85"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "warning",
+			"message" : "Il n'y a rien ici... pour le moment !"
+		},
+		"position" : {
+			"x" : "5",
+			"y" : "3"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "notice",
+			"message" : "Ceci est une rune incompréhensible... pour le moment !"
+		},
+		"position" : {
+			"x" : "11",
+			"y" : "10"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "notice",
+			"message" : "Ceci est une rune incompréhensible... pour le moment !"
+		},
+		"position" : {
+			"x" : "13",
+			"y" : "10"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "notice",
+			"message" : "<strong>Aymi Li</strong> joue à un jeu étrange... le... <em>cHTeMeLe</em> ?"
+		},
+		"position" : {
+			"x" : "12",
+			"y" : "16"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "error",
+			"message" : "Vous ne pouvez pas entrer... pour le moment !"
+		},
+		"position" : {
+			"x" : "38",
+			"y" : "18"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "notice",
+			"message" : "<strong>INTech</strong> - Club de robotique | Des robots et des hommes"
+		},
+		"position" : {
+			"x" : "9",
+			"y" : "34"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "notice",
+			"message" : "<strong>INTech</strong> - Club de robotique | Des robots et des hommes"
+		},
+		"position" : {
+			"x" : "10",
+			"y" : "34"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "error",
+			"message" : "Vous ne pouvez pas entrer... pour le moment !"
+		},
+		"position" : {
+			"x" : "11",
+			"y" : "34"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "error",
+			"message" : "Vous ne pouvez pas entrer... pour le moment !"
+		},
+		"position" : {
+			"x" : "12",
+			"y" : "34"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "notice",
+			"message" : "<strong>Bricol'INT</strong> - Club de bricolage | Décorations et constructions en tout genre"
+		},
+		"position" : {
+			"x" : "6",
+			"y" : "39"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "error",
+			"message" : "Vous ne pouvez pas entrer... pour le moment !"
+		},
+		"position" : {
+			"x" : "7",
+			"y" : "39"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "notice",
+			"message" : "<strong>MiNET</strong> - Association | Epic gestion du réseau informatique de la MAISEL"
+		},
+		"position" : {
+			"x" : "11",
+			"y" : "49"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "notice",
+			"message" : "<strong>MiNET</strong> - Association | Epic gestion du réseau informatique de la MAISEL"
+		},
+		"position" : {
+			"x" : "12",
+			"y" : "49"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "error",
+			"message" : "Vous ne pouvez pas entrer... pour le moment !"
+		},
+		"position" : {
+			"x" : "14",
+			"y" : "49"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "error",
+			"message" : "Vous ne pouvez pas entrer... pour le moment !"
+		},
+		"position" : {
+			"x" : "15",
+			"y" : "49"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "notice",
+			"message" : "<strong>SadINT</strong> - Club de LAN | Jeux communautaires et logo GIMP"
+		},
+		"position" : {
+			"x" : "30",
+			"y" : "61"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "notice",
+			"message" : "<strong>SadINT</strong> - Club de LAN | Jeux communautaires et logo GIMP"
+		},
+		"position" : {
+			"x" : "31",
+			"y" : "61"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "error",
+			"message" : "Vous ne pouvez pas entrer... pour le moment !"
+		},
+		"position" : {
+			"x" : "33",
+			"y" : "61"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "warning",
+			"message" : "Il n'y a rien ici... pour le moment !"
+		},
+		"position" : {
+			"x" : "34",
+			"y" : "72"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "error",
+			"message" : "Vous ne pouvez pas entrer... pour le moment !"
+		},
+		"position" : {
+			"x" : "21",
+			"y" : "78"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "error",
+			"message" : "Vous ne pouvez pas entrer... pour le moment !"
+		},
+		"position" : {
+			"x" : "14",
+			"y" : "78"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "error",
+			"message" : "Vous ne pouvez pas entrer... pour le moment !"
+		},
+		"position" : {
+			"x" : "31",
+			"y" : "83"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "notice",
+			"message" : "<strong>T'Space</strong> - Club aérospatial | Vers l'infini et au delà"
+		},
+		"position" : {
+			"x" : "33",
+			"y" : "83"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "notice",
+			"message" : "<strong>T'Space</strong> - Club aérospatial | Vers l'infini et au delà"
+		},
+		"position" : {
+			"x" : "34",
+			"y" : "83"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "error",
+			"message" : "Vous ne pouvez pas entrer... pour le moment !"
+		},
+		"position" : {
+			"x" : "6",
+			"y" : "86"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "notice",
+			"message" : "<strong>Soirée MiNET</strong> - 07/12/12 | H**ck Me I'm Famous"
+		},
+		"position" : {
+			"x" : "9",
+			"y" : "86"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "error",
+			"message" : "Vous ne pouvez pas entrer... pour le moment !"
+		},
+		"position" : {
+			"x" : "14",
+			"y" : "86"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "error",
+			"message" : "Vous ne pouvez pas entrer... pour le moment !"
+		},
+		"position" : {
+			"x" : "20",
+			"y" : "86"
+		}
+	}
+]

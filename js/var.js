@@ -1,6 +1,6 @@
 /*
 |--------------------------------------------------------------------------
-| MAIN SCRIPT
+| VAR SCRIPT
 |--------------------------------------------------------------------------
 |
 | Variables et fonctions globales de l'application
@@ -12,9 +12,11 @@
 | VARIABLES GLOBALES
 |--------------------------------------------------------------------------
 */
+// Map
 var TAILLE_TILE = 32; 					// Taille du tile en pixels
 
-var ORIENTATION = [];						// Orientation du personnage
+// Personnages
+var ORIENTATION = [];					// Orientation du personnage
 ORIENTATION.push('orientationBas');
 ORIENTATION.push('orientationGauche');
 ORIENTATION.push('orientationDroite');
@@ -26,19 +28,10 @@ var DUREE_DEPLACEMENT 	= 400;			// Durée du déplacement (en ms)
 var ETAT_ANIMATION		= -1;			// Personnage initialement immobile
 var COLLISIONS 			= [];			// On définit la map des collisions
 
+// Audio
 var ISPLAYING 			= false;		// Etat du lecteur audio
 
-// Konami Codes
-var KONAMI 	= "38,38,40,40,37,39,37,39,66,65";
-var CALLME 	= "67,65,76,76,77,69";
-var GANGNAM = "71,65,78,71,78,65,77";
-var NYAN	= "78,89,65,78";
-var SPECIAL = "83,80,69,67,73,65,76";
-var EPIC	= "69,80,73,67";
-var GBAR	= "71,66,65,82"
-
-// Configuration des notifications 
-// -------------------------------
+// Notifications
 $().toastmessage({
     text     : 'H**k me I\'m famous !',
     sticky   : false,
@@ -47,11 +40,13 @@ $().toastmessage({
     stayTime : 10000
 });
 
+
 /*
 |--------------------------------------------------------------------------
 | FONCTIONS GLOBALES
 |--------------------------------------------------------------------------
 */
+
 // Convertit les coordonnées (tile) en pixels 
 // ------------------------------------------
 function tileToPx(tile){
@@ -62,4 +57,28 @@ function tileToPx(tile){
 // --------------------------------
 function positionne(el,x,y) {
 	$(el).css({'left':tileToPx(x)+'px','top':tileToPx(y)+'px'});
+}
+
+// Donne les coordonnées de la case ciblée
+// ---------------------------------------
+function getCoordsCible(x,y,orientation) {
+	switch(orientation) {
+		case 0:
+			y++;
+			break;
+			
+		case 1:
+			x--;
+			break;
+			
+		case 2:
+			x++;
+			break;
+			
+		case 3:
+			y--;
+			break;
+	}
+	
+	return { 'x':x, 'y':y };
 }

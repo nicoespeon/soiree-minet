@@ -23,7 +23,7 @@
 	    <script>CFInstall.check({ mode: "overlay" });</script>
     <![endif]-->
     
-	<!-- Menu de navigation -->
+	<!-- Menu de contrôle -->
 	<nav id="control">
 		<ul>
 			<li class="font-icon" data-control="menu">j</li>
@@ -31,19 +31,20 @@
 		</ul>
 	</nav>
 	
-	<nav id="menu" style="display:none;">
+	<!-- Menu de navigation -->
+	<nav id="menu" class="hidden">
 		<ul class="clearfix">
 			<li>
-				<a class="active" href="#">Soirée MiNET</a>
+				<a href="#description" data-title="Soirée MiNET">Soirée MiNET</a>
 			</li>
 			<li>
-				<a href="#">Animations</a>
+				<a href="#animations" data-title="Les animations">Animations</a>
 			</li>
 			<li>
-				<a href="#">Tarifs</a>
+				<a href="#tarifs" data-title="Les tarifs">Tarifs</a>
 			</li>
 			<li>
-				<a href="#howToPlay">How to Play ?</a>
+				<a href="#howToPlay" data-title="How to Play ?">How to Play ?</a>
 			</li>
 		</ul>
 	</nav>
@@ -107,7 +108,7 @@
 		
 		<!-- Port -->
 		<div id="port" data-x="4" data-y="74">
-			<div class="pc" data-x="14" data-y="11"></div>
+			<div id="pc" data-x="14" data-y="11"></div>
 		</div>
 		
 		<!-- Mer -->
@@ -125,24 +126,92 @@
 	<script type="text/template" id="pnj-template">
 		<div class="pnj <%= type %> <%= ORIENTATION[orientation] %>" data-x="<%= position[0] %>" data-y="<%= position[1] %>"></div>
 	</script>
+	
 	<script type="text/template" id="player-template">
 		<div id="player" class="<%= type %> <%= ORIENTATION[orientation] %> frame<%= frame %>" data-x="<%= position[0] %>" data-y="<%= position[1] %>">
 			<!-- Here is your player ! -->
 		</div>
 	</script>
 	
+	<div id="description" class="hidden">   
+	    <h1>Le 7 Décembre 2012, MiNET Hack le foyer !</h1>
+	    <p>
+	        Trois ans après avoir enflammé la banquise, <strong>la soirée MiNET revient en force</strong>.
+	    </p>
+	    <p>
+	        Alors accroche-toi bien à ton clavier car cette année encore, MiNET va te faire vivre une nuit légendaire !
+	    </p>
+	</div>
+	
+	<div id="animations" class="hidden">
+	    <h1>Au programme...</h1>
+	    <ul>
+	        <li>Show Pomp'INT</li>
+	        <li>Show Mov'INT</li>
+	        <li>Projet X by <em>les Vieux</em></li>
+	        <li>Projet Y by <em>Bricol'INT</em</li>
+	    </ul>
+	</div>
+	
+	<div id="tarifs" class="hidden">
+	    <h1>La soirée <em>hack discount</em></h1>   
+	    <dl>
+	        <dt>Entrée</dt>
+	            <dd>= 3€</dd>
+	        <dt>Consos</dt>
+	            <dd>+ 2€</dd>
+	        <dt>Extés</dt>
+	            <dd>+ 5€</dd>
+	    </dl>
+	</div>
+	
+	<div id="howToPlay" class="hidden">
+	    <h1>Le principe</h1>
+	    <p>
+	        Cupcake ipsum dolor sit amet lemon drops tootsie roll dessert danish. Macaroon cupcake caramels. I love I love tiramisu cupcake oat cake croissant I love I love topping.
+	    </p>    
+	    <h1>Les commandes</h1>
+	    <p>
+	        I love I love soufflé carrot cake ice cream chupa chups tootsie roll tiramisu. Sesame snaps croissant applicake. I love cake cotton candy.
+	    </p>    
+	    <p>
+	    	I love gummies chocolate bar oat cake gummies I love gingerbread. Caramels candy canes marzipan wafer I love. Cupcake chupa chups marshmallow chocolate soufflé lemon drops.
+	    </p>
+	    <h1>One more thing...</h1>
+	    <p>
+	        Pie danish chocolate bar I love. Jelly beans wafer croissant toffee tiramisu danish biscuit biscuit jujubes. Pie dragée chocolate cake oat cake. Sweet cookie chocolate cake jelly gummi bears I love candy.
+	    </p>
+	    <p>
+	        Cupcake ipsum dolor sit amet lemon drops tootsie roll dessert danish. Macaroon cupcake caramels. I love I love tiramisu cupcake oat cake croissant I love I love topping.
+	    </p> 
+	</div>
+	
+	<div id="social" class="hidden">
+		<h1>Bienvenue sur le PC de MiNET</h1>
+		<div class="center">	
+			<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://soiree.minet.net" data-text="Soirée MiNET, le 7 décembre 2012 - H**k me I'm famous -" data-via="MinetTMSP" data-lang="fr" data-related="MinetTMSP">Tweeter</a>
+			<div class="fb-like" data-href="http://soiree.minet.net" data-send="false" data-layout="button_count" data-width="150" data-show-faces="true" data-font="arial"></div>
+			<div id="fb-root"></div>
+		</div>
+	</div>
+	
 	<!-- Librairies JS -->
 	<script src="js/lib/jquery-1.7.2.min.js"></script>
 	<script src="js/lib/underscore.min.js"></script>
 	<script src="js/lib/backbone.min.js"></script>
-	<script src="js/lib/jquery.toastmessage.js"></script>
+	<script src="js/lib/toastmessage.js"></script>
 	<script src="js/lib/buzz.js"></script>
+	<script src="js/lib/colorbox.js"></script>
 	
 	<!-- Scripts JS -->
-	<script src="js/main.js"></script>
+	<script src="js/var.js"></script>
 	<script src="js/personnages.js"></script>
 	<script src="js/audio.js"></script>
 	<script src="js/event.js"></script>
 	<script src="js/app.js"></script>
+	
+	<!-- Script social media -->
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	<script>(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="//connect.facebook.net/fr_FR/all.js#xfbml=1";fjs.parentNode.insertBefore(js,fjs);}(document,'script','facebook-jssdk'));</script>
 </body>
 </html>

@@ -9,7 +9,6 @@
 
 // Model - Audio
 // -------------
-// Ce modèle définit la nature d'un player audio
 var Audio = Backbone.Model.extend({
 	defaults: {
 		piste: 'partyrock',
@@ -18,8 +17,7 @@ var Audio = Backbone.Model.extend({
 });
 
 // Vue - Audio
-// -------------
-// Cette vue gère le player audio de l'app
+// -----------
 var AudioView = Backbone.View.extend({
 	events: {
 		"click .play": "play",
