@@ -101,7 +101,8 @@ var PlayerView = Backbone.View.extend({
 		
 		this.model.on('change', this.render, this);
 		
-		this.render();	
+		this.render();
+		this.scroll();	
 	},
 	
 	render: function() {
@@ -122,6 +123,9 @@ var PlayerView = Backbone.View.extend({
 		var zIndex 	= $('#player').css('z-index');
 		var canMove = false;
 		
+		// Scroll (même si pas de déplacement)
+		this.scroll();
+			
 		// Annule le déplacement si un est déjà en cours
 		if(ETAT_ANIMATION > 0) {
 			return false;
@@ -173,7 +177,6 @@ var PlayerView = Backbone.View.extend({
 		
 		// ETAPE 2 - On déplace le personnage si c'est possible
 		if(canMove==true) {
-			this.scroll();
 			this.moveAnimation(isUpper);
 		} else {
 			ETAT_ANIMATION = -1;
