@@ -100,9 +100,9 @@ var PlayerView = Backbone.View.extend({
 		$(document).bind('keydown', this.move);
 		
 		this.model.on('change', this.render, this);
-		this.model.on('change:position', this.scroll, this);
 		
-		this.render();	
+		this.render();
+		this.scroll();	
 	},
 	
 	render: function() {
@@ -123,6 +123,9 @@ var PlayerView = Backbone.View.extend({
 		var zIndex 	= $('#player').css('z-index');
 		var canMove = false;
 		
+		// Scroll (même si pas de déplacement)
+		this.scroll();
+			
 		// Annule le déplacement si un est déjà en cours
 		if(ETAT_ANIMATION > 0) {
 			return false;
@@ -266,25 +269,65 @@ var PlayerView = Backbone.View.extend({
 	},
 	
 	scroll: function() {
-		var x = this.model.getX()*32;
-		var y = this.model.getY()*32;
-		var height = $(window).height();
-		var width = $(window).width();
-		
-		var decalX = x-(width/2);
-		var decalY = y-(height/2);
-		
-		if(decalX>0) {
-			$(window).scrollLeft(decalX);
-		} else {
-			$(window).scrollLeft(0);
-		}
-		
-		if(decalY>0) {
-			$(window).scrollTop(decalY);
-		} else {
-			$(window).scrollTop(0);
-		}
+		// Orientation du personnage
+	    var orientation 	= this.model.get('orientation');
+	    
+		// Marge limite avant scroll
+	    var offsetIn 		= tileToPx(3);
+	    
+	    // Coordonnées de la cible
+	    var cible 			= getCoordsCible(this.model.getX(), this.model.getY(), orientation);
+	    var x 				= tileToPx(cible['x']);
+	    var y 				= tileToPx(cible['y']);
+	    
+	    // Dimensions de l'écran
+	    var winHeight 		= $(window).height();
+	    var winWidth 		= $(window).width();
+	    var winMidHeight 	= winHeight/2;
+	    var winMidWidth 	= winWidth/2;
+	
+	    // Offset de l'écran par rapport à [0,0]
+	    var offsetWin 		= $('html, body').offset();
+	    var offsetX 		= -offsetWin.left;
+	    var offsetY 		= -offsetWin.top;
+	    
+	    // Position de la cible par rapport à l'écran
+	    var winX 			= x-offsetX;
+	    var winY 			= y-offsetY;
+	
+	    // Décalage de l'écran pour le scroll
+	    var decalX 			= winWidth-(offsetIn*2);
+	    var decalY 			= winHeight-(offsetIn*2);
+	    
+	    // Ecart de la position de la cible par rapport au centre
+	    var ecartX 			= Math.abs(winMidWidth-winX);
+	    var ecartY 			= Math.abs(winMidHeight-winY);
+	    var ecartMaxX 		= winMidWidth-offsetIn;
+	    var ecartMaxY 		= winMidHeight-offsetIn;
+	
+	    if(winX < 0) {
+	    	// Si l'écran est plus loin que la cible, on scroll en arrière
+	        $('html, body').animate({scrollLeft: x-offsetIn}, 'slow');
+	    } else if(ecartX > ecartMaxX) {
+	    	// Sinon, si la cible atteint la marge limite, on scroll
+	        if(orientation==1) {
+	            $('html, body').animate({scrollLeft: offsetX-decalX}, 'slow');
+	        } else if(orientation==2) {
+	            $('html, body').animate({scrollLeft: offsetX+decalX}, 'slow');
+	        }
+	    } 
+	
+	    if(winY < 0) {
+	    	// Si l'écran est plus loin que la cible, on scroll en arrière
+	        $('html, body').animate({scrollTop: y-offsetIn}, 'slow');
+	    } else if(ecartY > ecartMaxY) {
+	    	// Sinon, si la cible atteint la marge limite, on scroll
+	        if(orientation==3) {
+	            $('html, body').animate({scrollTop: offsetY-decalY}, 'slow');
+	        } else if(orientation==0) {
+	            $('html, body').animate({scrollTop: offsetY+decalY}, 'slow');
+	        }
+	    }
 	}
 });
 

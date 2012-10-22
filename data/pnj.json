@@ -63,8 +63,8 @@
 		"position": [15,50],
 		"limits": [0,1,2],
 		"texte": [
-			"Tu viens pour la <strong>soirée MiNET</strong> ? Ca va être quelque chose...",
 			"Derrière moi c'est <em>MiNET</em>. On fournit le réseau aux adhérents, permanences du lundi au jeudi de 18h à 19h30 !",
+			"Tu viens pour la <strong>soirée MiNET</strong> ? Ca va être quelque chose...",
 			"La soirée c'est <strong>vendredi 7 décembre</strong> ! Tu as toutes les informations dans le menu du site",
 			"C'est <strong>Ays Péon</strong> qui a développé le site. Si tu es perdu, lis le <em>How To Play</em> !"
 		]
