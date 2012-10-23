@@ -100,6 +100,7 @@ var PlayerView = Backbone.View.extend({
 		$(document).bind('keydown', this.move);
 		
 		this.model.on('change', this.render, this);
+		this.model.on('change:position', this.scroll, this);
 		
 		this.render();
 		this.scroll();	
@@ -171,7 +172,7 @@ var PlayerView = Backbone.View.extend({
 			var cible 		= getCoordsCible(this.model.getX(), this.model.getY(), this.model.get('orientation'));
 			var xCible 		= cible['x'];
 			var yCible 		= cible['y'];
-			canMove = this.canMoveTo(xCible,yCible);
+			canMove = this.canMoveTo(xCible, yCible);
 			isUpper = this.canMoveTo(xCible, yCible+1);
 		}
 		
@@ -208,64 +209,56 @@ var PlayerView = Backbone.View.extend({
 	},
 	
 	moveAnimation: function(isUpper) {
-		var inst = this;
-		var zIndex = $('#player').css('z-index');
-		
-		var bouge = setInterval(function() {
-			var temps_ecoule = (ETAT_ANIMATION-1)*DUREE_DEPLACEMENT/NB_IMAGES;
-			var decalage = temps_ecoule/DUREE_DEPLACEMENT; 
-			
-			if(temps_ecoule>DUREE_DEPLACEMENT) {
-				// Si le déplacement a atteint ou dépassé le temps nécessaire pour s'effectuer, on le termine
-				ETAT_ANIMATION = -1;
-				clearInterval(bouge);
-			} else if(ETAT_ANIMATION>0) {
-					// Sinon, on définit la frame en fonction de l'état de l'animation
-					var frame = 0;
-					if(temps_ecoule!=0) {
-						frame = Math.ceil(NB_FRAME*decalage);
-						if(frame>3)	frame=0;
-					}
+		var inst 		= this;								// Pour la portée de this dans la fonction animate()
+        var decalage 	= 1/NB_FRAMES;						// Déplacement pour un pas
+        var frame 		= ETAT_ANIMATION%NB_FRAMES;			// Frame à afficher
+        var zIndex 		= $('#player').css('z-index');		// z-index du player pour superposition avec pnj
 
-					// On définit les nouvelles coordonnées 
-					var direction = inst.model.get('orientation');
-					var x = inst.model.getX();
-					var y = inst.model.getY();
-					
-					switch(direction) {
-						case 0:
-							y = Math.floor(y)+decalage;
-							break;
-						
-						case 1:
-							x = Math.ceil(x)-decalage;
-							break;
-							
-						case 2:
-							x = Math.floor(x)+decalage;
-							break;
-							
-						case 3:
-							y = Math.ceil(y)-decalage;
-							break;
-					}
-					
-					inst.model.set({'position':[x,y],'frame':frame});
-					
-					// On passe à l'état suivant
-					ETAT_ANIMATION++;
-					
-					// Gère la superposition avec un obstacle (PNJs)
-					if(!isUpper) {
-						$('#player').css('z-index', '10');
-					}
-					
-					if(zIndex=='10' && temps_ecoule<(DUREE_DEPLACEMENT/2)) {
-						// Laisse le temps au personnage de se "dégager" de l'obstacle avant de le repasser par-dessus
-						$('#player').css('z-index', '10');					
-					}	
+        if(ETAT_ANIMATION<=NB_FRAMES) {
+        	// Déplace le personnage selon le nombre de frames indiqué
+	        var x = this.model.getX();
+	        var y = this.model.getY();
+	        var direction = this.model.get('orientation');
+	
+	        switch(direction) {
+	            case 0:
+	            	y += decalage;
+	                break;
+	
+	            case 1:
+                    x -= decalage;
+                    break;
+	
+	            case 2:
+                    x += decalage;
+                    break;
+	
+	            case 3:
+                    y -= decalage;
+                    break;
+	        }
+	
+	        // Anime le déplacement du player jusqu'à la prochaine frame
+	        $('#player').animate({
+	            top: tileToPx(y)+'px',
+	            left: tileToPx(x)+'px'
+	        }, DUREE_DEPLACEMENT/NB_FRAMES, function() {		
+	            inst.model.set({'position':[Math.floor(x*100)/100,Math.floor(y*100)/100],'frame':frame});			
+	        	if(!isUpper) {
+					$('#player').css('z-index', '10');
 				}
-		}, DUREE_DEPLACEMENT/NB_IMAGES);
+				if(zIndex=='10' && frame<3) {
+					// Laisse le temps au personnage de se "dégager" de l'obstacle avant de le repasser par-dessus
+					$('#player').css('z-index', '10');					
+				}	
+	            ETAT_ANIMATION++;
+	            inst.moveAnimation(isUpper);
+	        });
+        } else {
+        	// Sinon on désactive l'animation
+            ETAT_ANIMATION = -1
+        }
+	
 	},
 	
 	scroll: function() {
