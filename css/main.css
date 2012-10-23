@@ -248,6 +248,7 @@ nav#menu a:hover::before {
 
 .toast-item p {
     margin-left: 50px;
+    margin-right: 35px;
 
     text-align: left;
 }
