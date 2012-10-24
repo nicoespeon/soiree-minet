@@ -300,25 +300,25 @@ var PlayerView = Backbone.View.extend({
 	
 	    if(winX < 0) {
 	    	// Si l'écran est plus loin que la cible, on scroll en arrière
-	        $('html, body').animate({scrollLeft: x-offsetIn}, 'slow');
+	        $('html, body').animate({scrollLeft: x-offsetIn}, 500);
 	    } else if(ecartX > ecartMaxX) {
 	    	// Sinon, si la cible atteint la marge limite, on scroll
 	        if(orientation==1) {
-	            $('html, body').animate({scrollLeft: offsetX-decalX}, 'slow');
+	            $('html, body').animate({scrollLeft: offsetX-decalX}, 500);
 	        } else if(orientation==2) {
-	            $('html, body').animate({scrollLeft: offsetX+decalX}, 'slow');
+	            $('html, body').animate({scrollLeft: offsetX+decalX}, 500);
 	        }
 	    } 
 	
 	    if(winY < 0) {
 	    	// Si l'écran est plus loin que la cible, on scroll en arrière
-	        $('html, body').animate({scrollTop: y-offsetIn}, 'slow');
+	        $('html, body').animate({scrollTop: y-offsetIn}, 500);
 	    } else if(ecartY > ecartMaxY) {
 	    	// Sinon, si la cible atteint la marge limite, on scroll
 	        if(orientation==3) {
-	            $('html, body').animate({scrollTop: offsetY-decalY}, 'slow');
+	            $('html, body').animate({scrollTop: offsetY-decalY}, 500);
 	        } else if(orientation==0) {
-	            $('html, body').animate({scrollTop: offsetY+decalY}, 'slow');
+	            $('html, body').animate({scrollTop: offsetY+decalY}, 500);
 	        }
 	    }
 	}
