@@ -113,7 +113,7 @@
 			"message" : "Vous ne pouvez pas entrer... pour le moment !"
 		},
 		"position" : {
-			"x" : "38",
+			"x" : "39",
 			"y" : "18"
 		}
 	},
@@ -180,7 +180,18 @@
 		},
 		"position" : {
 			"x" : "7",
-			"y" : "39"
+			"y" : "38"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "notice",
+			"message" : "<strong>MiNET</strong> - Association | Epic gestion du réseau informatique de la MAISEL"
+		},
+		"position" : {
+			"x" : "10",
+			"y" : "49"
 		}
 	},
 	{
@@ -197,33 +208,11 @@
 	{
 		"type" : "notification",
 		"notification" : {
-			"type" : "notice",
-			"message" : "<strong>MiNET</strong> - Association | Epic gestion du réseau informatique de la MAISEL"
-		},
-		"position" : {
-			"x" : "12",
-			"y" : "49"
-		}
-	},
-	{
-		"type" : "notification",
-		"notification" : {
 			"type" : "error",
 			"message" : "Vous ne pouvez pas entrer... pour le moment !"
 		},
 		"position" : {
-			"x" : "14",
-			"y" : "49"
-		}
-	},
-	{
-		"type" : "notification",
-		"notification" : {
-			"type" : "error",
-			"message" : "Vous ne pouvez pas entrer... pour le moment !"
-		},
-		"position" : {
-			"x" : "15",
+			"x" : "13",
 			"y" : "49"
 		}
 	},
