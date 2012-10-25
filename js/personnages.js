@@ -293,8 +293,8 @@ var PlayerView = Backbone.View.extend({
 	    var ecartY 			= Math.abs(winMidHeight-winY);
 	    var ecartMaxX 		= winMidWidth-offsetIn;
 	    var ecartMaxY 		= winMidHeight-offsetIn;
-	
-	    if(winX < 0 || winX > winWidth) {
+	    
+	    if(winX < 0 || tileToPx(winX) > winWidth) {
 	    	// Si l'écran est plus loin que la cible, on scroll jusqu'à elle
 	        $('html, body').animate({scrollLeft: tileToPx(x-offsetIn)}, DUREE_DEPLACEMENT*0.8);
 	    } else if(ecartX > ecartMaxX) {
@@ -306,7 +306,7 @@ var PlayerView = Backbone.View.extend({
 	        }
 	    }
 	
-	    if(winY < 0 || winY > winHeight) {
+	    if(winY < 0 || tileToPx(winY) > winHeight) {
 	    	// Si l'écran est plus loin que la cible, on scroll en arrière
 	        $('html, body').animate({scrollTop: tileToPx(y-offsetIn)}, DUREE_DEPLACEMENT*0.8);
 	    } else if(ecartY > ecartMaxY) {
