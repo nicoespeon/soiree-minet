@@ -298,8 +298,8 @@ var PlayerView = Backbone.View.extend({
 	    var ecartMaxX 		= winMidWidth-offsetIn;
 	    var ecartMaxY 		= winMidHeight-offsetIn;
 	
-	    if(winX < 0) {
-	    	// Si l'écran est plus loin que la cible, on scroll en arrière
+	    if(winX < 0 || winX > winWidth) {
+	    	// Si l'écran est plus loin que la cible, on scroll jusqu'à elle
 	        $('html, body').animate({scrollLeft: x-offsetIn}, 500);
 	    } else if(ecartX > ecartMaxX) {
 	    	// Sinon, si la cible atteint la marge limite, on scroll
@@ -310,7 +310,7 @@ var PlayerView = Backbone.View.extend({
 	        }
 	    } 
 	
-	    if(winY < 0) {
+	    if(winY < 0 || winY > winHeight) {
 	    	// Si l'écran est plus loin que la cible, on scroll en arrière
 	        $('html, body').animate({scrollTop: y-offsetIn}, 500);
 	    } else if(ecartY > ecartMaxY) {
