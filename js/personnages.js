@@ -107,7 +107,7 @@ var PlayerView = Backbone.View.extend({
 		// Scroll initial
 		var inst = this;
 		setTimeout(function() {
-			this.scroll();
+			inst.scroll();
 		}, 1000);	
 	},
 	
@@ -182,7 +182,7 @@ var PlayerView = Backbone.View.extend({
 		}
 		
 		// ETAPE 2 - On déplace le personnage si c'est possible
-		if(canMove==true) {
+		if(canMove===true) {
 			this.moveAnimation(isUpper);
 		} else {
 			ETAT_ANIMATION = -1;
@@ -199,15 +199,11 @@ var PlayerView = Backbone.View.extend({
 				var col = COLLISIONS[x][y];
 			}
 			
-			switch(col) {
-				case '1':
-					return true;
-					break;
-				
-				default:
-					return false;
-					break;
+			if(col=='1') {
+				return true;
 			}
+			
+			return false;
 		}
 		
 		return false;
