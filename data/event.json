@@ -84,6 +84,17 @@
 		"type" : "notification",
 		"notification" : {
 			"type" : "warning",
+			"message" : "Non, tu ne sortiras pas d'ici ! En fait, cette porte, c'est pour le décor... Ca donne un genre tu vois..."
+		},
+		"position" : {
+			"x" : "23",
+			"y" : "3"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "warning",
 			"message" : "Il n'y a rien ici... pour le moment !"
 		},
 		"position" : {
