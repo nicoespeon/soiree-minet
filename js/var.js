@@ -52,6 +52,12 @@ function tileToPx(tile){
 	return (tile-1)*TAILLE_TILE;
 }
 
+// Convertit les pixels en coordonnées (tile)
+// ------------------------------------------
+function pxToTile(px){
+    return Math.floor(px/TAILLE_TILE);
+}
+
 // Positionne un élément sur la map
 // --------------------------------
 function positionne(el,x,y) {

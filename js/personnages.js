@@ -271,31 +271,26 @@ var PlayerView = Backbone.View.extend({
 	    var orientation 	= this.model.get('orientation');
 	    
 		// Marge limite avant scroll
-	    var offsetIn 		= tileToPx(5);
+	    var offsetIn 		= 5;
 	    
-	    // Coordonnées de la cible
-	    var cible 			= getCoordsCible(this.model.getX(), this.model.getY(), orientation);
-	    var x 				= tileToPx(cible['x']);
-	    var y 				= tileToPx(cible['y']);
+	    // Coordonnées du joueur
+	    var x 				= this.model.getX();
+	    var y 				= this.model.getY();
 	    
 	    // Dimensions de l'écran
 	    var winHeight 		= $(window).height();
 	    var winWidth 		= $(window).width();
-	    var winMidHeight 	= winHeight/2;
-	    var winMidWidth 	= winWidth/2;
+	    var winMidHeight 	= pxToTile(winHeight/2);
+	    var winMidWidth 	= pxToTile(winWidth/2);
 	
 	    // Offset de l'écran par rapport à [0,0]
 	    var offsetWin 		= $('html, body').offset();
-	    var offsetX 		= -offsetWin.left;
-	    var offsetY 		= -offsetWin.top;
+	    var offsetX 		= -pxToTile(offsetWin.left);
+	    var offsetY 		= -pxToTile(offsetWin.top);
 	    
 	    // Position de la cible par rapport à l'écran
 	    var winX 			= x-offsetX;
 	    var winY 			= y-offsetY;
-	
-	    // Décalage de l'écran pour le scroll
-	    var decalX 			= winWidth-(offsetIn*2);
-	    var decalY 			= winHeight-(offsetIn*2);
 	    
 	    // Ecart de la position de la cible par rapport au centre
 	    var ecartX 			= Math.abs(winMidWidth-winX);
@@ -305,25 +300,25 @@ var PlayerView = Backbone.View.extend({
 	
 	    if(winX < 0 || winX > winWidth) {
 	    	// Si l'écran est plus loin que la cible, on scroll jusqu'à elle
-	        $('html, body').animate({scrollLeft: x-offsetIn}, DUREE_DEPLACEMENT*0.8);
+	        $('html, body').animate({scrollLeft: tileToPx(x-offsetIn)}, DUREE_DEPLACEMENT*0.8);
 	    } else if(ecartX > ecartMaxX) {
 	    	// Sinon, si la cible atteint la marge limite, on scroll
 	        if(orientation==1) {
-	            $('html, body').animate({scrollLeft: offsetX-decalX}, DUREE_DEPLACEMENT*0.8);
+	            $('html, body').animate({scrollLeft: tileToPx(offsetX-ecartMaxX+1)}, DUREE_DEPLACEMENT*0.8);
 	        } else if(orientation==2) {
-	            $('html, body').animate({scrollLeft: offsetX+decalX}, DUREE_DEPLACEMENT*0.8);
+	            $('html, body').animate({scrollLeft: tileToPx(offsetX+ecartMaxX+1)}, DUREE_DEPLACEMENT*0.8);
 	        }
 	    } 
 	
 	    if(winY < 0 || winY > winHeight) {
 	    	// Si l'écran est plus loin que la cible, on scroll en arrière
-	        $('html, body').animate({scrollTop: y-offsetIn}, DUREE_DEPLACEMENT*0.8);
+	        $('html, body').animate({scrollTop: tileToPx(y-offsetIn)}, DUREE_DEPLACEMENT*0.8);
 	    } else if(ecartY > ecartMaxY) {
 	    	// Sinon, si la cible atteint la marge limite, on scroll
 	        if(orientation==3) {
-	            $('html, body').animate({scrollTop: offsetY-decalY}, DUREE_DEPLACEMENT*0.8);
-	        } else if(orientation==0) {
-	            $('html, body').animate({scrollTop: offsetY+decalY}, DUREE_DEPLACEMENT*0.8);
+	            $('html, body').animate({scrollTop: tileToPx(offsetY-ecartMaxY+1)}, DUREE_DEPLACEMENT*0.8);
+	        } else if(orientation==0 && y > offsetIn) {
+	            $('html, body').animate({scrollTop: tileToPx(offsetY+ecartMaxY+1)}, DUREE_DEPLACEMENT*0.8);
 	        }
 	    }
 	}
