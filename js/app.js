@@ -7,7 +7,7 @@
 |
 */
 
-// Vue - Application 
+// Vue - Application
 // -----------------
 var AppView = Backbone.View.extend({
 	el: $('#wrapper'),
@@ -19,19 +19,19 @@ var AppView = Backbone.View.extend({
 		PNJs.fetch();
 		
 		// Player
-		new PlayerView({model: player});	
+		new PlayerView({model: player});
 		
 		//Events
 		new EventView({el:$('body'), model: event});
 		
 		// Audio
-		new AudioView({el:$('body'), model: audio});	
+		new AudioView({el:$('body'), model: audio});
 	},
 	
 	// Ajoute un PNJ en créant une vue pour celui-ci
 	addOne: function(personnage) {
 		var view = new PNJView({model: personnage});
-		this.$('#pnjs').append(view.render().el);	
+		this.$('#pnjs').append(view.render().el);
 	},
 	
 	// Ajoute tous les PNJs de la collection en même temps
@@ -92,9 +92,9 @@ $(function() {
 	});
 	
 	// Prépare les éléments de l'application
-	player 	= new Personnage();			
-	PNJs 	= new PNJList();			
-	audio	= new Audio();				
+	player 	= new Personnage();
+	PNJs 	= new PNJList();
+	audio	= new Audio();
 	event 	= new Event();
 	
 	// Charge la map des collisions
@@ -112,8 +112,8 @@ $(function() {
 				COLLISIONS[i][j] = datas[x][y];
 			}
 		}
-	}).complete(function() { 
+	}).complete(function() {
 		// Lance l'application
 		new AppView;
-	});	
+	});
 });

@@ -46,7 +46,7 @@ $().toastmessage({
 |--------------------------------------------------------------------------
 */
 
-// Convertit les coordonnées (tile) en pixels 
+// Convertit les coordonnées (tile) en pixels
 // ------------------------------------------
 function tileToPx(tile){
 	return (tile-1)*TAILLE_TILE;

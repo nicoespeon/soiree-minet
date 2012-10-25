@@ -36,7 +36,7 @@ var Personnage = Backbone.Model.extend({
 			if(isNaN(att.orientation)) {
 				return "L'orientation du personnage est une valeur numérique !";
 			}
-		}	
+		}
 		
 		if(att.position) {
 			if(att.position[0]<1 || att.position[0]>40)	{
@@ -52,12 +52,12 @@ var Personnage = Backbone.Model.extend({
 			}
 		}
 	},
-	
+
 	// Getters
 	getX: function() {
 		return this.get('position')[0];
 	},
-	
+
 	getY: function() {
 		return this.get('position')[1];
 	},
@@ -107,8 +107,8 @@ var PlayerView = Backbone.View.extend({
 		// Scroll initial
 		var inst = this;
 		setTimeout(function() {
-			inst.scroll();
-		}, 1000);	
+			this.scroll();
+		}, 1000);
 	},
 	
 	render: function() {
@@ -135,7 +135,7 @@ var PlayerView = Backbone.View.extend({
 		// Annule le déplacement si un est déjà en cours
 		if(ETAT_ANIMATION > 0) {
 			return false;
-		} else {				
+		} else {
 			ETAT_ANIMATION = 1;
 		}
 		
@@ -193,7 +193,7 @@ var PlayerView = Backbone.View.extend({
 		if(x>0 && x<41 && y>0 && y<101) {
 			if(COLLISIONS.length!=41 || COLLISIONS[x].length!=101) {
 				// Si la map des collisions n'est pas complète, on ne se déplace pas
-				return false;	
+				return false;
 			} else {
 				// Sinon, on check la case ciblée
 				var col = COLLISIONS[x][y];
@@ -243,15 +243,15 @@ var PlayerView = Backbone.View.extend({
 	        $('#player').animate({
 	            top: tileToPx(y)+'px',
 	            left: tileToPx(x)+'px'
-	        }, DUREE_DEPLACEMENT/NB_FRAMES, function() {		
-	            inst.model.set({'position':[Math.floor(x*100)/100,Math.floor(y*100)/100],'frame':frame});			
+	        }, DUREE_DEPLACEMENT/NB_FRAMES, function() {
+	            inst.model.set({'position':[Math.floor(x*100)/100,Math.floor(y*100)/100],'frame':frame});
 	        	if(!isUpper) {
 					$('#player').css('z-index', '10');
 				}
 				if(zIndex=='10' && frame<3) {
 					// Laisse le temps au personnage de se "dégager" de l'obstacle avant de le repasser par-dessus
-					$('#player').css('z-index', '10');					
-				}	
+					$('#player').css('z-index', '10');
+				}
 	            ETAT_ANIMATION++;
 	            inst.moveAnimation(isUpper);
 	        });
@@ -304,7 +304,7 @@ var PlayerView = Backbone.View.extend({
 	        } else if(orientation==2) {
 	            $('html, body').animate({scrollLeft: tileToPx(offsetX+ecartMaxX+1)}, DUREE_DEPLACEMENT*0.8);
 	        }
-	    } 
+	    }
 	
 	    if(winY < 0 || winY > winHeight) {
 	    	// Si l'écran est plus loin que la cible, on scroll en arrière
@@ -354,8 +354,8 @@ var PNJView = Backbone.View.extend({
 	},
 
 	// Rotation spontannée aléatoire des PNJs
-	autoRotate: function() {	
-		// Pour le scope de this dans setInterval	
+	autoRotate: function() {
+		// Pour le scope de this dans setInterval
 		var thisPNJ = this;
 		
 		// Définit les orientations possibles
@@ -401,7 +401,7 @@ var PNJView = Backbone.View.extend({
 				}
 				
 				var texte = this.model.get('texte')[0];
-				$().toastmessage('showNoticeToast', '<strong>'+this.model.get('pseudo')+'</strong> - '+texte);	
+				$().toastmessage('showNoticeToast', '<strong>'+this.model.get('pseudo')+'</strong> - '+texte);
 				
 				var nouveauTexte = [];
 				for(var i=1; i<this.model.get('texte').length; i++) {
@@ -409,7 +409,7 @@ var PNJView = Backbone.View.extend({
 				}
 				nouveauTexte.push(texte);
 				
-				this.model.set('texte', nouveauTexte); 	
+				this.model.set('texte', nouveauTexte);
 			}
 		}
 	}

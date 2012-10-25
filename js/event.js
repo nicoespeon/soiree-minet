@@ -47,7 +47,7 @@ var EventList = Backbone.Collection.extend({
 var EventView = Backbone.View.extend({
 	initialize: function() {
 		Events	= new EventList();
-		Events.fetch();	
+		Events.fetch();
 		
 		_.bindAll(this);
 		$(document).bind('keydown', this.eventDispatcher);
@@ -106,19 +106,19 @@ var EventView = Backbone.View.extend({
 									innerWidth: '600px',
 									maxHeight: '90%'
 								});
-							}, 500); 
+							}, 500);
 						}
 						
 						$(document).bind('cbox_closed', function() {
 							setTimeout(function() {
 								pc.removeClass('on');
-							}, 500);	
+							}, 500);
 						});
 						
 						break;
 				}
 			}
-		});	
+		});
 	},
 	
 	konami: function(e) {
@@ -141,13 +141,13 @@ var EventView = Backbone.View.extend({
 						
 						audio.set('piste', musique.src);
 						$().toastmessage(
-							'showSuccessToast', 
+							'showSuccessToast',
 							'<strong>Event débloqué</strong> - Bien joué, tu as trouvé le konami code de <strong>'+musique.titre+'</strong>'+complement+' !'
 						);
 						if(musique.warning!=undefined) {
 							setTimeout(function() {
 								$().toastmessage(
-									'showWarningToast', 
+									'showWarningToast',
 									'<strong>One more thing</strong> - '+musique.warning
 								);
 							}, musique.delai);
@@ -157,12 +157,12 @@ var EventView = Backbone.View.extend({
 					case 'konami':
 						player.get('type')=='garcon' ? player.set('type', 'fille') : player.set('type', 'garcon');
 						$().toastmessage(
-							'showSuccessToast', 
+							'showSuccessToast',
 							"<strong>Event débloqué</strong> - Bien joué, tu as trouvé le <strong>KONAMI CODE</strong> !"
 						);
 						setTimeout(function() {
 							$().toastmessage(
-								'showWarningToast', 
+								'showWarningToast',
 								"<strong>One more thing</strong> - Au cas où tu te poserais la question... c'est réversible !"
 							);
 						}, 5000);
