@@ -141,6 +141,7 @@ nav#menu {
 	border-style: solid;
 	-webkit-border-image: url('../img/nav.png') 16 repeat;
 	-moz-border-image: url('../img/nav.png') 16 repeat;
+	-o-border-image: url('../img/nav.png') 16 repeat;
 	border-image: url('../img/nav.png') 16 repeat;
 }
 
