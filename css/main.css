@@ -49,6 +49,13 @@ body {
 	display: none;
 }
 
+#logo {
+	position: fixed;
+	left: 10px;
+	bottom: 20px;
+	z-index: 2000;
+}
+
 /*
 |--------------------------------------------------------------------------
 | NAVIGATION
