@@ -1,0 +1,60 @@
+/*
+|--------------------------------------------------------------------------
+| IE DESIGN
+|--------------------------------------------------------------------------
+|
+| Fallback IE
+|
+*/
+
+.brand {
+	padding-left: 30px !important;
+}
+
+.hidden {
+	display: none;
+}
+
+.row-large {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.center {
+	text-align: center;
+}
+
+.main {
+	height: 250px;
+	overflow: hidden;
+}
+
+caption {
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+#player {
+	width: 32px;
+	height: 64px;
+	margin: auto;
+	margin-top: 32px;
+	
+	background-image: url('../img/personnages/garcon.png');
+}
+
+.frame0 {
+	background-position: 0 0;
+}
+
+.frame1 {
+	background-position: 32px 0;
+}
+
+.frame2 {
+	background-position: 64px 0;
+}
+
+.frame3 {
+	background-position: 96px 0;
+}
