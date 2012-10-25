@@ -716,3 +716,7 @@ nav#menu a:hover::before {
 #cboxLoadedContent dd:after {
 	clear: both;
 }
+
+#cboxLoadedContent li {
+	margin-left: 30px;
+}
