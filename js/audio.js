@@ -44,7 +44,7 @@ var AudioView = Backbone.View.extend({
 	
 	pause: function() {
 		this.sound.pause();
-		ISPLAYING = false; 
+		ISPLAYING = false;
 	},
 	
 	stop: function() {
@@ -55,7 +55,7 @@ var AudioView = Backbone.View.extend({
 	chgTrack: function() {
 		var nextSound = new buzz.sound('sounds/'+this.model.get('piste'), {
 		    formats: this.model.get('ext')
-		}); 
+		});
 		 
 		if(ISPLAYING)	this.sound.fadeWith(nextSound,3000);
 		

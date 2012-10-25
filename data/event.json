@@ -56,7 +56,7 @@
 		"musique" : {
 			"titre" : "Epic Sax",
 			"src": "epic-sax",
-			"warning" : "J'ai développé le site, vous pensiez vraiment que vous alliez y échapper ?",
+			"warning" : "J'ai développé le site, tu pensais vraiment que t'allais y échapper ?",
 			"delai" : "5000"
 		},
 		"konami" : "69,80,73,67"
@@ -78,6 +78,17 @@
 		"position" : {
 			"x" : "17",
 			"y" : "85"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "warning",
+			"message" : "Non, tu ne sortiras pas d'ici ! En fait, cette porte, c'est pour le décor... Ca donne un genre tu vois..."
+		},
+		"position" : {
+			"x" : "23",
+			"y" : "3"
 		}
 	},
 	{
@@ -359,7 +370,7 @@
 		"type" : "notification",
 		"notification" : {
 			"type" : "notice",
-			"message" : "<strong>Soirée MiNET</strong> - 07/12/12 | H**ck Me I'm Famous"
+			"message" : "<strong>Soirée MiNET</strong> - 07/12/12 | H### Me I'm Famous"
 		},
 		"position" : {
 			"x" : "9",
