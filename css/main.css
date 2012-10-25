@@ -158,7 +158,7 @@ nav#menu li {
 
 nav#menu li:last-of-type {
 	position: absolute;
-	bottom: 0;	
+	bottom: 0;
 }
 
 nav#menu li a {
@@ -196,8 +196,8 @@ nav#menu a:hover::before {
   font-weight: 400;
   font-style: normal;
 
-  src: 	local('fonts/PressStart2P-Regular.ttf'), 
-  		local('fonts/PressStart2P-Regular.ttf'), 
+  src: 	local('fonts/PressStart2P-Regular.ttf'),
+  		local('fonts/PressStart2P-Regular.ttf'),
   		url('fonts/PressStart2P-Regular.ttf') format('woff');
 }
 
@@ -207,9 +207,9 @@ nav#menu a:hover::before {
     font-style: normal;
 
     src: 	url('../fonts/raphaelicons-webfont.eot');
-    src: 	local('☺'), 
-    		url('../fonts/raphaelicons-webfont.woff') format('woff'), 
-    		url('../fonts/raphaelicons-webfont.ttf') format('truetype'), 
+    src: 	local('☺'),
+    		url('../fonts/raphaelicons-webfont.woff') format('woff'),
+    		url('../fonts/raphaelicons-webfont.ttf') format('truetype'),
     		url('../fonts/raphaelicons-webfont.svgwebfontKOf9F4sx') format('svg');
 }
 

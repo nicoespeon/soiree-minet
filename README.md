@@ -2,15 +2,15 @@
 
 ### 1. PRINCIPE
 
-Il s'agit d'un jeu en HTML5-Javascript.  
+Il s'agit d'un jeu en HTML5-Javascript.
 La structure JS est développée avec la librairie [Backbone.js](http://www.backbonejs.org).
 
-Le visiteur se trouve sur une carte **1280x3200**.  
+Le visiteur se trouve sur une carte **1280x3200**.
 Il se déplace pour interagir avec le décor où se trouvent :
 
 * PNJs, dignes icônes de MiNETiens triés sur le volet et caricaturés à souhait
 * Events, konami-codes/intéractions/notifications, ... de quoi s'amuser
-* Goodies, comme des wallpaper pour smartphone à flasher via QRCode, ... 
+* Goodies, comme des wallpaper pour smartphone à flasher via QRCode, ...
 * Infos diverses et variées, sur la soirée, sur MiNET, sur la Vie, l'Univers et le reste
 * De geekeries à gogo
 

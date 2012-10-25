@@ -1,6 +1,6 @@
 [
 	{
-		"type" : "musique", 
+		"type" : "musique",
 		"musique" : {
 			"titre" : "Party Rock",
 			"src": "partyrock"
@@ -8,7 +8,7 @@
 		"konami" : "80,65,82,84,89"
 	},
 	{
-		"type" : "musique", 
+		"type" : "musique",
 		"musique" : {
 			"titre" : "The Lion King",
 			"src": "lion-king",
@@ -18,7 +18,7 @@
 		"konami" : "74,79,89,69,85,88,65,78,78,73,86,69,82,83,65,73,82,69"
 	},
 	{
-		"type" : "musique", 
+		"type" : "musique",
 		"musique" : {
 			"titre" : "Call me maybe",
 			"src": "call-me-maybe"
@@ -26,7 +26,7 @@
 		"konami" : "67,65,76,76,77,69"
 	},
 	{
-		"type" : "musique", 
+		"type" : "musique",
 		"musique" : {
 			"titre" : "Gangnam Style",
 			"src": "gangnam-style"
@@ -34,7 +34,7 @@
 		"konami" : "71,65,78,71,78,65,77"
 	},
 	{
-		"type" : "musique", 
+		"type" : "musique",
 		"musique" : {
 			"titre" : "Nyan Cat",
 			"src": "nyan-cat"
@@ -42,7 +42,7 @@
 		"konami" : "78,89,65,78"
 	},
 	{
-		"type" : "musique", 
+		"type" : "musique",
 		"musique" : {
 			"titre" : "Rick Roll",
 			"src": "rickroll",
@@ -52,7 +52,7 @@
 		"konami" : "83,80,69,67,73,65,76"
 	},
 	{
-		"type" : "musique", 
+		"type" : "musique",
 		"musique" : {
 			"titre" : "Epic Sax",
 			"src": "epic-sax",
@@ -62,7 +62,7 @@
 		"konami" : "69,80,73,67"
 	},
 	{
-		"type" : "musique", 
+		"type" : "musique",
 		"musique" : {
 			"titre" : "Gay Bar",
 			"src": "gay-bar"
