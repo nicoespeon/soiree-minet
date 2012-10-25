@@ -115,5 +115,6 @@ $(function() {
 	}).complete(function() {
 		// Lance l'application
 		new AppView;
+		$('#audio').trigger('click');
 	});
 });
