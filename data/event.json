@@ -46,7 +46,7 @@
 		"musique" : {
 			"titre" : "Rick Roll",
 			"src": "rickroll",
-			"warning" : "Vous venez de vous faire Rick Rolled...",
+			"warning" : "Tu viens de te faire Rick Rolled...",
 			"delai" : "5000"
 		},
 		"konami" : "83,80,69,67,73,65,76"
@@ -88,6 +88,17 @@
 		},
 		"position" : {
 			"x" : "5",
+			"y" : "3"
+		}
+	},
+	{
+		"type" : "notification",
+		"notification" : {
+			"type" : "warning",
+			"message" : "Il n'y a rien ici... pour le moment !"
+		},
+		"position" : {
+			"x" : "12",
 			"y" : "3"
 		}
 	},
