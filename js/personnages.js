@@ -107,7 +107,7 @@ var PlayerView = Backbone.View.extend({
 		// Scroll initial
 		var inst = this;
 		setTimeout(function() {
-			this.scroll();
+			inst.scroll();
 		}, 1000);
 	},
 	
