@@ -22,8 +22,7 @@ ORIENTATION.push('orientationGauche');
 ORIENTATION.push('orientationDroite');
 ORIENTATION.push('orientationHaut');
 
-var NB_FRAME		 	= 4; 			// Nombre de frames
-var NB_IMAGES 			= 50;			// Nombre d'images par déplacement
+var NB_FRAMES		 	= 4; 			// Nombre de frames
 var DUREE_DEPLACEMENT 	= 400;			// Durée du déplacement (en ms)
 var ETAT_ANIMATION		= -1;			// Personnage initialement immobile
 var COLLISIONS 			= [];			// On définit la map des collisions
@@ -47,10 +46,16 @@ $().toastmessage({
 |--------------------------------------------------------------------------
 */
 
-// Convertit les coordonnées (tile) en pixels 
+// Convertit les coordonnées (tile) en pixels
 // ------------------------------------------
 function tileToPx(tile){
 	return (tile-1)*TAILLE_TILE;
+}
+
+// Convertit les pixels en coordonnées (tile)
+// ------------------------------------------
+function pxToTile(px){
+    return Math.floor(px/TAILLE_TILE);
 }
 
 // Positionne un élément sur la map

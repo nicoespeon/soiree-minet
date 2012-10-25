@@ -36,7 +36,7 @@ var Personnage = Backbone.Model.extend({
 			if(isNaN(att.orientation)) {
 				return "L'orientation du personnage est une valeur numérique !";
 			}
-		}	
+		}
 		
 		if(att.position) {
 			if(att.position[0]<1 || att.position[0]>40)	{
@@ -52,12 +52,12 @@ var Personnage = Backbone.Model.extend({
 			}
 		}
 	},
-	
+
 	// Getters
 	getX: function() {
 		return this.get('position')[0];
 	},
-	
+
 	getY: function() {
 		return this.get('position')[1];
 	},
@@ -102,7 +102,13 @@ var PlayerView = Backbone.View.extend({
 		this.model.on('change', this.render, this);
 		this.model.on('change:position', this.scroll, this);
 		
-		this.render();	
+		this.render();
+		
+		// Scroll initial
+		var inst = this;
+		setTimeout(function() {
+			inst.scroll();
+		}, 1000);
 	},
 	
 	render: function() {
@@ -123,10 +129,13 @@ var PlayerView = Backbone.View.extend({
 		var zIndex 	= $('#player').css('z-index');
 		var canMove = false;
 		
+		// Scroll (même si pas de déplacement)
+		this.scroll();
+			
 		// Annule le déplacement si un est déjà en cours
 		if(ETAT_ANIMATION > 0) {
 			return false;
-		} else {				
+		} else {
 			ETAT_ANIMATION = 1;
 		}
 		
@@ -168,12 +177,12 @@ var PlayerView = Backbone.View.extend({
 			var cible 		= getCoordsCible(this.model.getX(), this.model.getY(), this.model.get('orientation'));
 			var xCible 		= cible['x'];
 			var yCible 		= cible['y'];
-			canMove = this.canMoveTo(xCible,yCible);
+			canMove = this.canMoveTo(xCible, yCible);
 			isUpper = this.canMoveTo(xCible, yCible+1);
 		}
 		
 		// ETAPE 2 - On déplace le personnage si c'est possible
-		if(canMove==true) {
+		if(canMove===true) {
 			this.moveAnimation(isUpper);
 		} else {
 			ETAT_ANIMATION = -1;
@@ -184,107 +193,130 @@ var PlayerView = Backbone.View.extend({
 		if(x>0 && x<41 && y>0 && y<101) {
 			if(COLLISIONS.length!=41 || COLLISIONS[x].length!=101) {
 				// Si la map des collisions n'est pas complète, on ne se déplace pas
-				return false;	
+				return false;
 			} else {
 				// Sinon, on check la case ciblée
 				var col = COLLISIONS[x][y];
 			}
 			
-			switch(col) {
-				case '1':
-					return true;
-					break;
-				
-				default:
-					return false;
-					break;
+			if(col=='1') {
+				return true;
 			}
+			
+			return false;
 		}
 		
 		return false;
 	},
 	
 	moveAnimation: function(isUpper) {
-		var inst = this;
-		var zIndex = $('#player').css('z-index');
-		
-		var bouge = setInterval(function() {
-			var temps_ecoule = (ETAT_ANIMATION-1)*DUREE_DEPLACEMENT/NB_IMAGES;
-			var decalage = temps_ecoule/DUREE_DEPLACEMENT; 
-			
-			if(temps_ecoule>DUREE_DEPLACEMENT) {
-				// Si le déplacement a atteint ou dépassé le temps nécessaire pour s'effectuer, on le termine
-				ETAT_ANIMATION = -1;
-				clearInterval(bouge);
-			} else if(ETAT_ANIMATION>0) {
-					// Sinon, on définit la frame en fonction de l'état de l'animation
-					var frame = 0;
-					if(temps_ecoule!=0) {
-						frame = Math.ceil(NB_FRAME*decalage);
-						if(frame>3)	frame=0;
-					}
+		var inst 		= this;								// Pour la portée de this dans la fonction animate()
+        var decalage 	= 1/NB_FRAMES;						// Déplacement pour un pas
+        var frame 		= ETAT_ANIMATION%NB_FRAMES;			// Frame à afficher
+        var zIndex 		= $('#player').css('z-index');		// z-index du player pour superposition avec pnj
 
-					// On définit les nouvelles coordonnées 
-					var direction = inst.model.get('orientation');
-					var x = inst.model.getX();
-					var y = inst.model.getY();
-					
-					switch(direction) {
-						case 0:
-							y = Math.floor(y)+decalage;
-							break;
-						
-						case 1:
-							x = Math.ceil(x)-decalage;
-							break;
-							
-						case 2:
-							x = Math.floor(x)+decalage;
-							break;
-							
-						case 3:
-							y = Math.ceil(y)-decalage;
-							break;
-					}
-					
-					inst.model.set({'position':[x,y],'frame':frame});
-					
-					// On passe à l'état suivant
-					ETAT_ANIMATION++;
-					
-					// Gère la superposition avec un obstacle (PNJs)
-					if(!isUpper) {
-						$('#player').css('z-index', '10');
-					}
-					
-					if(zIndex=='10' && temps_ecoule<(DUREE_DEPLACEMENT/2)) {
-						// Laisse le temps au personnage de se "dégager" de l'obstacle avant de le repasser par-dessus
-						$('#player').css('z-index', '10');					
-					}	
+        if(ETAT_ANIMATION<=NB_FRAMES) {
+        	// Déplace le personnage selon le nombre de frames indiqué
+	        var x = this.model.getX();
+	        var y = this.model.getY();
+	        var direction = this.model.get('orientation');
+	
+	        switch(direction) {
+	            case 0:
+	            	y += decalage;
+	                break;
+	
+	            case 1:
+                    x -= decalage;
+                    break;
+	
+	            case 2:
+                    x += decalage;
+                    break;
+	
+	            case 3:
+                    y -= decalage;
+                    break;
+	        }
+	
+	        // Anime le déplacement du player jusqu'à la prochaine frame
+	        $('#player').animate({
+	            top: tileToPx(y)+'px',
+	            left: tileToPx(x)+'px'
+	        }, DUREE_DEPLACEMENT/NB_FRAMES, function() {
+	            inst.model.set({'position':[Math.floor(x*100)/100,Math.floor(y*100)/100],'frame':frame});
+	        	if(!isUpper) {
+					$('#player').css('z-index', '10');
 				}
-		}, DUREE_DEPLACEMENT/NB_IMAGES);
+				if(zIndex=='10' && frame<3) {
+					// Laisse le temps au personnage de se "dégager" de l'obstacle avant de le repasser par-dessus
+					$('#player').css('z-index', '10');
+				}
+	            ETAT_ANIMATION++;
+	            inst.moveAnimation(isUpper);
+	        });
+        } else {
+        	// Sinon on désactive l'animation
+            ETAT_ANIMATION = -1
+        }
+	
 	},
 	
 	scroll: function() {
-		var x = this.model.getX()*32;
-		var y = this.model.getY()*32;
-		var height = $(window).height();
-		var width = $(window).width();
-		
-		var decalX = x-(width/2);
-		var decalY = y-(height/2);
-		
-		if(decalX>0) {
-			$(window).scrollLeft(decalX);
-		} else {
-			$(window).scrollLeft(0);
-		}
-		
-		if(decalY>0) {
-			$(window).scrollTop(decalY);
-		} else {
-			$(window).scrollTop(0);
-		}
+		// Orientation du personnage
+	    var orientation 	= this.model.get('orientation');
+	    
+		// Marge limite avant scroll
+	    var offsetIn 		= 5;
+	    
+	    // Coordonnées du joueur
+	    var x 				= this.model.getX();
+	    var y 				= this.model.getY();
+	    
+	    // Dimensions de l'écran
+	    var winHeight 		= $(window).height();
+	    var winWidth 		= $(window).width();
+	    var winMidHeight 	= pxToTile(winHeight/2);
+	    var winMidWidth 	= pxToTile(winWidth/2);
+	
+	    // Offset de l'écran par rapport à [0,0]
+	    var offsetWin 		= $('html, body').offset();
+	    var offsetX 		= -pxToTile(offsetWin.left);
+	    var offsetY 		= -pxToTile(offsetWin.top);
+	    
+	    // Position de la cible par rapport à l'écran
+	    var winX 			= x-offsetX;
+	    var winY 			= y-offsetY;
+	    
+	    // Ecart de la position de la cible par rapport au centre
+	    var ecartX 			= Math.abs(winMidWidth-winX);
+	    var ecartY 			= Math.abs(winMidHeight-winY);
+	    var ecartMaxX 		= winMidWidth-offsetIn;
+	    var ecartMaxY 		= winMidHeight-offsetIn;
+	    
+	    if(winX < 0 || tileToPx(winX) > winWidth) {
+	    	// Si l'écran est plus loin que la cible, on scroll jusqu'à elle
+	        $('html, body').animate({scrollLeft: tileToPx(x-offsetIn)}, DUREE_DEPLACEMENT*0.8);
+	    } else if(ecartX > ecartMaxX) {
+	    	// Sinon, si la cible atteint la marge limite, on scroll
+	        if(orientation==1) {
+	            $('html, body').animate({scrollLeft: tileToPx(offsetX-ecartMaxX+1)}, DUREE_DEPLACEMENT*0.8);
+	        } else if(orientation==2) {
+	            $('html, body').animate({scrollLeft: tileToPx(offsetX+ecartMaxX+1)}, DUREE_DEPLACEMENT*0.8);
+	        }
+	    }
+	
+	    if(winY < 0 || tileToPx(winY) > winHeight) {
+	    	// Si l'écran est plus loin que la cible, on scroll en arrière
+	        $('html, body').animate({scrollTop: tileToPx(y-offsetIn)}, DUREE_DEPLACEMENT*0.8);
+	    } else if(ecartY > ecartMaxY) {
+	    	// Sinon, si la cible atteint la marge limite, on scroll
+	        if(orientation==3) {
+	            $('html, body').animate({scrollTop: tileToPx(offsetY-ecartMaxY+1)}, DUREE_DEPLACEMENT*0.8);
+	        } else if(orientation==0 && y > offsetIn) {
+	            $('html, body').animate({scrollTop: tileToPx(offsetY+ecartMaxY+1)}, DUREE_DEPLACEMENT*0.8);
+	        }
+	    }
 	}
 });
 
@@ -322,8 +354,8 @@ var PNJView = Backbone.View.extend({
 	},
 
 	// Rotation spontannée aléatoire des PNJs
-	autoRotate: function() {	
-		// Pour le scope de this dans setInterval	
+	autoRotate: function() {
+		// Pour le scope de this dans setInterval
 		var thisPNJ = this;
 		
 		// Définit les orientations possibles
@@ -369,7 +401,7 @@ var PNJView = Backbone.View.extend({
 				}
 				
 				var texte = this.model.get('texte')[0];
-				$().toastmessage('showNoticeToast', '<strong>'+this.model.get('pseudo')+'</strong> - '+texte);	
+				$().toastmessage('showNoticeToast', '<strong>'+this.model.get('pseudo')+'</strong> - '+texte);
 				
 				var nouveauTexte = [];
 				for(var i=1; i<this.model.get('texte').length; i++) {
@@ -377,7 +409,7 @@ var PNJView = Backbone.View.extend({
 				}
 				nouveauTexte.push(texte);
 				
-				this.model.set('texte', nouveauTexte); 	
+				this.model.set('texte', nouveauTexte);
 			}
 		}
 	}
