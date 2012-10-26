@@ -46,7 +46,7 @@
 .wallpaper {
 	width: 320px;
 	height: 320px;
-	z-index: 2000;
+	z-index: 50;
 	
 	background: url('../img/map/qrcode-wallpaper.png');
 }
