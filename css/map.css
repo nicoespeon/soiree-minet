@@ -43,6 +43,14 @@
 	background: url('../img/map/bg-flowers-2.png');
 }
 
+.wallpaper {
+	width: 320px;
+	height: 320px;
+	z-index: 2000;
+	
+	background: url('../img/map/qrcode-wallpaper.png');
+}
+
 /*
 |--------------------------------------------------------------------------
 | PNJs & Player
