@@ -44,6 +44,30 @@
 	{
 		"type" : "musique",
 		"musique" : {
+			"titre" : "Chop Suey",
+			"src": "chop-suey"
+		},
+		"konami" : "83,79,65,68"
+	},
+	{
+		"type" : "musique",
+		"musique" : {
+			"titre" : "Chocolate Rain",
+			"src": "chocolate-rain"
+		},
+		"konami" : "77,73,78,69,84"
+	},
+	{
+		"type" : "musique",
+		"musique" : {
+			"titre" : "Trololo",
+			"src": "trololo"
+		},
+		"konami" : "84,82,79,76,79,76,79"
+	},
+	{
+		"type" : "musique",
+		"musique" : {
 			"titre" : "Rick Roll",
 			"src": "rickroll",
 			"warning" : "Tu viens de te faire Rick Rolled...",
