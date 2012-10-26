@@ -87,10 +87,7 @@ var EventView = Backbone.View.extend({
 							var notifType 		= notif.type;
 							var notifMessage	= notif.message;
 							
-							$().toastmessage( 'showToast', {
-								type: notifType,
-								text: notifMessage
-							});
+							notification(notifType,notifMessage);
 						break;
 					
 					case 'social':
@@ -140,14 +137,15 @@ var EventView = Backbone.View.extend({
 						if(ISPLAYING)	complement = '';
 						
 						audio.set('piste', musique.src);
-						$().toastmessage(
-							'showSuccessToast',
+						notification(
+							'success',
 							'<strong>Event débloqué</strong> - Bien joué, tu as trouvé le konami code de <strong>'+musique.titre+'</strong>'+complement+' !'
 						);
+						
 						if(musique.warning!=undefined) {
 							setTimeout(function() {
-								$().toastmessage(
-									'showWarningToast',
+								notification(
+									'warning',
 									'<strong>One more thing</strong> - '+musique.warning
 								);
 							}, musique.delai);

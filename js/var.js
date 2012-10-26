@@ -31,6 +31,8 @@ var COLLISIONS 			= [];			// On définit la map des collisions
 var ISPLAYING 			= false;		// Etat du lecteur audio
 
 // Notifications
+var TOASTS_LIMIT		= 3;			// Limite le nombre de notifications à l'écran
+var TOASTS				= [];			// Enregistre les notifications
 $().toastmessage({
     text     : 'H**k me I\'m famous !',
     sticky   : false,
@@ -86,4 +88,21 @@ function getCoordsCible(x,y,orientation) {
 	}
 	
 	return { 'x':x, 'y':y };
+}
+
+// Affiche une notification à l'écran
+// ----------------------------------
+function notification(etat,message) {
+	var etat = etat.charAt(0).toUpperCase()+etat.substring(1);
+	
+	TOASTS.push(
+		$().toastmessage(
+			'show'+etat+'Toast',
+			message
+		)
+	);
+	
+	if(TOASTS.length>TOASTS_LIMIT) {
+        $().toastmessage('removeToast', TOASTS.shift());
+    }
 }

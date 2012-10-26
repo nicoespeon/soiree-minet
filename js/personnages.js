@@ -401,7 +401,7 @@ var PNJView = Backbone.View.extend({
 				}
 				
 				var texte = this.model.get('texte')[0];
-				$().toastmessage('showNoticeToast', '<strong>'+this.model.get('pseudo')+'</strong> - '+texte);
+				notification('notice', '<strong>'+this.model.get('pseudo')+'</strong> - '+texte);
 				
 				var nouveauTexte = [];
 				for(var i=1; i<this.model.get('texte').length; i++) {
