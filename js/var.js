@@ -113,16 +113,18 @@ function notification(etat,message) {
 function scroll(direction,ecart) {
     $('#loading').css('display', 'block');
 	ISSCROLLING = true;
-
+	
 	if(direction=='horizontal') {
 		$('html, body').animate({scrollLeft: ecart}, DUREE_DEPLACEMENT*0.8, function() {
             $('#loading').css('display', 'none');
 			ISSCROLLING = false;
+			$(el).addClass('hidden');
 		});
 	} else if(direction=='vertical') {
 		$('html, body').animate({scrollTop: ecart}, DUREE_DEPLACEMENT*0.8, function() {
             $('#loading').css('display', 'none');
 			ISSCROLLING = false;
+			$(el).addClass('hidden');
 		});
 	}
 }
