@@ -25,6 +25,7 @@ ORIENTATION.push('orientationHaut');
 var NB_FRAMES		 	= 4; 			// Nombre de frames
 var DUREE_DEPLACEMENT 	= 400;			// Durée du déplacement (en ms)
 var COLLISIONS 			= [];			// On définit la map des collisions
+var SCROLL_OFFSET		= 4;			// Marge par rapport au bord de l'écran pour scroll
 
 // Indicateurs
 var ISPLAYING 			= false;		// Etat du lecteur audio

@@ -270,9 +270,6 @@ var PlayerView = Backbone.View.extend({
 		// Orientation du personnage
 	    var orientation 	= this.model.get('orientation');
 	    
-		// Marge limite avant scroll
-	    var offsetIn 		= 5;
-	    
 	    // Coordonnées du joueur
 	    var x 				= this.model.getX();
 	    var y 				= this.model.getY();
@@ -295,12 +292,12 @@ var PlayerView = Backbone.View.extend({
 	    // Ecart de la position de la cible par rapport au centre
 	    var ecartX 			= Math.abs(winMidWidth-winX);
 	    var ecartY 			= Math.abs(winMidHeight-winY);
-	    var ecartMaxX 		= winMidWidth-offsetIn;
-	    var ecartMaxY 		= winMidHeight-offsetIn;
+	    var ecartMaxX 		= winMidWidth-SCROLL_OFFSET;
+	    var ecartMaxY 		= winMidHeight-SCROLL_OFFSET;
 	    
 	    if(winX < 0 || tileToPx(winX) > winWidth) {
 	    	// Si l'écran est plus loin que la cible, on scroll jusqu'à elle
-	    	scroll('horizontal', tileToPx(x-offsetIn));
+	    	scroll('horizontal', tileToPx(x-SCROLL_OFFSET));
 	    } else if(ecartX > ecartMaxX) {
 	    	// Sinon, si la cible atteint la marge limite, on scroll
 	        if(orientation==1) {
@@ -312,12 +309,12 @@ var PlayerView = Backbone.View.extend({
 	
 	    if(winY < 0 || tileToPx(winY) > winHeight) {
 	    	// Si l'écran est plus loin que la cible, on scroll en arrière
-	        scroll('vertical', tileToPx(y-offsetIn));
+	        scroll('vertical', tileToPx(y-SCROLL_OFFSET));
 	    } else if(ecartY > ecartMaxY) {
 	    	// Sinon, si la cible atteint la marge limite, on scroll
 	        if(orientation==3) {
 	            scroll('vertical', tileToPx(offsetY-ecartMaxY+1));
-	        } else if(orientation==0 && y > offsetIn) {
+	        } else if(orientation==0 && y > SCROLL_OFFSET) {
 	            scroll('vertical', tileToPx(offsetY+ecartMaxY+1));
 	        }
 	    }
