@@ -24,11 +24,11 @@ ORIENTATION.push('orientationHaut');
 
 var NB_FRAMES		 	= 4; 			// Nombre de frames
 var DUREE_DEPLACEMENT 	= 400;			// Durée du déplacement (en ms)
-var ETAT_ANIMATION		= -1;			// Personnage initialement immobile
 var COLLISIONS 			= [];			// On définit la map des collisions
 
-// Audio
+// Indicateurs
 var ISPLAYING 			= false;		// Etat du lecteur audio
+var ISMOVING			= false;		// Etat du player
 
 // Notifications
 var TOASTS_LIMIT		= 3;			// Limite le nombre de notifications à l'écran

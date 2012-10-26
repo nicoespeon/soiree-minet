@@ -103,6 +103,7 @@ var PlayerView = Backbone.View.extend({
 		this.model.on('change:position', this.scroll, this);
 		
 		this.render();
+		this.etat = 1;
 		
 		// Scroll initial
 		var inst = this;
@@ -125,19 +126,18 @@ var PlayerView = Backbone.View.extend({
 	},
 	
 	move: function(e) {
-		// Variables initiales
-		var zIndex 	= $('#player').css('z-index');
-		var canMove = false;
-		
 		// Scroll (même si pas de déplacement)
 		this.scroll();
 			
 		// Annule le déplacement si un est déjà en cours
-		if(ETAT_ANIMATION > 0) {
+		if(ISMOVING) {
 			return false;
-		} else {
-			ETAT_ANIMATION = 1;
-		}
+		} 
+		
+		// Variables initiales
+		var zIndex 	= $('#player').css('z-index');
+		var canMove = false;
+		var moveKey = true;
 		
 		// ETAPE 1 - On repère la touche enfoncée et on prépare les nouvelles coordonnées
 		switch(e.keyCode) {
@@ -166,26 +166,23 @@ var PlayerView = Backbone.View.extend({
 				break;
 			
 			default:
-				//Pas une touche de déplacement
-				ETAT_ANIMATION = -1;
+				moveKey = false;
 				break;
 		}
 		
-		$('#player').css('z-index', zIndex);	//Maintient l'état du z-index après changement d'orientation
+		// Maintient l'état du z-index après changement d'orientation
+		$('#player').css('z-index', zIndex);	
 		
-		if(ETAT_ANIMATION > 0) {
-			var cible 		= getCoordsCible(this.model.getX(), this.model.getY(), this.model.get('orientation'));
-			var xCible 		= cible['x'];
-			var yCible 		= cible['y'];
-			canMove = this.canMoveTo(xCible, yCible);
-			isUpper = this.canMoveTo(xCible, yCible+1);
-		}
+		var cible 		= getCoordsCible(this.model.getX(), this.model.getY(), this.model.get('orientation'));
+		var xCible 		= cible['x'];
+		var yCible 		= cible['y'];
+		canMove 		= this.canMoveTo(xCible, yCible);
+		isUpper 		= this.canMoveTo(xCible, yCible+1);
 		
 		// ETAPE 2 - On déplace le personnage si c'est possible
-		if(canMove===true) {
+		if(canMove===true && moveKey===true) {
+			ISMOVING = true;
 			this.moveAnimation(isUpper);
-		} else {
-			ETAT_ANIMATION = -1;
 		}
 	},
 	
@@ -212,10 +209,10 @@ var PlayerView = Backbone.View.extend({
 	moveAnimation: function(isUpper) {
 		var inst 		= this;								// Pour la portée de this dans la fonction animate()
         var decalage 	= 1/NB_FRAMES;						// Déplacement pour un pas
-        var frame 		= ETAT_ANIMATION%NB_FRAMES;			// Frame à afficher
+        var frame 		= this.etat%NB_FRAMES;				// Frame à afficher
         var zIndex 		= $('#player').css('z-index');		// z-index du player pour superposition avec pnj
 
-        if(ETAT_ANIMATION<=NB_FRAMES) {
+        if(this.etat<=NB_FRAMES) {
         	// Déplace le personnage selon le nombre de frames indiqué
 	        var x = this.model.getX();
 	        var y = this.model.getY();
@@ -252,12 +249,13 @@ var PlayerView = Backbone.View.extend({
 					// Laisse le temps au personnage de se "dégager" de l'obstacle avant de le repasser par-dessus
 					$('#player').css('z-index', '10');
 				}
-	            ETAT_ANIMATION++;
+	            inst.etat++;
 	            inst.moveAnimation(isUpper);
 	        });
         } else {
         	// Sinon on désactive l'animation
-            ETAT_ANIMATION = -1
+            this.etat 	= 1;
+            ISMOVING 	= false;
         }
 	
 	},
