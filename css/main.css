@@ -722,3 +722,28 @@ nav#menu a:hover::before {
 #cboxLoadedContent li {
 	margin-left: 30px;
 }
+
+/*
+|--------------------------------------------------------------------------
+| RESPONSIVE
+|--------------------------------------------------------------------------
+*/
+@media (min-width:1300px) {
+	nav#control, #logo {
+		left: 10%;
+	}
+	
+	nav#menu {
+		right: 10%;
+	}
+}
+
+@media (min-width:1600px) {
+	nav#control, #logo {
+		left: 15%;
+	}
+	
+	nav#menu {
+		right: 15%;
+	}
+}
