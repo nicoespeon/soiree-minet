@@ -29,6 +29,7 @@ var COLLISIONS 			= [];			// On définit la map des collisions
 // Indicateurs
 var ISPLAYING 			= false;		// Etat du lecteur audio
 var ISMOVING			= false;		// Etat du player
+var ISSCROLLING			= false;		// Etat du scroll
 
 // Notifications
 var TOASTS_LIMIT		= 3;			// Limite le nombre de notifications à l'écran
@@ -105,4 +106,20 @@ function notification(etat,message) {
 	if(TOASTS.length>TOASTS_LIMIT) {
         $().toastmessage('removeToast', TOASTS.shift());
     }
+}
+
+// Scroll à l'écran
+// ----------------
+function scroll(direction,ecart) {
+	ISSCROLLING = true;
+		
+	if(direction=='horizontal') {
+		$('html, body').animate({scrollLeft: ecart}, DUREE_DEPLACEMENT*0.8, function() {
+			ISSCROLLING = false;
+		});
+	} else if(direction=='vertical') {
+		$('html, body').animate({scrollTop: ecart}, DUREE_DEPLACEMENT*0.8, function() {
+			ISSCROLLING = false;
+		});
+	}
 }

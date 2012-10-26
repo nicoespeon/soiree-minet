@@ -180,7 +180,7 @@ var PlayerView = Backbone.View.extend({
 		isUpper 		= this.canMoveTo(xCible, yCible+1);
 		
 		// ETAPE 2 - On déplace le personnage si c'est possible
-		if(canMove===true && moveKey===true) {
+		if(canMove===true && moveKey===true && ISSCROLLING===false) {
 			ISMOVING = true;
 			this.moveAnimation(isUpper);
 		}
@@ -294,25 +294,25 @@ var PlayerView = Backbone.View.extend({
 	    
 	    if(winX < 0 || tileToPx(winX) > winWidth) {
 	    	// Si l'écran est plus loin que la cible, on scroll jusqu'à elle
-	        $('html, body').animate({scrollLeft: tileToPx(x-offsetIn)}, DUREE_DEPLACEMENT*0.8);
+	    	scroll('horizontal', tileToPx(x-offsetIn));
 	    } else if(ecartX > ecartMaxX) {
 	    	// Sinon, si la cible atteint la marge limite, on scroll
 	        if(orientation==1) {
-	            $('html, body').animate({scrollLeft: tileToPx(offsetX-ecartMaxX+1)}, DUREE_DEPLACEMENT*0.8);
+	            scroll('horizontal', tileToPx(offsetX-ecartMaxX+1));
 	        } else if(orientation==2) {
-	            $('html, body').animate({scrollLeft: tileToPx(offsetX+ecartMaxX+1)}, DUREE_DEPLACEMENT*0.8);
+	            scroll('horizontal', tileToPx(offsetX+ecartMaxX+1));
 	        }
 	    }
 	
 	    if(winY < 0 || tileToPx(winY) > winHeight) {
 	    	// Si l'écran est plus loin que la cible, on scroll en arrière
-	        $('html, body').animate({scrollTop: tileToPx(y-offsetIn)}, DUREE_DEPLACEMENT*0.8);
+	        scroll('vertical', tileToPx(y-offsetIn));
 	    } else if(ecartY > ecartMaxY) {
 	    	// Sinon, si la cible atteint la marge limite, on scroll
 	        if(orientation==3) {
-	            $('html, body').animate({scrollTop: tileToPx(offsetY-ecartMaxY+1)}, DUREE_DEPLACEMENT*0.8);
+	            scroll('vertical', tileToPx(offsetY-ecartMaxY+1));
 	        } else if(orientation==0 && y > offsetIn) {
-	            $('html, body').animate({scrollTop: tileToPx(offsetY+ecartMaxY+1)}, DUREE_DEPLACEMENT*0.8);
+	            scroll('vertical', tileToPx(offsetY+ecartMaxY+1));
 	        }
 	    }
 	}
