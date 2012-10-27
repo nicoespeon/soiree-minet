@@ -165,6 +165,31 @@ var EventView = Backbone.View.extend({
 							);
 						}, 5000);
 						break;
+						
+				    case 'bicyclette':
+				        if(DUREE_DEPLACEMENT==400) {
+				            DUREE_DEPLACEMENT=200;
+				            OFFSET = 2;
+				            audio.set('piste', 'city');
+				            player.set('attributs', 'bicyclette');
+				        } else {
+				            DUREE_DEPLACEMENT=400;
+				            OFFSET = 3;
+				            audio.set('piste', 'partyrock');
+				            player.set('attributs', '');
+				        }
+				        
+				        notification(
+							'success',
+							"<strong>Event débloqué</strong> - Bien joué, tu as trouvé le <strong>BICYCLETTE CODE</strong> !"
+						);
+						setTimeout(function() {
+							notification(
+								'warning',
+								"<strong>One more thing</strong> - Au cas où tu te poserais la question... c'est réversible !"
+							);
+						}, 5000);
+						
 				}
 				
 				// Réinitialise le keylogger

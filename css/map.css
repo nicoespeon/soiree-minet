@@ -182,6 +182,72 @@
 
 /*
 |--------------------------------------------------------------------------
+| Bicyclette
+|--------------------------------------------------------------------------
+*/
+.bicyclette {
+    width: 48px !important;
+    margin-left: -8px;
+}
+
+.garcon.bicyclette {
+	background-image: url('../img/personnages/garcon-bicyclette.png');
+}
+
+.fille.bicyclette {
+	background-image: url('../img/personnages/fille-bicyclette.png');
+}
+
+.orientationBas.bicyclette.frame1 {
+	background-position: 48px 0;
+}
+
+.orientationBas.bicyclette.frame2 {
+	background-position: 96px 0;
+}
+
+.orientationBas.bicyclette.frame3 {
+	background-position: 144px 0;
+}
+
+.orientationGauche.bicyclette.frame1 {
+	background-position: 48px -64px;
+}
+
+.orientationGauche.bicyclette.frame2 {
+	background-position: 96px -64px;
+}
+
+.orientationGauche.bicyclette.frame3 {
+	background-position: 144px -64px;
+}
+
+.orientationDroite.bicyclette.frame1 {
+	background-position: 48px -128px;
+}
+
+.orientationDroite.bicyclette.frame2 {
+	background-position: 96px -128px;
+}
+
+.orientationDroite.bicyclette.frame3 {
+	background-position: 144px -128px;
+}
+
+.orientationHaut.bicyclette.frame1 {
+	background-position: 48px -192px;
+}
+
+.orientationHaut.bicyclette.frame2 {
+	background-position: 96px -192px;
+}
+
+.orientationHaut.bicyclette.frame3 {
+	background-position: 144px -192px;
+}
+
+/*
+|--------------------------------------------------------------------------
 | MONTAGNES
 |--------------------------------------------------------------------------
 */
