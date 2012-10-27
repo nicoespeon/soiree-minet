@@ -172,23 +172,24 @@ var EventView = Backbone.View.extend({
 				            OFFSET = 2;
 				            audio.set('piste', 'city');
 				            player.set('attributs', 'bicyclette');
+				            
+    				        notification(
+    							'success',
+    							"<strong>Event débloqué</strong> - Bien joué, tu as trouvé le <strong>BICYCLETTE CODE</strong> !"
+    						);
+    						
+    						setTimeout(function() {
+    							notification(
+    								'warning',
+    								"<strong>One more thing</strong> - Au cas où tu te poserais la question... c'est réversible !"
+    							);
+    						}, 5000);
 				        } else {
 				            DUREE_DEPLACEMENT=400;
 				            OFFSET = 3;
 				            audio.set('piste', 'partyrock');
 				            player.set('attributs', '');
 				        }
-				        
-				        notification(
-							'success',
-							"<strong>Event débloqué</strong> - Bien joué, tu as trouvé le <strong>BICYCLETTE CODE</strong> !"
-						);
-						setTimeout(function() {
-							notification(
-								'warning',
-								"<strong>One more thing</strong> - Au cas où tu te poserais la question... c'est réversible !"
-							);
-						}, 5000);
 						
 				}
 				
