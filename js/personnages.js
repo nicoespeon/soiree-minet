@@ -171,7 +171,7 @@ var PlayerView = Backbone.View.extend({
 		}
 		
 		// Maintient l'état du z-index après changement d'orientation
-		$('#player').css('z-index', zIndex);
+		$('#player').css('z-index', zIndex);	
 		
 		var cible 		= getCoordsCible(this.model.getX(), this.model.getY(), this.model.get('orientation'));
 		var xCible 		= cible['x'];
@@ -179,15 +179,9 @@ var PlayerView = Backbone.View.extend({
 		canMove 		= this.canMoveTo(xCible, yCible);
 		isUpper 		= this.canMoveTo(xCible, yCible+1);
 		
-        if (ISSCROLLING)
-        {
-            $('#loading').css('display', 'block');
-        }
-
 		// ETAPE 2 - On déplace le personnage si c'est possible
 		if(canMove===true && moveKey===true && ISSCROLLING===false) {
 			ISMOVING = true;
-            $('#loading').css('display', 'none');
 			this.moveAnimation(isUpper);
 		}
 	},
