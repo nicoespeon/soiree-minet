@@ -154,13 +154,13 @@ var EventView = Backbone.View.extend({
 					
 					case 'konami':
 						player.get('type')=='garcon' ? player.set('type', 'fille') : player.set('type', 'garcon');
-						$().toastmessage(
-							'showSuccessToast',
+						notification(
+							'success',
 							"<strong>Event débloqué</strong> - Bien joué, tu as trouvé le <strong>KONAMI CODE</strong> !"
 						);
 						setTimeout(function() {
-							$().toastmessage(
-								'showWarningToast',
+							notification(
+								'warning',
 								"<strong>One more thing</strong> - Au cas où tu te poserais la question... c'est réversible !"
 							);
 						}, 5000);
