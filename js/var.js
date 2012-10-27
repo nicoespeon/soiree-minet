@@ -111,15 +111,41 @@ function notification(etat,message) {
 // Scroll à l'écran
 // ----------------
 function scroll(direction,ecart) {
+    $('#loading').css('display', 'block');
 	ISSCROLLING = true;
-		
+
 	if(direction=='horizontal') {
 		$('html, body').animate({scrollLeft: ecart}, DUREE_DEPLACEMENT*0.8, function() {
+            $('#loading').css('display', 'none');
 			ISSCROLLING = false;
 		});
 	} else if(direction=='vertical') {
 		$('html, body').animate({scrollTop: ecart}, DUREE_DEPLACEMENT*0.8, function() {
+            $('#loading').css('display', 'none');
 			ISSCROLLING = false;
 		});
 	}
 }
+
+// Animation de chargement
+
+var opts = {
+  lines: 10, // The number of lines to draw
+  length: 4, // The length of each line
+  width: 2, // The line thickness
+  radius: 2, // The radius of the inner circle
+  corners: 1, // Corner roundness (0..1)
+  rotate: 0, // The rotation offset
+  color: '#fff', // #rgb or #rrggbb
+  speed: 1, // Rounds per second
+  trail: 60, // Afterglow percentage
+  shadow: false, // Whether to render a shadow
+  hwaccel: false, // Whether to use hardware acceleration
+  className: 'spinner', // The CSS class to assign to the spinner
+  zIndex: 2e9, // The z-index (defaults to 2000000000)
+  top: '10px', // Top position relative to parent in px
+  left: '10px' // Left position relative to parent in px
+};
+var target = document.getElementById('loading');
+var spinner = new Spinner(opts).spin(target);
+

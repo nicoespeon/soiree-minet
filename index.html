@@ -36,7 +36,8 @@
 		<ul>
 			<li class="font-icon" data-control="menu">i</li>
 			<li class="font-icon pause" id="audio" data-control="audio">p</li>
-		</ul>
+            <li id="loading"></li>
+        </ul>
 	</nav>
 	
 	<!-- Menu de navigation -->
@@ -44,6 +45,7 @@
 		<ul class="clearfix">
 			<li>
 				<a href="#description" data-title="Soirée MiNET">Soirée MiNET</a>
+
 			</li>
 			<li>
 				<a href="#animations" data-title="Les animations">Animations</a>
@@ -55,7 +57,10 @@
 				<a href="#howToPlay" data-title="How to Play ?">How to Play ?</a>
 			</li>
 		</ul>
-	</nav>
+    </nav>
+
+    <!-- Animation de chargement -->
+    <div id="loading"></div>
 	
 	<!-- Interactions -->
 	<div id="interaction"></div>
@@ -230,7 +235,8 @@
 	<script src="js/lib/backbone.min.js"></script>
 	<script src="js/lib/toastmessage.js"></script>
 	<script src="js/lib/buzz.js"></script>
-	<script src="js/lib/colorbox.js"></script>
+    <script src="js/lib/colorbox.js"></script>
+    <script src="js/lib/spin.js"></script>
 	
 	<!-- Scripts JS -->
 	<script src="js/var.js"></script>
