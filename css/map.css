@@ -112,6 +112,10 @@
 	background-image: url('../img/personnages/aymi-li.png');
 }
 
+.minet {
+	background-image: url('../img/personnages/minet.png');
+}
+
 .orientationBas, 
 .orientationBas.frame0 {
 	background-position: 0 0;

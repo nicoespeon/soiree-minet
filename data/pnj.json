@@ -120,5 +120,15 @@
 			"Koleka ! Koleka ! Koleka ! Ran Ran Ruuuuuuu !!!",
 			"Ce chemin est absurde... Vous ne trouvez pas ?"
 		]
+	},
+	{
+		"pseudo": "MiNET",
+		"type": "minet",
+		"position": [4,54],
+		"limits": [0,2],
+		"texte": [
+			"Meeeoooooow ! C'est moi le gros minet !",
+			"Meeeoooooow ! Ca manque d'ambiance par ici ! Tape <em>NYAN</em> et tu devient un vrai minet !"
+		]
 	}
 ]
