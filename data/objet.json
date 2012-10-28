@@ -3,7 +3,8 @@
 		"name": "Clé",
 		"type": "key",
 		"ramassable": true,
-		"position": [23,8]
+		"position": [23,8],
+		"actif": true
 		
 	}
 ]

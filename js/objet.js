@@ -20,6 +20,7 @@ var Objet = Backbone.Model.extend({
 	defaults: {
 		name: '',
 		type: '',
+		actif: true,
 		ramassable: false,
 		position: [0,0]
 	},
@@ -53,6 +54,10 @@ var Objet = Backbone.Model.extend({
 	
 	estRamassable: function(){
 		return this.get('ramassable');
+	},
+	
+	estActif: function(){
+		return this.get('actif');
 	}
 });
 
@@ -100,8 +105,10 @@ var ObjetView = Backbone.View.extend({
 			var yCible 		= cible['y'];
 			
 			if(this.model.getX()==xCible && this.model.getY()==yCible) {
-				if(this.model.estRamassable())
+				if(this.model.estRamassable() && this.model.estActif())
 				{
+					//Rend inactif
+					this.model.set({'actif':false});
 					//Retire la collision
 					COLLISIONS[this.model.getX()][this.model.getY()] = '1';
 					//Fait disparaitre le sprite de l'écran
@@ -109,7 +116,6 @@ var ObjetView = Backbone.View.extend({
 					cache(elt);
 					
 					//Action spécifique liée à l'objet (quête...)
-					console.log(this.model.get('type'));
 					switch(this.model.get('type'))
 					{
 						case 'key':
