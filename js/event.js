@@ -196,6 +196,22 @@ var EventView = Backbone.View.extend({
 				        }
 				        break;
 						
+				    case 'video':
+				        var video   = event.video;
+				        var titre   = video.titre;
+				        var texte   = '<iframe width="853" height="480" src="'+video.src+'" frameborder="0" allowfullscreen></iframe>';
+				        
+				        // Coupe la musique si elle est allumée
+				        if($('#audio').hasClass('play')) {
+    				        $('#audio').trigger('click');   
+				        }
+				        
+						$.colorbox({
+							html: texte,
+							title : titre
+						});
+				        break;
+						
 				}
 				
 				// Réinitialise le keylogger
