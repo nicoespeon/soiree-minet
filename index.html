@@ -14,20 +14,17 @@
 	<!-- CSS -->
 	<link rel="stylesheet" href="css/reset.css" />
 	<link rel="stylesheet" href="css/main.css" />
-	
 	<script type="text/javascript">
-	var h = (new Date()).getHours();
-	if(h>7 && h<21)
-	{
-		window.document.write('<link rel="stylesheet" href="css/map.css" />');
-	}
-	else
-	{
-		window.document.write('<link rel="stylesheet" href="css/map_night.css" />');
-	}
-	
+		var h = (new Date()).getHours();
+		if(h>7 && h<21)
+		{
+			window.document.write('<link rel="stylesheet" href="css/map.css" />');
+		}
+		else
+		{
+			window.document.write('<link rel="stylesheet" href="css/map_night.css" />');
+		}
 	</script>
-	
 	
 	<!--[if IE]>
 	    <script type="text/javascript">
@@ -42,14 +39,21 @@
 	</script>
 </head>
 <body>
-
+	<!-- Loader -->
+	<div id="loader" class="hidden">
+		<p>
+			Scrolling... please wait...
+		</p>
+	</div>
+	
+	<!-- Logo de la soirée -->
 	<img src="img/logo-soiree.png" id="logo" width="150" alt="H### Me I'm Famous !" />
 	
 	<!-- Menu de contrôle -->
 	<nav id="control">
 		<ul>
 			<li class="font-icon" data-control="menu">i</li>
-			<li class="font-icon" data-control="audio" class="pause">p</li>
+			<li class="font-icon pause" id="audio" data-control="audio">p</li>
 		</ul>
 	</nav>
 	
@@ -89,6 +93,8 @@
 		
 		<div class="flowers2" data-x="20" data-y="4"></div>
 		<div class="flowers2" data-x="25" data-y="4"></div>
+		
+		<div class="wallpaper" data-x="14" data-y="55"></div>
 		
 		<!-- Montagnes -->
 		<div id="mountain">
@@ -136,7 +142,7 @@
 		<div id="sea">
 			<div class="top" data-x="4" data-y="90"></div>
 			<div class="water" data-x="4" data-y="91"></div>
-			<div class="boat" data-x="4" data-y="96"></div>
+			<div class="boat" data-x="4" data-y="90"></div>
 		</div>
 		
 		<!-- PNJs -->
@@ -149,7 +155,7 @@
 	</script>
 	
 	<script type="text/template" id="player-template">
-		<div id="player" class="<%= type %> <%= ORIENTATION[orientation] %> frame<%= frame %>" data-x="<%= position[0] %>" data-y="<%= position[1] %>">
+		<div id="player" class="<%= type %> <%= ORIENTATION[orientation] %> frame<%= frame %> <%= attributs %>" data-x="<%= position[0] %>" data-y="<%= position[1] %>">
 			<!-- Here is your player ! -->
 		</div>
 	</script>
@@ -234,8 +240,7 @@
 		<h1>Bienvenue sur le PC de MiNET</h1>
         <div class="center">
 			<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://soiree.minet.net" data-text="Soirée MiNET, le 7 décembre 2012 - H### me I'm famous -" data-via="MinetTMSP" data-lang="fr" data-related="MinetTMSP">Tweeter</a>
-			<div id="fb-root"></div>
-			<div class="fb-like" data-href="http://soiree.minet.net" data-send="false" data-layout="button_count" data-width="150" data-show-faces="true" data-font="arial"></div>
+			<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fsoiree.minet.net&amp;send=false&amp;layout=button_count&amp;width=150&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;" allowTransparency="true"></iframe>
 		</div>
 	</div>
 	
@@ -256,6 +261,5 @@
 	
 	<!-- Script social media -->
 	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-	<script>(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="//connect.facebook.net/fr_FR/all.js#xfbml=1";fjs.parentNode.insertBefore(js,fjs);}(document,'script','facebook-jssdk'));</script>
 </body>
 </html>
