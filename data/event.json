@@ -102,6 +102,13 @@
 		"konami" : "67,72,69,86,82,69"
 	},
 	{
+		"type" : "video",
+		"video" : {
+			"titre" : "What What (in da butt) - Be'er Nard approved",
+			"src": "http://www.youtube.com/embed/XKE3dIrRIbg"
+		},
+		"konami" : "87,72,65,84,87,72,65,84"
+	},
 		"type" : "konami",
 		"konami" : "38,38,40,40,37,39,37,39,66,65"
 	},
