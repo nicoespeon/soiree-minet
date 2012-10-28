@@ -86,6 +86,10 @@
 	background-image: url('../img/personnages/fille.png');
 }
 
+.paulo {
+	background-image: url('../img/personnages/paulo.png');
+}
+
 .raguenar {
 	background-image: url('../img/personnages/raguenar.png');
 }
@@ -544,7 +548,9 @@
 .nuit .aymi-li {
 	background-image: url('../img/personnages/aymi-li_night.png');
 }
-
+.nuit .paulo {
+	background-image: url('../img/personnages/paulo_night.png');
+}
 .nuit .minet {
 	background-image: url('../img/personnages/minet_night.png');
 }
