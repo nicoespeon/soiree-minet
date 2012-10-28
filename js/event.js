@@ -83,11 +83,11 @@ var EventView = Backbone.View.extend({
 			if(x==eventX && y==eventY) {
 				switch(type) {
 					case 'notification':
-							var notif 			= event.notification;
-							var notifType 		= notif.type;
-							var notifMessage	= notif.message;
-							
-							notification(notifType,notifMessage);
+						var notif 			= event.notification;
+						var notifType 		= notif.type;
+						var notifMessage	= notif.message;
+						
+						notification(notifType,notifMessage);
 						break;
 					
 					case 'social':
@@ -194,6 +194,7 @@ var EventView = Backbone.View.extend({
 				            audio.set('piste', 'partyrock');
 				            player.set('attributs', '');
 				        }
+				        break;
 						
 				}
 				
