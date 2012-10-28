@@ -44,6 +44,12 @@ var AppView = Backbone.View.extend({
 // Appel des fonctions de l'application après chargement du DOM
 // ------------------------------------------------------------
 $(function() {
+    // Active la map nocturne si c'est le cas
+    var h = getHeure();
+    if(h>19 || h<8) {
+        $('#wrapper').addClass('nuit');
+    }
+    
 	// Active le menu de controle
 	$('nav#control li').click(function() {
 		var control = $(this).data('control');

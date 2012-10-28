@@ -129,3 +129,9 @@ function scroll(direction,ecart) {
 		});
 	}
 }
+
+// Récupère l'heure
+// ----------------
+function getHeure() {
+    return (new Date()).getHours()
+}

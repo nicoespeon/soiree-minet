@@ -452,3 +452,161 @@
 
 	background: url('../img/map/jbh-boat.png');
 }
+
+
+/*
+|--------------------------------------------------------------------------
+| NUIT
+|--------------------------------------------------------------------------
+*/
+#wrapper.nuit {
+	background: url('../img/map_night/bg_night.png') repeat;
+}
+
+.nuit .flowers1 {
+	background: url('../img/map_night/bg-flowers-1_night.png');
+}
+
+.nuit .flowers2 {
+	background: url('../img/map_night/bg-flowers-2_night.png');
+}
+
+.nuit .wallpaper {
+	background: url('../img/map_night/qrcode-wallpaper_night.png');
+}
+
+.nuit .garcon {
+	background-image: url('../img/personnages/garcon_night.png');
+}
+
+.nuit .fille {
+	background-image: url('../img/personnages/fille_night.png');
+}
+
+.nuit .raguenar {
+	background-image: url('../img/personnages/raguenar_night.png');
+}
+
+.nuit .effe-pegea {
+	background-image: url('../img/personnages/effe-pegea_night.png');
+}
+
+.nuit .font-fayce {
+	background-image: url('../img/personnages/font-fayce_night.png');
+}
+
+.nuit .ays-peon {
+	background-image: url('../img/personnages/ays-peon_night.png');
+}
+
+.nuit .nethan-thau {
+	background-image: url('../img/personnages/nethan-thau_night.png');
+}
+
+.nuit .beer-nard {
+	background-image: url('../img/personnages/beer-nard_night.png');
+}
+
+.nuit .kaas-tou {
+	background-image: url('../img/personnages/kaas-tou_night.png');
+}
+
+.nuit .wiki-m {
+	background-image: url('../img/personnages/wiki-m_night.png');
+}
+
+.nuit .stai-fouyon {
+	background-image: url('../img/personnages/stai-fouyon_night.png');
+}
+
+.nuit .aymi-li {
+	background-image: url('../img/personnages/aymi-li_night.png');
+}
+
+.nuit .minet {
+	background-image: url('../img/personnages/minet_night.png');
+}
+
+.nuit .garcon.bicyclette {
+	background-image: url('../img/personnages/garcon-bicyclette_night.png');
+}
+
+.nuit .fille.bicyclette {
+	background-image: url('../img/personnages/fille-bicyclette_night.png');
+}
+
+.nuit #mountain .corner {
+	background: url('../img/map_night/mountain-corner_night.png');
+}
+
+.nuit #mountain .door {
+	background: url('../img/map_night/mountain-door_night.png');
+}
+
+.nuit #mountain .front {
+	background: url('../img/map_night/mountain-front_night.png') repeat-x;
+}
+
+.nuit #mountain .right {
+	background: url('../img/map_night/mountain-right_night.png') repeat-y;
+}
+
+.nuit #mountain .runes {
+	background: url('../img/map_night/mountain-runes_night.png');
+}
+
+.nuit #mountain .upper {
+	background: url('../img/map_night/mountain-upper_night.png');
+}
+
+.nuit #prairie .path {
+	background: url('../img/map_night/absurd-path_night.png') repeat-y;
+}
+
+.nuit #prairie .path.end {
+	background: url('../img/map_night/absurd-path-end_night.png');
+}
+
+.nuit #runes {
+	background: url('../img/map_night/runes_night.png');
+}
+
+.nuit #forest {
+	background: url('../img/map_night/forest_night.png');
+}
+
+.nuit #red-city .city {
+	background: url('../img/map_night/red-city_night.png');
+}
+
+.nuit #red-city .road {
+	background: url('../img/map_night/road-rc-port_night.png') repeat-y;
+}
+
+.nuit #blue-city .city {
+	background: url('../img/map_night/blue-city_night.png');
+}
+
+.nuit #blue-city .road {
+	background: url('../img/map_night/road-bc-port_night.png');
+}
+
+.nuit #port {
+	background: url('../img/map_night/port_night.png');
+}
+
+.nuit #pc.on {
+	background: url('../img/map_night/pc-on_night.png');
+}
+
+.nuit #sea .top {
+	background: url('../img/map_night/sea-top_night.png');
+}
+
+.nuit #sea .water {
+	background: url('../img/map_night/sea_night.png');
+}
+
+.nuit #sea .boat {
+	background: url('../img/map_night/jbh-boat_night.png');
+}
