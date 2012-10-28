@@ -383,6 +383,7 @@ var PNJView = Backbone.View.extend({
 			var yCible 		= cible['y'];
 			
 			if(this.model.getX()==xCible && this.model.getY()==yCible) {
+				//Le pnj se tourne vers le joueur
 				switch(direction) {
 					case 0:
 						this.model.set('orientation', 3);
