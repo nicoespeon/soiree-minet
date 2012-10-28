@@ -102,6 +102,13 @@
 		"konami" : "86,69,76,79"
 	},
 	{
+		"type" : "twitter",
+		"position" : {
+		  "x" : "27",
+		  "y" : "30"
+        }
+	},
+	{
 		"type" : "social",
 		"position" : {
 			"x" : "17",

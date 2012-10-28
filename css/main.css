@@ -97,6 +97,12 @@ body {
 	left: 10px;
 }
 
+.forest-tweet {
+    margin-left: 10px;
+    display: inline-block;
+    vertical-align: middle;   
+}
+
 /*
 |--------------------------------------------------------------------------
 | NAVIGATION

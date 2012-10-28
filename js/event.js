@@ -113,6 +113,10 @@ var EventView = Backbone.View.extend({
 						});
 						
 						break;
+				    
+				    case 'twitter':
+				        notification('notice', 'Tweeeeeeeet ! Tweeeeeeet ! Tweeeeeet Me, I\'m Famous !'+$('#forest-tweet').html());	        
+				        break;
 				}
 			}
 		});
