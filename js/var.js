@@ -67,6 +67,11 @@ function pxToTile(px){
 function positionne(el,x,y) {
 	$(el).css({'left':tileToPx(x)+'px','top':tileToPx(y)+'px'});
 }
+// Cache un élément sur la map
+// --------------------------------
+function cache(el) {
+	$(el).css({'visibility':'hidden'});
+}
 
 // Donne les coordonnées de la case ciblée
 // ---------------------------------------

@@ -18,6 +18,11 @@ var AppView = Backbone.View.extend({
 		PNJs.on('reset', this.addAll, this);
 		PNJs.fetch();
 		
+		// Objets
+		Objets.on('add', this.addOneObject, this);
+		Objets.on('reset', this.addAllObjects, this);
+		Objets.fetch();
+		
 		// Player
 		new PlayerView({model: player});
 		
@@ -26,6 +31,18 @@ var AppView = Backbone.View.extend({
 		
 		// Audio
 		new AudioView({el:$('body'), model: audio});
+	},
+
+	// Ajoute un objet en créant une vue pour celui-ci
+	addOneObject: function(obj) {
+		var view = new ObjetView({model: obj});
+		this.$('#objets').append(view.render().el);
+	},
+	
+	// Ajoute tous les objets de la collection en même temps
+	addAllObjects: function() {
+		this.$('#objets').html('');
+		Objets.each(this.addOneObject,this);
 	},
 	
 	// Ajoute un PNJ en créant une vue pour celui-ci
@@ -100,6 +117,7 @@ $(function() {
 	// Prépare les éléments de l'application
 	player 	= new Personnage();
 	PNJs 	= new PNJList();
+	Objets 	= new ObjetList();
 	audio	= new Audio();
 	event 	= new Event();
 	

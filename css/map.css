@@ -53,6 +53,20 @@
 
 /*
 |--------------------------------------------------------------------------
+| Objets
+|--------------------------------------------------------------------------
+*/
+
+.key {
+	z-index: 100;
+
+	width: 32px;
+	height: 32px;
+	background-image: url('../img/objets/key.png');
+}
+
+/*
+|--------------------------------------------------------------------------
 | PNJs & Player
 |--------------------------------------------------------------------------
 */
@@ -461,6 +475,14 @@
 */
 #wrapper.nuit {
 	background: url('../img/map_night/bg_night.png') repeat;
+}
+
+.nuit .key {
+	z-index: 100;
+
+	width: 32px;
+	height: 32px;
+	background-image: url('../img/objets/key_night.png');
 }
 
 .nuit .flowers1 {
