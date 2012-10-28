@@ -96,10 +96,26 @@
 	{
 		"type" : "musique",
 		"musique" : {
-			"titre" : "Higway To Hell",
+			"titre" : "Highway To Hell",
 			"src": "highway2hell"
 		},
 		"konami" : "67,72,69,86,82,69"
+	},
+	{
+		"type" : "video",
+		"video" : {
+			"titre" : "What What (in da butt) - Be'er Nard approved",
+			"src": "http://www.youtube.com/embed/XKE3dIrRIbg"
+		},
+		"konami" : "87,72,65,84,87,72,65,84"
+	},
+	{
+        "type" : "video",
+        "video" : {
+            "titre" : "Ronald Insanity - Raguenar approved",
+            "src" : "http://www.youtube.com/embed/Q16KpquGsIc"
+        },
+		"konami" : "65,66,83,85,82,68,69"
 	},
 	{
 		"type" : "konami",

@@ -482,10 +482,6 @@
 }
 
 .nuit .key {
-	z-index: 100;
-
-	width: 32px;
-	height: 32px;
 	background-image: url('../img/objets/key_night.png');
 }
 

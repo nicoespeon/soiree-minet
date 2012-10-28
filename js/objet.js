@@ -105,24 +105,24 @@ var ObjetView = Backbone.View.extend({
 			var yCible 		= cible['y'];
 			
 			if(this.model.getX()==xCible && this.model.getY()==yCible) {
-				if(this.model.estRamassable() && this.model.estActif())
-				{
-					//Rend inactif
+				if(this.model.estRamassable() && this.model.estActif()) {
+					// Rend inactif
 					this.model.set({'actif':false});
-					//Retire la collision
-					COLLISIONS[this.model.getX()][this.model.getY()] = '1';
-					//Fait disparaitre le sprite de l'écran
-					var elt = this.$el.children();
-					cache(elt);
 					
-					//Action spécifique liée à l'objet (quête...)
-					switch(this.model.get('type'))
-					{
+					// Retire la collision
+					COLLISIONS[this.model.getX()][this.model.getY()] = '1';
+					
+					// Retire l'objet de la map
+					var elt = this.$el.children();
+					elt.remove();
+					
+					// Action spécifique liée à l'objet (quête...)
+					switch(this.model.get('type')) {
 						case 'key':
-							notification(
-							'notice',
-							'<strong>Objet ramassé</strong> - Vous avez trouvé la clé de la porte !'
-						);
+						    notification(
+    							'notice',
+    							'<strong>Objet ramassé</strong> - Vous avez trouvé la clé de la porte !'
+    						);
 							break;
 					}
 				}
