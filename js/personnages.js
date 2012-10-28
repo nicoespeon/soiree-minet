@@ -185,6 +185,11 @@ var PlayerView = Backbone.View.extend({
 			ISMOVING = true;
 			this.moveAnimation(isUpper);
 		}
+		
+		// HOOK - Cache le menu de navigation si on va tout à droite
+		if(this.model.getX()>31 && $('#menu-nav').html()=='i') {
+    		$('#menu-nav').trigger('click');
+		}
 	},
 	
 	canMoveTo: function(x,y) {
