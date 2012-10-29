@@ -440,6 +440,14 @@
 	background: url('../img/map/pc-on.png');
 }
 
+#phare {
+    width: 64px;
+    height: 112px;
+    margin-top: 16px;
+    
+    background: url('../img/map/phare.gif');
+}
+
 /*
 |--------------------------------------------------------------------------
 | MER
@@ -621,6 +629,10 @@
 
 .nuit #pc.on {
 	background: url('../img/map_night/pc-on_night.png');
+}
+
+.nuit #phare {
+	background: url('../img/map_night/phare_night.gif');
 }
 
 .nuit #sea .top {
