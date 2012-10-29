@@ -32,4 +32,8 @@ $(function() {
 		(frame<3) ? frame++ : frame = 0;
 		$('#player').addClass('frame'+frame);
 	}, 150);
+	
+	if(screen.width<768) {
+        $('.navbar').removeClass('navbar-fixed-bottom').addClass('navbar-fixed-top');
+	}
 });

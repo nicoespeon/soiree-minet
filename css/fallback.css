@@ -15,7 +15,7 @@
 	display: none;
 }
 
-.row-large {
+.row-fluid-large {
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
@@ -25,7 +25,7 @@
 }
 
 .main {
-	height: 250px;
+	height: 286px;
 	overflow: hidden;
 }
 
@@ -57,4 +57,12 @@ caption {
 
 .frame3 {
 	background-position: 96px 0;
+}
+
+.navbar-fixed-top + div {
+    margin-top: 30px;
+}
+
+@media (max-width:768px) {
+    
 }
