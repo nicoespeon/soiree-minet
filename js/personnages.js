@@ -373,7 +373,7 @@ var PNJView = Backbone.View.extend({
 		
 		setInterval(
 			function() {
-				//Si l'orientation n'est pas bloquée
+				// Si l'orientation n'est pas bloquée
 				if(!(thisPNJ.model.get('randomOrientationLocked'))){
 					var orientation = limits[Math.floor(Math.random()*limits.length)];
 					thisPNJ.rotate(orientation);
@@ -390,7 +390,7 @@ var PNJView = Backbone.View.extend({
 			var yCible 		= cible['y'];
 			
 			if(this.model.getX()==xCible && this.model.getY()==yCible) {
-				//Le pnj se tourne vers le joueur
+				// Le pnj se tourne vers le joueur
 				switch(direction) {
 					case 0:
 						this.model.set('orientation', 3);
@@ -408,11 +408,15 @@ var PNJView = Backbone.View.extend({
 						this.model.set('orientation', 0);
 						break;
 				}
-				//On bloque l'orientation aléatoire du PNJ pour 5 secondes
+				
+				// On bloque l'orientation aléatoire du PNJ pour 5 secondes
 				this.model.set({'randomOrientationLocked':true});
+				
 				// Pour le scope de this dans setTimeout
 				var thisPNJ = this;
-				setTimeout(function(){thisPNJ.model.set({'randomOrientationLocked':false})},5000);
+				setTimeout(function() {
+				    thisPNJ.model.set({'randomOrientationLocked':false})
+				}, 5000);
 				
 				var texte = this.model.get('texte')[0];
 				notification('notice', '<strong>'+this.model.get('pseudo')+'</strong> - '+texte);
@@ -428,21 +432,23 @@ var PNJView = Backbone.View.extend({
 		}
 	},
 	
-		move: function(seq){
-			seq.reverse();//Reverse car on pop les ordres (donc on prend le dernier ordre)
-			var firstMove=seq[seq.length-1];
-			this.model.set({'moveSequence':seq});
-			this.atomicMove(firstMove);//On initie la séquence de mouvement
-		},
+	move: function(seq){
+	   //Reverse car on pop les ordres (donc on prend le dernier ordre)
+	   seq.reverse();
+	   var firstMove=seq[seq.length-1];
+	   this.model.set({'moveSequence':seq});
+	   
+	   //On initie la séquence de mouvement
+	   this.atomicMove(firstMove);
+	},
 	
-		atomicMove: function(d) {
-		
+	atomicMove: function(direction) {
 		// Variables initiales
 		var elt = this.$el.children();
 		var zIndex 	= elt.css('z-index');
 		
 		// Direction
-		switch(d) {
+		switch(direction) {
 			case 'g':
 				//Gauche
 				this.model.set({'orientation':1});
@@ -477,10 +483,11 @@ var PNJView = Backbone.View.extend({
 		if(canMove===true) {
 			this.model.set({'moving':true});
 			this.moveAnimation(isUpper);
+			
 			//On déplace la collision du PNJ
 			COLLISIONS[this.model.getX()][this.model.getY()]='1';
 			COLLISIONS[xCible][yCible]='0';
-		}else{
+		} else {
 			notification('error','Erf, je suis bloqué !');
 		}	
 		
@@ -508,11 +515,11 @@ var PNJView = Backbone.View.extend({
 	},
 	
 	moveAnimation: function(isUpper) {
-		var elt = this.$el.children();
+		var elt         = this.$el.children();
 		var inst 		= this;								// Pour la portée de this dans la fonction animate()
         var decalage 	= 1/NB_FRAMES;						// Déplacement pour un pas
         var frame 		= this.etat%NB_FRAMES;				// Frame à afficher
-        var zIndex 		= elt.css('z-index');		// z-index du pnj pour superposition avec pnj
+        var zIndex 		= elt.css('z-index');		        // z-index du pnj pour superposition avec pnj
 
         if(this.etat<=NB_FRAMES) {
         	// Déplace le personnage selon le nombre de frames indiqué
@@ -557,11 +564,14 @@ var PNJView = Backbone.View.extend({
         } else {
         	// Sinon on désactive l'animation
             this.etat 	= 1;
-			//On pop le mouvement que l'on vient de faire
+            
+			// On pop le mouvement que l'on vient de faire
 			this.model.get('moveSequence').pop();
-			//On contine la chaine de mouvement
-			var l=this.model.get('moveSequence').length;
-			if(l>0){
+			
+			// On contine la chaine de mouvement
+			var l = this.model.get('moveSequence').length;
+			
+			if(l>0) {
 				this.atomicMove(this.model.get('moveSequence')[l-1]);
 			}
         }

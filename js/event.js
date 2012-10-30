@@ -211,7 +211,6 @@ var EventView = Backbone.View.extend({
 							title : titre
 						});
 				        break;
-						
 				}
 				
 				// Réinitialise le keylogger
