@@ -24,6 +24,7 @@ var Personnage = Backbone.Model.extend({
 		limits: [0,1,2,3],
 		frame: 0,
 		texte: ["La soirée MiNET arrive... J'ai hâte !"],
+		randomOrientationLocked: false,
 		attributs: ''
 	},
 	
@@ -369,8 +370,11 @@ var PNJView = Backbone.View.extend({
 		
 		setInterval(
 			function() {
-				var orientation = limits[Math.floor(Math.random()*limits.length)];
-				thisPNJ.rotate(orientation);
+				//Si l'orientation n'est pas bloquée
+				if(!(thisPNJ.model.get('randomOrientationLocked'))){
+					var orientation = limits[Math.floor(Math.random()*limits.length)];
+					thisPNJ.rotate(orientation);
+				}
 			}, Math.floor(Math.random()*(10000) + 5000)
 		);
 	},
@@ -401,6 +405,11 @@ var PNJView = Backbone.View.extend({
 						this.model.set('orientation', 0);
 						break;
 				}
+				//On bloque l'orientation aléatoire du PNJ pour 5 secondes
+				this.model.set({'randomOrientationLocked':true});
+				// Pour le scope de this dans setTimeout
+				var thisPNJ = this;
+				setTimeout(function(){thisPNJ.model.set({'randomOrientationLocked':false})},5000);
 				
 				var texte = this.model.get('texte')[0];
 				notification('notice', '<strong>'+this.model.get('pseudo')+'</strong> - '+texte);
