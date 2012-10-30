@@ -12,6 +12,9 @@
 | VARIABLES GLOBALES
 |--------------------------------------------------------------------------
 */
+// Divers
+var DATE_SOIREE = "Dec 7 22:00:00 2012"
+
 // Map
 var TAILLE_TILE = 32; 					// Taille du tile en pixels
 
@@ -22,11 +25,11 @@ ORIENTATION.push('orientationGauche');
 ORIENTATION.push('orientationDroite');
 ORIENTATION.push('orientationHaut');
 
-var NB_FRAMES		 	= 4; 			// Nombre de frames
-var DUREE_DEPLACEMENT 	= 400;			// Durée du déplacement (en ms)
-var DUREE_DEPLACEMENT_PNJ 	= 400;			// Durée du déplacement des PNJs (fixé, pas comme DUREE_DEPLACEMENT qui varie s'il on est sur le vélo)
-var COLLISIONS 			= [];			// On définit la map des collisions
-var SCROLL_OFFSET		= 4;			// Marge par rapport au bord de l'écran pour scroll
+var NB_FRAMES               = 4; 			// Nombre de frames
+var DUREE_DEPLACEMENT 	    = 400;			// Durée du déplacement (en ms)
+var DUREE_DEPLACEMENT_PNJ 	= 400;		    // Durée du déplacement des PNJs 
+var COLLISIONS 			    = [];			// On définit la map des collisions
+var SCROLL_OFFSET		    = 4;			// Marge par rapport au bord de l'écran pour scroll
 
 // Indicateurs
 var ISPLAYING 			= false;		// Etat du lecteur audio
@@ -135,4 +138,24 @@ function scroll(direction,ecart) {
 // ----------------
 function getHeure() {
     return (new Date()).getHours()
+}
+
+// Compte à rebours
+// ----------------
+function rebours() {
+    var currentDate = new Date();
+    var soireeDate  = new Date(DATE_SOIREE);
+    
+    // Ecart en secondes
+    var ecartSecondes   = (soireeDate - currentDate)/1000;
+    var day             = 24 * 3600;
+
+    if(ecartSecondes>0) {
+        j   = Math.floor(ecartSecondes/day);
+        h   = Math.floor((ecartSecondes - (j * day)) / 3600);
+        mn  = Math.floor((ecartSecondes - ((j * day + h * 3600))) / 60);
+        sec = Math.floor(ecartSecondes - ((j * day + h * 3600 + mn * 60)));
+        
+        return "J-"+j+" H-"+h;
+    }
 }

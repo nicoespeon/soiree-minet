@@ -61,6 +61,11 @@ var AppView = Backbone.View.extend({
 // Appel des fonctions de l'application après chargement du DOM
 // ------------------------------------------------------------
 $(function() {
+    // Active le compte à rebours
+    var tRebour = setTimeout (function() {
+        $('#timer').html(rebours());
+    }, 3600);
+    
     // Active la map nocturne si c'est le cas
     var h = getHeure();
     if(h>19 || h<8) {
