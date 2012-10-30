@@ -24,6 +24,7 @@ ORIENTATION.push('orientationHaut');
 
 var NB_FRAMES		 	= 4; 			// Nombre de frames
 var DUREE_DEPLACEMENT 	= 400;			// Durée du déplacement (en ms)
+var DUREE_DEPLACEMENT_PNJ 	= 400;			// Durée du déplacement des PNJs (fixé, pas comme DUREE_DEPLACEMENT qui varie s'il on est sur le vélo)
 var COLLISIONS 			= [];			// On définit la map des collisions
 var SCROLL_OFFSET		= 4;			// Marge par rapport au bord de l'écran pour scroll
 

@@ -25,6 +25,7 @@ var Personnage = Backbone.Model.extend({
 		frame: 0,
 		texte: ["La soirée MiNET arrive... J'ai hâte !"],
 		randomOrientationLocked: false,
+		moveSequence: [],
 		attributs: ''
 	},
 	
@@ -333,6 +334,8 @@ var PNJView = Backbone.View.extend({
 		_.bindAll(this);
 		$(document).bind('keydown', this.parle);
 		
+		this.etat = 1;
+		
 		COLLISIONS[this.model.getX()][this.model.getY()] = '0';
 		this.autoRotate();
 		
@@ -420,8 +423,148 @@ var PNJView = Backbone.View.extend({
 				}
 				nouveauTexte.push(texte);
 				
-				this.model.set('texte', nouveauTexte);
+				this.model.set('texte', nouveauTexte);	
 			}
 		}
+	},
+	
+		move: function(seq){
+			seq.reverse();//Reverse car on pop les ordres (donc on prend le dernier ordre)
+			var firstMove=seq[seq.length-1];
+			this.model.set({'moveSequence':seq});
+			this.atomicMove(firstMove);//On initie la séquence de mouvement
+		},
+	
+		atomicMove: function(d) {
+		
+		// Variables initiales
+		var elt = this.$el.children();
+		var zIndex 	= elt.css('z-index');
+		
+		// Direction
+		switch(d) {
+			case 'g':
+				//Gauche
+				this.model.set({'orientation':1});
+				break;
+				
+			case 'h':
+				//Haut
+				this.model.set({'orientation':3});
+				break;
+			
+			case 'd':
+				//Droite
+				this.model.set({'orientation':2});
+				break;
+				
+			case 'b':
+				//Bas
+				this.model.set({'orientation':0});
+				break;
+		}
+		
+		// Maintient l'état du z-index après changement d'orientation
+		elt.css('z-index', zIndex);	
+		
+		var cible 		= getCoordsCible(this.model.getX(), this.model.getY(), this.model.get('orientation'));
+		var xCible 		= cible['x'];
+		var yCible 		= cible['y'];
+		canMove 		= this.canMoveTo(xCible, yCible);
+		isUpper 		= this.canMoveTo(xCible, yCible+1);
+		
+		// ETAPE 2 - On déplace le personnage si c'est possible
+		if(canMove===true) {
+			this.model.set({'moving':true});
+			this.moveAnimation(isUpper);
+			//On déplace la collision du PNJ
+			COLLISIONS[this.model.getX()][this.model.getY()]='1';
+			COLLISIONS[xCible][yCible]='0';
+		}else{
+			notification('error','Erf, je suis bloqué !');
+		}	
+		
+	},
+	
+	canMoveTo: function(x,y) {
+		if(x>0 && x<41 && y>0 && y<101) {
+			if(COLLISIONS.length!=41 || COLLISIONS[x].length!=101) {
+				// Si la map des collisions n'est pas complète, on ne se déplace pas
+				return false;
+			} else {
+				// Sinon, on check la case ciblée
+				var col = COLLISIONS[x][y];
+				//var col = COLLISIONS[x][y] && !(x==player.getX() && y==player.getY());
+			}
+			
+			if(col=='1') {
+				return true;
+			}
+			
+			return false;
+		}
+		
+		return false;
+	},
+	
+	moveAnimation: function(isUpper) {
+		var elt = this.$el.children();
+		var inst 		= this;								// Pour la portée de this dans la fonction animate()
+        var decalage 	= 1/NB_FRAMES;						// Déplacement pour un pas
+        var frame 		= this.etat%NB_FRAMES;				// Frame à afficher
+        var zIndex 		= elt.css('z-index');		// z-index du pnj pour superposition avec pnj
+
+        if(this.etat<=NB_FRAMES) {
+        	// Déplace le personnage selon le nombre de frames indiqué
+	        var x = this.model.getX();
+	        var y = this.model.getY();
+	        var direction = this.model.get('orientation');
+	
+	        switch(direction) {
+	            case 0:
+	            	y += decalage;
+	                break;
+	
+	            case 1:
+                    x -= decalage;
+                    break;
+	
+	            case 2:
+                    x += decalage;
+                    break;
+	
+	            case 3:
+                    y -= decalage;
+                    break;
+	        }
+	
+	        // Anime le déplacement du pnj jusqu'à la prochaine frame
+	        elt.animate({
+	            top: tileToPx(y)+'px',
+	            left: tileToPx(x)+'px'
+	        }, DUREE_DEPLACEMENT_PNJ/NB_FRAMES, function() {
+	            inst.model.set({'position':[Math.floor(x*100)/100,Math.floor(y*100)/100],'frame':frame});
+	        	if(!isUpper) {
+					elt.css('z-index', '10');
+				}
+				if(zIndex=='10' && frame<3) {
+					// Laisse le temps au personnage de se "dégager" de l'obstacle avant de le repasser par-dessus
+					elt.css('z-index', '10');
+				}
+	            inst.etat++;
+	            inst.moveAnimation(isUpper);
+	        });
+        } else {
+        	// Sinon on désactive l'animation
+            this.etat 	= 1;
+			//On pop le mouvement que l'on vient de faire
+			this.model.get('moveSequence').pop();
+			//On contine la chaine de mouvement
+			var l=this.model.get('moveSequence').length;
+			if(l>0){
+				this.atomicMove(this.model.get('moveSequence')[l-1]);
+			}
+        }
+	
 	}
 });
