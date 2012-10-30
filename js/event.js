@@ -83,14 +83,11 @@ var EventView = Backbone.View.extend({
 			if(x==eventX && y==eventY) {
 				switch(type) {
 					case 'notification':
-							var notif 			= event.notification;
-							var notifType 		= notif.type;
-							var notifMessage	= notif.message;
-							
-							$().toastmessage( 'showToast', {
-								type: notifType,
-								text: notifMessage
-							});
+						var notif 			= event.notification;
+						var notifType 		= notif.type;
+						var notifMessage	= notif.message;
+						
+						notification(notifType,notifMessage);
 						break;
 					
 					case 'social':
@@ -116,6 +113,10 @@ var EventView = Backbone.View.extend({
 						});
 						
 						break;
+				    
+				    case 'twitter':
+				        notification('notice', 'Tweeeeeeeet ! Tweeeeeeet ! Tweeeeeet Me, I\'m Famous !'+$('#forest-tweet').html());	        
+				        break;
 				}
 			}
 		});
@@ -140,14 +141,15 @@ var EventView = Backbone.View.extend({
 						if(ISPLAYING)	complement = '';
 						
 						audio.set('piste', musique.src);
-						$().toastmessage(
-							'showSuccessToast',
+						notification(
+							'success',
 							'<strong>Event débloqué</strong> - Bien joué, tu as trouvé le konami code de <strong>'+musique.titre+'</strong>'+complement+' !'
 						);
+						
 						if(musique.warning!=undefined) {
 							setTimeout(function() {
-								$().toastmessage(
-									'showWarningToast',
+								notification(
+									'warning',
 									'<strong>One more thing</strong> - '+musique.warning
 								);
 							}, musique.delai);
@@ -156,17 +158,59 @@ var EventView = Backbone.View.extend({
 					
 					case 'konami':
 						player.get('type')=='garcon' ? player.set('type', 'fille') : player.set('type', 'garcon');
-						$().toastmessage(
-							'showSuccessToast',
+						notification(
+							'success',
 							"<strong>Event débloqué</strong> - Bien joué, tu as trouvé le <strong>KONAMI CODE</strong> !"
 						);
 						setTimeout(function() {
-							$().toastmessage(
-								'showWarningToast',
+							notification(
+								'warning',
 								"<strong>One more thing</strong> - Au cas où tu te poserais la question... c'est réversible !"
 							);
 						}, 5000);
 						break;
+						
+				    case 'bicyclette':
+				        if(DUREE_DEPLACEMENT==400) {
+				            DUREE_DEPLACEMENT=200;
+				            OFFSET = 2;
+				            audio.set('piste', 'city');
+				            player.set('attributs', 'bicyclette');
+				            
+    				        notification(
+    							'success',
+    							"<strong>Event débloqué</strong> - Bien joué, tu as trouvé le <strong>BICYCLETTE CODE</strong> !"
+    						);
+    						
+    						setTimeout(function() {
+    							notification(
+    								'warning',
+    								"<strong>One more thing</strong> - Au cas où tu te poserais la question... c'est réversible !"
+    							);
+    						}, 5000);
+				        } else {
+				            DUREE_DEPLACEMENT=400;
+				            OFFSET = 3;
+				            audio.set('piste', 'partyrock');
+				            player.set('attributs', '');
+				        }
+				        break;
+						
+				    case 'video':
+				        var video   = event.video;
+				        var titre   = video.titre;
+				        var texte   = '<iframe width="853" height="480" src="'+video.src+'" frameborder="0" allowfullscreen></iframe>';
+				        
+				        // Coupe la musique si elle est allumée
+				        if($('#audio').hasClass('play')) {
+    				        $('#audio').trigger('click');   
+				        }
+				        
+						$.colorbox({
+							html: texte,
+							title : titre
+						});
+				        break;
 				}
 				
 				// Réinitialise le keylogger

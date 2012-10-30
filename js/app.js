@@ -18,6 +18,11 @@ var AppView = Backbone.View.extend({
 		PNJs.on('reset', this.addAll, this);
 		PNJs.fetch();
 		
+		// Objets
+		Objets.on('add', this.addOneObject, this);
+		Objets.on('reset', this.addAllObjects, this);
+		Objets.fetch();
+		
 		// Player
 		new PlayerView({model: player});
 		
@@ -26,6 +31,18 @@ var AppView = Backbone.View.extend({
 		
 		// Audio
 		new AudioView({el:$('body'), model: audio});
+	},
+
+	// Ajoute un objet en créant une vue pour celui-ci
+	addOneObject: function(obj) {
+		var view = new ObjetView({model: obj});
+		this.$('#objets').append(view.render().el);
+	},
+	
+	// Ajoute tous les objets de la collection en même temps
+	addAllObjects: function() {
+		this.$('#objets').html('');
+		Objets.each(this.addOneObject,this);
 	},
 	
 	// Ajoute un PNJ en créant une vue pour celui-ci
@@ -44,6 +61,17 @@ var AppView = Backbone.View.extend({
 // Appel des fonctions de l'application après chargement du DOM
 // ------------------------------------------------------------
 $(function() {
+    // Active le compte à rebours
+    var tRebour = setTimeout (function() {
+        $('#timer').html(rebours());
+    }, 3600);
+    
+    // Active la map nocturne si c'est le cas
+    var h = getHeure();
+    if(h>19 || h<8) {
+        $('#wrapper').addClass('nuit');
+    }
+    
 	// Active le menu de controle
 	$('nav#control li').click(function() {
 		var control = $(this).data('control');
@@ -94,6 +122,7 @@ $(function() {
 	// Prépare les éléments de l'application
 	player 	= new Personnage();
 	PNJs 	= new PNJList();
+	Objets 	= new ObjetList();
 	audio	= new Audio();
 	event 	= new Event();
 	
@@ -115,5 +144,6 @@ $(function() {
 	}).complete(function() {
 		// Lance l'application
 		new AppView;
+		$('#audio').trigger('click');
 	});
 });

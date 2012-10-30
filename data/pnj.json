@@ -26,6 +26,8 @@
 		"limits": [1],
 		"texte": [
 			"Le savais-tu ? L'orgasme du cochon dure 30 minutes. Ca doit expliquer le <em>laaaaaa</em> de l'ASINT, dingue !",
+			"Le savais-tu ? Cette map a été réalisée avec Excel, dingue !",
+			"Le savais-tu ? On peut contrôler un iPhone avec une banane, dingue !",
 			"Le savais-tu ? Il est impossible d'éternuer les yeux ouverts, dingue !",
 			"Le savais-tu ? L'urine du chat luit sous la lumière noire. Ca donne des idées pour la soirée, dingue !",
 			"Le savais-tu ? En 1970 le docteur T. Carletti modélise un produit adhésif qui se colle et se décolle de nombreuses fois sans laisser de trace, dingue !",
@@ -52,7 +54,7 @@
 		"limits": [0,2,3],
 		"texte": [
 			"Ici c'est <em>Bricol'INT</em> ! Cercueils, tapis de billard, décor pour Emoty:S, ... on est partout !",
-			"Tu connais le konami code ? Tape... Oh non puis cherche un peu ! <em>*sifflote</em>",
+			"Tu connais le konami code ? Tape... Oh non puis cherche un peu ! <em>*sifflote*</em>",
 			"Le Konami Code ? Ahah, <strong>Gou Gueule</strong> le connait lui !",
 			"Oui, <em>Bricol'INT</em> travaille sur un projet pour la soirée..."
 		]
@@ -76,8 +78,9 @@
 		"orientation": 1,
 		"limits": [0,1,3],
 		"texte": [
-			"Salut, j'suis l'architecte ! Le site te plaît ?",
-			"Désolé s'il y a des bugs, je travaille encore dessus...",
+			"Listeux ? J'ai hâte de voir votre site... et votre appli p'tit-dej' !",
+			"Tu connais <strong>Paulo</strong> ? Il m'aide à développer le site pour ajouter de nouvelles features sympa !",
+			"Désolé s'il y a des bugs, on travaille encore dessus...",
 			"Du HTML5 et une bonne dose de Javascript (<em>jQuery</em>, <em>Backbone.js</em>): c'est du site grokiki !",
 			"Si t'as des questions, hésites pas à m'envoyer un mail : <em>espeon@minet.net</em>",
 			"Tu connais l'epic code ? Tape <em>EPIC</em> et tu verras..."
@@ -117,7 +120,27 @@
 			"Afin de circonvenir à la crise contextuelle, il est nécessaire d'arrêter de stigmatiser la totalité des ronalds réalisables, parce qu'il est temps d'agir.",
 			"Compte tenu de la complexité actuelle, il faut revoir la somme des solutions envisageables, parce qu'il s'agit de notre dernière koleka.",
 			"Koleka ! Koleka ! Koleka ! Ran Ran Ruuuuuuu !!!",
-			"Ce chemin est absurde... Vous ne trouvez pas ?"
+			"Ce chemin est absurde... Vous ne trouvez pas ? <em>Absurde</em> oui..."
+		]
+	},
+	{
+		"pseudo": "MiNET",
+		"type": "minet",
+		"position": [4,54],
+		"limits": [0,2],
+		"texte": [
+			"Meeeoooooow ! C'est moi le gros minet !",
+			"Meeeoooooow ! Ca manque d'ambiance par ici ! Tape <em>NYAN</em> et tu devient un vrai minet !"
+		]
+	},
+	{
+		"pseudo": "Paulo",
+		"type": "paulo",
+		"position": [39,52],
+		"limits": [0,1,3],
+		"texte": [
+			"Hey ! Je suis un nouveau dev' sur le projet, histoire d'enrichir de nouveaux mystères ce petit monde...",
+			"Tu aimes les RPG ? Chrono Trigger, Final Fantasy, Golden Sun... alors attends les prochaines mises à jour pour des quêts épiques ! (ou pas, si j'ai la flemme ^^)"
 		]
 	}
 ]

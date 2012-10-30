@@ -23,7 +23,10 @@ var Personnage = Backbone.Model.extend({
 		position: [23,4],
 		limits: [0,1,2,3],
 		frame: 0,
-		texte: ["La soirée MiNET arrive... J'ai hâte !"]
+		texte: ["La soirée MiNET arrive... J'ai hâte !"],
+		randomOrientationLocked: false,
+		moveSequence: [],
+		attributs: ''
 	},
 	
 	// Intégrité des attributs
@@ -103,6 +106,7 @@ var PlayerView = Backbone.View.extend({
 		this.model.on('change:position', this.scroll, this);
 		
 		this.render();
+		this.etat = 1;
 		
 		// Scroll initial
 		var inst = this;
@@ -125,19 +129,18 @@ var PlayerView = Backbone.View.extend({
 	},
 	
 	move: function(e) {
-		// Variables initiales
-		var zIndex 	= $('#player').css('z-index');
-		var canMove = false;
-		
 		// Scroll (même si pas de déplacement)
 		this.scroll();
 			
 		// Annule le déplacement si un est déjà en cours
-		if(ETAT_ANIMATION > 0) {
+		if(ISMOVING) {
 			return false;
-		} else {
-			ETAT_ANIMATION = 1;
-		}
+		} 
+		
+		// Variables initiales
+		var zIndex 	= $('#player').css('z-index');
+		var canMove = false;
+		var moveKey = true;
 		
 		// ETAPE 1 - On repère la touche enfoncée et on prépare les nouvelles coordonnées
 		switch(e.keyCode) {
@@ -166,26 +169,28 @@ var PlayerView = Backbone.View.extend({
 				break;
 			
 			default:
-				//Pas une touche de déplacement
-				ETAT_ANIMATION = -1;
+				moveKey = false;
 				break;
 		}
 		
-		$('#player').css('z-index', zIndex);	//Maintient l'état du z-index après changement d'orientation
+		// Maintient l'état du z-index après changement d'orientation
+		$('#player').css('z-index', zIndex);	
 		
-		if(ETAT_ANIMATION > 0) {
-			var cible 		= getCoordsCible(this.model.getX(), this.model.getY(), this.model.get('orientation'));
-			var xCible 		= cible['x'];
-			var yCible 		= cible['y'];
-			canMove = this.canMoveTo(xCible, yCible);
-			isUpper = this.canMoveTo(xCible, yCible+1);
-		}
+		var cible 		= getCoordsCible(this.model.getX(), this.model.getY(), this.model.get('orientation'));
+		var xCible 		= cible['x'];
+		var yCible 		= cible['y'];
+		canMove 		= this.canMoveTo(xCible, yCible);
+		isUpper 		= this.canMoveTo(xCible, yCible+1);
 		
 		// ETAPE 2 - On déplace le personnage si c'est possible
-		if(canMove===true) {
+		if(canMove===true && moveKey===true && ISSCROLLING===false) {
+			ISMOVING = true;
 			this.moveAnimation(isUpper);
-		} else {
-			ETAT_ANIMATION = -1;
+		}
+		
+		// HOOK - Cache le menu de navigation si on va tout à droite
+		if(this.model.getX()>31 && $('#menu-nav').html()=='i') {
+    		$('#menu-nav').trigger('click');
 		}
 	},
 	
@@ -212,10 +217,10 @@ var PlayerView = Backbone.View.extend({
 	moveAnimation: function(isUpper) {
 		var inst 		= this;								// Pour la portée de this dans la fonction animate()
         var decalage 	= 1/NB_FRAMES;						// Déplacement pour un pas
-        var frame 		= ETAT_ANIMATION%NB_FRAMES;			// Frame à afficher
+        var frame 		= this.etat%NB_FRAMES;				// Frame à afficher
         var zIndex 		= $('#player').css('z-index');		// z-index du player pour superposition avec pnj
 
-        if(ETAT_ANIMATION<=NB_FRAMES) {
+        if(this.etat<=NB_FRAMES) {
         	// Déplace le personnage selon le nombre de frames indiqué
 	        var x = this.model.getX();
 	        var y = this.model.getY();
@@ -252,12 +257,13 @@ var PlayerView = Backbone.View.extend({
 					// Laisse le temps au personnage de se "dégager" de l'obstacle avant de le repasser par-dessus
 					$('#player').css('z-index', '10');
 				}
-	            ETAT_ANIMATION++;
+	            inst.etat++;
 	            inst.moveAnimation(isUpper);
 	        });
         } else {
         	// Sinon on désactive l'animation
-            ETAT_ANIMATION = -1
+            this.etat 	= 1;
+            ISMOVING 	= false;
         }
 	
 	},
@@ -265,9 +271,6 @@ var PlayerView = Backbone.View.extend({
 	scroll: function() {
 		// Orientation du personnage
 	    var orientation 	= this.model.get('orientation');
-	    
-		// Marge limite avant scroll
-	    var offsetIn 		= 5;
 	    
 	    // Coordonnées du joueur
 	    var x 				= this.model.getX();
@@ -291,30 +294,30 @@ var PlayerView = Backbone.View.extend({
 	    // Ecart de la position de la cible par rapport au centre
 	    var ecartX 			= Math.abs(winMidWidth-winX);
 	    var ecartY 			= Math.abs(winMidHeight-winY);
-	    var ecartMaxX 		= winMidWidth-offsetIn;
-	    var ecartMaxY 		= winMidHeight-offsetIn;
+	    var ecartMaxX 		= winMidWidth-SCROLL_OFFSET;
+	    var ecartMaxY 		= winMidHeight-SCROLL_OFFSET;
 	    
 	    if(winX < 0 || tileToPx(winX) > winWidth) {
 	    	// Si l'écran est plus loin que la cible, on scroll jusqu'à elle
-	        $('html, body').animate({scrollLeft: tileToPx(x-offsetIn)}, DUREE_DEPLACEMENT*0.8);
-	    } else if(ecartX > ecartMaxX) {
+	    	scroll('horizontal', tileToPx(x-SCROLL_OFFSET));
+	    } else if(ecartX > ecartMaxX && x < (COLLISIONS.length-OFFSET-3)) {
 	    	// Sinon, si la cible atteint la marge limite, on scroll
 	        if(orientation==1) {
-	            $('html, body').animate({scrollLeft: tileToPx(offsetX-ecartMaxX+1)}, DUREE_DEPLACEMENT*0.8);
+	            scroll('horizontal', tileToPx(offsetX-ecartMaxX+1));
 	        } else if(orientation==2) {
-	            $('html, body').animate({scrollLeft: tileToPx(offsetX+ecartMaxX+1)}, DUREE_DEPLACEMENT*0.8);
+	            scroll('horizontal', tileToPx(offsetX+ecartMaxX+1));
 	        }
 	    }
 	
 	    if(winY < 0 || tileToPx(winY) > winHeight) {
 	    	// Si l'écran est plus loin que la cible, on scroll en arrière
-	        $('html, body').animate({scrollTop: tileToPx(y-offsetIn)}, DUREE_DEPLACEMENT*0.8);
+	        scroll('vertical', tileToPx(y-SCROLL_OFFSET));
 	    } else if(ecartY > ecartMaxY) {
 	    	// Sinon, si la cible atteint la marge limite, on scroll
 	        if(orientation==3) {
-	            $('html, body').animate({scrollTop: tileToPx(offsetY-ecartMaxY+1)}, DUREE_DEPLACEMENT*0.8);
-	        } else if(orientation==0 && y > offsetIn) {
-	            $('html, body').animate({scrollTop: tileToPx(offsetY+ecartMaxY+1)}, DUREE_DEPLACEMENT*0.8);
+	            scroll('vertical', tileToPx(offsetY-ecartMaxY+1));
+	        } else if(orientation==0 && y > SCROLL_OFFSET) {
+	            scroll('vertical', tileToPx(offsetY+ecartMaxY+1));
 	        }
 	    }
 	}
@@ -330,6 +333,8 @@ var PNJView = Backbone.View.extend({
 	initialize: function() {
 		_.bindAll(this);
 		$(document).bind('keydown', this.parle);
+		
+		this.etat = 1;
 		
 		COLLISIONS[this.model.getX()][this.model.getY()] = '0';
 		this.autoRotate();
@@ -368,8 +373,11 @@ var PNJView = Backbone.View.extend({
 		
 		setInterval(
 			function() {
-				var orientation = limits[Math.floor(Math.random()*limits.length)];
-				thisPNJ.rotate(orientation);
+				// Si l'orientation n'est pas bloquée
+				if(!(thisPNJ.model.get('randomOrientationLocked'))){
+					var orientation = limits[Math.floor(Math.random()*limits.length)];
+					thisPNJ.rotate(orientation);
+				}
 			}, Math.floor(Math.random()*(10000) + 5000)
 		);
 	},
@@ -382,6 +390,7 @@ var PNJView = Backbone.View.extend({
 			var yCible 		= cible['y'];
 			
 			if(this.model.getX()==xCible && this.model.getY()==yCible) {
+				// Le pnj se tourne vers le joueur
 				switch(direction) {
 					case 0:
 						this.model.set('orientation', 3);
@@ -400,8 +409,17 @@ var PNJView = Backbone.View.extend({
 						break;
 				}
 				
+				// On bloque l'orientation aléatoire du PNJ pour 5 secondes
+				this.model.set({'randomOrientationLocked':true});
+				
+				// Pour le scope de this dans setTimeout
+				var thisPNJ = this;
+				setTimeout(function() {
+				    thisPNJ.model.set({'randomOrientationLocked':false})
+				}, 5000);
+				
 				var texte = this.model.get('texte')[0];
-				$().toastmessage('showNoticeToast', '<strong>'+this.model.get('pseudo')+'</strong> - '+texte);
+				notification('notice', '<strong>'+this.model.get('pseudo')+'</strong> - '+texte);
 				
 				var nouveauTexte = [];
 				for(var i=1; i<this.model.get('texte').length; i++) {
@@ -409,8 +427,154 @@ var PNJView = Backbone.View.extend({
 				}
 				nouveauTexte.push(texte);
 				
-				this.model.set('texte', nouveauTexte);
+				this.model.set('texte', nouveauTexte);	
 			}
 		}
+	},
+	
+	move: function(seq){
+	   //Reverse car on pop les ordres (donc on prend le dernier ordre)
+	   seq.reverse();
+	   var firstMove=seq[seq.length-1];
+	   this.model.set({'moveSequence':seq});
+	   
+	   //On initie la séquence de mouvement
+	   this.atomicMove(firstMove);
+	},
+	
+	atomicMove: function(direction) {
+		// Variables initiales
+		var elt = this.$el.children();
+		var zIndex 	= elt.css('z-index');
+		
+		// Direction
+		switch(direction) {
+			case 'g':
+				//Gauche
+				this.model.set({'orientation':1});
+				break;
+				
+			case 'h':
+				//Haut
+				this.model.set({'orientation':3});
+				break;
+			
+			case 'd':
+				//Droite
+				this.model.set({'orientation':2});
+				break;
+				
+			case 'b':
+				//Bas
+				this.model.set({'orientation':0});
+				break;
+		}
+		
+		// Maintient l'état du z-index après changement d'orientation
+		elt.css('z-index', zIndex);	
+		
+		var cible 		= getCoordsCible(this.model.getX(), this.model.getY(), this.model.get('orientation'));
+		var xCible 		= cible['x'];
+		var yCible 		= cible['y'];
+		canMove 		= this.canMoveTo(xCible, yCible);
+		isUpper 		= this.canMoveTo(xCible, yCible+1);
+		
+		// ETAPE 2 - On déplace le personnage si c'est possible
+		if(canMove===true) {
+			this.model.set({'moving':true});
+			this.moveAnimation(isUpper);
+			
+			//On déplace la collision du PNJ
+			COLLISIONS[this.model.getX()][this.model.getY()]='1';
+			COLLISIONS[xCible][yCible]='0';
+		} else {
+			notification('error','Erf, je suis bloqué !');
+		}	
+		
+	},
+	
+	canMoveTo: function(x,y) {
+		if(x>0 && x<41 && y>0 && y<101) {
+			if(COLLISIONS.length!=41 || COLLISIONS[x].length!=101) {
+				// Si la map des collisions n'est pas complète, on ne se déplace pas
+				return false;
+			} else {
+				// Sinon, on check la case ciblée
+				var col = COLLISIONS[x][y];
+				//var col = COLLISIONS[x][y] && !(x==player.getX() && y==player.getY());
+			}
+			
+			if(col=='1') {
+				return true;
+			}
+			
+			return false;
+		}
+		
+		return false;
+	},
+	
+	moveAnimation: function(isUpper) {
+		var elt         = this.$el.children();
+		var inst 		= this;								// Pour la portée de this dans la fonction animate()
+        var decalage 	= 1/NB_FRAMES;						// Déplacement pour un pas
+        var frame 		= this.etat%NB_FRAMES;				// Frame à afficher
+        var zIndex 		= elt.css('z-index');		        // z-index du pnj pour superposition avec pnj
+
+        if(this.etat<=NB_FRAMES) {
+        	// Déplace le personnage selon le nombre de frames indiqué
+	        var x = this.model.getX();
+	        var y = this.model.getY();
+	        var direction = this.model.get('orientation');
+	
+	        switch(direction) {
+	            case 0:
+	            	y += decalage;
+	                break;
+	
+	            case 1:
+                    x -= decalage;
+                    break;
+	
+	            case 2:
+                    x += decalage;
+                    break;
+	
+	            case 3:
+                    y -= decalage;
+                    break;
+	        }
+	
+	        // Anime le déplacement du pnj jusqu'à la prochaine frame
+	        elt.animate({
+	            top: tileToPx(y)+'px',
+	            left: tileToPx(x)+'px'
+	        }, DUREE_DEPLACEMENT_PNJ/NB_FRAMES, function() {
+	            inst.model.set({'position':[Math.floor(x*100)/100,Math.floor(y*100)/100],'frame':frame});
+	        	if(!isUpper) {
+					elt.css('z-index', '10');
+				}
+				if(zIndex=='10' && frame<3) {
+					// Laisse le temps au personnage de se "dégager" de l'obstacle avant de le repasser par-dessus
+					elt.css('z-index', '10');
+				}
+	            inst.etat++;
+	            inst.moveAnimation(isUpper);
+	        });
+        } else {
+        	// Sinon on désactive l'animation
+            this.etat 	= 1;
+            
+			// On pop le mouvement que l'on vient de faire
+			this.model.get('moveSequence').pop();
+			
+			// On contine la chaine de mouvement
+			var l = this.model.get('moveSequence').length;
+			
+			if(l>0) {
+				this.atomicMove(this.model.get('moveSequence')[l-1]);
+			}
+        }
+	
 	}
 });

@@ -45,15 +45,75 @@ body {
 	text-align: center;
 }
 
+#loader {
+	position: fixed;
+	z-index: 3000;
+	top: 0;
+	left: 0;
+
+	width: 100%;
+	height: 100%;
+
+	background-color: rgba(255,255,255,0.25);
+}
+
+#loader p {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+
+	display: inline-block;
+
+	width: 500px;
+	height: 40px;
+	margin-top: -20px;
+	margin-left: -250px;
+
+	vertical-align: middle;
+
+	color: #444;
+
+	font-family: 'Press Start 2P';
+	line-height: 32px;
+}
+
+#loader p:before {
+	display: inline-block;
+
+	margin-right: 10px;
+
+	content: url('../img/loader.gif');
+	vertical-align: middle;
+}
+
 #fb-root {
 	display: none;
 }
 
 #logo {
 	position: fixed;
-	left: 10px;
-	bottom: 20px;
 	z-index: 2000;
+	bottom: 20px;
+	left: 10px;
+}
+
+.forest-tweet {
+    margin-left: 10px;
+    display: inline-block;
+    vertical-align: middle;   
+}
+
+.timer {
+    position: absolute;
+    top: 2230px;
+    right: 105px;
+    font-family: 'Press Start 2P';
+    font-size: 0.5em;
+    color: #666;
+}
+
+.nuit .timer {
+    color: #222;
 }
 
 /*
@@ -138,8 +198,10 @@ nav#menu {
 	text-align: left;
 
 	border-width: 16px;
+	border-style: solid;
 	-webkit-border-image: url('../img/nav.png') 16 repeat;
 	-moz-border-image: url('../img/nav.png') 16 repeat;
+	-o-border-image: url('../img/nav.png') 16 repeat;
 	border-image: url('../img/nav.png') 16 repeat;
 }
 
@@ -254,8 +316,8 @@ nav#menu a:hover::before {
 }
 
 .toast-item p {
-    margin-left: 50px;
     margin-right: 35px;
+    margin-left: 50px;
 
     text-align: left;
 }
@@ -719,4 +781,29 @@ nav#menu a:hover::before {
 
 #cboxLoadedContent li {
 	margin-left: 30px;
+}
+
+/*
+|--------------------------------------------------------------------------
+| RESPONSIVE
+|--------------------------------------------------------------------------
+*/
+@media (min-width:1300px) {
+	nav#control, #logo {
+		left: 10%;
+	}
+	
+	nav#menu {
+		right: 10%;
+	}
+}
+
+@media (min-width:1600px) {
+	nav#control, #logo {
+		left: 15%;
+	}
+	
+	nav#menu {
+		right: 15%;
+	}
 }

@@ -18,25 +18,32 @@
 	
 	<!--[if IE]>
 	    <script type="text/javascript">
-	    	window.location = "ie.html";
+	    	window.location = "fallback.html";
 	    </script>
 	<![endif]-->
 	
 	<script>
-	    if(screen.width<700) {
-	        window.location = "mobile.html";
+	    if(screen.width<768) {
+	        window.location = "fallback.html";
 	    }
 	</script>
 </head>
 <body>
-
+	<!-- Loader -->
+	<div id="loader" class="hidden">
+		<p>
+			Scrolling... please wait...
+		</p>
+	</div>
+	
+	<!-- Logo de la soirée -->
 	<img src="img/logo-soiree.png" id="logo" width="150" alt="H### Me I'm Famous !" />
 	
 	<!-- Menu de contrôle -->
 	<nav id="control">
 		<ul>
-			<li class="font-icon" data-control="menu">i</li>
-			<li class="font-icon" data-control="audio" class="pause">p</li>
+			<li class="font-icon" id="menu-nav" data-control="menu">i</li>
+			<li class="font-icon pause" id="audio" data-control="audio">p</li>
 		</ul>
 	</nav>
 	
@@ -77,6 +84,8 @@
 		<div class="flowers2" data-x="20" data-y="4"></div>
 		<div class="flowers2" data-x="25" data-y="4"></div>
 		
+		<div class="wallpaper" data-x="14" data-y="55"></div>
+		
 		<!-- Montagnes -->
 		<div id="mountain">
 			<div class="upper top" data-x="1" data-y="1"></div>
@@ -112,33 +121,45 @@
 		<div id="blue-city">
 			<div class="city" data-x="26" data-y="55"></div>
 			<div class="road" data-x="13" data-y="67"></div>
+			<p id="timer" class="timer">
+    			J-XX H-XX
+			</p>
 		</div>
 		
 		<!-- Port -->
 		<div id="port" data-x="4" data-y="74">
 			<div id="pc" data-x="14" data-y="11"></div>
+			<div id="phare" data-x="22" data-y="13"></div>
 		</div>
 		
 		<!-- Mer -->
 		<div id="sea">
 			<div class="top" data-x="4" data-y="90"></div>
 			<div class="water" data-x="4" data-y="91"></div>
-			<div class="boat" data-x="4" data-y="96"></div>
+			<div class="boat" data-x="4" data-y="90"></div>
 		</div>
 		
 		<!-- PNJs -->
 		<ul id="pnjs"></ul>
+		
+		<!-- Objets -->
+		<ul id="objets"></ul>
+		
 	</div>
 	
 	<!-- Templates -->
 	<script type="text/template" id="pnj-template">
-		<div class="pnj <%= type %> <%= ORIENTATION[orientation] %>" data-x="<%= position[0] %>" data-y="<%= position[1] %>"></div>
+		<div class="pnj <%= type %> <%= ORIENTATION[orientation] %> frame<%= frame %>" data-x="<%= position[0] %>" data-y="<%= position[1] %>"></div>
 	</script>
 	
 	<script type="text/template" id="player-template">
-		<div id="player" class="<%= type %> <%= ORIENTATION[orientation] %> frame<%= frame %>" data-x="<%= position[0] %>" data-y="<%= position[1] %>">
+		<div id="player" class="<%= type %> <%= ORIENTATION[orientation] %> frame<%= frame %> <%= attributs %>" data-x="<%= position[0] %>" data-y="<%= position[1] %>">
 			<!-- Here is your player ! -->
 		</div>
+	</script>
+	
+	<script type="text/template" id="objet-template">
+		<div class="<%= type %>" data-x="<%= position[0] %>" data-y="<%= position[1] %>"></div>
 	</script>
 	
 	<div id="description" class="hidden">
@@ -220,10 +241,13 @@
 	<div id="social" class="hidden">
 		<h1>Bienvenue sur le PC de MiNET</h1>
         <div class="center">
-			<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://soiree.minet.net" data-text="Soirée MiNET, le 7 décembre 2012 - H### me I'm famous -" data-via="MinetTMSP" data-lang="fr" data-related="MinetTMSP">Tweeter</a>
-			<div id="fb-root"></div>
-			<div class="fb-like" data-href="http://soiree.minet.net" data-send="false" data-layout="button_count" data-width="150" data-show-faces="true" data-font="arial"></div>
+			<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://soiree.minet.net" data-text="Soirée MiNET, le 7 décembre 2012 - H### Me, I'm Famous -" data-via="MinetTMSP" data-lang="fr" data-related="MinetTMSP">Tweeter</a>
+			<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fsoiree.minet.net&amp;send=false&amp;layout=button_count&amp;width=150&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;" allowTransparency="true"></iframe>
 		</div>
+	</div>
+	
+	<div id="forest-tweet" class="hidden">
+	   <a href="https://twitter.com/share" class="twitter-share-button forest-tweet" data-url="http://soiree.minet.net" data-text="Tw##t Me, I'm Famous ! Soirée MiNET, le 7 décembre 2012 -" data-via="MinetTMSP" data-lang="fr" data-related="MinetTMSP">Tw##t Me, I'm Famous !</a>
 	</div>
 	
 	<!-- Librairies JS -->
@@ -237,12 +261,12 @@
 	<!-- Scripts JS -->
 	<script src="js/var.js"></script>
 	<script src="js/personnages.js"></script>
+	<script src="js/objet.js"></script>
 	<script src="js/audio.js"></script>
 	<script src="js/event.js"></script>
 	<script src="js/app.js"></script>
 	
 	<!-- Script social media -->
 	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-	<script>(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="//connect.facebook.net/fr_FR/all.js#xfbml=1";fjs.parentNode.insertBefore(js,fjs);}(document,'script','facebook-jssdk'));</script>
 </body>
 </html>

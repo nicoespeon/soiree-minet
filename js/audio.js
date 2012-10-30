@@ -28,7 +28,7 @@ var AudioView = Backbone.View.extend({
 		// On initialise le player pour y accéder
 		this.sound = new buzz.sound('sounds/'+this.model.get('piste'), {
 		    formats: this.model.get('ext')
-		});
+		}).load();
 		
 		// On bind la lecture sur les changements du modèle
 		this.model.on('change:piste', this.chgTrack, this);
@@ -55,7 +55,7 @@ var AudioView = Backbone.View.extend({
 	chgTrack: function() {
 		var nextSound = new buzz.sound('sounds/'+this.model.get('piste'), {
 		    formats: this.model.get('ext')
-		});
+		}).load();
 		 
 		if(ISPLAYING)	this.sound.fadeWith(nextSound,3000);
 		

@@ -1,0 +1,1 @@
+{"google": {"url": ".*google\\.fr.*", "js": ["google"]}, "localhost": {"url": ".*localhost.*", "js": ["localhost"]}}
