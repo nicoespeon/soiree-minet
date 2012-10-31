@@ -300,7 +300,7 @@ var PlayerView = Backbone.View.extend({
 	    if(winX < 0 || tileToPx(winX) > winWidth) {
 	    	// Si l'écran est plus loin que la cible, on scroll jusqu'à elle
 	    	scroll('horizontal', tileToPx(x-SCROLL_OFFSET));
-	    } else if(ecartX > ecartMaxX && x < (COLLISIONS.length-OFFSET-3)) {
+	    } else if(ecartX > ecartMaxX && x < (COLLISIONS.length-SCROLL_OFFSET-3)) {
 	    	// Sinon, si la cible atteint la marge limite, on scroll
 	        if(orientation==1) {
 	            scroll('horizontal', tileToPx(offsetX-ecartMaxX+1));

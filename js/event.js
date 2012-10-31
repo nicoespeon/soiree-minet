@@ -173,7 +173,7 @@ var EventView = Backbone.View.extend({
 				    case 'bicyclette':
 				        if(DUREE_DEPLACEMENT==400) {
 				            DUREE_DEPLACEMENT=200;
-				            OFFSET = 2;
+				            SCROLL_OFFSET = 2;
 				            audio.set('piste', 'city');
 				            player.set('attributs', 'bicyclette');
 				            
@@ -190,7 +190,7 @@ var EventView = Backbone.View.extend({
     						}, 5000);
 				        } else {
 				            DUREE_DEPLACEMENT=400;
-				            OFFSET = 3;
+				            SCROLL_OFFSET = 3;
 				            audio.set('piste', 'partyrock');
 				            player.set('attributs', '');
 				        }
