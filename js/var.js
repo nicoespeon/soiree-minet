@@ -30,6 +30,7 @@ var DUREE_DEPLACEMENT 	    = 400;			// Durée du déplacement (en ms)
 var DUREE_DEPLACEMENT_PNJ 	= 400;		    // Durée du déplacement des PNJs 
 var COLLISIONS 			    = [];			// On définit la map des collisions
 var SCROLL_OFFSET		    = 4;			// Marge par rapport au bord de l'écran pour scroll
+var OFFSET                  = 3;
 
 // Indicateurs
 var ISPLAYING 			= false;		// Etat du lecteur audio
