@@ -64,5 +64,7 @@ caption {
 }
 
 @media (max-width:768px) {
-    
+    #player {
+        margin-top: 50px;
+    }
 }
