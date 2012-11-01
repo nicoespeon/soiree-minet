@@ -36,7 +36,7 @@ var AudioView = Backbone.View.extend({
 	
 	play: function() {
 		this.sound.play()
-		    .fadeIn(3000)
+		    .fadeIn(1000)
 		    .loop();
 		    
 		ISPLAYING = true;
@@ -57,7 +57,7 @@ var AudioView = Backbone.View.extend({
 		    formats: this.model.get('ext')
 		}).load();
 		 
-		if(ISPLAYING)	this.sound.fadeWith(nextSound,3000);
+		if(ISPLAYING)	this.sound.fadeWith(nextSound,1000);
 		
 		this.sound = nextSound;
 		this.sound.loop();
