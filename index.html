@@ -144,11 +144,13 @@
 		
 		<!-- Objets -->
 		<ul id="objets"></ul>
-		
 	</div>
 	
 	<!-- Templates -->
 	<script type="text/template" id="pnj-template">
+		<% if(emote!='') { %>
+		<div class="emoticone <%= emote %>" data-x="<%= position[0] %>" data-y="<%= position[1] %>"></div>
+		<% } %>
 		<div class="pnj <%= type %> <%= ORIENTATION[orientation] %> frame<%= frame %>" data-x="<%= position[0] %>" data-y="<%= position[1] %>"></div>
 	</script>
 	

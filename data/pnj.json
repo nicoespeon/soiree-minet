@@ -7,6 +7,10 @@
 		"texte": [
 			"J'écoute une musique super swag ! Tu veux écouter ? Tape <em>CALLME</em> et tu verras...",
 			"Je préfère la version avec des cookies..."
+		],
+		"emoteSequence": [
+		    "laugh",
+		    "superlaugh"
 		]
 	},
 	{
@@ -33,6 +37,16 @@
 			"Le savais-tu ? En 1970 le docteur T. Carletti modélise un produit adhésif qui se colle et se décolle de nombreuses fois sans laisser de trace, dingue !",
 			"Le savais-tu ? Le lait est une suspension colloïdale de globules gras dans une suspension à base d'eau, dingue !",
 			"Le savais-tu ? Gerhard Fisher est l'inventeur et le constructeur d'un des tout premiers détecteurs de métaux à large diffusion: le <em>Metallascope</em>, dingue !"
+		],
+		"emoteSequence": [
+		    "exclamation",
+		    "exclamation",
+		    "exclamation",
+		    "exclamation",
+		    "exclamation",
+		    "exclamation",
+		    "exclamation",
+		    "exclamation"
 		]
 	},
 	{
@@ -45,6 +59,10 @@
 			"Tu connais le code Gangnam ? Tape <em>GANGNAM</em> et tu auras le Gangnam Style...",
 			"Moi j'ai déjà tenté <em>rm -rf *</em> sur le serveur des mails, oui môsieur !",
 			"Les vieux préparent un truc pour la soirée, oui môsieur !"
+		],
+		"emoteSequence": [
+		    "smile",
+		    "chanson"
 		]
 	},
 	{
@@ -57,6 +75,11 @@
 			"Tu connais le konami code ? Tape... Oh non puis cherche un peu ! <em>*sifflote*</em>",
 			"Le Konami Code ? Ahah, <strong>Gou Gueule</strong> le connait lui !",
 			"Oui, <em>Bricol'INT</em> travaille sur un projet pour la soirée..."
+		],
+		"emoteSequence": [
+		    "smile",
+		    "question",
+		    "muet"
 		]
 	},
 	{
@@ -69,6 +92,10 @@
 			"Tu viens pour la <strong>soirée MiNET</strong> ? Ca va être quelque chose...",
 			"La soirée c'est <strong>vendredi 7 décembre</strong> ! Tu as toutes les informations dans le menu du site",
 			"C'est <strong>Ays Péon</strong> qui a développé le site. Si tu es perdu, lis le <em>How To Play</em> !"
+		],
+		"emoteSequence": [
+		    "smile",
+		    "supersmile"
 		]
 	},
 	{
@@ -84,6 +111,14 @@
 			"Du HTML5 et une bonne dose de Javascript (<em>jQuery</em>, <em>Backbone.js</em>): c'est du site grokiki !",
 			"Si t'as des questions, hésites pas à m'envoyer un mail : <em>espeon@minet.net</em>",
 			"Tu connais l'epic code ? Tape <em>EPIC</em> et tu verras..."
+		],
+		"emoteSequence": [
+		    "laugh",
+		    "exclamation",
+		    "",
+		    "",
+		    "",
+		    "chanson"
 		]
 	},
 	{
@@ -95,6 +130,11 @@
 			"Quel temps pourri... <em>*râle*</em>",
 			"La musique est naze, elle tourne en boucle en plus ! <em>*rale*</em>",
 			"Les graphismes sont tout pourris, regarde ta tête ! Le 8-bit c'est vraiment un truc de glandeur ! <em>*rale*</em>"
+		],
+		"emoteSequence": [
+		    "bad",
+		    "bad",
+		    "superbad"
 		]
 	},
 	{
@@ -107,6 +147,12 @@
 			"Yep ! Tu vois le bateau là-bas ? C'est celui de <strong>Jibé Ache</strong>, le <em>mac</em> de MiNET.",
 			"T'aurais pas vu mon perroquet ? Je le cherche partout... <em>*soupir*</em>",
 			"Je veux t'emmener dans un bar g... Ahem ! Tape <em>GBAR</em> et ça ira moussaillon !"
+		],
+		"emoteSequence": [
+		    "",
+		    "",
+		    "amour",
+		    "chanson"
 		]
 	},
 	{
@@ -121,6 +167,15 @@
 			"Compte tenu de la complexité actuelle, il faut revoir la somme des solutions envisageables, parce qu'il s'agit de notre dernière koleka.",
 			"Koleka ! Koleka ! Koleka ! Ran Ran Ruuuuuuu !!!",
 			"Ce chemin est absurde... Vous ne trouvez pas ? <em>Absurde</em> oui..."
+		],
+		"emoteSequence": [
+		    "question",
+		    "",
+		    "",
+		    "question",
+		    "",
+		    "",
+		    "question"
 		]
 	},
 	{
@@ -131,6 +186,10 @@
 		"texte": [
 			"Meeeoooooow ! C'est moi le gros minet !",
 			"Meeeoooooow ! Ca manque d'ambiance par ici ! Tape <em>NYAN</em> et deviens un vrai minet !"
+		],
+		"emoteSequence": [
+		    "",
+		    "chanson"
 		]
 	},
 	{
@@ -141,6 +200,9 @@
 		"texte": [
 			"Hey ! Je suis un nouveau dev' sur le projet, histoire d'enrichir de nouveaux mystères ce petit monde...",
 			"Tu aimes les RPG ? Chrono Trigger, Final Fantasy, Golden Sun... alors attends les prochaines mises à jour pour des quêts épiques ! (ou pas, si j'ai la flemme ^^)"
+		],
+		"emoteSequence": [
+		    "exclamation"
 		]
 	}
 ]

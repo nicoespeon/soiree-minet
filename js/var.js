@@ -25,6 +25,7 @@ ORIENTATION.push('orientationGauche');
 ORIENTATION.push('orientationDroite');
 ORIENTATION.push('orientationHaut');
 
+var TIMER_EMOTE             = '';           // Timeout des emoticones
 var NB_FRAMES               = 4; 			// Nombre de frames
 var DUREE_DEPLACEMENT 	    = 400;			// Durée du déplacement (en ms)
 var DUREE_DEPLACEMENT_PNJ 	= 400;		    // Durée du déplacement des PNJs 
