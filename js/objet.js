@@ -15,7 +15,6 @@
 
 // Model - Objet
 // ------------------
-
 var Objet = Backbone.Model.extend({
 	defaults: {
 		name: '',
