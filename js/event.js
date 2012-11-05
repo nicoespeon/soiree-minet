@@ -39,7 +39,7 @@ var Event = Backbone.Model.extend({
 // -------------------
 var EventList = Backbone.Collection.extend({
     model: Event,
-	url: 'data/event.json'
+    localStorage: new Backbone.LocalStorage('events')
 });
 
 // Vue - Event
@@ -48,6 +48,17 @@ var EventView = Backbone.View.extend({
 	initialize: function() {
 		Events	= new EventList();
 		Events.fetch();
+		$.ajax({
+            url: 'data/event.json', 
+            success: function(data) {
+                if(Events.length!==data.length) {
+                    Events.reset(data);
+                    Events.each(function(event) {
+                        event.save();
+                    });
+                }
+            }  
+        });
 		
 		_.bindAll(this);
 		$(document).bind('keydown', this.eventDispatcher);
