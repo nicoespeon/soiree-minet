@@ -31,7 +31,14 @@ var Event = Backbone.Model.extend({
 			x : '0',
 			y : '0'
 		},
-		konami : ''
+		konami : '',
+	    found: false
+	},
+	
+	found: function() {
+    	this.save({
+        	found: true
+    	});
 	}
 });
 
@@ -152,33 +159,45 @@ var EventView = Backbone.View.extend({
 						if(ISPLAYING)	complement = '';
 						
 						audio.set('piste', musique.src);
-						notification(
-							'success',
-							'<strong>Event débloqué</strong> - Bien joué, tu as trouvé le konami code de <strong>'+musique.titre+'</strong>'+complement+' !'
-						);
 						
-						if(musique.warning!=undefined) {
-							setTimeout(function() {
-								notification(
-									'warning',
-									'<strong>One more thing</strong> - '+musique.warning
-								);
-							}, musique.delai);
-						}
+						// Affiche une notification si c'est la première fois (not found)
+						if(!el.attributes.found) {
+    						notification(
+    							'success',
+    							'<strong>Event débloqué</strong> - Bien joué, tu as trouvé le konami code de <strong>'+musique.titre+'</strong>'+complement+' !'
+    						);
+    						
+    						if(musique.warning!=undefined) {
+    							setTimeout(function() {
+    								notification(
+    									'warning',
+    									'<strong>One more thing</strong> - '+musique.warning
+    								);
+    							}, musique.delai);
+    						}
+    				    }
+    				    
+    				    Events.getByCid(el.cid).found();
 						break;
 					
 					case 'konami':
 						player.get('type')=='garcon' ? player.set('type', 'fille') : player.set('type', 'garcon');
-						notification(
-							'success',
-							"<strong>Event débloqué</strong> - Bien joué, tu as trouvé le <strong>KONAMI CODE</strong> !"
-						);
-						setTimeout(function() {
-							notification(
-								'warning',
-								"<strong>One more thing</strong> - Au cas où tu te poserais la question... c'est réversible !"
-							);
-						}, 5000);
+						
+						// Affiche une notification si c'est la première fois (not found)
+						if(!el.attributes.found) {
+    						notification(
+    							'success',
+    							"<strong>Event débloqué</strong> - Bien joué, tu as trouvé le <strong>KONAMI CODE</strong> !"
+    						);
+    						setTimeout(function() {
+    							notification(
+    								'warning',
+    								"<strong>One more thing</strong> - Au cas où tu te poserais la question... c'est réversible !"
+    							);
+    						}, 5000);
+    				    }
+    				    
+    				    Events.getByCid(el.cid).found();
 						break;
 						
 				    case 'bicyclette':
@@ -188,17 +207,22 @@ var EventView = Backbone.View.extend({
 				            audio.set('piste', 'city');
 				            player.set('attributs', 'bicyclette');
 				            
-    				        notification(
-    							'success',
-    							"<strong>Event débloqué</strong> - Bien joué, tu as trouvé le <strong>BICYCLETTE CODE</strong> !"
-    						);
-    						
-    						setTimeout(function() {
-    							notification(
-    								'warning',
-    								"<strong>One more thing</strong> - Au cas où tu te poserais la question... c'est réversible !"
-    							);
-    						}, 5000);
+    						// Affiche une notification si c'est la première fois (not found)
+    						if(!el.attributes.found) {
+        				        notification(
+        							'success',
+        							"<strong>Event débloqué</strong> - Bien joué, tu as trouvé le <strong>BICYCLETTE CODE</strong> !"
+        						);
+        						
+        						setTimeout(function() {
+        							notification(
+        								'warning',
+        								"<strong>One more thing</strong> - Au cas où tu te poserais la question... c'est réversible !"
+        							);
+        						}, 5000);
+        				    }
+        				    
+        				    Events.getByCid(el.cid).found();
 				        } else {
 				            DUREE_DEPLACEMENT=400;
 				            SCROLL_OFFSET = 3;
