@@ -128,8 +128,8 @@
 		"limits": [0,1,2],
 		"texte": [
 			"Quel temps pourri... <em>*râle*</em>",
-			"La musique est naze, elle tourne en boucle en plus ! <em>*rale*</em>",
-			"Les graphismes sont tout pourris, regarde ta tête ! Le 8-bit c'est vraiment un truc de glandeur ! <em>*rale*</em>"
+			"La musique est naze, elle tourne en boucle en plus ! <em>*râle*</em>",
+			"Les graphismes sont tout pourris ! Le 8-bit c'est vraiment un truc de glandeur ! <em>*râle*</em>"
 		],
 		"emoteSequence": [
 		    "bad",

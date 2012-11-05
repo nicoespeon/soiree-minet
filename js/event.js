@@ -46,18 +46,35 @@ var Event = Backbone.Model.extend({
 // -------------------
 var EventList = Backbone.Collection.extend({
     model: Event,
-    localStorage: new Backbone.LocalStorage('events')
+    localStorage: new Backbone.LocalStorage('events'),
+    
+    found: function() {
+        return this.filter(function(event) {
+           return event.get('found'); 
+        });
+    },
+    
+    remaining: function() {
+        return this.without.apply(this, this.found());
+    }
 });
 
 // Vue - Event
 // -----------
 var EventView = Backbone.View.extend({
+    events: {
+        'click .info': 'info'
+    },
+    
 	initialize: function() {
 		Events	= new EventList();
 		Events.fetch();
+		
+		// Récupère les donnée du fichier JSON
 		$.ajax({
             url: 'data/event.json', 
             success: function(data) {
+                // Si le localStorage n'est pas bon, on le remplit avec le fichier JSON
                 if(Events.length!==data.length) {
                     Events.reset(data);
                     Events.each(function(event) {
@@ -249,7 +266,19 @@ var EventView = Backbone.View.extend({
 				// Réinitialise le keylogger
 				KEYS = [];
 			}
-		
 		});
+	},
+	
+	info: function() {
+        var found       = Events.found().length;
+        var total       = Events.length-Events.where({konami:''}).length;
+        var prop        = found/total;
+        var complement  = "As-tu essayé de parler aux PNJs ?";
+        
+        if(prop>0.4)    complement = "C'est pas mal, continue à chercher !";
+        if(prop>0.9)    complement = "Tu les as presque tous, encore un petit effort !";
+        if(prop==1)     complement = "Décidément, on ne peut rien te cacher...";
+        
+        notification('notice', '<strong>Information</strong> - Tu as trouvé '+found+'/'+total+' codes. '+complement);
 	}
 });
