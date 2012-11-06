@@ -14,6 +14,7 @@
 */
 // Divers
 var DATE_SOIREE = "Dec 7 22:00:00 2012"
+var DATE_SOIREE = "Dec 7 22:00:00 2012";
 
 // Map
 var TAILLE_TILE = 32; 					// Taille du tile en pixels

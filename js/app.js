@@ -26,7 +26,7 @@ var AppView = Backbone.View.extend({
 		// Player
 		new PlayerView({model: player});
 		
-		//Events
+		// Events
 		new EventView({el:$('body'), model: event});
 		
 		// Audio
@@ -145,5 +145,6 @@ $(function() {
 		// Lance l'application
 		new AppView;
 		$('#audio').trigger('click');
+		$('#menu-nav').trigger('click');
 	});
 });

@@ -76,7 +76,12 @@ var EventView = Backbone.View.extend({
             success: function(data) {
                 // Si le localStorage n'est pas bon, on le remplit avec le fichier JSON
                 if(Events.length!==data.length) {
+                    for(var i=Events.length-1; i>=0; i--) {
+                        Events.at(i).destroy();
+                    }
+                        
                     Events.reset(data);
+                    
                     Events.each(function(event) {
                         event.save();
                     });
