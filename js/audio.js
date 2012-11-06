@@ -11,9 +11,16 @@
 // -------------
 var Audio = Backbone.Model.extend({
 	defaults: {
+	    id: 'minet',
 		piste: 'partyrock',
 		ext: ['mp3','ogg']
-	}
+	},
+	
+    localStorage: new Backbone.LocalStorage('audio'),
+    
+    initialize: function() {
+        this.fetch();
+    }
 });
 
 // Vue - Audio
@@ -53,6 +60,7 @@ var AudioView = Backbone.View.extend({
 	},
 	
 	chgTrack: function() {
+	    this.model.save();
 		var nextSound = new buzz.sound('sounds/'+this.model.get('piste'), {
 		    formats: this.model.get('ext')
 		}).load();
