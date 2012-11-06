@@ -161,3 +161,19 @@ function rebours() {
         return "J-"+j+" H-"+h;
     }
 }
+
+function setMapCollisions(data) {
+	var datas = [];
+	$.each(data, function(key, val) {
+		datas[key] = val;
+	});
+
+    for(var i=1;i<41;i++) {
+        COLLISIONS[i] = [];
+        for(var j=1;j<101;j++) {
+        	var x = j-1;
+        	var y = i-1;
+        	COLLISIONS[i][j] = datas[x][y];
+        }
+    }
+}
