@@ -479,6 +479,74 @@
 	background: url('../img/map/jbh-boat.png');
 }
 
+/*
+|--------------------------------------------------------------------------
+| EMOTICONES
+|--------------------------------------------------------------------------
+*/
+.emoticone {
+    width: 32px;
+    height: 32px;
+    margin-top: -40px;
+    z-index: 3000;
+    background: url('../img/personnages/emoticones.png');
+}
+
+.exclamation {
+    background-position: 0 0;
+}
+
+.question {
+    background-position: 0 -32px;
+}
+
+.muet {
+    background-position: 0 -64px;
+}
+
+.chanson {
+    background-position: 0 -96px;
+}
+
+.amour {
+    background-position: 0 -128px;
+}
+
+.smile {
+    background-position: 0 -160px;
+}
+
+.supersmile {
+    background-position: 0 -192px;
+}
+
+.laugh {
+    background-position: 0 -224px;
+}
+
+.superlaugh {
+    background-position: 0 -256px;
+}
+
+.bad {
+    background-position: 0 -288px;
+}
+
+.superbad {
+    background-position: 0 -320px;
+}
+
+.evil {
+    background-position: 0 -352px;
+}
+
+.sad {
+    background-position: 0 -384px;
+}
+
+.supersad {
+    background-position: 0 -416px;
+}
 
 /*
 |--------------------------------------------------------------------------
@@ -645,4 +713,8 @@
 
 .nuit #sea .boat {
 	background: url('../img/map_night/jbh-boat_night.png');
+}
+
+.nuit .emoticone {
+    background-image: url('../img/personnages/emoticones_night.png');
 }

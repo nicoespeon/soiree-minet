@@ -783,6 +783,10 @@ nav#menu a:hover::before {
 	margin-left: 30px;
 }
 
+#cboxLoadedContent .font-icon {
+    font-size: 300%;
+}
+
 /*
 |--------------------------------------------------------------------------
 | RESPONSIVE

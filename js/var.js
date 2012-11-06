@@ -14,6 +14,7 @@
 */
 // Divers
 var DATE_SOIREE = "Dec 7 22:00:00 2012"
+var DATE_SOIREE = "Dec 7 22:00:00 2012";
 
 // Map
 var TAILLE_TILE = 32; 					// Taille du tile en pixels
@@ -25,11 +26,12 @@ ORIENTATION.push('orientationGauche');
 ORIENTATION.push('orientationDroite');
 ORIENTATION.push('orientationHaut');
 
+var TIMER_EMOTE             = '';           // Timeout des emoticones
 var NB_FRAMES               = 4; 			// Nombre de frames
 var DUREE_DEPLACEMENT 	    = 400;			// Durée du déplacement (en ms)
 var DUREE_DEPLACEMENT_PNJ 	= 400;		    // Durée du déplacement des PNJs 
 var COLLISIONS 			    = [];			// On définit la map des collisions
-var SCROLL_OFFSET		    = 4;			// Marge par rapport au bord de l'écran pour scroll
+var SCROLL_OFFSET		    = 3;			// Marge par rapport au bord de l'écran pour scroll
 
 // Indicateurs
 var ISPLAYING 			= false;		// Etat du lecteur audio
@@ -137,7 +139,7 @@ function scroll(direction,ecart) {
 // Récupère l'heure
 // ----------------
 function getHeure() {
-    return (new Date()).getHours()
+    return (new Date()).getHours();
 }
 
 // Compte à rebours
@@ -157,5 +159,21 @@ function rebours() {
         sec = Math.floor(ecartSecondes - ((j * day + h * 3600 + mn * 60)));
         
         return "J-"+j+" H-"+h;
+    }
+}
+
+function setMapCollisions(data) {
+	var datas = [];
+	$.each(data, function(key, val) {
+		datas[key] = val;
+	});
+
+    for(var i=1;i<41;i++) {
+        COLLISIONS[i] = [];
+        for(var j=1;j<101;j++) {
+        	var x = j-1;
+        	var y = i-1;
+        	COLLISIONS[i][j] = datas[x][y];
+        }
     }
 }

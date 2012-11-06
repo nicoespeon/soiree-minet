@@ -31,7 +31,14 @@ var Event = Backbone.Model.extend({
 			x : '0',
 			y : '0'
 		},
-		konami : ''
+		konami : '',
+	    found: false
+	},
+	
+	found: function() {
+    	this.save({
+        	found: true
+    	});
 	}
 });
 
@@ -39,15 +46,48 @@ var Event = Backbone.Model.extend({
 // -------------------
 var EventList = Backbone.Collection.extend({
     model: Event,
-	url: 'data/event.json'
+    localStorage: new Backbone.LocalStorage('events'),
+    
+    found: function() {
+        return this.filter(function(event) {
+           return event.get('found'); 
+        });
+    },
+    
+    remaining: function() {
+        return this.without.apply(this, this.found());
+    }
 });
 
 // Vue - Event
 // -----------
 var EventView = Backbone.View.extend({
+    events: {
+        'click .info': 'info'
+    },
+    
 	initialize: function() {
 		Events	= new EventList();
 		Events.fetch();
+		
+		// Récupère les donnée du fichier JSON
+		$.ajax({
+            url: 'data/event.json', 
+            success: function(data) {
+                // Si le localStorage n'est pas bon, on le remplit avec le fichier JSON
+                if(Events.length!==data.length) {
+                    for(var i=Events.length-1; i>=0; i--) {
+                        Events.at(i).destroy();
+                    }
+                        
+                    Events.reset(data);
+                    
+                    Events.each(function(event) {
+                        event.save();
+                    });
+                }
+            }  
+        });
 		
 		_.bindAll(this);
 		$(document).bind('keydown', this.eventDispatcher);
@@ -66,8 +106,6 @@ var EventView = Backbone.View.extend({
 			
 			return true;
 		}
-		
-		// Déplacement (Move)
 		
 		// Check Konami Code
 		this.konami(e);
@@ -141,56 +179,73 @@ var EventView = Backbone.View.extend({
 						if(ISPLAYING)	complement = '';
 						
 						audio.set('piste', musique.src);
-						notification(
-							'success',
-							'<strong>Event débloqué</strong> - Bien joué, tu as trouvé le konami code de <strong>'+musique.titre+'</strong>'+complement+' !'
-						);
 						
-						if(musique.warning!=undefined) {
-							setTimeout(function() {
-								notification(
-									'warning',
-									'<strong>One more thing</strong> - '+musique.warning
-								);
-							}, musique.delai);
-						}
+						// Affiche une notification si c'est la première fois (not found)
+						if(!el.attributes.found) {
+    						notification(
+    							'success',
+    							'<strong>Event débloqué</strong> - Bien joué, tu as trouvé le konami code de <strong>'+musique.titre+'</strong>'+complement+' !'
+    						);
+    						
+    						if(musique.warning!=undefined) {
+    							setTimeout(function() {
+    								notification(
+    									'warning',
+    									'<strong>One more thing</strong> - '+musique.warning
+    								);
+    							}, musique.delai);
+    						}
+    				    }
+    				    
+    				    Events.getByCid(el.cid).found();
 						break;
 					
 					case 'konami':
 						player.get('type')=='garcon' ? player.set('type', 'fille') : player.set('type', 'garcon');
-						notification(
-							'success',
-							"<strong>Event débloqué</strong> - Bien joué, tu as trouvé le <strong>KONAMI CODE</strong> !"
-						);
-						setTimeout(function() {
-							notification(
-								'warning',
-								"<strong>One more thing</strong> - Au cas où tu te poserais la question... c'est réversible !"
-							);
-						}, 5000);
-						break;
 						
-				    case 'bicyclette':
-				        if(DUREE_DEPLACEMENT==400) {
-				            DUREE_DEPLACEMENT=200;
-				            OFFSET = 2;
-				            audio.set('piste', 'city');
-				            player.set('attributs', 'bicyclette');
-				            
-    				        notification(
+						// Affiche une notification si c'est la première fois (not found)
+						if(!el.attributes.found) {
+    						notification(
     							'success',
-    							"<strong>Event débloqué</strong> - Bien joué, tu as trouvé le <strong>BICYCLETTE CODE</strong> !"
+    							"<strong>Event débloqué</strong> - Bien joué, tu as trouvé le <strong>KONAMI CODE</strong> !"
     						);
-    						
     						setTimeout(function() {
     							notification(
     								'warning',
     								"<strong>One more thing</strong> - Au cas où tu te poserais la question... c'est réversible !"
     							);
     						}, 5000);
+    				    }
+    				    
+    				    Events.getByCid(el.cid).found();
+						break;
+						
+				    case 'bicyclette':
+				        if(DUREE_DEPLACEMENT==400) {
+				            DUREE_DEPLACEMENT=200;
+				            SCROLL_OFFSET = 2;
+				            audio.set('piste', 'city');
+				            player.set('attributs', 'bicyclette');
+				            
+    						// Affiche une notification si c'est la première fois (not found)
+    						if(!el.attributes.found) {
+        				        notification(
+        							'success',
+        							"<strong>Event débloqué</strong> - Bien joué, tu as trouvé le <strong>BICYCLETTE CODE</strong> !"
+        						);
+        						
+        						setTimeout(function() {
+        							notification(
+        								'warning',
+        								"<strong>One more thing</strong> - Au cas où tu te poserais la question... c'est réversible !"
+        							);
+        						}, 5000);
+        				    }
+        				    
+        				    Events.getByCid(el.cid).found();
 				        } else {
 				            DUREE_DEPLACEMENT=400;
-				            OFFSET = 3;
+				            SCROLL_OFFSET = 3;
 				            audio.set('piste', 'partyrock');
 				            player.set('attributs', '');
 				        }
@@ -216,7 +271,19 @@ var EventView = Backbone.View.extend({
 				// Réinitialise le keylogger
 				KEYS = [];
 			}
-		
 		});
+	},
+	
+	info: function() {
+        var found       = Events.found().length;
+        var total       = Events.length-Events.where({konami:''}).length;
+        var prop        = found/total;
+        var complement  = "As-tu essayé de parler aux PNJs ?";
+        
+        if(prop>0.4)    complement = "C'est pas mal, continue à chercher !";
+        if(prop>0.9)    complement = "Tu les as presque tous, encore un petit effort !";
+        if(prop==1)     complement = "Décidément, on ne peut rien te cacher...";
+        
+        notification('notice', '<strong>Information</strong> - Tu as trouvé '+found+'/'+total+' codes. '+complement);
 	}
 });

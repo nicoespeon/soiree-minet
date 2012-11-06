@@ -24,6 +24,8 @@ var Personnage = Backbone.Model.extend({
 		limits: [0,1,2,3],
 		frame: 0,
 		texte: ["La soirée MiNET arrive... J'ai hâte !"],
+		emoteSequence: [''],
+		emote: '',
 		randomOrientationLocked: false,
 		moveSequence: [],
 		attributs: ''
@@ -300,7 +302,7 @@ var PlayerView = Backbone.View.extend({
 	    if(winX < 0 || tileToPx(winX) > winWidth) {
 	    	// Si l'écran est plus loin que la cible, on scroll jusqu'à elle
 	    	scroll('horizontal', tileToPx(x-SCROLL_OFFSET));
-	    } else if(ecartX > ecartMaxX && x < (COLLISIONS.length-OFFSET-3)) {
+	    } else if(ecartX > ecartMaxX && x < (COLLISIONS.length-SCROLL_OFFSET-3)) {
 	    	// Sinon, si la cible atteint la marge limite, on scroll
 	        if(orientation==1) {
 	            scroll('horizontal', tileToPx(offsetX-ecartMaxX+1));
@@ -384,10 +386,11 @@ var PNJView = Backbone.View.extend({
 	
 	parle: function(e) {
 		if(e.keyCode=='13') {
-			var direction 	= player.get('orientation');
-			var cible 		= getCoordsCible(player.getX(), player.getY(), direction);
-			var xCible 		= cible['x'];
-			var yCible 		= cible['y'];
+			var direction    = player.get('orientation');
+			var cible        = getCoordsCible(player.getX(), player.getY(), direction);
+			var xCible       = cible['x'];
+			var yCible       = cible['y'];
+			var inst         = this;
 			
 			if(this.model.getX()==xCible && this.model.getY()==yCible) {
 				// Le pnj se tourne vers le joueur
@@ -418,16 +421,31 @@ var PNJView = Backbone.View.extend({
 				    thisPNJ.model.set({'randomOrientationLocked':false})
 				}, 5000);
 				
+				// Affiche le texte à l'écran
 				var texte = this.model.get('texte')[0];
 				notification('notice', '<strong>'+this.model.get('pseudo')+'</strong> - '+texte);
 				
+				// Affiche l'emoticone associée
+				var emote = this.model.get('emoteSequence')[0];
+				this.model.set('emote', emote);
+				
+				clearTimeout(TIMER_EMOTE);
+				TIMER_EMOTE = setTimeout(function() {
+				    inst.model.set('emote', '');
+				}, 3000);
+				
+				// Redéfinit le texte du PNJ
 				var nouveauTexte = [];
+				var nouveauEmote = [];
 				for(var i=1; i<this.model.get('texte').length; i++) {
 					nouveauTexte.push(this.model.get('texte')[i]);
+					nouveauEmote.push(this.model.get('emoteSequence')[i] || '');
 				}
 				nouveauTexte.push(texte);
+				nouveauEmote.push(emote);
 				
-				this.model.set('texte', nouveauTexte);	
+				this.model.set('texte', nouveauTexte);
+				this.model.set('emoteSequence', nouveauEmote);
 			}
 		}
 	},

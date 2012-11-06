@@ -44,6 +44,7 @@
 		<ul>
 			<li class="font-icon" id="menu-nav" data-control="menu">i</li>
 			<li class="font-icon pause" id="audio" data-control="audio">p</li>
+			<li class="font-icon info">"</li>
 		</ul>
 	</nav>
 	
@@ -144,11 +145,13 @@
 		
 		<!-- Objets -->
 		<ul id="objets"></ul>
-		
 	</div>
 	
 	<!-- Templates -->
 	<script type="text/template" id="pnj-template">
+		<% if(emote!='') { %>
+		<div class="emoticone <%= emote %>" data-x="<%= position[0] %>" data-y="<%= position[1] %>"></div>
+		<% } %>
 		<div class="pnj <%= type %> <%= ORIENTATION[orientation] %> frame<%= frame %>" data-x="<%= position[0] %>" data-y="<%= position[1] %>"></div>
 	</script>
 	
@@ -222,6 +225,10 @@
 	            <dd>Déclencher une action</dd>
 	        <dt>Autres</dt>
 	            <dd>Trouvez les codes cachés !</dd>
+	        <dt class="font-icon">i</dt>
+	            <dd>Affiche/Cache le menu</dd>
+	        <dt class="font-icon">r</dt>
+	            <dd>Lance/Coupe le son</dd>
 	    </dl>
 	    <h1>A few more things...</h1>
 	    <p>
@@ -254,6 +261,7 @@
 	<script src="js/lib/jquery-1.7.2.min.js"></script>
 	<script src="js/lib/underscore.min.js"></script>
 	<script src="js/lib/backbone.min.js"></script>
+	<script src="js/lib/localstorage.min.js"></script>
 	<script src="js/lib/toastmessage.js"></script>
 	<script src="js/lib/buzz.js"></script>
 	<script src="js/lib/colorbox.js"></script>
