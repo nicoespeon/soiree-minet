@@ -251,9 +251,24 @@ module.exports = function(grunt) {
     //      "dist/release/assets/img/": "assets/img/*"
     //    }
     //  }
-    // }
+    // },
+
+    // Generate JS documentation with docco
+    docco: {
+      app: {
+        src: ['app/*.js'],
+        dest: "dist/docs/"
+      },
+      modules: {
+        src: ['app/modules/*.js'],
+        dest: "dist/docs/modules/"
+      }
+    }
 
   });
+
+  // Load the documentation package (docco)
+  grunt.loadNpmTasks('documentation');
 
   // The development task will prepare the files which need to be compiled
   // to be rendered in the browser (such as the LESS files)
@@ -264,10 +279,10 @@ module.exports = function(grunt) {
   // dist/debug/templates.js, compile all the application code into
   // dist/debug/require.js, and then concatenate the require/define shim
   // almond.js and dist/debug/templates.js into the require.js file.
-  grunt.registerTask("debug", "clean lint jst requirejs concat less:debug targethtml:debug copy:debug");
+  grunt.registerTask("debug", "clean lint jst requirejs concat less:debug targethtml:debug copy:debug docco");
 
   // The release task will run the debug tasks and then minify the
   // dist/debug/require.js file and CSS files.
-  grunt.registerTask("release", "clean lint jst requirejs concat less:release targethtml:release copy:release min");
+  grunt.registerTask("release", "clean lint jst requirejs concat less:release targethtml:release copy:release min docco");
 
 };
