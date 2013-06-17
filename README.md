@@ -1,5 +1,15 @@
 ## SOIREE MINET [07/12/12]
 
+### 0. PREAMBULE
+
+Ceci est la version `1.0` du site de la soirée MiNET 2012, tel qu'il a été lancé pendant l'événement.
+
+Concernant l'état du code, c'était pas mal parti, mais il y a énormément à faire pour refactor tout ça : ajouter de l'AMD, virer tout ce qui est maladroit, procédural, partir sur une nouvelle architecture, mettre à jour les frameworks utilisés, etc.
+
+Le but de ce projet est d'aboutir sur une `v2.0` propre, modulaire, future-proof.
+
+Voilà donc pour le bilan. Place au refactoring !
+
 ### 1. PRINCIPE
 
 Il s'agit d'un jeu en HTML5-Javascript.
@@ -16,22 +26,22 @@ Il se déplace pour interagir avec le décor où se trouvent :
 
 ### 2. COMMANDES
 
-- **Déplacement**   	: Flèches directionnelles
+- **Déplacement**       : Flèches directionnelles
 - **Activer/Interagir** : Touche `Enter`
-- **Konami Code**		: Autres touches du clavier
+- **Konami Code**       : Autres touches du clavier
 
 ### 3. CONTRIBUER
 
 #### A - CODER
 
-Vous pouvez coder et contribuer au projet si ça vous tente. 
+Vous pouvez coder et contribuer au projet si ça vous tente.
 
 Cependant, la branche `master` est lockée et vous ne pourrez pas pusher dessus. En revanche, la branche `develop` est à votre disposition et je vous encourage à committer dessus.
 
 Pour créer une branche locale `develop` qui *track* la branche `origin/develop` du dépôt, lancez :
-    
+
     $ git checkout develop origin/develop
-    
+
 Ainsi, un `git push` depuis votre branche locale `develop` enverra vos commit sur la branche `origin/develop` !
 
 **Si vous avez des soucis, n'hésitez pas à m'envoyer un mail -** espeon@minet.net

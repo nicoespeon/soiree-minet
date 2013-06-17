@@ -1,5 +1,14 @@
+# OS files
 .DS_Store
-prod/*
+Thumbs.db
+
+# Temporary files
+*~
+
+# Folders
+dist/
+
+# File extensions
 *.psd
 *.zip
 *.mp3

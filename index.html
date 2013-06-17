@@ -1,280 +1,76 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-	<!-- Title -->
-	<title>Soirée MiNET [07/12/12]</title>
-	<link rel="icon" type="image/png" href="img/icone.png">
-	
-	<!-- Meta -->
-	<meta name="description" content="Soirée MiNET 2012... Coming Soon !" />
-	<meta name="keywords" content="MiNET, soirée, hack, Télécom, Soirée MiNET 2012, TMSP, TEM, TSP, Télécom SudParis, Télécom École de Management" />
-	<meta name="author" content="Espeon" />
-	<meta charset="utf-8" />
-	
-	<!-- CSS -->
-	<link rel="stylesheet" href="css/reset.css" />
-	<link rel="stylesheet" href="css/main.css" />
-	<link rel="stylesheet" href="css/map.css" />
-	
-	<!--[if IE]>
-	    <script type="text/javascript">
-	    	window.location = "fallback.html";
-	    </script>
-	<![endif]-->
-	
-	<script>
-	    if(screen.width<768) {
-	        window.location = "fallback.html";
-	    }
-	</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0">
+  <meta name="description" content="Site de la soirée MiNET 2012">
+  <meta name="google-site-verification" content="21pWF2p74b3fKoENEWV_jhRjUFg_nZ6qb6XkZh0Nvds">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Soirée MiNET [07/12/12]</title>
+
+  <link rel="author" href="https://plus.google.com/u/0/108378377887967941980">
+
+  <!-- DNS prefetch for external resources. -->
+  <link rel="dns-prefetch" href="//platform.twitter.com">
+  <link rel="dns-prefetch" href="//p.twitter.com">
+  <link rel="dns-prefetch" href="//cdn.api.twitter.com">
+
+  <!-- Application styles. -->
+
+  <!--(if target dummy)><!-->
+  <link rel="stylesheet" href="/app/styles/index.css">
+  <!--<!(endif)-->
+
+  <!--(if target release)>
+  <link rel="stylesheet" href="index.css">
+  <!(endif)-->
+
+  <!--(if target debug)>
+  <link rel="stylesheet" href="index.css">
+  <!(endif)-->
+
+  <!-- Fallback. -->
+
+  <!--[if IE]>
+    <script type="text/javascript">
+      window.location = "fallback.html";
+    </script>
+  <![endif]-->
+
+  <script>
+    if(screen.width<768) {
+        window.location = "fallback.html";
+    }
+  </script>
 </head>
+
 <body>
-	<!-- Loader -->
-	<div id="loader" class="hidden">
-		<p>
-			Scrolling... please wait...
-		</p>
-	</div>
-	
-	<!-- Logo de la soirée -->
-	<img src="img/logo-soiree.png" id="logo" width="150" alt="H### Me I'm Famous !" />
-	
-	<!-- Menu de contrôle -->
-	<nav id="control">
-		<ul>
-			<li class="font-icon" id="menu-nav" data-control="menu">i</li>
-			<li class="font-icon pause" id="audio" data-control="audio">p</li>
-			<li class="font-icon info">"</li>
-		</ul>
-	</nav>
-	
-	<!-- Menu de navigation -->
-	<nav id="menu">
-		<ul class="clearfix">
-			<li>
-				<a href="#description" data-title="Soirée MiNET">Soirée MiNET</a>
-			</li>
-			<li>
-				<a href="#animations" data-title="Les animations">Animations</a>
-			</li>
-			<li>
-				<a href="#tarifs" data-title="Les tarifs">Tarifs</a>
-			</li>
-			<li>
-				<a href="#howToPlay" data-title="How to Play ?">How to Play ?</a>
-			</li>
-		</ul>
-	</nav>
-	
-	<!-- Interactions -->
-	<div id="interaction"></div>
-	
-	<!-- Notifications -->
-	<div id="notification"></div>
-	
-	<!-- Contenu du jeu -->
-	<div id="wrapper">
-		<!-- Décor BG du jeu -->
-		<div class="flowers1" data-x="5" data-y="21"></div>
-		<div class="flowers1" data-x="15" data-y="26"></div>
-		<div class="flowers1" data-x="21" data-y="45"></div>
-		<div class="flowers1" data-x="38" data-y="49"></div>
-		<div class="flowers1" data-x="6" data-y="57"></div>
-		<div class="flowers1" data-x="23" data-y="65"></div>
-		
-		<div class="flowers2" data-x="20" data-y="4"></div>
-		<div class="flowers2" data-x="25" data-y="4"></div>
-		
-		<div class="wallpaper" data-x="14" data-y="55"></div>
-		
-		<!-- Montagnes -->
-		<div id="mountain">
-			<div class="upper top" data-x="1" data-y="1"></div>
-			<div class="upper left" data-x="1" data-y="1"></div>
-			<div class="corner" data-x="3" data-y="3"></div>
-			<div class="front" data-x="4" data-y="3"></div>
-			<div class="right" data-x="3" data-y="4"></div>
-			<div class="door" data-x="22" data-y="2"></div>
-			<div class="runes" data-x="5" data-y="3"></div>
-		</div>
-		
-		<!-- Runes -->
-		<div id="runes" data-x="7" data-y="2">
-		</div>
-		
-		<!-- Prairie -->
-		<div id="prairie">
-			<div class="path" data-x="22" data-y="4"></div>
-			<div class="path end" data-x="22" data-y="34"></div>
-		</div>
-		
-		<!-- Forêt -->
-		<div id="forest" data-x="27" data-y="3">
-		</div>
-		
-		<!-- Red City -->
-		<div id="red-city">
-			<div class="city" data-x="4" data-y="28"></div>
-			<div class="road" data-x="10" data-y="57"></div>
-		</div>
-		
-		<!-- Blue City -->
-		<div id="blue-city">
-			<div class="city" data-x="26" data-y="55"></div>
-			<div class="road" data-x="13" data-y="67"></div>
-			<p id="timer" class="timer">
-    			J-XX H-XX
-			</p>
-		</div>
-		
-		<!-- Port -->
-		<div id="port" data-x="4" data-y="74">
-			<div id="pc" data-x="14" data-y="11"></div>
-			<div id="phare" data-x="22" data-y="13"></div>
-		</div>
-		
-		<!-- Mer -->
-		<div id="sea">
-			<div class="top" data-x="4" data-y="90"></div>
-			<div class="water" data-x="4" data-y="91"></div>
-			<div class="boat" data-x="4" data-y="90"></div>
-		</div>
-		
-		<!-- PNJs -->
-		<ul id="pnjs"></ul>
-		
-		<!-- Objets -->
-		<ul id="objets"></ul>
-	</div>
-	
-	<!-- Templates -->
-	<script type="text/template" id="pnj-template">
-		<% if(emote!='') { %>
-		<div class="emoticone <%= emote %>" data-x="<%= position[0] %>" data-y="<%= position[1] %>"></div>
-		<% } %>
-		<div class="pnj <%= type %> <%= ORIENTATION[orientation] %> frame<%= frame %>" data-x="<%= position[0] %>" data-y="<%= position[1] %>"></div>
-	</script>
-	
-	<script type="text/template" id="player-template">
-		<div id="player" class="<%= type %> <%= ORIENTATION[orientation] %> frame<%= frame %> <%= attributs %>" data-x="<%= position[0] %>" data-y="<%= position[1] %>">
-			<!-- Here is your player ! -->
-		</div>
-	</script>
-	
-	<script type="text/template" id="objet-template">
-		<div class="<%= type %>" data-x="<%= position[0] %>" data-y="<%= position[1] %>"></div>
-	</script>
-	
-	<div id="description" class="hidden">
-	    <h1>Le 7 Décembre 2012, MiNET Hack le foyer !</h1>
-	    <p>
-	        Trois ans après avoir enflammé la banquise, <strong>la soirée MiNET revient en force</strong>.
-	    </p>
-	    <p>
-	        Alors accroche-toi bien à ton clavier car cette année encore, MiNET va te faire vivre une nuit légendaire !
-	    </p>
-	    <p>
-	    	Thème : H<em>###</em> Me, I'm Famous !
-	    </p>
-	</div>
-	
-	<div id="animations" class="hidden">
-	    <h1>Au programme...</h1>
-	    <ul>
-	        <li>Show Pomp'INT</li>
-	        <li>Show Moov'INT</li>
-	        <li>Projet X by <em>les Vieux</em></li>
-	        <li>Projet Y by <em>Bricol'INT</em></li>
-	    </ul>
-	    <p>
-	        Pour plus d'indices, c'est sur la carte que ça se passe...
-	    </p>
-	</div>
-	
-	<div id="tarifs" class="hidden">
-	    <h1>La soirée <em>hack discount</em></h1>
-	    <dl>
-	        <dt>Entrée</dt>
-	            <dd>= 3€</dd>
-	        <dt>Extés</dt>
-	            <dd>= 5€</dd>
-            <dt>Consos</dt>
-	            <dd>+ 2€</dd>
-	    </dl>
-	</div>
-	
-	<div id="howToPlay" class="hidden">
-	    <h1>Le principe</h1>
-	    <p>
-	        Ceci... est une révolution.
-	    </p>
-	    <p>
-	        Ceci est le coming soon de la toute nouvelle <strong>soirée MiNET</strong>.
-	    </p>
-	    <p>
-	        Vous êtes un jeune INTien fougueux qui se retrouve sur une pauvre carte 8-bit pleine de geekeries en tout genre. Pourquoi ne pas faire un tour dans les environs ?
-	    </p>
-	    <p>
-	        Déplacez vous sur la carte, parlez aux PNJs, explorez le jeu, hackez le code source, ...
-	    </p>
-	    <h1>Les commandes</h1>
-	    <dl>
-	        <dt>Flèches</dt>
-	            <dd>Se déplacer sur la map</dd>
-	        <dt>Enter</dt>
-	            <dd>Déclencher une action</dd>
-	        <dt>Autres</dt>
-	            <dd>Trouvez les codes cachés !</dd>
-	        <dt class="font-icon">i</dt>
-	            <dd>Affiche/Cache le menu</dd>
-	        <dt class="font-icon">r</dt>
-	            <dd>Lance/Coupe le son</dd>
-	    </dl>
-	    <h1>A few more things...</h1>
-	    <p>
-	        Si vous avez des questions, des remarques ou des suggestions, envoyez un mail à <em>espeon@minet.net</em>
-	    </p>
-	    <p>
-	        Parlez aux PNJs MiNETiens, découvrez les goodies cachés et revenez régulièrement pour découvrir les nouveautés.
-	    </p>
-	    <p>
-	        Toute ressemblance avec un jeu japonais de dressage de monstres de poche ne saurait être qu'une coïncidence fortuite.
-	    </p>
-	    <p>
-	        Toute baisse d'assiduité en amphi suite à la mise en ligne de ce coming soon en serait de même.
-	    </p>
-	</div>
-	
-	<div id="social" class="hidden">
-		<h1>Bienvenue sur le PC de MiNET</h1>
-        <div class="center">
-			<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://soiree.minet.net" data-text="Soirée MiNET, le 7 décembre 2012 - H### Me, I'm Famous -" data-via="MinetTMSP" data-lang="fr" data-related="MinetTMSP">Tweeter</a>
-			<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fsoiree.minet.net&amp;send=false&amp;layout=button_count&amp;width=150&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;" allowTransparency="true"></iframe>
-		</div>
-	</div>
-	
-	<div id="forest-tweet" class="hidden">
-	   <a href="https://twitter.com/share" class="twitter-share-button forest-tweet" data-url="http://soiree.minet.net" data-text="Tw##t Me, I'm Famous ! Soirée MiNET, le 7 décembre 2012 -" data-via="MinetTMSP" data-lang="fr" data-related="MinetTMSP">Tw##t Me, I'm Famous !</a>
-	</div>
-	
-	<!-- Librairies JS -->
-	<script src="js/lib/jquery-1.7.2.min.js"></script>
-	<script src="js/lib/underscore.min.js"></script>
-	<script src="js/lib/backbone.min.js"></script>
-	<script src="js/lib/localstorage.min.js"></script>
-	<script src="js/lib/toastmessage.js"></script>
-	<script src="js/lib/buzz.js"></script>
-	<script src="js/lib/colorbox.js"></script>
-	
-	<!-- Scripts JS -->
-	<script src="js/var.js"></script>
-	<script src="js/personnages.js"></script>
-	<script src="js/objet.js"></script>
-	<script src="js/audio.js"></script>
-	<script src="js/event.js"></script>
-	<script src="js/app.js"></script>
-	
-	<!-- Script social media -->
-	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+  <!-- Loader -->
+  <div id="loader" class="hidden">
+    <p>
+      Scrolling... please wait...
+    </p>
+  </div>
+
+  <!-- Application container. -->
+  <main role="main" id="main"></main>
+
+  <!-- Application source. -->
+
+  <!--(if target dummy)><!-->
+  <script data-main="/app/config" src="/vendor/js/libs/require.js"></script>
+  <!--<!(endif)-->
+
+  <!--(if target release)>
+  <script src="require.js"></script>
+  <!(endif)-->
+
+  <!--(if target debug)>
+  <script src="require.js"></script>
+  <!(endif)-->
+
+  <!-- Social media. -->
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </body>
 </html>
