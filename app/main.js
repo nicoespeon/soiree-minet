@@ -9,7 +9,7 @@ require([
   "sandbox"
 ],
 
-function(app, Router) {
+function(app, Router, Sandbox) {
 
   // Define your master router on the application namespace and trigger all
   // navigation from this instance.
