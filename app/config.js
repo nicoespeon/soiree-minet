@@ -6,11 +6,25 @@ require.config({
   deps: ["../vendor/jam/require.config", "main"],
 
   paths: {
-    // Put paths here.
+    "localstorage": "/vendor/plugins/backbone/backbone.localstorage",
+    "colorbox":     "/vendor/plugins/jquery/colorbox",
+    "toastmessage": "/vendor/plugins/jquery/toastmessage",
+    "buzz":         "/vendor/plugins/buzz"
   },
 
   shim: {
-    // Put shims here.
+    "localstorage": {
+      "deps": [ "backbone" ],
+      "exports": "Backbone.LocalStorage"
+    },
+    "colorbox": {
+      "deps": [ "jquery" ],
+      "exports": "Colorbox"
+    },
+    "toastmessage": {
+      "deps": [ "jquery" ],
+      "exports": "Toast"
+    }
   }
 
 });
