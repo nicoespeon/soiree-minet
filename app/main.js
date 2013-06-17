@@ -3,7 +3,10 @@ require([
   "app",
 
   // Main Router.
-  "router"
+  "router",
+
+  // Sandbox
+  "sandbox"
 ],
 
 function(app, Router) {
@@ -11,6 +14,10 @@ function(app, Router) {
   // Define your master router on the application namespace and trigger all
   // navigation from this instance.
   app.router = new Router();
+
+  // Define the application sandbox which is a facade of modules and deals with
+  // permissions to coordinate what modules can do or not.
+  app.sandbox = new Sandbox();
 
   // Trigger the initial route and enable HTML5 History API support, set the
   // root folder to '/' by default.  Change in app.js.
