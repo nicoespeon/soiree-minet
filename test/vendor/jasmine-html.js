@@ -3,6 +3,11 @@ jasmine.HtmlReporterHelpers = {};
 jasmine.HtmlReporterHelpers.createDom = function(type, attrs, childrenVarArgs) {
   var el = document.createElement(type);
 
+  // Bypass the main.js navigate method
+  if(type == "a") {
+    el.setAttribute("data-bypass", "true");
+  }
+
   for (var i = 2; i < arguments.length; i++) {
     var child = arguments[i];
 
