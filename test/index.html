@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
-  <title>Backbone Boilerplate Jasmine Test Suite</title>
+  <title>Soirée MiNET Test Suite</title>
 
   <!-- Jasmine styles -->
   <link rel="stylesheet" href="vendor/jasmine.css">
@@ -15,29 +15,35 @@
   <!-- Testing libs -->
   <script src="vendor/jasmine.js"></script>
   <script src="vendor/jasmine-html.js"></script>
+  <script src="vendor/jasmine-jquery.js"></script>
 
-  <!-- Application libs -->
-  <script src="../../assets/js/libs/jquery.js"></script>
-  <script src="../../assets/js/libs/lodash.js"></script>
-  <script src="../../assets/js/libs/backbone.js"></script>
-  
   <!-- Load application -->
-  <script data-main="../../app/config"
-    src="../../assets/js/libs/require.js"></script>
+  <script data-main="../app/config"
+    src="../vendor/jam/require.js"></script>
 
   <!-- Declare your spec files to be run here -->
   <script>
     // Ensure you point to where your spec folder is, base directory is app/,
     // which is why ../test is necessary
-    require({ paths: { spec: "../test/jasmine/spec" } }, [
+    require({ paths: { spec: "../test/spec" } }, [
 
       // Load the example spec, replace this and add your own spec
       "spec/example"
 
     ], function() {
       // Set up the jasmine reporters once each spec has been loaded
-      jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
-      jasmine.getEnv().execute();
+      var jasmineEnv = jasmine.getEnv(),
+          htmlReporter = new jasmine.HtmlReporter();
+
+      jasmineEnv.addReporter(htmlReporter);
+
+      // Set up the specFilter to focus on specific specs
+      jasmineEnv.specFilter = function(spec) {
+        return htmlReporter.specFilter(spec);
+      };
+
+      // Execute the Jasmine test suite
+      jasmineEnv.execute();
     });
   </script>
 </body>
